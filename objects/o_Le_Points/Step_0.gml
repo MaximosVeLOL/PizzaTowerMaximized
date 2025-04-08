@@ -1,0 +1,1 @@
+y += sin(10.5 * o_GameManager.timer)

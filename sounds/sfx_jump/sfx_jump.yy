@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_jump",
+  "audioGroupId":{
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.226757,
+  "name":"sfx_jump",
+  "parent":{
+    "name":"Player",
+    "path":"folders/Sounds/Player.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_jump.ogg",
+  "type":0,
+  "volume":1.0,
+}

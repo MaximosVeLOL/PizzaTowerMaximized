@@ -1,0 +1,1 @@
+audio_sound_set_track_position(songID, loopPoint);

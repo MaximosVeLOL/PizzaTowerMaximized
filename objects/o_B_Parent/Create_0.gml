@@ -1,0 +1,2 @@
+reqStatesX = [];
+reqStatesY = [];
