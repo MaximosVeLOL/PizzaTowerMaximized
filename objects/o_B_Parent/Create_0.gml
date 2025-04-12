@@ -1,2 +1,3 @@
 reqStatesX = [];
-reqStatesY = [];
+reqStatesTop = [];
+reqStatesBottom = [];

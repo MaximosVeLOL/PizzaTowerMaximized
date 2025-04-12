@@ -12,8 +12,8 @@
   "duration":0.120136,
   "name":"sfx_mach2",
   "parent":{
-    "name":"Player",
-    "path":"folders/Sounds/Player.yy",
+    "name":"Mach",
+    "path":"folders/Sounds/Player/Mach.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

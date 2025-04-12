@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"va_happy2",
+  "audioGroupId":{
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":1.0187755,
+  "name":"va_happy2",
+  "parent":{
+    "name":"Voice",
+    "path":"folders/Sounds/Player/Voice.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"va_happy2.ogg",
+  "type":0,
+  "volume":1.0,
+}

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.332018,
+  "duration":0.33088437,
   "name":"sfx_climb",
   "parent":{
     "name":"Player",

@@ -1,2 +1,3 @@
 reqStatesX = "mach3";
-reqStatesY = ["superJump", "superslam"];
+reqStatesTop = "superslam";
+reqStatesBottom = "superJump";

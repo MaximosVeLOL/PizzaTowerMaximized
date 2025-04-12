@@ -118,23 +118,22 @@ switch(state) {
 				sprite_index = spr_player_mach3;
 				playSound(sfx_superdash);
 				if(GetInput("up")) setState("superJump");
-				if((moveX != xscale && moveX != 0 || !GetInput("dash"))) {
+				if( (moveX != xscale && moveX != 0 || !GetInput("dash") ) && tempVar[1] <= 100 ) {
 					setState("machslide", false);
 					tempVar[0] = 35;
 				}
 				if(PLAYER_GROUNDED) {
 					if(!instance_exists(o_P_Effect)) instance_create_depth(x,y,0,o_P_Effect, {sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 					if(GetInput("down")) setState("machroll", false);
+					if(GetInput("jump")) velocity[1] = -9;
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					ShakeScreen(2);
+					ShakeScreen(5);
 					PlaySound(sfx_bump);
 					instance_create_depth(x,y,0,o_P_Effect, {sprite_index : sprite_effect_bump});
 				}
-				if(GetInput("jump") && PLAYER_GROUNDED) {
-					velocity[1] = -9;
-				}
+				if(tempVar[1] != 0) tempVar[1]++;
 				if(GetInput("jump", 2) && velocity[1] < 0) velocity[1] /= 2;
 			break;
 			
@@ -193,7 +192,7 @@ switch(state) {
 					tempVar[0] = 35;
 				}
 				if(!PLAYER_GROUNDED) {
-					setState("machfreefall");
+					setState("machfreefall", false);
 					mask_index = spr_player_mask;
 				}
 				if(PLAYER_TOUCHING) {
@@ -217,8 +216,7 @@ switch(state) {
 						tempVar[0] = 2;
 					}
 					else {
-						setState("mach2");
-						tempVar[0] = 35;
+						setState("mach2", false);
 					}
 				}
 				if(PLAYER_TOUCHING) {
@@ -262,8 +260,9 @@ switch(state) {
 	
 	case "noclip":
 		velocity = [0,0];
-		x += moveX * 10;
-		y += moveY * 10;
+		movespeed = GetInput("dash") ? 20 : 10;
+		x += moveX * movespeed;
+		y += moveY * movespeed;
 		return;
 	break;
 	
@@ -294,7 +293,7 @@ switch(state) {
 				if(GetInput("dash", 1)) {
 					velocity = [0,0];
 					if(moveX != 0) xscale = moveX;
-					setState("machfreefall");
+					setState("machfreefall", false);
 				}
 			break;
 			
@@ -317,6 +316,7 @@ switch(state) {
 					playSound(sfx_jump);
 					velocity[1] = -12;
 					tempVar[0] = 1;
+					image_speed = 1;
 				}
 				if(GetInput("up", 2)) setState("normal");
 			break;
@@ -416,8 +416,8 @@ switch(state) {
 			
 			case 1: //Falling
 				sprite_index = spr_player_freefalling;
-				mass += 0.01;
-				if(mass == 0.805) {
+				tempVar[1]++;
+				if(tempVar[1] == 15) {
 					setState("superslam");
 				}
 
@@ -482,10 +482,31 @@ switch(state) {
 			break;
 			
 			case 1:
+				image_speed = 1;
 				sprite_index = spr_player_door_out;
 				SPRITE_NO_REPEAT;
 				if(round(image_index) == image_number) setState("normal");
 			break;
+		}
+	break;
+	
+	case "enemy":
+		switch(tempVar[0]) {
+			default:
+				return;
+			break;
+		}
+	break;
+	
+	case "key":
+		velocity = [0,0];
+		mass = 0;
+		sprite_index = spr_player_keyget;
+		SPRITE_NO_REPEAT;
+		if(round(image_index) == 17) PlaySound(choose(va_happy1, va_happy2, va_happy3));
+		if(round(image_index) == image_number) {
+			audio_resume_all();
+			setState("normal");
 		}
 	break;
 	

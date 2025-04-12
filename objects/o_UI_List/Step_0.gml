@@ -4,3 +4,4 @@ if(moveY != 0) {
 	if(currentOption == array_length(screens[currentScreen].optionText)) currentOption = 0;
 	if(currentOption < 0) currentOption = array_length(screens[currentScreen].optionText) - 1;
 }
+if(GetInput("jump", 1)) screens[currentScreen].events[currentOption]();

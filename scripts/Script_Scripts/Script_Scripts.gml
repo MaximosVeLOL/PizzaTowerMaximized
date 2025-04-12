@@ -1,6 +1,6 @@
 function PlaySound(snd, override = false, loop = false) {
 	if(audio_is_playing(snd) && !override || global.settings.audioSettings.muteAll || loop && global.settings.audioSettings.muteMusic || !loop && global.settings.audioSettings.muteSfx) {
-		return;
+		return -1;
 	}
 	return audio_play_sound(snd, 999, loop);
 }
@@ -25,8 +25,8 @@ function GetDebugSettings() {
 function GetNearestPlayer() {
 	return obj_player;
 }
-function GetInput(reqKey, inputType = 0) {
-	var s = variable_struct_get(global.settings.keyBinds, "p1");
+function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
+	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
 	switch(inputType) {
 		case 0:
@@ -47,11 +47,15 @@ function CollideAndMove(mass, maxYVelocity) {
 	velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
 	if(place_meeting(x + velocity[0], y, o_C_Parent)) {
-		if(!place_meeting(x + velocity[0], y - (abs(velocity[0]) + 1), o_C_Parent ) ) while(place_meeting(x + velocity[0], y, o_C_Parent)) y--;
-		if(place_meeting(x + velocity[0], y, o_C_Parent)) { //If we are still touching
-			while(!place_meeting(x + sign(velocity[0]), y, o_C_Parent)) {
-				x += sign(velocity[0]);
+		// Alternative: if(!place_meeting(x + velocity[0], y - (abs(velocity[0]) + 1), o_C_Parent ) ) while(place_meeting(x + velocity[0], y, o_C_Parent)) y--;
+		for(var i = 0 ; i <= abs(velocity[0] * 2);i++) {
+			if(!place_meeting(x+velocity[0], y - i, o_C_Parent)) {
+				y -= i;
+				break;
 			}
+		}
+		if(place_meeting(x+velocity[0],y,o_C_Parent)) {
+			while(!place_meeting(x+sign(velocity[0]), y, o_C_Parent)) x += sign(velocity[0]);
 			velocity[0] = 0;
 		}
 	}

@@ -1,4 +1,3 @@
-instance_deactivate_all(true);
 function CreateScreen(_title, _options, _events, _types = undefined) constructor {
 	title = _title;
 	optionText = _options;

@@ -20,7 +20,7 @@ global.settings = {
 	audioSettings : {
 		muteSfx : false,
 		muteMusic : false,
-		muteAll : false,
+		muteAll : true,
 	},
 	videoSettings : {
 		fullscreen : false,
@@ -33,5 +33,4 @@ global.settings = {
 	},
 }
 audio_group_load(AG_Sound);
-room_goto(Room_Level1_Tutorial);
-audio_play_sound(music_pizza, 999, true, 0.7);
+room_goto(Room_Level1_TutorialTop);

@@ -14,7 +14,7 @@ sounds = [];
 PD = o_MultiplayerSystem.registerPlayer();
 mask_index = spr_player_mask;
 inventory = {
-	key : true,
+	key : false,
 	
 };
 #macro PLAYER_GROUNDED place_meeting(x, y + 1, o_C_Parent)

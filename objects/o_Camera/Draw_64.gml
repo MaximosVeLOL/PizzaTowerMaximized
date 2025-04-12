@@ -57,5 +57,10 @@ if(hudVisible) {
 	}
 	else draw_sprite(sprite_hud_speedbar, 0, 120,120);
 	
+	
+    if (obj_player.inventory.key)
+        draw_sprite(sprite_level_key, -1, 180, 30)
+    draw_sprite(sprite_hud_inventory, -1, 180, 30)
+	
 }
 draw_text(180, 80, string(score));

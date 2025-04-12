@@ -29,5 +29,5 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans) {
 	}
 	else instance_create_depth(obj_player.x,obj_player.y, 0, o_UI_DoorTrans);
 }
-font = font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:", true, 2);
+font = font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:", false, -10);
 draw_set_font(font);

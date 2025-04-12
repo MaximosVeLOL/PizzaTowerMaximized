@@ -1,11 +1,15 @@
 songID = -1;
-nextSong = -1;
-loopPoint = 0;
-playNewMusic = function(song, _loopPoint = 0) {
-	audio_sound_gain(songID, 0, 1);
-	var aud = PlaySound(song);
+playNewMusic = function(song) {
+	if(song == -1) return;
+	if(songID != -1) audio_sound_gain(songID, 0, 1000);
+	var aud = PlaySound(music_pizza, false, true);
+	if(aud == -1) return;
 	audio_sound_gain(aud, 0,0);
-	audio_sound_gain(aud, 1, 1);
-	loopPoint = _loopPoint;
-	alarm[0] = audio_sound_length(song) * game_get_speed(gamespeed_fps);
+	audio_sound_gain(aud, 1, 1000);
+	songID = aud;
 }
+setMusicPlaying = function(value) {
+	if(value) audio_pause_sound(songID);
+	else audio_resume_sound(songID);
+}
+playNewMusic(music_pizza);

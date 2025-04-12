@@ -1,7 +1,7 @@
 with(obj_player) { 
 	if(state != "ladder" && (string_count(state, "mach") == 0 && state != "machslide") ) {
 		other.buffer++;
-		if((GetInput("up") && place_meeting(x,y-1,other) || GetInput("down") && place_meeting(x,y+1,other)) && other.buffer >= 20 ) {
+		if((GetInput("up") && place_meeting(x,y-1,other) || GetInput("down") && place_meeting(x,y+2,other)) && other.buffer >= 20 ) {
 			other.buffer = 0;
 			setState("ladder");
 			x = other.x + 16;

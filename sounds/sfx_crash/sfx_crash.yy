@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":18.506311,
+  "duration":18.506327,
   "name":"sfx_crash",
   "parent":{
     "name":"Sounds",
