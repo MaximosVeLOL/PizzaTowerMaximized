@@ -20,7 +20,7 @@ global.settings = {
 	audioSettings : {
 		muteSfx : false,
 		muteMusic : false,
-		muteAll : true,
+		muteAll : false,
 	},
 	videoSettings : {
 		fullscreen : false,
@@ -30,7 +30,8 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
+		twoPlayerEnabled : false,
 	},
 }
 audio_group_load(AG_Sound);
-room_goto(Room_Level1_TutorialTop);
+room_goto(Room_Intro);

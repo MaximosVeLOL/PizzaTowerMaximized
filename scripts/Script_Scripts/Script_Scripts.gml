@@ -22,9 +22,6 @@ function GetDebugSettings() {
 	if(!instance_exists(o_DEBUG_Console)) return false;
 	return o_DEBUG_Console.settings;
 }
-function GetNearestPlayer() {
-	return obj_player;
-}
 function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
@@ -46,9 +43,36 @@ function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 function CollideAndMove(mass, maxYVelocity) {
 	velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
+repeat(abs(velocity[1])) {
+    if !place_meeting(x, y + sign(velocity[1]), o_C_Parent)
+        y += sign(velocity[1]); 
+    else {
+        velocity[1] = 0;
+        break;
+    }
+}
+
+// Horizontal
+repeat(abs(velocity[0])) {
+    // Move up slope
+    if place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y - 1, o_C_Parent)
+        y--
+    
+    // Move down slope
+    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y + 1, o_C_Parent) && place_meeting(x + sign(velocity[0]), y + 2, o_C_Parent)
+        y++;
+
+    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent)
+        x += sign(velocity[0]); 
+    else {
+        velocity[0] = 0;
+        break;
+    }
+}
+	return;
 	if(place_meeting(x + velocity[0], y, o_C_Parent)) {
 		// Alternative: if(!place_meeting(x + velocity[0], y - (abs(velocity[0]) + 1), o_C_Parent ) ) while(place_meeting(x + velocity[0], y, o_C_Parent)) y--;
-		for(var i = 0 ; i <= abs(velocity[0] * 2);i++) {
+		for(var i = 0 ; i <= abs(velocity[0] * 16);i++) {
 			if(!place_meeting(x+velocity[0], y - i, o_C_Parent)) {
 				y -= i;
 				break;
@@ -67,4 +91,11 @@ function CollideAndMove(mass, maxYVelocity) {
 	}
 	x += velocity[0];
 	y += velocity[1];
+}
+function LoadSettings(index) {
+	if(file_exists(working_directory + "MaximizedGM2\\settings" + string(index) + ".txt")) global.settings = json_parse(file_text_read_string(file_text_open_read(working_directory + "MaximizedGM2\\settings" + string(index) + ".txt")));
+}
+function SaveSettings(index) {
+	if(!directory_exists(working_directory + "MaximizedGM2")) directory_create(working_directory + "MaximizedGM2");
+	file_text_write_string(file_text_open_write(working_directory + "MaximizedGM2\\settings" + string(index) + ".txt"), json_stringify(global.settings));
 }

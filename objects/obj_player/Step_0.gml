@@ -14,7 +14,7 @@ switch(state) {
 			tempVar[0] = 0;
 		}
 		else {
-			
+			audio_stop_sound(sfx_footstep);
 			tempVar[0]++;
 			sprite_index = spr_player_idle;
 			
@@ -118,7 +118,7 @@ switch(state) {
 				sprite_index = spr_player_mach3;
 				playSound(sfx_superdash);
 				if(GetInput("up")) setState("superJump");
-				if( (moveX != xscale && moveX != 0 || !GetInput("dash") ) && tempVar[1] <= 100 ) {
+				if( (moveX != xscale && moveX != 0 || !GetInput("dash") ) && tempVar[2] <= 100 ) {
 					setState("machslide", false);
 					tempVar[0] = 35;
 				}
@@ -133,7 +133,7 @@ switch(state) {
 					PlaySound(sfx_bump);
 					instance_create_depth(x,y,0,o_P_Effect, {sprite_index : sprite_effect_bump});
 				}
-				if(tempVar[1] != 0) tempVar[1]++;
+				if(tempVar[2] != 0) tempVar[2]++;
 				if(GetInput("jump", 2) && velocity[1] < 0) velocity[1] /= 2;
 			break;
 			
@@ -160,6 +160,8 @@ switch(state) {
 			break;
 			
 			case "crouchslide":
+				mask_index = spr_player_mask_crouch;
+				sprite_index = spr_player_crouchslide;
 				velocity[0] = movespeed * xscale;
 				movespeed -= 0.2;
 				if(!GetInput("down") && tempVar[0] >= 35) setState("mach2", false);
@@ -394,57 +396,48 @@ switch(state) {
 	break;
 	
 	case "freefall":
-		if(PLAYER_GROUNDED) {
-			tempVar[0] = 2;
-		}
 		switch(tempVar[0]) {
-			case 0: //Prep
-				tempVar[1]++;
-				sprite_index = spr_player_freefall_prep;
-				velocity[0] = movespeed * moveX;
+			case 0:
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
-					movespeed = movespeed < 4 ? movespeed + 1/4 : 4;
+					playSound(sfx_footstep);
+					sprite_index = spr_player_move;
 					xscale = moveX;
+					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
+					image_speed = movespeed/6;
+					tempVar[0] = 0;
 				}
-				if(tempVar[1] >= 15) {
-					velocity[0] = 0;
-					tempVar[1] = 0;
-					tempVar[0] = 1;
-				}
-			break;
-			
-			case 1: //Falling
-				sprite_index = spr_player_freefalling;
+				
+				if(!GetInput("down")) setState("jump");
 				tempVar[1]++;
-				if(tempVar[1] == 15) {
-					setState("superslam");
+				if(tempVar[1] > 15) {
+					tempVar[0] = 1;
+					tempVar[1] = 0;	
 				}
-
+				if(PLAYER_GROUNDED) {
+					tempVar[0] = 2;
+					PlaySound(sfx_facestomp);
+					instance_create_depth(x,y,0,o_P_Effect, {sprite_index : sprite_effect_landcloud});
+					PlaySound(sfx_land);
+				}
+				//animVar = broke a breakable
+				if(!animVar) sprite_index = spr_player_freefall_prep;
+				else {
+					sprite_index = spr_player_freefall_prep_hit;
+					SPRITE_NO_REPEAT;
+					if(round(image_index) == image_number) animVar = true;
+				}
+				
 			break;
 			
-			case 2: //Impact
-				sprite_index = spr_player_freefall_impact;
-				SPRITE_NO_REPEAT;
-				if(round(image_index) == image_number) {
-					if(mass >= 0.805) {
-						setState("machfreefall");
-						velocity[1] = -7;
-					}
-					else setState("normal");
-					mass = 1/2;
-				}
+			case 1:
+			
 			break;
 		}
 	break;
 	
 	case "superslam":
-		sprite_index = spr_player_freefalling;
-		if(PLAYER_GROUNDED) {
-			setState("freefall");
-			xscale = moveX != 0 ? moveX : xscale;
-			tempVar[0] = 2;
-		}
+	
 	break;
 	
 	case "ladder":
@@ -519,4 +512,4 @@ switch(state) {
 
 if(xscale != 1 && xscale != -1) show_message("Scale not in range! \n" + state);
 
-CollideAndMove(mass, 15);
+CollideAndMove(mass, 30);

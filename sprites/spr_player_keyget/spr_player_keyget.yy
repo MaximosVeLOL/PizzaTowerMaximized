@@ -359,8 +359,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"TextureG_Peppino",
+    "path":"texturegroups/TextureG_Peppino",
   },
   "type":0,
   "VTile":false,

@@ -1,4 +1,4 @@
-if(instance_number(object_index) > 2 + o_GameManager.twoPlayerEnabled) {
+if(instance_number(object_index) > 2 + global.settings.gameplaySettings.twoPlayerEnabled) {
 	LogError("I have a brother");
 	instance_destroy();
 }

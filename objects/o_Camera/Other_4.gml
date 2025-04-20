@@ -5,7 +5,7 @@ view_visible[0] = true;
 view_wport[0] = 960;
 view_hport[0] = 540;
 camera_set_view_size(view_camera[0], 960, 540);
-if(o_GameManager.twoPlayerEnabled) {
+if(global.settings.gameplaySettings.twoPlayerEnabled) {
 	camera_set_view_size(view_camera[0], 960, 270);
 	view_yport[0] = 270
 	view_hport[0] = 270;

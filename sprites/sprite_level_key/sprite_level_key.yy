@@ -151,8 +151,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"TextureG_Level",
+    "path":"texturegroups/TextureG_Level",
   },
   "type":0,
   "VTile":false,
