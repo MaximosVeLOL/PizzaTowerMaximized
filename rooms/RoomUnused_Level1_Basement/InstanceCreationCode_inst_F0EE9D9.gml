@@ -1,2 +1,2 @@
 targetRoom = RoomUnused_Level1_Inside;
-targetPos = [160,465];
+targetPos = [2496, 640];
