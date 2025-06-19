@@ -1,66 +1,83 @@
-if(!instance_exists(obj_player)) return;
+if(!instance_exists(o_PlayerParent)) return;
 if(GetDebugSettings().renderDebugText) {
 	draw_set_font(-1);
 	var toDraw = [
-		"State: " + obj_player.state,
-		"TempVar: " + string(obj_player.tempVar[0]) + ", " + string(obj_player.tempVar[1]) + ", " + string(obj_player.tempVar[2]),
-		"Velocity: " + string(obj_player.velocity[0]) + ", " + string(obj_player.velocity[1]),
-		"MoveSpeed: " + string(obj_player.movespeed),
-		"Player Pos: " + string(obj_player.x) + ", " + string(obj_player.y),
+		"State: " + o_PlayerParent.state,
+		"TempVar: " + string(o_PlayerParent.tempVar[0]) + ", " + string(o_PlayerParent.tempVar[1]) + ", " + string(o_PlayerParent.tempVar[2]),
+		"Velocity: " + string(o_PlayerParent.velocity[0]) + ", " + string(o_PlayerParent.velocity[1]),
+		"MoveSpeed: " + string(o_PlayerParent.movespeed),
+		"Player Pos: " + string(o_PlayerParent.x) + ", " + string(o_PlayerParent.y),
+		"FPS: " + string(fps_real) + " : " + string(fps),
 		//"Move Input: " + string(keyboard_check(global.settings.keyBinds.right) - keyboard_check(global.settings.keyBinds.left)) + ", " + string(keyboard_check(global.settings.keyBinds.down) - keyboard_check(global.settings.keyBinds.up))
 	];
 	for(var i = 0 ; i < array_length(toDraw);i++) {
-		draw_text(20, 500 - (i * 20), toDraw[i]);
+		draw_text(20, 520 - (i * 20), toDraw[i]);
 	}
-	draw_set_font(o_GameManager.font);
+	
 }
+draw_set_font(o_GameManager.font);
 if(hudVisible) {
-	var sprite = sprite_error;
-	switch(obj_player.state) {
-		
-		case "mach1":
-			sprite = sprite_hud_pep_mach1;
+	switch(global.settings.playerSettings.moveSet) {
+		case Moveset.PreETB:
+			draw_sprite(sprite_hud_inventory, 0, o_GameManager.getScreenSize()[0] / 2, 40);
+			for(var i = 0 ; i < instance_number(o_PlayerParent);i++) {
+				if(instance_find(o_PlayerParent, i).inventory.key) draw_sprite(sprite_level_key, -1, o_GameManager.getScreenSize()[0] / 2, 40);
+			}
 		break;
 		
-		case "mach2":
-			sprite = sprite_hud_pep_mach2;
-		break;
+		case Moveset.ETB: //OLD
+			var sprite = sprite_error;
+			for(var i = 0 ; i < instance_number(o_PlayerParent);i++) {
+				var X_ADD = (i * 200);
+				switch(instance_find(o_PlayerParent, i).state) {
 		
-		case "mach3":
-			sprite = sprite_hud_pep_mach3;
-		break;
+					case "mach1":
+						sprite = sprite_hud_pep_mach1;
+					break;
 		
-		case "mach4":
-			sprite = sprite_hud_pep_mach4;
-		break;
+					case "mach2":
+						sprite = sprite_hud_pep_mach2;
+					break;
 		
-		case "hurt":
-			sprite = sprite_hud_pep_hurt;
-		break;
+					case "mach3":
+						sprite = sprite_hud_pep_mach3;
+					break;
+		
+					case "mach4":
+						sprite = sprite_hud_pep_mach4;
+					break;
+		
+					case "hurt":
+						sprite = sprite_hud_pep_hurt;
+					break;
 		
 		
-		default:
-			sprite = sprite_hud_pep_idle;
+					default:
+						sprite = sprite_hud_pep_idle;
+					break;
+				}
+				draw_sprite(sprite, -1, 120 + X_ADD, 80);
+				if(string_count("mach", instance_find(o_PlayerParent, i).state) > 0) {
+					var mach =  instance_find(o_PlayerParent, i).tempVar[0];
+					if(mach >= 7) sprite = 1;
+					if(mach >= 35) sprite = 2;
+					if(mach >= 50) sprite = 3;
+					if(mach >= 75) sprite = 4;
+					if(mach >= 100) {
+						draw_sprite(sprite_hud_speedbar_max, -1, 120 + X_ADD, 120);
+					}
+					else draw_sprite(sprite_hud_speedbar, sprite, 120 + X_ADD,120);
+				}
+				else draw_sprite(sprite_hud_speedbar, 0, 120 + X_ADD,120);
+	
+	
+			    if (instance_find(o_PlayerParent, i).inventory.key) draw_sprite(sprite_level_key, -1, 180 + X_ADD, 30)
+			    draw_sprite(sprite_hud_inventory, -1, 180 + X_ADD, 30)
+				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
+				//draw_sprite(sprite_hud_inventory, -1, 240, 30);
+			}
+			draw_text(180, 80, string(score));
 		break;
 	}
-	draw_sprite(sprite, -1, 120, 80);
-	if(string_count("mach", obj_player.state) > 0) {
-		var mach = obj_player.tempVar[0];
-		if(mach >= 7) sprite = 1;
-		if(mach >= 35) sprite = 2;
-		if(mach >= 50) sprite = 3;
-		if(mach >= 75) sprite = 4;
-		if(mach >= 100) {
-			draw_sprite(sprite_hud_speedbar_max, -1, 120, 120);
-		}
-		else draw_sprite(sprite_hud_speedbar, sprite, 120,120);
-	}
-	else draw_sprite(sprite_hud_speedbar, 0, 120,120);
-	
-	
-    if (obj_player.inventory.key)
-        draw_sprite(sprite_level_key, -1, 180, 30)
-    draw_sprite(sprite_hud_inventory, -1, 180, 30)
-	
 }
-draw_text(180, 80, string(score));
+GUI_RESET;

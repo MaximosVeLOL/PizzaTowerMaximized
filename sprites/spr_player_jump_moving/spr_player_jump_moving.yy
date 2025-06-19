@@ -37,7 +37,7 @@
   "origin":4,
   "parent":{
     "name":"Jump",
-    "path":"folders/Sprites/Player/Jump.yy",
+    "path":"folders/Sprites/Player/ETB/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -125,8 +125,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Peppino",
-    "path":"texturegroups/TextureG_Peppino",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

@@ -1,20 +1,17 @@
-switch(state) {
-	case "walking":
+switch(state) { //ETB cheeseslimes are very basic in their code, and it is not like the other enemies at ALL.
+	case "walk":
 		sprite_index = spr_enemy_cheeseslime_walk;
-		movespeed = 3;
-		velocity[0] = movespeed * image_xscale;
-		if(place_meeting(x+image_xscale, y, o_C_Wall) || !place_meeting(x + image_xscale, y + 1, o_C_Wall)) {
-			image_xscale = -image_xscale;
-		}
+		velocity[0] = 1.5 * image_xscale;
+		if(!place_meeting(x + (32 * image_xscale), y + 1, o_C_Parent) || PLAYER_TOUCHING_IMAGE) image_xscale *= -1;
 	break;
 	
-	case "bumped":
-		sprite_index = spr_enemy_cheeseslime_bumped;
+	case "stunned":
 		velocity[0] = 0;
-		if(round(image_index) == image_number) state = "walking";
+		sprite_index = spr_enemy_cheeseslime_bumped;
+		if(round(image_index) == image_number) setState("walk");
 	break;
 }
-if((place_meeting(x+1, y, obj_player) || place_meeting(x-1,y,obj_player)) && (obj_player.state == "mach2" || obj_player.state == "mach3" || obj_player.state == "freefall")) {
+if((place_meeting(x+1, y, o_PlayerParent) || place_meeting(x-1,y,o_PlayerParent)) && (o_PlayerParent.state == "mach2" || o_PlayerParent.state == "mach3" || o_PlayerParent.state == "freefall")) {
 	die(spr_enemy_cheeseslime_dead, true);
 }
 CollideAndMove(0.5, 10);

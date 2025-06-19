@@ -1,0 +1,1 @@
+if(!instance_exists(o_UI_FadeTrans)) o_GameManager.gotoRoom(targetRoom, targetPos, false, newSong, loopData);

@@ -1,0 +1,1 @@
+instance_destroy(); //Its like an effect, but with more features.

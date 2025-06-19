@@ -31,7 +31,7 @@
   "origin":4,
   "parent":{
     "name":"Mach",
-    "path":"folders/Sprites/Player/Mach.yy",
+    "path":"folders/Sprites/Player/ETB/Mach.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -68,6 +68,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":100.0,
+    "seqWidth":100.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,
@@ -101,8 +103,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Peppino",
-    "path":"texturegroups/TextureG_Peppino",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

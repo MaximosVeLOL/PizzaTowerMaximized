@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sound_menuchange",
+  "audioGroupId":{
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.5485714,
+  "name":"sound_menuchange",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_menuchange.ogg",
+  "type":0,
+  "volume":1.0,
+}

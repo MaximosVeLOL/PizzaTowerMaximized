@@ -1,2 +1,4 @@
+event_inherited();
 reqStatesX = ["mach2", "mach3", "machroll"];
-reqStatesY = "";
+reqStatesTop = "freefall";
+reqStatesBottom = "";

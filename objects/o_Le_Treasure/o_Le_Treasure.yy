@@ -1,13 +1,15 @@
 {
   "$GMObject":"",
   "%Name":"o_Le_Treasure",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_PlayerParent","path":"objects/o_PlayerParent/o_PlayerParent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"o_Le_Treasure",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level",
-    "path":"folders/Objects/Level.yy",
+    "name":"Collectables",
+    "path":"folders/Objects/Level/Collectables.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -27,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprite_level_treasure",
+    "path":"sprites/sprite_level_treasure/sprite_level_treasure.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

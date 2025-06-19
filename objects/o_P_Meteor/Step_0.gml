@@ -1,5 +1,5 @@
-x = obj_player.x;
-y = obj_player.y;
-with(obj_player) {
+with(o_PlayerParent) {
+	other.x = x;
+	other.y = y;
 	if(state != "mach3" && state != "superslam") instance_destroy(other);
 }

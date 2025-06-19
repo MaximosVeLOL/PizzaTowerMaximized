@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sound_menuselect",
+  "audioGroupId":{
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":3.787755,
+  "name":"sound_menuselect",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_menuselect.ogg",
+  "type":0,
+  "volume":1.0,
+}

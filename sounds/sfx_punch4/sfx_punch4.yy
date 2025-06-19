@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_punch4",
+  "audioGroupId":{
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.43392292,
+  "name":"sfx_punch4",
+  "parent":{
+    "name":"Punch",
+    "path":"folders/Sounds/Punch.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_punch4.ogg",
+  "type":0,
+  "volume":1.0,
+}

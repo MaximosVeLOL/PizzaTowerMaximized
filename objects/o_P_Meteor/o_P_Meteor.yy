@@ -11,10 +11,7 @@
     "name":"Particles",
     "path":"folders/Objects/Particles.yy",
   },
-  "parentObjectId":{
-    "name":"o_P_Parent",
-    "path":"objects/o_P_Parent/o_P_Parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

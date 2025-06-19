@@ -1,0 +1,8 @@
+if(sprite_index == sprite_level_treasure_get) return;
+other.setState("treasure");
+sprite_index = sprite_level_treasure_get;
+x = other.x;
+y = other.y - 35;
+PlaySound(sfx_treasureget);
+PlaySound(choose(va_happy1, va_happy2, va_happy3));
+o_MusicManager.stopMusic(true);

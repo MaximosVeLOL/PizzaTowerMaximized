@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Player",
-    "path":"folders/Sprites/Player.yy",
+    "name":"ETB",
+    "path":"folders/Sprites/Player/ETB.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

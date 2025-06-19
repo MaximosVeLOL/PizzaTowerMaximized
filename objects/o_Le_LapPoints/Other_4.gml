@@ -1,0 +1,1 @@
+visible = o_GameManager.level.lap > 0;

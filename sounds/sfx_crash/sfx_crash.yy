@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"sfx_crash",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"AG_Sound",
+    "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
   "bitRate":128,

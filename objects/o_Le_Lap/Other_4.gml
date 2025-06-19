@@ -1,0 +1,1 @@
+visible = instance_exists(o_PizzaTimeManager);

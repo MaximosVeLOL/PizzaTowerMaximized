@@ -33,7 +33,7 @@
   "origin":4,
   "parent":{
     "name":"SuJump",
-    "path":"folders/Sprites/Player/SuJump.yy",
+    "path":"folders/Sprites/Player/ETB/SuJump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -109,8 +109,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Peppino",
-    "path":"texturegroups/TextureG_Peppino",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

@@ -7,6 +7,16 @@ global.settings = {
 			right : vk_right,
 			jump : ord("Z"),
 			dash : ord("X"),
+			shoot : ord("C"),
+			gamepad : {
+				up : gp_padu,
+				down : gp_padd,
+				left : gp_padl,
+				right : gp_padr,
+				jump : gp_face1,
+				dash : gp_face3,
+				shoot : gp_shoulderlb,
+			}
 		},
 		p2 : {
 			up : ord("W"),
@@ -15,23 +25,39 @@ global.settings = {
 			right : ord("D"),
 			jump : ord("K"),
 			dash : ord("L"),
+			shoot : ord("C"),
+			gamepad : {
+				up : gp_padu,
+				down : gp_padd,
+				left : gp_padl,
+				right : gp_padr,
+				jump : gp_face1,
+				dash : gp_face3,
+				shoot : gp_shoulderlb,
+			}
 		},
 	},
 	audioSettings : {
-		muteSfx : false,
-		muteMusic : false,
+		sfxVolume : 100,
+		musicVolume : 100,
+		masterVolume : 100,
 		muteAll : false,
 	},
 	videoSettings : {
 		fullscreen : false,
-		resolutionX : 960,
-		resolutionY : 540,
+		resolutionOpt : 1,
 		vSync : false,
 	},
 	gameplaySettings : {
-		debugEnabled : true,
+		debugEnabled : false,
 		twoPlayerEnabled : false,
 	},
+	playerSettings : {
+		moveSet : Moveset.ETB,
+	},
+	saveFileIndex : -1,
 }
+//audio_group_load(audiogroup_default);
 audio_group_load(AG_Sound);
-room_goto(Room_Intro);
+room_goto(Room_Disclaimer);
+//room_goto(Room_DemoRoom);instance_create_depth(0,0,0,o_Camera);CreatePlayer(200,200);

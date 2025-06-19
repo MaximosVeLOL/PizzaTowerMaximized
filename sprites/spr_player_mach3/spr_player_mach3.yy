@@ -31,7 +31,7 @@
   "origin":4,
   "parent":{
     "name":"Mach",
-    "path":"folders/Sprites/Player/Mach.yy",
+    "path":"folders/Sprites/Player/ETB/Mach.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -101,8 +101,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Peppino",
-    "path":"texturegroups/TextureG_Peppino",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,
