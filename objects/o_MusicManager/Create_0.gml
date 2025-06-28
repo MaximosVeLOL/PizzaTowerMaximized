@@ -4,6 +4,12 @@ loopPointStart = -1;
 loopPointEnd = -1;
 tempSong = -1;
 playNewSong = function(newSong, loopData = [-1,-1]) {
+	var errorHandler = PlaySound(sfx_footstep);
+	if(errorHandler == -1) {
+		Log("Error occured whilist trying to play a new song (most likely mute all), ignoring request.");
+		return;
+	}
+	audio_stop_sound(errorHandler);
 	Log("Playing New Song!\nInformation: [name: " + string(newSong) + "]");
 	if(newSong == -1 || global.settings.audioSettings.musicVolume == 0 || (instance_exists(o_PizzaTimeManager) && newSong != music_pizzatime) || newSong == asset_get_index(audio_get_name(currentSong))|| tempSong != -1) return;
 	if(currentSong != -1) { //If we are already playing music, we stop it

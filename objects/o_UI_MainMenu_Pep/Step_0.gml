@@ -27,7 +27,7 @@ if(x > room_width + 300) {
             room_goto(Room_DemoRoom);
         	o_MusicManager.playNewSong(music_demoroom);
         	o_GameManager.mode = "game";
-			CreatePlayer(160, 402);
+			CreatePlayer(256, 658);
         }
     }
 }

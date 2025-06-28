@@ -11,3 +11,4 @@ Game Engine - GameMaker
 Collision Code - coretheguy's Dem0 decompile
 ";
 y = string_height(text) + (string_height(text) * 2); //Above the screen height so we have delay
+io_clear();

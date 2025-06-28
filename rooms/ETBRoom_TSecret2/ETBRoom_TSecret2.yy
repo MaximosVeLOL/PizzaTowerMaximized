@@ -55,8 +55,8 @@
   ],
   "name":"ETBRoom_TSecret2",
   "parent":{
-    "name":"ETB",
-    "path":"folders/Rooms/ETB.yy",
+    "name":"Ancient",
+    "path":"folders/Rooms/ETB/Ancient.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

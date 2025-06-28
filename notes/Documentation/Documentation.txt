@@ -27,4 +27,4 @@ To collide with objects, use the script CollideAndMove()
 
 Core Objects - 
 These objects are needed in the game, or else the game will die!
-These objects include: o_Camera, o_GameManager (duh), o_MusicManager, and o_MultiplayerManager (as of now, I will remove this in a later update)
+These objects include: o_Camera, o_GameManager (duh), o_MusicManager, and o_MultiplayerManager (as of now, I will remove some in a later update)

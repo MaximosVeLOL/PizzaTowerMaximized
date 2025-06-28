@@ -1,4 +1,7 @@
-if(!instance_exists(o_PlayerParent)) return;
+if(!instance_exists(o_PlayerParent)) {
+	Log("The Player is dead!");
+	return;
+}
 if(GetDebugSettings().renderDebugText) {
 	draw_set_font(-1);
 	var toDraw = [
@@ -17,6 +20,9 @@ if(GetDebugSettings().renderDebugText) {
 }
 draw_set_font(o_GameManager.font);
 if(hudVisible) {
+	if(global.settings.gameplaySettings.goonerMode) {
+		draw_sprite(sprite_hud_goonmarkgoon, 0, 0, 0);
+	}
 	switch(global.settings.playerSettings.moveSet) {
 		case Moveset.PreETB:
 			draw_sprite(sprite_hud_inventory, 0, o_GameManager.getScreenSize()[0] / 2, 40);
@@ -40,7 +46,7 @@ if(hudVisible) {
 					break;
 		
 					case "mach3":
-						sprite = sprite_hud_pep_mach3;
+						sprite = global.settings.playerSettings.useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4;
 					break;
 		
 					case "mach4":

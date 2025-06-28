@@ -1,3 +1,5 @@
+if(global.settings.gameplaySettings.fpsSave = FPSSaveMode.UselessRemover || array_length(logs) == 0) return;
+
 var buf = buffer_create(0, buffer_grow, 1);
 for(var i = 0 ; i < array_length(o_DEBUG_Console.logs);i++) { //gamemaker gives us an error when using the with()
 	buffer_write(buf, buffer_string,  o_DEBUG_Console.logs[i]);

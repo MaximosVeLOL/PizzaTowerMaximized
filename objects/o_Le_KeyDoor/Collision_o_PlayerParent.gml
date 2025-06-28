@@ -5,15 +5,20 @@ if(GetInput("up", 1, other.PD)) {
 			inventory.key = false;
 			setState("door");
 			tempVar[0] = 2;
-			var door = other;
-			with(instance_create_depth(other.x,other.y,other.depth, o_Le_Door)) {
-				targetRoom = door.targetRoom;
-				targetPos = door.targetPos;
-				newSong = door.newSong;
-				loopData = door.loopData;
+			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover) {
+				var door = other;
+				with(instance_create_depth(other.x,other.y,other.depth, o_Le_Door)) {
+					targetRoom = door.targetRoom;
+					targetPos = door.targetPos;
+					newSong = door.newSong;
+					loopData = door.loopData;
+				}
+				instance_destroy(other);
 			}
-			instance_destroy(other);
+			if(isTreasureDoor && global.settings.playerSettings.moveSet == Moveset.PreETB) {
+				instance_create_depth(x,y,0,o_UI_DoorWin);
+			}
 		}
 	}
 }
-if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);
+if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);

@@ -4,36 +4,51 @@ if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "norma
 switch(state) {
 	case "normal":
 		velocity[0] = moveX * movespeed;
+		if(tempVar[1]) {
+			sprite_index = spr_player_land;
+			if(round(image_index) == image_number) tempVar[1] = false;
+		}
 		if(moveX != xscale) movespeed = 0;
 		if(moveX != 0) {
 			playSound(sfx_footstep);
-			sprite_index = spr_player_move;
+			if(!tempVar[1]) sprite_index = spr_player_move;
 			xscale = moveX;
-			movespeed = movespeed < 4 ? movespeed + 0.5 : 4;
-			image_speed = movespeed / 4;
+			movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
+			image_speed = movespeed/6;
 			tempVar[0] = 0;
+			CreateEffect({y : bbox_bottom, sprite_index : sprite_effect_cloud});
 		}
 		else {
 			audio_stop_sound(sfx_footstep);
-			tempVar[0]++;
-			sprite_index = spr_player_idle;
+			if(!animVar || !tempVar[1]) {
+				tempVar[0]++;
+				sprite_index = spr_player_idle;
+			}
+			else {
+				if(round(image_index) == image_number) animVar = false;
+			}
+			if(tempVar[0] == 400) {
+				animVar = true;
+				tempVar[0] = 0;
+				sprite_index = choose(sprite_player_idle_suprise, spr_player_grabbing_throw);
+			}
+			if(GetInput("up", 1, PD) && PLAYER_GROUNDED) setState("highJump", true);
 			
 		}
 		movespeed = movespeed > 6 ? movespeed - 0.5 : movespeed;
-		if(PLAYER_GROUNDED) {
-			if(GetInput("jump", 0, PD)) {
-				setState("jump");
-				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : self.xscale});
-				velocity[1] = -9;
-			}
-			if(GetInput("down", 0, PD)) setState("crouch");
-			if(GetInput("dash", 0, PD) && !PLAYER_TOUCHING) setState("mach1");
+		if(GetInput("jump", 1, PD)) {
+			setState("jump");
+			CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_PlayerParent.xscale});
+			velocity[1] = -9;
 		}
-		else setState("jump");
+		if(GetInput("down", 0, PD)) setState("crouch");
+		if(GetInput("dash", 0, PD) && !PLAYER_TOUCHING) setState("mach1", true, true);
+		//if(GetInput("shoot", 1, PD) && inventory.gun) setState("shotgun");
+		if(!PLAYER_GROUNDED) setState("jump");
 	break;
 	
 	case "mach1":
-		sprite_index = spr_player_run;
+		sprite_index = spr_player_mach1;
 		playSound(sfx_mach1);
 		if(moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD) || PLAYER_TOUCHING) {
 			setState("normal");
@@ -49,40 +64,78 @@ switch(state) {
 			}	
 			if(GetInput("jump", 0, PD)) {
 				setState("jump");
-				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : self.xscale});
+				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_PlayerParent.xscale});
 				playSound(sfx_jump);
 				velocity[1] = -9;
 			}
-			if(!instance_exists(o_P_Effect)) {
-				CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
-			}
+			CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 		}
 		else setState("jump", false);
 		
 	break;
 	
 			case "mach2":
-				movespeed = 8;
+				movespeed = 10;
 				velocity[0] = xscale * movespeed;
 				if((moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD)) && PLAYER_GROUNDED) {
 					setState("machslide");
+					tempVar[0] = 35;
 				}
 				
 				if(PLAYER_GROUNDED) {
 					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
-					sprite_index = spr_player_run;
+					sprite_index = spr_player_mach2;
 					if(GetInput("down", 0, PD)) setState("crouchslide", false);
 					playSound(sfx_mach2);
+					tempVar[0]++;
+					if(tempVar[0] >= 100) {
+						setState("mach3", false);
+						CreateEffect({sprite_index : sprite_effect_dust});
+						instance_create_depth(x,y,0,o_P_StateInitEffect);
+					}
 					
 					if(GetInput("jump", 1, PD)) velocity[1] = -9;
 					if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
 				}
+				else setState("machfreefall", false);
 				
 				if(PLAYER_TOUCHING) {
 					setState("bump");
 					playSound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
+			break;
+			
+			case "mach3":
+				movespeed = 14;
+				tempVar[0] = 100;
+				velocity[0] = xscale * movespeed;
+				if(tempVar[1] == 0) {
+					tempVar[1] = 6;
+					instance_create_depth(x,y,0,o_P_Mach3Effect);
+				}
+				tempVar[1]--;
+				sprite_index = global.settings.playerSettings.useOldMach3 ? spr_player_mach3 : spr_player_mach4;
+				playSound(sfx_mach3);
+				playSound(sfx_mach2);
+				if(GetInput("up", 0, PD)) setState("superJump");
+				if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD) ) && tempVar[2] <= 100 ) {
+					setState("machslide", false);
+					tempVar[0] = 35;
+				}
+				if(PLAYER_GROUNDED) {
+					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
+					if(GetInput("down", 0, PD)) setState("machroll", false);
+					if(GetInput("jump", 0, PD)) velocity[1] = -9;
+				}
+				if(PLAYER_TOUCHING) {
+					setState("bump");
+					ShakeScreen(5);
+					playSound(sfx_bump);
+					CreateEffect({sprite_index : sprite_effect_bump});
+				}
+				if(tempVar[2] != 0) tempVar[2]++;
+				if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
 			break;
 			
 			case "machslide":
@@ -94,9 +147,9 @@ switch(state) {
 				velocity[0] = movespeed * xscale;
 				movespeed -= 0.4;
 				if(movespeed <= 0) {
-					if(moveX != 0) xscale = moveX;
-					if(GetInput("dash", 0, PD)) {
+					if(GetInput("dash", 0, PD) && moveX != xscale && moveX != 0) {
 						setState("mach2", false);
+						xscale = moveX;
 					}
 					else setState("normal");
 					
@@ -122,7 +175,7 @@ switch(state) {
 					setState("crouch");
 				}
 				
-				if(PLAYER_TOUCHING) {
+				if(PLAYER_TOUCHING && !place_meeting(x, y - 1, o_C_Parent)) {
 					setState("bump");
 					playSound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
@@ -164,7 +217,7 @@ switch(state) {
 				sprite_index = spr_player_mach2jump;
 				playSound(sfx_spin);
 				velocity[0] = xscale * 10;
-				if(PLAYER_GROUNDED && tempVar[0] > 1) {
+				if(PLAYER_GROUNDED) {
 					if(!GetInput("dash", 0, PD)) { //If we aren't holding the mach 2 button 
 						setState("freefall");
 						tempVar[0] = 2;
@@ -188,6 +241,9 @@ switch(state) {
 			spr = [spr_player_jump_moving, spr_player_fall_moving];
 			xscale = moveX;
 		}
+		if(tempVar[1]) { //Stomped an enemy
+			spr = [spr_player_stomp_prep, spr_player_stomp];
+		}
 		if(!animVar && velocity[1] < 0) {
 			playSound(sfx_jump);
 			sprite_index = spr[0];
@@ -198,7 +254,10 @@ switch(state) {
 		velocity[0] = moveX * movespeed;
 		if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
 		if(round(image_index) == image_number || velocity[1] > 0) sprite_index = spr[1];
-		if(GetInput("down", 0, PD)) setState("freefall");
+		if(GetInput("down", 0, PD)) {
+			setState("freefall");
+			velocity[1] = 0;
+		}
 		if(PLAYER_GROUNDED) {
 			setState("normal");
 			tempVar[1] = true;
@@ -237,6 +296,7 @@ switch(state) {
 				if(tempVar[2] > 30) {
 					tempVar[0] = 1;
 					playSound(sfx_supermove);
+					instance_create_depth(x,y,0,o_P_StateInitEffect);
 				}
 			break;
 			
@@ -249,15 +309,18 @@ switch(state) {
 					tempVar[0] = 2;
 					movespeed = 0;
 					sprite_index = spr_player_suJump_hit;
+					ShakeScreen(10);
 				}
 				if(GetInput("dash", 1, PD)) {
 					velocity = [0,0];
 					if(moveX != 0) xscale = moveX;
 					setState("machfreefall", false);
 				}
-				if(!instance_exists(o_P_Mach3Effect)) {
+				if(tempVar[1] == 0) {
+					tempVar[1] = 6;
 					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
+				tempVar[1]--;
 			break;
 			
 			case 2:
@@ -334,11 +397,12 @@ switch(state) {
 						animVar = false;
 						tempVar[0] = 1;
 						playSound(sfx_jump);
-						CreateEffect({sprite_index : sprite_effect_dust, image_xscale : self.xscale});
+						CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_PlayerParent.xscale});
 						velocity[1] = -8;
 						mask_index = spr_player_mask;	
 					}
 				}
+				if(!PLAYER_GROUNDED) tempVar[0] = 1;
 			break;
 			
 			case 1:
@@ -360,11 +424,12 @@ switch(state) {
 	break;
 	
 	case "freefall":
-		if(PLAYER_GROUNDED) {
+		if(PLAYER_GROUNDED && tempVar[0] != 2) {
 			tempVar[0] = 2;
 			playSound(sfx_facestomp);
 			CreateEffect({sprite_index : sprite_effect_landcloud});
 			playSound(sfx_land);
+			image_index = 0;
 		}
 		switch(tempVar[0]) {
 			case 0:
@@ -390,7 +455,10 @@ switch(state) {
 				else {
 					sprite_index = spr_player_freefall_prep_hit;
 					SPRITE_NO_REPEAT;
-					if(round(image_index) == image_number) animVar = true;
+					if(round(image_index) == image_number) {
+						animVar = false;
+						image_speed = 1;
+					}
 				}
 				
 			break;
@@ -399,11 +467,13 @@ switch(state) {
 				sprite_index = spr_player_freefalling;
 				velocity[0] = 0;
 				tempVar[1]++;
-				if(tempVar[1] > 15) setState("superslam"); //Change - 30 to 15
+				if(tempVar[1] > 30) setState("superslam");
 				if(GetInput("dash", 0, PD)) setState("mach2");
 			break;
 			
 			case 2:
+				velocity[0] = 0;
+				image_speed = 1;
 				sprite_index = spr_player_freefall_impact;
 				SPRITE_NO_REPEAT;
 				if(round(image_index) == image_number) {
@@ -426,21 +496,22 @@ switch(state) {
 			tempVar[1] = 31;
 			ShakeScreen(10);
 			with(o_Le_En_Parent) {
-				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) )) {
+				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + o_GameManager.getScreenSize()[0], camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + o_GameManager.getScreenSize()[1] )) {
 					setState("stunned");
 					velocity[1] = -7;
 					velocity[0] = 0;
 					tempVar[0] = 200;
 				}
 			}
-			CreateEffect({y : self.y + 12, sprite_index : sprite_effect_meteor, image_alpha : 270});
+			CreateEffect({y : y + 12, sprite_index : sprite_effect_meteor, image_angle : 270});
 		}
 	break;
 	
 	case "ladder":
 		mass = 0;
 		velocity[0] = 0;
-		if(!place_meeting(x,y, o_Le_Ladder) || PLAYER_GROUNDED) setState("normal");
+		tempVar[1]++;
+		if((!place_meeting(x,y, o_Le_Ladder) || PLAYER_GROUNDED) && tempVar[1] > 10) setState("normal");
 		switch(moveY) {
 			case -1: //Up
 				velocity[1] = -2;
@@ -473,6 +544,7 @@ switch(state) {
 	case "door":
 		switch(tempVar[0]) {
 			case 0:
+				velocity[0] = 0;
 				sprite_index = spr_player_door_in;
 				SPRITE_NO_REPEAT;
 			break;
@@ -483,13 +555,19 @@ switch(state) {
 				SPRITE_NO_REPEAT;
 				if(round(image_index) == image_number) setState("normal");
 			break;
+			
+			case 2:
+				sprite_index = spr_player_door_victory;
+				if(round(image_index) == 17) playSound(choose(va_happy1, va_happy2, va_happy3));
+				SPRITE_NO_REPEAT;
+			break;
 		}
 	break;
 	
 	case "enemy":
+		velocity[0] = moveX * movespeed;
 		switch(tempVar[0]) {
 			case 0: //Holding him
-				velocity[0] = moveX * movespeed;
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
 					xscale = moveX;
@@ -521,15 +599,15 @@ switch(state) {
 						tempVar[0] = 1;
 					}
 					if(GetInput("jump", 1, PD)) {
-						velocity[1] = -9;
+						velocity[1] = -11;
 						tempVar[0] = 3;
+						playSound(sfx_spin);
 					}
 				}
 					
 			break;
 			
 			case 1: //Charging
-				xscale = 1;
 				velocity[0] = 0;
 				if(tempVar[1] < 20) {
 					tempVar[1]++;
@@ -539,9 +617,13 @@ switch(state) {
 					image_speed = 1; //There used to be no FPS option in GM1, so 0.35 * (roomspeed) = 21
 					playSound(sfx_superdash);
 				}
-				if(moveX == 1) sprite_index = spr_player_grabbing_punchprep;
-				else if(moveX == -1) sprite_index = spr_player_grabbing_backkickprep;
-				else sprite_index = spr_player_grabbing_charge;
+				if(moveX == xscale && moveX != 0) sprite_index = spr_player_grabbing_punchprep;
+				else if(moveX != 0) sprite_index = spr_player_grabbing_backkickprep;
+				else {
+					if(GetInput("up", 0, PD)) sprite_index = spr_player_grabbing_up_prep;
+					else if(GetInput("down", 0, PD)) sprite_index = spr_player_grabbing_shoulderprep;
+					else sprite_index = spr_player_grabbing_charge;
+				}
 				
 				//There are issues with keyboard_check_released not being valid in the first frames of the state!
 				//TODO - Fact check
@@ -549,7 +631,6 @@ switch(state) {
 				if(GetInput("dash", 2, PD)) {
 					switch(sprite_index) { //TODO - Find a better way?
 						case spr_player_grabbing_charge:
-							playSound(sfx_woosh);
 							if(tempVar[1] < 20) {
 								with(tempVar[2]) {
 									velocity[0] = other.xscale * 7;
@@ -566,7 +647,6 @@ switch(state) {
 						break;
 						
 						case spr_player_grabbing_punchprep:
-							playSound(sfx_woosh);
 							if(tempVar[1] < 20) {
 								with(tempVar[2]) {
 									velocity[0] = other.xscale * 7;
@@ -583,7 +663,6 @@ switch(state) {
 						break;
 						
 						case spr_player_grabbing_backkickprep:
-							playSound(sfx_woosh);
 							if(tempVar[1] < 20) {
 								with(tempVar[2]) {
 									velocity[0] = other.xscale * -5;
@@ -598,10 +677,19 @@ switch(state) {
 							}
 							sprite_index = spr_player_grabbing_backkick;
 						break;
+						
+						case spr_player_grabbing_up_prep: //There is no fucking code! I love ETB
+							if(tempVar[1] < 20) {
+								tempVar[2].velocity[1] = -14;
+							}
+							else tempVar[2].velocity[1] = -7 - tempVar[1];
+							sprite_index = spr_player_grabbing_up;
+						break;
 					}
+					playSound(sfx_woosh);
 					image_index = 0;
 					image_speed = 1;
-					CreateEffect({x : self.x + (self.xscale * 10), sprite_index : sprite_effect_bang});
+					if(tempVar[1] >= 20) CreateEffect({x : self.x + (self.xscale * 10), sprite_index : sprite_effect_bang});
 					if(tempVar[2].state != "fly") tempVar[2].setState("hit");
 					tempVar[0] = 2;
 				}
@@ -612,6 +700,25 @@ switch(state) {
 				if(PLAYER_GROUNDED) velocity[0] = 0;
 				SPRITE_NO_REPEAT;
 				if(round(image_index) == image_number) setState("normal");
+			break;
+			
+			case 3: //Body slamming
+				sprite_index = spr_player_grabbing_slam;
+				if(moveX != xscale) movespeed = 0;
+				if(moveX != 0) {
+					if(movespeed < 4) movespeed += 0.5; //There is no cap when slamming in ETB
+					xscale = moveX;
+				}
+				if(round(image_index) == 4) image_speed = 0;
+				if(PLAYER_GROUNDED) {
+					ShakeScreen(10);
+					tempVar[0] = 2;
+					tempVar[2].velocity[1] = -7;
+					tempVar[2].setState("stunned");
+					tempVar[2].tempVar[0] = 200;
+					tempVar[2] = undefined;
+					image_speed = 1;
+				}
 			break;
 		}
 	break;
@@ -645,12 +752,13 @@ switch(state) {
 			break;
 			
 			case 1: //Normal Knight
-				velocity[0] = moveX * movespeed;
+				velocity[0] = moveX * round(movespeed);
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
 					sprite_index = spr_player_knight_walk;
 					xscale = moveX;
 					movespeed = movespeed < 4 ? movespeed + 0.1 : 4;
+					PlaySound(sfx_land);
 				}
 				else if(!animVar) sprite_index = spr_player_knight_idle;
 				if(animVar) sprite_index = spr_player_knight_land;
@@ -689,6 +797,7 @@ switch(state) {
 					tempVar[0] = 1;
 					image_index = 0;
 					movespeed = 0;
+					playSound(sfx_landmetal);
 				}
 			break;
 			
@@ -705,22 +814,23 @@ switch(state) {
 		}
 	break;
 	
-	case "stunned":
+	case "hurt":
 		sprite_index = spr_player_hurt;
 		if(PLAYER_GROUNDED) {
 			velocity[1] = -5 + (tempVar[0] * 2);
 			tempVar[0]++;
-			velocity[0] = tempVar[0] < 2 ? 3 * xscale : 0;
-			if(round(image_index) == image_number) {
-				setState("normal");
-				stunStuff.invincibleFrames = 20;
-			}
-			if(tempVar[1] != 0) {
-				tempVar[1]--;
-				with(instance_create_depth(x,y,0,o_Le_Points)) {
-					isStatic = false;
-					velocity = [other.image_xscale * random_range(3, 5), random_range(-3, -10)]
-				}
+		}
+		velocity[0] = tempVar[0] < 2 ? 3 * xscale : 0;
+		if(round(image_index) == image_number) {
+			setState("normal");
+			stunStuff.invincibleFrames = 200;
+		}
+		if(tempVar[1] != 0) {
+			tempVar[1]--;
+			score -= 10;
+			with(instance_create_depth(x,y,0,o_Le_Points)) {
+				isStatic = false;
+				velocity = [other.image_xscale * random_range(3, 5), random_range(-3, -10)]
 			}
 		}
 		if(PLAYER_TOUCHING) xscale *= -1;
@@ -768,15 +878,38 @@ switch(state) {
 		}
 	break;
 	
+	case "treasure":
+		switch(tempVar[0]) {
+			case 0:
+				velocity = [0,0];
+				mass = 0;
+				sprite_index = spr_player_treasure;
+				tempVar[1] += TIME_BASE;
+				if(tempVar[1] >= 5 && !instance_exists(o_Le_Noise)) {
+					tempVar[0] = 1;
+					o_Le_NoiseSpawn.activate();
+					instance_destroy(o_Le_Treasure);
+					xscale = -o_Le_Noise.image_xscale; //Just incase...
+					sprite_index = spr_player_idle;
+					image_speed = 0;
+				}
+			break;
+			
+			case 1:
+				if(round(image_index) == image_number) setState("normal");
+			break;
+		}
+	break;
+	
 	
 	default:
 		show_message("State not implemented! State: " + state);
 		setState("normal");
 	break;
 }
-if(stunStuff.invincibleFrames > 0 && state != "stunned") {
-	stunStuff.invincibleFrames--;
+if(stunStuff.invincibleFrames > 0 && state != "hurt") {
 	stunStuff.flashing = !stunStuff.flashing;
+	stunStuff.invincibleFrames--;
 }
 if(xscale != 1 && xscale != -1) show_message("Scale not in range! \n" + state);
 

@@ -1,8 +1,6 @@
-if(global.settings.gameplaySettings.debugEnabled) {
-	gotoLevel = true;
-	targetRoom = Room_FeatureTest;
-	//newSong = music_test;
-	newPos = [200, 0];
-	loopData = [0,5];
-	levelName = "TEST";
-}
+gotoLevel = true;
+targetRoom = ETBRoom_Level1_1;
+newSong = music_pizza;
+newPos = [828, 402];
+loopData = [80, 104];
+levelName = "PRE-ETB'S LEVEL 1";

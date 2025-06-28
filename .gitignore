@@ -14,6 +14,9 @@ ehthumbs_vista.db
  
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+# Don't want to leak personal info & other game related stuff!
+/zSource
  
 # Windows Installer files
 *.cab

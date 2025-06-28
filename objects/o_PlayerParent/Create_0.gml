@@ -2,6 +2,7 @@
 //That's mostly the reason why I made states string values.
 enum Moveset {
 	Invalid = -1,
+	TheNoise,
 	PreETB,
 	ETB,
 	Demo1Tester,
@@ -17,7 +18,7 @@ velocity = [0,0];
 movespeed = 0;
 xscale = 1;
 state = "normal";
-tempVar = [0, 0, 0]; //0 - mach/substate/idle timer. 1 - timer
+tempVar = [0, 0, 0];
 animVar = false;
 sounds = [];
 stunStuff = {

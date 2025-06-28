@@ -18,12 +18,13 @@ level = {
 #macro FPS_CRUNCH false
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
+#macro IMAGE_COMPLETE round(image_index) == image_index
 mode = "none";
 getScreenSize = function() {
     return [960,540];
 }
 
-
+/*
 exception_unhandled_handler(function(ex) {
 	if(!global.settings.gameplaySettings.debugEnabled) {
 		Log(ex.longMessage);
@@ -36,6 +37,7 @@ exception_unhandled_handler(function(ex) {
 		show_message("An error has occured!\n\n" + ex.longMessage + "\n\nRoom: " + string(room));
 	}
 });
+*/
 startLevel = function(_room, _newPos, _newSong = -1, _loopData = [-1, -1]) {
 	score = 0;
 	if(instance_exists(o_PlayerParent)) o_GameManager.gotoRoom(_room, _newPos, true, _newSong, _loopData);
@@ -45,6 +47,9 @@ startLevel = function(_room, _newPos, _newSong = -1, _loopData = [-1, -1]) {
 	}
 	level.startParameters = [_room, _newPos, _newSong, _loopData];
 	mode = "game";
+}
+restartLevel = function() {
+	
 }
 endLevel = function() {
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
@@ -64,7 +69,9 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 		o_PlayerParent.state = "transition";
 	}
 	else instance_create_depth(o_PlayerParent.x,o_PlayerParent.y, 0, o_UI_DoorTrans);
-	if(_nextRoom == -1) LogError("Invalid Room!", true);
+	if(_nextRoom == -1) {
+		LogError("Invalid Room!", true);
+	}
 	if(_newSong != -1) o_MusicManager.playNewSong(_newSong, _loopData); //I'm tired of it logging unneccesary stuff.
 }
 font = font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10);

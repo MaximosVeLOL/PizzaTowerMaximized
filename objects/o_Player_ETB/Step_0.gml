@@ -115,7 +115,7 @@ switch(state) {
 					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
-				sprite_index = spr_player_mach3;
+				sprite_index = global.settings.playerSettings.useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 				playSound(sfx_mach3);
 				playSound(sfx_mach2);
 				if(GetInput("up", 0, PD)) setState("superJump");
@@ -825,7 +825,7 @@ switch(state) {
 			setState("normal");
 			stunStuff.invincibleFrames = 200;
 		}
-		if(tempVar[1] != 0) {
+		if(tempVar[1] != 0 || global.settings.gameplaySettings.goonerMode) {
 			tempVar[1]--;
 			score -= 10;
 			with(instance_create_depth(x,y,0,o_Le_Points)) {

@@ -1,3 +1,10 @@
+randomize();
+enum FPSSaveMode {
+	None = -1,
+	UselessRemover,
+	VisualRemover,
+	OnlyTheNeccessary,
+}
 global.settings = {
 	keyBinds : {
 		p1 : {
@@ -49,15 +56,22 @@ global.settings = {
 		vSync : false,
 	},
 	gameplaySettings : {
-		debugEnabled : false,
+		debugEnabled : true,
 		twoPlayerEnabled : false,
+		goonerMode : false,
+		fpsSave : FPSSaveMode.None,
 	},
 	playerSettings : {
 		moveSet : Moveset.ETB,
+		useOldMach3 : true,
+		
 	},
 	saveFileIndex : -1,
 }
-//audio_group_load(audiogroup_default);
 audio_group_load(AG_Sound);
+if(global.settings.gameplaySettings.debugEnabled) {
+	show_debug_overlay(true);
+	instance_create_depth(0,0,0,o_DEBUG_Console);
+	//room_goto(Room_DemoRoom);instance_create_depth(0,0,0,o_Camera);instance_create_depth(200,200,0,o_Player_Noise);
+}
 room_goto(Room_Disclaimer);
-//room_goto(Room_DemoRoom);instance_create_depth(0,0,0,o_Camera);CreatePlayer(200,200);

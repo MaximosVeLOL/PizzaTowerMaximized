@@ -4,6 +4,7 @@ if(GetInput("up", 1, other.PD)) {
 			if(string_count("Secret", room_get_name(other.targetRoom)) > 0) o_MusicManager.tempPlaySong(music_secret);
 			if(string_count("Secret", room_get_name(room)) > 0) o_MusicManager.stopTempSong();
 			setState("door");
+			x = other.x;
 		}
 	}
 }

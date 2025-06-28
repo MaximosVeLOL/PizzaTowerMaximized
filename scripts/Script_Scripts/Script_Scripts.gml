@@ -122,8 +122,10 @@ function ApplySettings() {
 	window_set_size(type[global.settings.videoSettings.resolutionOpt][0], type[global.settings.videoSettings.resolutionOpt][1]);
 	window_set_fullscreen(global.settings.videoSettings.fullscreen);
 	display_reset(0, global.settings.videoSettings.vSync);
-	if(global.settings.gameplaySettings.debugEnabled && !instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0, o_DEBUG_Console);
+	if(global.settings.gameplaySettings.debugEnabled) instance_create_depth(0,0,0, o_DEBUG_Console);
 	else instance_destroy(o_DEBUG_Console);
+	
+	
 	Log("Applied Settings!");
 }
 function SaveSettings() {
@@ -149,7 +151,8 @@ function LoadSettings() {
 		LogError("This is fatal. We cannot read the save file.");
 		return;
 	}
-	global.settings = parsed;
+	var names = variable_struct_get_names(global.settings);
+	for(var i = 0 ; i < array_length(names);i++) variable_struct_set(global.settings, names[i], variable_struct_get(parsed, names[i])); //This will let the future settings still exist, while updating the previous version.
 	buffer_delete(file);
 	Log("Loaded Settings!");
 }
@@ -188,6 +191,10 @@ function CreatePlayer(targX,targY) {
 	    case Moveset.PreETB:
 	        inst = o_Player_PreETB;
 	    break;
+		
+		case Moveset.TheNoise:
+			inst = o_Player_Noise;
+		break;
         		
 	    case Moveset.ETB:
         	inst = o_Player_ETB;
