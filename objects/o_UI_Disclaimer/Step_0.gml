@@ -7,6 +7,7 @@ if( (keyboard_check_pressed(vk_anykey) || GetInput("jump", 1) ) && keyboard_key 
 	if(currentText == text) {
 		//o_GameManager.startLevel(ETBRoom_Tutorial1, [828, 402], music_pizza);
 		room_goto(Room_MainMenu);
+		GUI_RESET;
 	}
 	currentText = text;
 }

@@ -130,7 +130,7 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					ShakeScreen(5);
+					o_Camera.shakeMag = 5;
 					playSound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
@@ -309,7 +309,7 @@ switch(state) {
 					tempVar[0] = 2;
 					movespeed = 0;
 					sprite_index = spr_player_suJump_hit;
-					ShakeScreen(10);
+					o_Camera.shakeMag = 10;
 				}
 				if(GetInput("dash", 1, PD)) {
 					velocity = [0,0];
@@ -494,9 +494,9 @@ switch(state) {
 			setState("freefall");
 			tempVar[0] = 2;
 			tempVar[1] = 31;
-			ShakeScreen(10);
+			o_Camera.shakeMag = 10;
 			with(o_Le_En_Parent) {
-				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + o_GameManager.getScreenSize()[0], camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + o_GameManager.getScreenSize()[1] )) {
+				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
 					setState("stunned");
 					velocity[1] = -7;
 					velocity[0] = 0;
@@ -711,7 +711,7 @@ switch(state) {
 				}
 				if(round(image_index) == 4) image_speed = 0;
 				if(PLAYER_GROUNDED) {
-					ShakeScreen(10);
+					o_Camera.shakeMag = 10;
 					tempVar[0] = 2;
 					tempVar[2].velocity[1] = -7;
 					tempVar[2].setState("stunned");
@@ -829,7 +829,7 @@ switch(state) {
 			tempVar[1]--;
 			score -= 10;
 			with(instance_create_depth(x,y,0,o_Le_Points)) {
-				isStatic = false;
+				canMove = true;
 				velocity = [other.image_xscale * random_range(3, 5), random_range(-3, -10)]
 			}
 		}

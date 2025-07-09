@@ -7,9 +7,9 @@ tempVar = [0,0,20];
 animVar = false;
 targetPD = -1;
 stunnable = true;
-die = function(dead_sprite, isStatic = true) {
+die = function(dead_sprite, canMove = false) {
 	instance_destroy();
-	if(isStatic) instance_create_depth(x,y,0,o_P_Effect, {sprite_index : dead_sprite});
+	if(canMove) instance_create_depth(x,y,0,o_P_Effect, {sprite_index : dead_sprite});
 	else instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : dead_sprite});
 }
 dropPoints = false;

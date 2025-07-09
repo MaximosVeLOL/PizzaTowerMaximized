@@ -4,4 +4,4 @@ reqStatesBottom = [];
 onTopBreak = function(){};
 onXBreak = function(){};
 onBottomBreak = function(){};
-depth = 201;
+visible = true;

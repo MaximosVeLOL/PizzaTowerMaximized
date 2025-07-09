@@ -1,7 +1,7 @@
 if(keyboard_check_pressed(vk_control) && global.settings.gameplaySettings.debugEnabled) {
 	active = !active;
 	if(instance_exists(o_Camera)) o_Camera.hudVisible = !active;
-	o_GameManager.mode = active ? "none" : "game";
+	if(instance_exists(o_GameManager)) o_GameManager.mode = active ? "none" : "game";
 	keyboard_string = "";
 }
 if(active) {

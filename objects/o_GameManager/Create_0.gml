@@ -18,7 +18,7 @@ level = {
 #macro FPS_CRUNCH false
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
-#macro IMAGE_COMPLETE round(image_index) == image_index
+#macro IMAGE_COMPLETE round(image_index) == image_number
 mode = "none";
 getScreenSize = function() {
     return [960,540];
@@ -40,16 +40,18 @@ exception_unhandled_handler(function(ex) {
 */
 startLevel = function(_room, _newPos, _newSong = -1, _loopData = [-1, -1]) {
 	score = 0;
-	if(instance_exists(o_PlayerParent)) o_GameManager.gotoRoom(_room, _newPos, true, _newSong, _loopData);
-	else {
+	if(instance_exists(o_PlayerParent) && instance_exists(o_GameManager)) o_GameManager.gotoRoom(_room, _newPos, true, _newSong, _loopData);
+	else { //Leftover from when we went from the disclaimer to the level directly.
 		room_goto(_room);
-		o_MusicManager.playNewSong(_newSong, _loopData);
+		if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(_newSong, _loopData);
+		CreatePlayer(200,200); //Temporary!
+		
 	}
 	level.startParameters = [_room, _newPos, _newSong, _loopData];
 	mode = "game";
 }
 restartLevel = function() {
-	
+	o_GameManager.startLevel(level.startParameters[0], level.startParameters[1], level.startParameters[2], level.startParameters[3]);
 }
 endLevel = function() {
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
@@ -72,10 +74,6 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!", true);
 	}
-	if(_newSong != -1) o_MusicManager.playNewSong(_newSong, _loopData); //I'm tired of it logging unneccesary stuff.
+	if(_newSong != -1 && instance_exists(o_MusicManager)) o_MusicManager.playNewSong(_newSong, _loopData); //I'm tired of it logging unneccesary stuff.
 }
-font = font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10);
-draw_set_font(-1);
-
-
-
+screenshotSession = 0;

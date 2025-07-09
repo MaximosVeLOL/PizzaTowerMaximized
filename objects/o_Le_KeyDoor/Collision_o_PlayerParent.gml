@@ -15,10 +15,18 @@ if(GetInput("up", 1, other.PD)) {
 				}
 				instance_destroy(other);
 			}
-			if(isTreasureDoor && global.settings.playerSettings.moveSet == Moveset.PreETB) {
+			if(other.isTreasureDoor && global.settings.playerSettings.moveSet == Moveset.PreETB) {
 				instance_create_depth(x,y,0,o_UI_DoorWin);
 			}
 		}
 	}
 }
-if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);
+if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) {
+	if(instance_exists(o_GameManager)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);
+	else {
+		room_goto(targetRoom);
+		o_PlayerParent.x = targetPos[0];
+		o_PlayerParent.y = targetPos[1];
+		if(instance_exists(o_MusicManager) && newSong != -1) o_MusicManager.playNewSong(newSong, loopData);
+	}	
+}

@@ -1,3 +1,4 @@
+/*
 var child = instance_place(x,y,o_C_Wall);
 var check = false;
 for(var i = 0 ; i < instance_number(o_PlayerParent);i++) {

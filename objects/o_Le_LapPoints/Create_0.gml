@@ -1,0 +1,1 @@
+if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) instance_destroy();

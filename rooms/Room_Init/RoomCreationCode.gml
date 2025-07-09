@@ -30,8 +30,26 @@ global.settings = {
 			down : ord("S"),
 			left : ord("A"),
 			right : ord("D"),
-			jump : ord("K"),
-			dash : ord("L"),
+			jump : ord("E"),
+			dash : ord("R"),
+			shoot : ord("T"),
+			gamepad : {
+				up : gp_padu,
+				down : gp_padd,
+				left : gp_padl,
+				right : gp_padr,
+				jump : gp_face1,
+				dash : gp_face3,
+				shoot : gp_shoulderlb,
+			}
+		},
+		p3 : {
+			up : ord("I"),
+			down : ord("K"),
+			left : ord("J"),
+			right : ord("L"),
+			jump : ord("O"),
+			dash : ord("P"),
 			shoot : ord("C"),
 			gamepad : {
 				up : gp_padu,
@@ -57,7 +75,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		twoPlayerEnabled : false,
+		multiplayer : false,
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -68,10 +86,21 @@ global.settings = {
 	},
 	saveFileIndex : -1,
 }
+global.misc = { //Bye bye o_GameManager's font!
+	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10)
+}
 audio_group_load(AG_Sound);
+/*
 if(global.settings.gameplaySettings.debugEnabled) {
-	show_debug_overlay(true);
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	//room_goto(Room_DemoRoom);instance_create_depth(0,0,0,o_Camera);instance_create_depth(200,200,0,o_Player_Noise);
 }
-room_goto(Room_Disclaimer);
+if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
+	instance_create_depth(0,0,0, o_MusicManager);
+	instance_create_depth(0,0,0, o_GameManager);
+}
+*/
+if(true) {
+	room_goto(Room_LevelEditor);
+}
+else room_goto(Room_Disclaimer);

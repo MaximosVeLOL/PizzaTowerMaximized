@@ -25,8 +25,12 @@ if(x > room_width + 300) {
     with(instance_create_depth(0,0,0,o_UI_Fade)) {
         onFade = function() {
             room_goto(Room_DemoRoom);
-        	o_MusicManager.playNewSong(music_demoroom);
-        	o_GameManager.mode = "game";
+			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
+				o_MusicManager.playNewSong(music_demoroom); //We don't have to use Get()!!! 11 1 111 1
+				instance_create_depth(0,0,0,o_GameManager);
+				if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
+        		o_GameManager.mode = "game";
+			}
 			CreatePlayer(256, 658);
         }
     }

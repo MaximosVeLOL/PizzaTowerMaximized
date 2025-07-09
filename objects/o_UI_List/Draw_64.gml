@@ -1,10 +1,10 @@
-draw_set_font(o_GameManager.font);
+draw_set_font(settings.text.font);
 
 
 
 if(settings.background.render) {
 	draw_set_color(settings.background.color);
-	draw_rectangle(-1,-1,o_GameManager.getScreenSize()[0],o_GameManager.getScreenSize()[1], false);
+	draw_rectangle(-1,-1,960,540, false);
 }
 draw_set_color(c_white);
 draw_set_halign(fa_center);

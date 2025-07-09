@@ -1,11 +1,7 @@
-text = @"
-Beta Version 0.1 of PT:M
+text = "Beta Version " + string(GM_version) + @" of PT:M
 
-Welcome to the beta build.
-Currently, I commited some time for bugfixing, adding new features for the player,
-menus, and controller support.In the future, I will focus on add some more levels.
-But my main focus is on adding a level editor.
-Enemies in general should work better, and Peppino should be working as good now.
+Welcome to another beta build!
+This time, there is much more new content to see. But also,
 
 
 Controls:
@@ -13,6 +9,9 @@ Z-Jump, X-Dash, Enter-Pause, Arrow Keys-Move, Tab-Noclip
 Press Enter to continue";
 currentText = "";
 textDelay = 0;
-
+draw_set_color(c_white);
+draw_set_font(ComicSans);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
 keys = [vk_up, vk_up, vk_down, vk_down, vk_left, vk_right, vk_left, vk_right, ord("X"), ord("Z"), vk_enter];
 keyI = 0;

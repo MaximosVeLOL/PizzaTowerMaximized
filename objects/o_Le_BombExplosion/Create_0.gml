@@ -1,2 +1,2 @@
 PlaySound(sfx_bombexplosion);
-ShakeScreen(10);
+o_Camera.shakeMag = 10;

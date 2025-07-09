@@ -7,20 +7,6 @@ function PlaySound(snd, override = false, loop = false, canRepeat = false) {
 	if(!loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
 	return aud;
 }
-
-function ShakeScreen(mag) {
-	o_Camera.shakeMag = mag;
-}
-function GetDebugSettings() {
-	if(!instance_exists(o_DEBUG_Console)) {
-		return {
-			renderDebugText : false,
-			renderPlayerMask : false,
-			renderCollision : false,
-		};
-	}
-	return o_DEBUG_Console.settings;
-}
 function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
@@ -37,7 +23,7 @@ function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 			return keyboard_check_released(variable_struct_get(s, reqKey)) || gamepad_button_check_released(reqPlayer - 1, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 	}
-	throw("Que?");
+	throw("Que?"); //We will never get to this point, unless the input type isn't set correctly
 }
 function GetAllInput(reqKey, inputType = 0) {
 	for(var i = 1; i <= o_MultiplayerSystem.totalPlayers;i++) {
@@ -63,7 +49,6 @@ function GetAllInput(reqKey, inputType = 0) {
 function CollideAndMove(mass, maxYVelocity = 20) {
 	if(!PLAYER_GROUNDED) velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
-	
 repeat(abs(velocity[1])) {
     if !place_meeting(x, y + sign(velocity[1]), o_C_Parent)
         y += sign(velocity[1]); 
@@ -115,14 +100,16 @@ repeat(abs(velocity[0])) {
 	*/
 }
 function ApplySettings() {
-	if(global.settings.gameplaySettings.twoPlayerEnabled && instance_exists(o_PlayerParent)) {
-		CreatePlayer(o_PlayerParent.x,o_PlayerParent.y);
+	if(global.settings.gameplaySettings.multiplayer) {
+		if(!instance_exists(o_MultiplayerSystem)) instance_create_depth(0,0,0,o_MultiplayerSystem)
+		if(instance_exists(o_PlayerParent)) CreatePlayer(o_PlayerParent.x,o_PlayerParent.y);
 	}
 	var type = [[480, 270], [960, 540], [1920, 1080]];
 	window_set_size(type[global.settings.videoSettings.resolutionOpt][0], type[global.settings.videoSettings.resolutionOpt][1]);
 	window_set_fullscreen(global.settings.videoSettings.fullscreen);
 	display_reset(0, global.settings.videoSettings.vSync);
-	if(global.settings.gameplaySettings.debugEnabled) instance_create_depth(0,0,0, o_DEBUG_Console);
+	if(global.settings.gameplaySettings.debugEnabled && !instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0, o_DEBUG_Console);
+	if(global.settings.audioSettings.muteAll && instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
 	else instance_destroy(o_DEBUG_Console);
 	
 	
@@ -140,16 +127,17 @@ function SaveSettings() {
 	Log("Saved Settings!");
 }
 function LoadSettings() {
-	if(global.settings.saveFileIndex == -1) return;
+	var INVALID = false;
+	if(global.settings.saveFileIndex == -1) return INVALID;
 	var file = buffer_load("MaximizedGM2/file" + string(global.settings.saveFileIndex) + ".txt");
 	if(file == -1) {
 		Log("Cannot load settings! (File doesn't exist, or something else.)");
-		return;
+		return INVALID;
 	}
 	var parsed = json_parse(buffer_read(buffer_decompress(file), buffer_string));
 	if(parsed == -1) {
 		LogError("This is fatal. We cannot read the save file.");
-		return;
+		return INVALID;
 	}
 	var names = variable_struct_get_names(global.settings);
 	for(var i = 0 ; i < array_length(names);i++) variable_struct_set(global.settings, names[i], variable_struct_get(parsed, names[i])); //This will let the future settings still exist, while updating the previous version.
@@ -158,6 +146,18 @@ function LoadSettings() {
 }
 function GetPlayer() {
 	return instance_nearest(x,y,o_PlayerParent);
+}
+function CreateParticle(x,y, ob) {
+	var o = instance_create_depth(x,y, 10, ob);
+	o.parent = object_index;
+}
+function GetParticle(reqOb) {
+	var inst = noone;
+	for(var i = 0 ; i < instance_number(o_P_Parent);i++) {
+		inst = instance_find(o_P_Breakable, i);
+		if(reqOb == inst.object_index && inst.parent == object_index) return instance_find(o_P_Breakable, i).object_index;
+	}
+	return noone;
 }
 function CreateEffect(information) {
 	if(!is_struct(information)) LogError("Invalid Effect!", true);
@@ -171,18 +171,31 @@ function CreateEffect(information) {
 function LogError(_message, crash = false) {
 	//if(!global.settings.gameplaySettings.debugEnabled) return;
 	Log("LogError Message: " + _message);
-	show_message("From object id " + string(id) + " (" + object_get_name(object_index) + ")\n" + _message);
-	if(crash) throw("LogError Crash");
+	if(!instance_exists(o_GUI)) instance_create_depth(0,0,0,o_GUI);
+	o_GUI.alert("From object id " + string(id) + " (" + object_get_name(object_index) + ") :\n" + _message);
+	//show_message("From object id " + string(id) + " (" + object_get_name(object_index) + ")\n" + _message);
+	if(crash) throw("LogError Automatic Crash!");
+}
+function StrCat() {
+	var s = "";
+	for(var i = 0 ; i < argument_count;i++) {
+		s += string(argument[i]) + ", ";
+	}
+	return s;
 }
 function Log(_message) { // 0 1 2 3 (size = 4)
-	show_debug_message(string(get_timer() / 1000000) + ": " + _message);
+	var LOG_EXTRA = false;
+	var log = "(" + string(get_timer() / 1_000_000) ;
+	if(LOG_EXTRA) log += ", " + StrCat(room, _GMFILE_, _GMFUNCTION_, _GMLINE_ );
+	log += ") : " + _message;
+	show_debug_message(log);
 	with(o_DEBUG_Console) {
 		array_resize(logs, array_length(logs) + 1);
-		logs[array_length(logs) - 1] = string(get_timer() / 1000000) + ": " + _message; 
+		logs[array_length(logs) - 1] = log;
 	}
 }
 function CreatePlayer(targX,targY) {
-	if(instance_number(o_PlayerParent) > 1 && !global.settings.gameplaySettings.twoPlayerEnabled) {
+	if(instance_number(o_PlayerParent) > 1 && !global.settings.gameplaySettings.multiplayer) {
 		Log("Attemped to create an extra player whilist not in multiplayer, cancelling...");
 		return;
 	}
@@ -207,4 +220,10 @@ function CreatePlayer(targX,targY) {
     }
 	Log("Creating Player (" + object_get_name(inst) + ")");
     instance_create_depth(targX,targY, -6, inst);
+}
+function ForEachPlayer(func) {
+	var amt = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.totalPlayers : instance_number(o_PlayerParent);
+	for(var i = 0 ; i < amt;i++) {
+		func(instance_find(o_PlayerParent, i), i);
+	}
 }

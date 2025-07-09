@@ -1,4 +1,5 @@
 totalPlayers = 0;
+maxPlayers = 3;
 prefPD = undefined;
 
 registerPlayer = function() {
@@ -9,11 +10,4 @@ registerPlayer = function() {
 removePlayer = function(PD) {
 	instance_destroy(instance_find(o_PlayerParent, PD));
 	totalPlayers--;
-}
-
-
-forEachPlayer = function(func) {
-	for(var i = 0 ; i < totalPlayers;i++) {
-		func(instance_find(o_PlayerParent, i));
-	}
 }

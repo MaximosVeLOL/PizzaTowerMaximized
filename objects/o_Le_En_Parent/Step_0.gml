@@ -138,7 +138,7 @@ switch(state) {
 if(dropPoints && (tempVar[2] != 0 || global.settings.gameplaySettings.goonerMode)) {
 	tempVar[2]--;
 	with(instance_create_depth(x,y,0,o_Le_Points)) {
-		isStatic = false;
+		canMove = true;
 		velocity = [other.image_xscale * random_range(3, 5), random_range(-3, -10)];
 	}
 }

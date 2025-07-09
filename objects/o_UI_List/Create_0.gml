@@ -24,7 +24,7 @@ settings = {
 		color : c_black
 	},
 	text : {
-		font : o_GameManager.font,
+		font : global.misc.font,
 		color : c_white,
 	},
 };

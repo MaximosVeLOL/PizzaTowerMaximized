@@ -1,3 +1,7 @@
+if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) {
+	instance_destroy();
+	return;
+}
 followQueue = ds_queue_create();
 velocity = [0,0];
 movespeed = 3;
@@ -10,3 +14,4 @@ setSprite = function(target) {
 }
 LAG_STEPS = 10;
 depth = -999;
+

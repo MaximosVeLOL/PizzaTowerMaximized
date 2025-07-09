@@ -72,6 +72,13 @@ commands = [
 		show_message(total);
 	}, "get_vari [object]"),
 	
+	new createCommand("get_vari_ext", function() {
+		var inst = instance_find(asset_get_index(currentArguments[0]), 0);
+		if(inst == noone) throw("Failed to find the targeted instance!");
+		if(!variable_instance_exists(inst, currentArguments[1])) throw("Failed to find the targeted variable!");
+		show_message(currentArguments[1] + ": " + string(variable_instance_get(inst, currentArguments[1])));
+	}, "get_vari_ext [object] [req variable name]"),
+	
 	new createCommand("get_log", function() {
 		var out = "";
 		for(var i = 0 ; i < array_length(logs);i++) {

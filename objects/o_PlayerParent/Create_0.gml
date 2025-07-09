@@ -11,7 +11,7 @@ enum Moveset {
 	Demo2,
 };
 
-if(global.settings.gameplaySettings.twoPlayerEnabled && instance_number(o_PlayerParent) < 2) CreatePlayer(x,y);
+
 depth = -1000;
 mass = 0.5;
 velocity = [0,0];
@@ -25,7 +25,16 @@ stunStuff = {
 	invincibleFrames : 0,
 	flashing : false,
 };
-PD = o_MultiplayerSystem.registerPlayer();
+
+PD = 1;
+with(o_MultiplayerSystem) {
+	other.PD = registerPlayer();
+	if(totalPlayers < maxPlayers && global.settings.gameplaySettings.multiplayer) CreatePlayer(other.x, other.y);
+}
+if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index) > 1) {
+	instance_destroy();
+	return;
+}
 mask_index = spr_player_mask;
 inventory = {
 	key : false,
@@ -55,7 +64,7 @@ setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, ov
 hurt = function() {
 	if(stunStuff.invincibleFrames > 0) return;
 	if(state == "knight") {
-		o_MusicManager.stopTempSong();
+		if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
 		for(var i = 0 ; i <= 5 ; i++) { instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_player_knightdebris,  image_index : i})}
 	}
 	setState("hurt");
@@ -64,7 +73,7 @@ hurt = function() {
 	playSound(choose(va_happy1, va_happy2, va_happy3));
 	
 }
-playSound = function(snd, override = false, loop = false) {
+playSound = function(snd, override = false) {
 	array_resize(sounds, array_length(sounds) + 1);
-	sounds[array_length(sounds) - 1] = PlaySound(snd, override, loop);
+	sounds[array_length(sounds) - 1] = PlaySound(snd, override);
 }
