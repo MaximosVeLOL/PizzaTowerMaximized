@@ -36,7 +36,10 @@ commands = [
 	}, "player_set_state [new state]"),
 	
 	new createCommand("room_goto", function() {
-		if(asset_get_index(currentArguments[0]) != -1) o_GameManager.gotoRoom(asset_get_index(string(currentArguments[0])), [currentArguments[1], currentArguments[2]], -1, false);
+		if(asset_get_index(currentArguments[0]) != -1) {
+			if(instance_exists(o_GameManager) && instance_exists(o_PlayerParent)) o_GameManager.gotoRoom(asset_get_index(string(currentArguments[0])), [currentArguments[1], currentArguments[2]], -1, false);
+			else room_goto(asset_get_index(string(currentArguments[0])));
+		}
 	}, "room_goto [room] [x] [y]"),
 	
 	new createCommand("instances_list", function() {

@@ -1,5 +1,5 @@
 function PlaySound(snd, override = false, loop = false, canRepeat = false) {
-	if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll) {
+	if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll || all) {
 		return -1;
 	}
 	if(override) audio_stop_sound(snd);
@@ -49,45 +49,21 @@ function GetAllInput(reqKey, inputType = 0) {
 function CollideAndMove(mass, maxYVelocity = 20) {
 	if(!PLAYER_GROUNDED) velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
-repeat(abs(velocity[1])) {
-    if !place_meeting(x, y + sign(velocity[1]), o_C_Parent)
-        y += sign(velocity[1]); 
-    else {
-        velocity[1] = 0;
-        break;
-    }
-}
-
-// Horizontal
-repeat(abs(velocity[0])) {
-    // Move up slope
-    if place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y - 1, o_C_Parent)
-        y--
-    
-    // Move down slope
-    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y + 1, o_C_Parent) && place_meeting(x + sign(velocity[0]), y + 2, o_C_Parent)
-        y++;
-
-    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent)
-        x += sign(velocity[0]); 
-    else {
-        velocity[0] = 0;
-        break;
-    }
-}
-	/*
+	if(velocity[0] == 0 && velocity[1] == 0 ) return;
+	
 	if(place_meeting(x + velocity[0], y, o_C_Parent)) {
-		// Alternative: if(!place_meeting(x + velocity[0], y - (abs(velocity[0]) + 1), o_C_Parent ) ) while(place_meeting(x + velocity[0], y, o_C_Parent)) y--;
-		for(var i = 0 ; i <= abs(velocity[0] * 16);i++) {
-			if(!place_meeting(x+velocity[0], y - i, o_C_Parent)) {
+		var preX = x;
+		while(!place_meeting(x + sign(velocity[0]), y, o_C_Parent)) {
+			x += sign(velocity[0]);
+		}
+		for(var i = 0 ; i < abs(velocity[0]);i++) {
+			if(!place_meeting(preX + velocity[0], y - i, o_C_Parent) ) {
+				x = preX + velocity[0];
 				y -= i;
 				break;
 			}
 		}
-		if(place_meeting(x+velocity[0],y,o_C_Parent)) {
-			while(!place_meeting(x+sign(velocity[0]), y, o_C_Parent)) x += sign(velocity[0]);
-			velocity[0] = 0;
-		}
+		velocity[0] = 0;
 	}
 	if(place_meeting(x + velocity[0], y + velocity[1], o_C_Parent)) {
 		while(!place_meeting(x + velocity[0], y + sign(velocity[1]), o_C_Parent)) {
@@ -95,9 +71,10 @@ repeat(abs(velocity[0])) {
 		}
 		velocity[1] = 0;
 	}
+	
+	
 	x += velocity[0];
 	y += velocity[1];
-	*/
 }
 function ApplySettings() {
 	if(global.settings.gameplaySettings.multiplayer) {
@@ -171,9 +148,7 @@ function CreateEffect(information) {
 function LogError(_message, crash = false) {
 	//if(!global.settings.gameplaySettings.debugEnabled) return;
 	Log("LogError Message: " + _message);
-	if(!instance_exists(o_GUI)) instance_create_depth(0,0,0,o_GUI);
-	o_GUI.alert("From object id " + string(id) + " (" + object_get_name(object_index) + ") :\n" + _message);
-	//show_message("From object id " + string(id) + " (" + object_get_name(object_index) + ")\n" + _message);
+	show_message("From object id " + string(id) + " (" + object_get_name(object_index) + ")\n" + _message);
 	if(crash) throw("LogError Automatic Crash!");
 }
 function StrCat() {

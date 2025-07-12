@@ -1,1 +1,1 @@
-LogError("Bye Bye!");
+Log("Bye Bye!");

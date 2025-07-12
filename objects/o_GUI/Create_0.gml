@@ -56,10 +56,17 @@ resizeTextByPosition = function(text, xPos) {
 alert = function(_message) {
 	getCurrentScreen().Add(new MessageBox(480,270,300,300, _message));
 }
-prompt = function(_message, _onDestroy) {
-	var box = new TextBox(480,270, 300, 300, 20, _message);
-	box.output = _onDestroy;
-	getCurrentScreen().Add(box);
+prompt = function(_message, _onDestroy, targetType = 0, size = [300,300]) {
+	var divi = [size[0] / 2, size[1] / 2];
+	var panel = new Panel(480 - divi[0], 270 - divi[1], size[0], size[1], []);
+	var i = 0;
+	while(getCurrentScreen().Get("prompt_panel" + string(i)) != false) {
+		i++;
+	}
+	getCurrentScreen().Add(panel, "prompt_panel" + string(i));
+	var TEXTBOX_SIZE = [100, 25];
+	panel.Add(new TextBox(transform.x + (divi[0] - TEXTBOX_SIZE[0]), transform.y + (divi[1] - TEXTBOX_SIZE[1]), TEXTBOX_SIZE[0], TEXTBOX_SIZE[1]));
+	//panel.Add(new Button(transform.x + (transform.width - 10), transform.y, 10, 10, function(){o_GUI.getCurrentScreen().Get("prompt_panel" + string(i) ).}) )
 }
 newScreen = function(newIndex) {
 	getCurrentScreen().SetActive(false);
@@ -78,7 +85,7 @@ function Screen(_elements = []) constructor {
 		for(var i = 0 ; i < array_length(elements);i++) {
 			if(elements[i].ID == targetID) return elements[i];
 		}
-		throw("Cannot find target! (" + targetID + "");
+		return false;
 	}
 	static Destroy = function(targetID) {
 		for(var i = 0 ; i < array_length(elements);i++) {
@@ -181,7 +188,7 @@ function Text(_x,_y, _text, isActive = true ) constructor {
 	}
 }
 //This lies unused, due to the way i actually implemented the object menu
-function Panel(_x,_y,w,h, _elements, isActive) : Element(_x, _y, w, h, isActive = true) constructor {
+function Panel(_x,_y,w,h, _elements, isActive = true) : Element(_x, _y, w, h, isActive = true) constructor {
 	elements = _elements;
 	step = function() {
 		draw_set_color(c_Back);
@@ -209,6 +216,13 @@ function Panel(_x,_y,w,h, _elements, isActive) : Element(_x, _y, w, h, isActive 
 		}
 		return -1;
 	}
+	static DestroySelf = function() {
+		for(var i = 0 ; i < array_length(elements);i++) {
+			elements.onDestroy();
+			array_delete(elements, i, 1);
+		}
+		o_GUI.getCurrentScreen().Destroy(ID);
+	}
 	//Add(new Button(transform.x + (tranform.width - 20), transform.y, 20, 20, function(){getCurrentScreen().Get(id).Toggle()}), "panel_exit");
 }
 function ObjectList(_x,_y,w,h, _objects, _pages, _listWidth, isActive = true) : Element(_x, _y, w, h, isActive) constructor {
@@ -217,6 +231,7 @@ function ObjectList(_x,_y,w,h, _objects, _pages, _listWidth, isActive = true) : 
 	pages = _pages;
 	currentPage = 0;
 	step = function() {
+		
 		var TEXT_HEIGHT = 20;
 		var OBJECT_X_DISPLACE = 100;
 		var OBJECT_SIZE_X = 50;
@@ -287,30 +302,18 @@ function TextBox(_x,_y,w,h, _maxChar = 20, _prompt = "", isActive = true) : Elem
 	type = 0; // 0 - any, 1 - string, 2 - numbers
 	maxChar = _maxChar;
 	output = function(){};
-	prompt = _prompt;
+	prompt = o_GUI.resizeTextByNewLine(transform.width, _prompt);
 	step = function() {
-		draw_set_color(c_Back);
-		DrawRect();
 		draw_set_color(c_white);
-		draw_rectangle(transform.x + ((transform.width / 2) - 100), transform.y + ((transform.height / 2) - 25), transform.x + ((transform.width / 2) + 100), transform.y + ((transform.height / 2) + 25), true );
-		if(inBounds && mouseCheck) {
-			if(!isTyping) keyboard_string = "";
+		draw_rectangle(transform.x, transform.y, transform.x + transform.width, transform.y + transform.height, true);
+		if(mousePosition[0] >= transform.x && mousePosition[0] <= transform.x + transform.width && mousePosition[1] >= transform.y && mousePosition[1] <= transform.y + transform.height && mouseCheck) {
 			isTyping = true;
+			keyboard_string = "";
 		}
 		if(isTyping) {
-			draw_set_color(c_white); //Placeholder for text color
-			if(string_length(keyboard_string) > maxChar) keyboard_string = string_copy(keyboard_string, 0, maxChar);
-			draw_text(transform.x + ((transform.width / 2)), transform.y + (transform.height / 2), keyboard_string);
+			draw_text(transform.x, transform.y, keyboard_string);
 			if(keyboard_check_pressed(vk_enter)) isTyping = false;
 		}
-		draw_set_color(c_green);
-		draw_rectangle(transform.x + ((transform.width / 2) - 25), transform.y + ((transform.height / 2) + 50), transform.x + ((transform.width / 2) + 25), transform.y + ((transform.height / 2) + 100), false );
-		draw_set_color(c_white);
-		draw_text(transform.x + ((transform.width/2)), transform.y + ((transform.height / 2) + 75), "Ok!");
-		if(mousePosition[0] >= transform.x + ((transform.width / 2) - 25) && mousePosition[0] <= transform.x + ((transform.width / 2) + 25) && mousePosition[1] >= transform.y + ((transform.height / 2) + 50) && mouseCheck) {
-			o_GUI.getCurrentScreen().Destroy(ID);
-		}
-
 	}
 	onDestroy = function(){output(keyboard_string);keyboard_string = ""};
 }
@@ -343,7 +346,7 @@ function MessageBox(_x,_y,w,h, _message, isActive = true) : Element(_x,_y,w,h,is
 		draw_rectangle(transform.x - divi[0], transform.y - divi[1], transform.x + divi[0], transform.y + divi[1], false);
 		draw_set_color(c_white);
 		draw_set_halign(fa_center);
-		draw_text(transform.x, transform.y, prompt);
+		draw_text(transform.x + divi, transform.y + (divi - 100), prompt);
 	}
-	with(o_GUI) getCurrentScreen().Add(new Button(other.transform.x, other.transform.y + 75, 25, 25, function(){o_GUI.getCurrentScreen().Destroy(ID)}, "Ok!" ));
+	//with(o_GUI) getCurrentScreen().Add(new Button(other.transform.x, other.transform.y + 75, 25, 25, function(){o_GUI.getCurrentScreen().Destroy(ID)}, "Ok!" ));
 }
