@@ -58,15 +58,7 @@ alert = function(_message) {
 }
 prompt = function(_message, _onDestroy, targetType = 0, size = [300,300]) {
 	var divi = [size[0] / 2, size[1] / 2];
-	var panel = new Panel(480 - divi[0], 270 - divi[1], size[0], size[1], []);
-	var i = 0;
-	while(getCurrentScreen().Get("prompt_panel" + string(i)) != false) {
-		i++;
-	}
-	getCurrentScreen().Add(panel, "prompt_panel" + string(i));
-	var TEXTBOX_SIZE = [100, 25];
-	panel.Add(new TextBox(transform.x + (divi[0] - TEXTBOX_SIZE[0]), transform.y + (divi[1] - TEXTBOX_SIZE[1]), TEXTBOX_SIZE[0], TEXTBOX_SIZE[1]));
-	//panel.Add(new Button(transform.x + (transform.width - 10), transform.y, 10, 10, function(){o_GUI.getCurrentScreen().Get("prompt_panel" + string(i) ).}) )
+	getCurrentScreen().Add(new Panel((SCREEN_SIZE[0] / 2) - divi[0], (SCREEN_SIZE[1] / 2) - divi[0], size[0], size[1], [new TextBox(SCREEN_SIZE[0] + divi[0], SCREEN_SIZE[1] + divi[1], size[0] - 50, 100, _onDestroy), new Button(SCREEN_SIZE[0] + (divi[0] - 20), SCREEN_SIZE[1] + (size[0] - 50), 50, 50, function(){o_GUI.getCurrentScreen().Destroy("prompt_panel")}, "Ok"), new Text(SCREEN_SIZE[0] + 10, SCREEN_SIZE[1] + 20, _message)]), "prompt_panel");
 }
 newScreen = function(newIndex) {
 	getCurrentScreen().SetActive(false);
@@ -175,16 +167,16 @@ function Slider(_x,_y,w,h, defaultVal = 50, _onChange = function(){}, isActive =
 		draw_ellipse(transform.x + value, transform.y, transform.x + (value + WIDTH), transform.y + transform.height, false);
 	}
 }
-function Text(_x,_y, _text, isActive = true ) constructor {
-	x = _x;
-	y = _y;
+function Text(_x,_y, _text, isActive = true ) : Element(_x, _y, 0, 0, isActive)constructor {
+	//x = _x;
+	//y = _y;
 	c_Back = c_white;
 	text = _text;
 	step = function() {
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
+		//draw_set_halign(fa_center);
+		//draw_set_valign(fa_middle);
 		draw_set_color(c_Back);
-		draw_text(x, y, text);
+		draw_text(transform.x, transform.y, text);
 	}
 }
 //This lies unused, due to the way i actually implemented the object menu
@@ -297,16 +289,17 @@ function ObjectList(_x,_y,w,h, _objects, _pages, _listWidth, isActive = true) : 
 	}
 	*/
 }
-function TextBox(_x,_y,w,h, _maxChar = 20, _prompt = "", isActive = true) : Element(_x,_y,w,h,isActive) constructor {
+function TextBox(_x,_y,w,h, _output = function(){}, _maxChar = 20, _prompt = "", isActive = true) : Element(_x,_y,w,h,isActive) constructor {
 	isTyping = false;
 	type = 0; // 0 - any, 1 - string, 2 - numbers
 	maxChar = _maxChar;
-	output = function(){};
+	output = _output;
 	prompt = o_GUI.resizeTextByNewLine(transform.width, _prompt);
 	step = function() {
 		draw_set_color(c_white);
-		draw_rectangle(transform.x, transform.y, transform.x + transform.width, transform.y + transform.height, true);
-		if(mousePosition[0] >= transform.x && mousePosition[0] <= transform.x + transform.width && mousePosition[1] >= transform.y && mousePosition[1] <= transform.y + transform.height && mouseCheck) {
+		var divi = [transform.width / 2, transform.height / 2];
+		draw_rectangle(transform.x - divi[0], transform.y - divi[0], transform.x + divi[0], transform.y + divi[0], true);
+		if(mousePosition[0] >= transform.x - divi[0] && mousePosition[0] <= transform.x + divi[0] && mousePosition[1] >= transform.y - divi[1] && mousePosition[1] <= transform.y + divi[1] && mouseCheck) {
 			isTyping = true;
 			keyboard_string = "";
 		}
@@ -315,7 +308,13 @@ function TextBox(_x,_y,w,h, _maxChar = 20, _prompt = "", isActive = true) : Elem
 			if(keyboard_check_pressed(vk_enter)) isTyping = false;
 		}
 	}
-	onDestroy = function(){output(keyboard_string);keyboard_string = ""};
+	onDestroy = function() {
+		var _out = keyboard_string;
+		if(type == 1) _out = string_replace(keyboard_string, string_digits(keyboard_string), ""); //Is this hacky?
+		if(type == 2) _out = real(keyboard_string);
+		output(_out);
+		keyboard_string = "";
+	}
 }
 function VariableEditor(_x,_y,w,h, ref, targType, isActive = true) : Element(_x,_y,w,h,isActive) constructor {
 	targetVar = ref;

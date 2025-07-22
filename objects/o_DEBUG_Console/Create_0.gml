@@ -111,5 +111,5 @@ settings = {
 	renderDebugText : true,
 	renderPlayerMask : false,
 	renderCollision : true,
-	
+	debugKeys : true,
 }

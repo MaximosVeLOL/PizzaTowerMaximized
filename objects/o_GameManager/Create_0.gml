@@ -20,9 +20,7 @@ level = {
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
 #macro IMAGE_COMPLETE round(image_index) == image_number
 mode = "none";
-getScreenSize = function() {
-    return [960,540];
-}
+#macro SCREEN_SIZE [960, 540] //This might be a bad idea...
 
 /*
 exception_unhandled_handler(function(ex) {
@@ -40,7 +38,7 @@ exception_unhandled_handler(function(ex) {
 */
 startLevel = function(_room, _newPos, _newSong = -1, _loopData = [-1, -1]) {
 	score = 0;
-	if(instance_exists(o_PlayerParent) && instance_exists(o_GameManager)) o_GameManager.gotoRoom(_room, _newPos, true, _newSong, _loopData);
+	if(instance_exists(o_PlayerParent) ) o_GameManager.gotoRoom(_room, _newPos, true, _newSong, _loopData);
 	else { //Leftover from when we went from the disclaimer to the level directly.
 		room_goto(_room);
 		if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(_newSong, _loopData);
@@ -51,7 +49,15 @@ startLevel = function(_room, _newPos, _newSong = -1, _loopData = [-1, -1]) {
 	mode = "game";
 }
 restartLevel = function() {
-	o_GameManager.startLevel(level.startParameters[0], level.startParameters[1], level.startParameters[2], level.startParameters[3]);
+	room_goto(level.startParameters[0]);
+	o_PlayerParent.x = level.startParameters[1][0];
+	o_PlayerParent.y = level.startParameters[1][1];
+	if(instance_exists(o_MusicManager)) {
+		o_MusicManager.stopMusic(true);
+		o_MusicManager.playNewSong(level.startParameters[2], level.startParameters[3]);
+	}
+	o_PlayerParent.setState("door");
+	o_PlayerParent.tempVar[0] = 1;
 }
 endLevel = function() {
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
@@ -76,4 +82,7 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	}
 	if(_newSong != -1 && instance_exists(o_MusicManager)) o_MusicManager.playNewSong(_newSong, _loopData); //I'm tired of it logging unneccesary stuff.
 }
-screenshotSession = 0;
+sessions = {
+	total : 0,
+	save : 0,
+}

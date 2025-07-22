@@ -1,6 +1,8 @@
 var moveX = GetInput("right", 0, PD) - GetInput("left", 0, PD);
 var moveY = GetInput("down", 0, PD) - GetInput("up", 0, PD);
 if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "normal";
+//if(keyboard_check(vk_shift)) game_set_speed(1, gamespeed_fps);
+//else game_set_speed(60, gamespeed_fps);
 switch(state) {
 	case "normal":
 		velocity[0] = moveX * movespeed;
@@ -19,7 +21,7 @@ switch(state) {
 			CreateEffect({y : bbox_bottom, sprite_index : sprite_effect_cloud});
 		}
 		else {
-			audio_stop_sound(sfx_footstep);
+			if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep); //Why didn't we do this???
 			if(!animVar || !tempVar[1]) {
 				tempVar[0]++;
 				sprite_index = spr_player_idle;
@@ -91,7 +93,7 @@ switch(state) {
 					if(tempVar[0] >= 100) {
 						setState("mach3", false);
 						CreateEffect({sprite_index : sprite_effect_dust});
-						instance_create_depth(x,y,0,o_P_StateInitEffect);
+						CreateParticle(x,y,o_P_StateInitEffect);
 					}
 					
 					if(GetInput("jump", 1, PD)) velocity[1] = -9;
@@ -112,7 +114,7 @@ switch(state) {
 				velocity[0] = xscale * movespeed;
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					instance_create_depth(x,y,0,o_P_Mach3Effect);
+					CreateParticle(x,y,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 				sprite_index = global.settings.playerSettings.useOldMach3 ? spr_player_mach3 : spr_player_mach4;
@@ -190,7 +192,7 @@ switch(state) {
 				movespeed = 12;
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					instance_create_depth(x,y,0,o_P_Mach3Effect);
+					CreateParticle(x,y,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 				velocity[0] = movespeed * xscale;
@@ -296,7 +298,7 @@ switch(state) {
 				if(tempVar[2] > 30) {
 					tempVar[0] = 1;
 					playSound(sfx_supermove);
-					instance_create_depth(x,y,0,o_P_StateInitEffect);
+					CreateParticle(x,y,o_P_StateInitEffect);
 				}
 			break;
 			
@@ -318,7 +320,7 @@ switch(state) {
 				}
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					instance_create_depth(x,y,0,o_P_Mach3Effect);
+					CreateParticle(x,y,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 			break;
@@ -742,7 +744,7 @@ switch(state) {
 				
 				if(!animVar) {
 					sprite_index = spr_player_knight_start;
-					if(round(image_index) == 9) instance_create_depth(x,y-600, 0, o_P_KnightEffect);
+					if(round(image_index) == 9) CreateParticle(x,y-600, o_P_KnightEffect);
 					if(round(image_index) == image_number) animVar = true;
 				}
 				else {
@@ -871,7 +873,7 @@ switch(state) {
 			break;
 			
 			case 3:
-				o_MusicManager.stopTempSong();
+				if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
 				if(!instance_exists(o_Le_BombExplosion))instance_create_depth(x,y,0,o_Le_BombExplosion);
 				tempVar[0] = 2;
 			break;

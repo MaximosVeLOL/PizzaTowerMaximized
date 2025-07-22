@@ -66,7 +66,7 @@ global.settings = {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
-		muteAll : false,
+		muteAll : true,
 	},
 	videoSettings : {
 		fullscreen : false,
@@ -75,7 +75,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		multiplayer : false,
+		multiplayer : true,
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -100,7 +100,23 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 	instance_create_depth(0,0,0, o_GameManager);
 }
 */
-if(true) {
-	room_goto(Room_LevelEditor);
+var DEBUG_STARTUP = {
+	startInLevelEditor : false,
+	startInDemoRoom : true,
+	startUpRoom : ETBRoom_Level1_2,
+	startUpPos : [200, 300],
 }
-else room_goto(Room_Disclaimer);
+
+if(global.settings.gameplaySettings.debugEnabled) {
+	if(DEBUG_STARTUP.startInLevelEditor) {
+		room_goto(Room_LevelEditor);
+	}
+	else if(DEBUG_STARTUP.startInDemoRoom) {
+		room_goto(DEBUG_STARTUP.startUpRoom);
+		//var instances = [o_GameManager, o_MultiplayerSystem, o_MusicManager, o_Camera];
+		var instances = [o_GameManager, o_MusicManager, o_Camera];
+		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
+		CreatePlayer(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]);
+	}
+	else room_goto(Room_Disclaimer);
+}

@@ -21,6 +21,7 @@ switch(editorLayer) {
 		
 	break;
 }
+if(keyboard_check_pressed(vk_shift)) Save();
 var moveX = (keyboard_check(ord("D")) - keyboard_check(ord("A")));
 var moveY = (keyboard_check(ord("S")) - keyboard_check(ord("W")));
 x += moveX * gridSize;

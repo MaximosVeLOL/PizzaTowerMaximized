@@ -14,14 +14,33 @@ switch(mode) {
 	break;
 }
 if(keyboard_check_pressed(vk_f12)) {
-	while(directory_exists("MaximizedGM2/Screenshots/session" + string(screenshotSession) )) {
-		screenshotSession++;
+	var variable = 0;
+	var dir;
+	var val = real(get_string("test", ""));
+	switch(val) { //Different screenshot modes, just incase
+		case 0: //Save in room
+			
+			while(file_exists("MaximizedGM2/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable) + ".png" )) {
+				variable++;
+			}
+			dir = "MaximizedGM2/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable);
+		break;
+		
+		case 1: //Save in session
+			while(file_exists("MaximizedGM2/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable) + ".png" )) {
+				variable++;
+			}
+			dir = "MaximizedGM2/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable)
+		break;
+		
+		case 2: //Save in save file
+			while(file_exists("MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable) + ".png" )) {
+				variable++;
+			}
+			dir = "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable);
+		break;
+		
+		
 	}
-	var dir = "MaximizedGM2/Screenshots/session" + string(screenshotSession);
-	directory_create(dir);
-	var shot = 1;
-	while(file_exists(dir + "/shot" + string(shot) + ".png")) {
-		shot++;
-	}
-	screen_save(dir + "/shot" + string(shot) + ".png");
+	screen_save(dir + ".png");
 }

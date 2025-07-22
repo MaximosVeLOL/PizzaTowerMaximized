@@ -10,7 +10,9 @@ enum Moveset {
 	Demo2Tester,
 	Demo2,
 };
-
+movesetSettings = {
+	canBeManyCharacters : false,
+};
 
 depth = -1000;
 mass = 0.5;
@@ -27,10 +29,6 @@ stunStuff = {
 };
 
 PD = 1;
-with(o_MultiplayerSystem) {
-	other.PD = registerPlayer();
-	if(totalPlayers < maxPlayers && global.settings.gameplaySettings.multiplayer) CreatePlayer(other.x, other.y);
-}
 if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index) > 1) {
 	instance_destroy();
 	return;
@@ -74,6 +72,20 @@ hurt = function() {
 	
 }
 playSound = function(snd, override = false) {
+	//M_OPTI - This looks like something very low languagey, but is this faster, or slower?
 	array_resize(sounds, array_length(sounds) + 1);
 	sounds[array_length(sounds) - 1] = PlaySound(snd, override);
+}
+stopSound = function(snd) {
+	audio_stop_sound(snd);return;
+	for(var i = 0 ; i < array_length(sounds);i++) {
+		if(snd == asset_get_index(audio_get_name(sounds[i]))) {
+			audio_stop_sound(sounds[i]);
+			for(var j = i ; j < array_length(sounds) - 1;j++) {
+				sounds[j] = sounds[j] + 1;
+			}
+			array_resize(sounds, array_length(sounds) - 1);
+			break;
+		}
+	}
 }

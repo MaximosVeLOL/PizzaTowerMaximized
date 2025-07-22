@@ -10,7 +10,7 @@ if(alpha == 1 && !faded) {
 	faded = true;
 }
 if(alpha <= 0.5 && faded && o_PlayerParent.state != o_GameManager.transSettings.state) {
-	if(instance_exists(o_PlayerParent)) o_PlayerParent.state = o_GameManager.transSettings.state;
+	o_PlayerParent.state = o_GameManager.transSettings.state;
 }
 if(alpha == 0) {
 	o_GameManager.transSettings.nextRoom = -1;

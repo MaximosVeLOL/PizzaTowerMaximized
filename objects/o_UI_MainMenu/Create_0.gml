@@ -2,6 +2,7 @@ event_inherited();
 settings.background.render = false;
 if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(music_mainmenu);
 startGame = function() {
+	if(instance_exists(o_GameManager)) o_GameManager.sessions.save++;
     o_UI_MainMenu_Pep.active = true;
     PlaySound(sound_menuselect, false, false, true);
 	if(os_browser == browser_not_a_browser) {

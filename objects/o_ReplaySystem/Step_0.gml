@@ -1,4 +1,4 @@
-if(mode == "replay") {
+if(mode == 1) {
 	if(inputIndex > 0) keyboard_key_release(inputs[inputIndex - 1]);
 	if(inputIndex >= array_length(inputs)) {
 		instance_destroy();

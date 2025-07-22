@@ -3,18 +3,15 @@ add(new Screen());
 depth = -1000;
 currentObject = noone;
 gridSize = 32;
-currentRoom = 0;
-currentRoomSettings = {
-	size : [960,540],
-	name : "",
-	background : -1,
-};
+
 levelSettings = {
 	name : "",
 	startRoom : -1,
 	startSong : 0,
-	
 };
+minRoomIndex = -1;
+maxRoomIndex = -1;
+
 toolTip = "";
 enum EditorLayers {
 	None = 0,
@@ -43,9 +40,21 @@ createLevel = function() {
 	room_set_height(newRoom, 540);
 	room_set_view_enabled(newRoom, true);
 	room_goto(newRoom);
+	minRoomIndex = newRoom;
 	
 	//prompt("Input Level Name", function(str){levelSettings.name = str});
 }
+createRoom = function() {
+	var newRoom = room_add();
+	room_set_viewport(newRoom, 0, true, 0, 0, 960, 540);
+	room_set_camera(newRoom, 0, camera_create_view(0,0,960,540));
+	room_set_width(newRoom, 960);
+	room_set_height(newRoom, 540);
+	room_set_view_enabled(newRoom, true);
+	room_goto(newRoom);
+	maxRoomIndex = newRoom;
+}
+
 startLevel = function() {
 	CreatePlayer(0,0);
 	var objects = [o_Camera, o_MultiplayerSystem];
@@ -81,6 +90,29 @@ addError = function(err, inst) {
 	if(!show_question("From " + object_get_name(inst) + "\n" + err + "\n\n Continue?")) endLevel();
 
 }
+Save = function() {
+	var saveBuffer = buffer_create(0, buffer_grow, 1);
+	//buffer_write(buffer_u8, buffer_grow, 01);
+	buffer_write(saveBuffer, buffer_u64, 00);
+	for(var i = 0 ; i < instance_number(o_LevelEditorObject);i++) {
+		with(instance_find(o_LevelEditorObject, i) ) {
+			buffer_write(saveBuffer, buffer_u16, x);
+			buffer_write(saveBuffer, buffer_u16, y);
+			buffer_write(saveBuffer, buffer_u8, image_xscale);
+			buffer_write(saveBuffer, buffer_u8, image_yscale);
+			buffer_write(saveBuffer, buffer_u8, 0xFF);
+		}
+	}
+	buffer_save(saveBuffer, "MaximizedGM2/LevelEditor/test.ptmles"); //P.T.M.L.E.S - Pizza Tower: Maximized Level Editor Save 
+}
+
+
+
+
+
+
+
+
 //screens[0].Add(new VariableEditor(100, 100, 200, 200, currentRoomSettings, 1, false), "editor_room");
 //screens[0].Add(new VariableEditor(200, 100, 200, 200, levelSettings, 1, false), "editor_level");
 screens[0].Add(new ObjectList(0,100,400,200, [[o_C_Wall, o_C_Slope, o_C_Platform], [o_Le_Door, o_Le_KeyDoor, o_Le_Transition, o_Le_LevelGate], [o_Le_Points, o_Le_BigPoints, o_Le_Key, o_Le_LapPoints, o_Le_Pizzabox, o_Le_Pizzakin, o_Le_Treasure], [o_Le_En_Cheeseslime, o_Le_En_SausageMan, o_Le_En_Goblin]], ["Collision", "Warp", "Collectable", "Enemies"] , 6, false), "objectList");
@@ -97,7 +129,7 @@ buttonShit = function(){
 				if(array_length(_out) > 2) throw("Invalid size proportions!");
 			}
 		}
-		}, [500,500]);
+		}, 0, [500,500]);
 }
 screens[0].Add(new Panel(100, 100, 200, 200, [new Button(100, 100, 200,50,  buttonShit, "Change room size")], false), "editor_room");
 
