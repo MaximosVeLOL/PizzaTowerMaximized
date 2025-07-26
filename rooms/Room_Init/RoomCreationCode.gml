@@ -90,6 +90,10 @@ global.misc = { //Bye bye o_GameManager's font!
 	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10)
 }
 audio_group_load(AG_Sound);
+if(false) {
+	room_goto(Room_MachineLearning);
+	return;
+}
 /*
 if(global.settings.gameplaySettings.debugEnabled) {
 	instance_create_depth(0,0,0,o_DEBUG_Console);
@@ -106,7 +110,6 @@ var DEBUG_STARTUP = {
 	startUpRoom : ETBRoom_Level1_2,
 	startUpPos : [200, 300],
 }
-
 if(global.settings.gameplaySettings.debugEnabled) {
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor);

@@ -1,2 +1,2 @@
 event_inherited();
-isTreasureDoor = false;
+isPreETBDoor = false;

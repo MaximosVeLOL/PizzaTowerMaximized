@@ -11,6 +11,10 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 		"MoveSpeed: " + string(o_PlayerParent.movespeed),
 		"Player Pos: " + string(o_PlayerParent.x) + ", " + string(o_PlayerParent.y),
 		"FPS: " + string(fps_real) + " : " + string(fps),
+		//"SelfScore: " + string(o_Player_Machine.selfScore),
+		//"Time: " + string(o_Player_Machine.time),
+		//"BestInputs: " + string(global.bestInputs),
+		//"Inputs: " + string(o_Player_Machine.inputs),
 		//"Move Input: " + string(keyboard_check(global.settings.keyBinds.right) - keyboard_check(global.settings.keyBinds.left)) + ", " + string(keyboard_check(global.settings.keyBinds.down) - keyboard_check(global.settings.keyBinds.up))
 	];
 	for(var i = 0 ; i < array_length(toDraw);i++) {

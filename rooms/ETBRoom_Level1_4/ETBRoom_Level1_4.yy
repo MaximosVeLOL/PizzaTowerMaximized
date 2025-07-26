@@ -115,6 +115,7 @@
     {"name":"inst_1318C40D","path":"rooms/ETBRoom_Level1_4/ETBRoom_Level1_4.yy",},
     {"name":"inst_E524B3F","path":"rooms/ETBRoom_Level1_4/ETBRoom_Level1_4.yy",},
     {"name":"inst_7E271EB5","path":"rooms/ETBRoom_Level1_4/ETBRoom_Level1_4.yy",},
+    {"name":"inst_1C4AAC34","path":"rooms/ETBRoom_Level1_4/ETBRoom_Level1_4.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -250,6 +251,7 @@
         {"$GMRInstance":"v2","%Name":"inst_1318C40D","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1318C40D","objectId":{"name":"o_Le_Pizzakin","path":"objects/o_Le_Pizzakin/o_Le_Pizzakin.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":928.0,"y":564.0,},
         {"$GMRInstance":"v2","%Name":"inst_E524B3F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_E524B3F","objectId":{"name":"o_Le_En_Cheeseslime","path":"objects/o_Le_En_Cheeseslime/o_Le_En_Cheeseslime.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":424.0,"y":690.0,},
         {"$GMRInstance":"v2","%Name":"inst_7E271EB5","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7E271EB5","objectId":{"name":"o_Le_En_Cheeseslime","path":"objects/o_Le_En_Cheeseslime/o_Le_En_Cheeseslime.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":637.0,"y":946.0,},
+        {"$GMRInstance":"v2","%Name":"inst_1C4AAC34","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1C4AAC34","objectId":{"name":"o_Le_Transition","path":"objects/o_Le_Transition/o_Le_Transition.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":3.0,"x":-96.0,"y":896.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"BG","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"BG","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":38,"SerialiseWidth":57,"TileSerialiseData":[
           7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,
