@@ -8,6 +8,11 @@
   "bbox_top":19,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"TextureG_Peppino\", \"path\":\"texturegroups/TextureG_Peppino\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

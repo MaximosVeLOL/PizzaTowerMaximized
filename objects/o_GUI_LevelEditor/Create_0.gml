@@ -1,4 +1,4 @@
-event_inherited();
+o_event_inherited();
 add(new Screen());
 depth = -1000;
 currentObject = noone;
@@ -22,15 +22,14 @@ enum EditorLayers {
 editorLayer = 0;
 editorSize = [1,1];
 errors = [];
+
 o_GameManager.mode = "editor";
 if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(music_editor);
 getObjectTouching = function(_x,_y) {
 	_x = round(_x / gridSize) * gridSize;
 	_y = round(_y / gridSize) * gridSize;
-	with(all) {
-		if(place_meeting(_x, _y, id)) return id;
-	}
-	return noone;
+	show_message(StrCat(_x, _y, instance_place(_x,_y, all) ));
+	return instance_place(_x, _y, all);
 }
 createLevel = function() {
 	var newRoom = room_add();
@@ -53,6 +52,8 @@ createRoom = function() {
 	room_set_view_enabled(newRoom, true);
 	room_goto(newRoom);
 	maxRoomIndex = newRoom;
+	roomArray[array_length(roomArray)] = "Room " + string(array_length(roomArray));
+	screens[0].Get("editor_utilities").Get()
 }
 
 startLevel = function() {
@@ -117,7 +118,10 @@ Save = function() {
 //screens[0].Add(new VariableEditor(200, 100, 200, 200, levelSettings, 1, false), "editor_level");
 screens[0].Add(new ObjectList(0,100,400,200, [[o_C_Wall, o_C_Slope, o_C_Platform], [o_Le_Door, o_Le_KeyDoor, o_Le_Transition, o_Le_LevelGate], [o_Le_Points, o_Le_BigPoints, o_Le_Key, o_Le_LapPoints, o_Le_Pizzabox, o_Le_Pizzakin, o_Le_Treasure], [o_Le_En_Cheeseslime, o_Le_En_SausageMan, o_Le_En_Goblin]], ["Collision", "Warp", "Collectable", "Enemies"] , 6, false), "objectList");
 
-buttonShit = function(){
+buttonShit = function() {
+	room_width = real(get_string("New Room Width", ""));
+	room_width = real(get_string("New Room Height", ""));
+	return;
 	prompt("New room size (w, h) (use \",\", or a space to seperate the size)", function(num){
 		var _temp;
 		var _out = [];
@@ -131,10 +135,14 @@ buttonShit = function(){
 		}
 		}, 0, [500,500]);
 }
-screens[0].Add(new Panel(100, 100, 200, 200, [new Button(100, 100, 200,50,  buttonShit, "Change room size")], false), "editor_room");
+roomArray = ["Room 0"];
+screens[0].Add(new Panel(100, 100, 200, 200, [new Button(100, 100, 200,50,  buttonShit, "Change Room Size"), new Button(100, 200, 200, 50, function(){layer_background_sprite(layer_background_get_id(layer_get_id("Background")), asset_get_index(get_string("Input sprite name", "") ) )}, "Change Room BG")], false), "editor_room");
+screens[0].Add(new Panel(300, 100, 200, 200, [new Button(300, 100, 200, 50, createRoom, "Create New Room")], false), "editor_util");
+screens[0].Get("editor_util").Add(new List(500, 100, 100, 100, roomArray, function(index){if(minRoomIndex + index < maxRoomIndex)room_goto(minRoomIndex + index); }), "roomList");
 
 screens[0].Add(new Button(0, 0, 100, 100, function(){getCurrentScreen().Get("objectList").Toggle();editorLayer = EditorLayers.Object;toolTip = "Press X to flip objects horizontally\nPress Y to flip objects vertically"; }, "Objects"));
 screens[0].Add(new Button(100, 0, 100, 100, function(){getCurrentScreen().Get("editor_room").Toggle()}, "Room Settings"));
 screens[0].Add(new Button(200, 0, 100, 100, function(){getCurrentScreen().Get("editor_level").Toggle()}, "Level Settings"));
-screens[0].Add(new Button(300, 0, 100, 100, startLevel, "Play"));
+screens[0].Add(new Button(300, 0, 100, 100, function(){getCurrentScreen().Get("editor_util").Toggle()}, "Utilities"))
+screens[0].Add(new Button(400, 0, 100, 100, startLevel, "Play"));
 //getCurrentScreen().Add(new VariableEditor(480,270, 200, 200, self, 0));

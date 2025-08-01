@@ -8,6 +8,11 @@
   "bbox_top":40,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"TextureG_Enemies\", \"path\":\"texturegroups/TextureG_Enemies\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

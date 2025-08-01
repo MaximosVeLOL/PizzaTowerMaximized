@@ -8,6 +8,11 @@
   "bbox_top":36,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"TextureG_Hud\", \"path\":\"texturegroups/TextureG_Hud\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

@@ -1,3 +1,7 @@
+/*if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) {
+	instance_destroy();
+	return;
+}*/
 if(!file_exists("MaximizedGM2/SESSION")) {
 	sessions.total++; //Still increase so we can create an accurate file next time
 	return;
@@ -14,4 +18,3 @@ for(var i = 0 ; i < 8;i++) {
 sessions.total = buffer_read(bufferFile, buffer_s32) + 1;
 sessions.save = buffer_read(bufferFile, buffer_s32);
 buffer_delete(bufferFile); //Remember kids, always keep memory usage low!!!!!
-//if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) instance_destroy();

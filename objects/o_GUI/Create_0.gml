@@ -47,8 +47,8 @@ resizeTextByNewLine = function(width, text) {
 	}
 	return text;
 }
-resizeTextByPosition = function(text, xPos) {
-	while(string_width(text) + xPos > room_width) {
+resizeTextByPosition = function(text, xPos, errorMargin = 0) {
+	while(string_width(text) + xPos + errorMargin > room_width) {
 		xPos--;
 	}
 	return xPos;
@@ -167,7 +167,33 @@ function Slider(_x,_y,w,h, defaultVal = 50, _onChange = function(){}, isActive =
 		draw_ellipse(transform.x + value, transform.y, transform.x + (value + WIDTH), transform.y + transform.height, false);
 	}
 }
-function Text(_x,_y, _text, isActive = true ) : Element(_x, _y, 0, 0, isActive)constructor {
+function List(_x,_y, w, h, _information, _onChange = function(){}, _informationText = -1, _elementHeight = -1, _startingIndex = 0, isActive = true) : Element(_x ,_y, w, h, isActive) constructor {
+	information = _information;
+	informationAsText = _informationText;
+	elementHeight = _elementHeight == -1 ? w / array_length(_information) : _elementHeight;
+	onChange = _onChange;
+	step = function() {
+		var text; //Define new variables each loop loses data! I think, gml is very high level...
+		var didClick = false;
+		for(var i = 0 ; i < array_length(information);i++) {
+			draw_set_color(c_Back);
+			if(mousePosition[0] >= transform.x && mousePosition[0] <= transform.x + transform.width && mousePosition[1] >= transform.y + (elementHeight * i) && mousePosition[1] <= transform.y + (elementHeight * (i+1))) {
+				if(mouseCheck && !didClick) {
+					didClick = true;
+					onChange(i);
+				}
+				draw_set_color(c_Highlight);
+			}
+			draw_rectangle(transform.x, transform.y + (elementHeight * i), transform.x + transform.width, transform.y + (elementHeight * (i+1)), false);
+			text = string(information[i]);
+			if(is_array(informationAsText)) text = informationAsText[i];
+			draw_set_color(c_white);
+			draw_text(transform.x, transform.y + (elementHeight * i + 1), text);
+			
+		}
+	}
+}
+function Text(_x,_y, _text, isActive = true ) : Element(_x, _y, 0, 0, isActive) constructor {
 	//x = _x;
 	//y = _y;
 	c_Back = c_white;
@@ -186,7 +212,9 @@ function Panel(_x,_y,w,h, _elements, isActive = true) : Element(_x, _y, w, h, is
 		draw_set_color(c_Back);
 		DrawRect();
 		for(var i = 0 ; i < array_length(elements);i++) {
+			//show_message(string(i) + "\n" + string(elements[i]) );
 			with(elements[i]) {
+				
 				mousePosition = o_GUI.getMouse();
 				mouseCheck = mouse_check_button_released(mb_left);
 				inBounds = mousePosition[0] >= transform.x && mousePosition[0] <= transform.x + transform.width && mousePosition[1] >= transform.y && mousePosition[1] <= transform.y + transform.height;

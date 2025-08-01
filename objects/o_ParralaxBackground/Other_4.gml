@@ -1,0 +1,1 @@
+if(room == endRoom) instance_destroy();

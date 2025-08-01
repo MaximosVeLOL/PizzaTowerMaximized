@@ -12,7 +12,10 @@
     "name":"GUI",
     "path":"folders/Objects/UI/GUI.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_LeEd_Parent",
+    "path":"objects/o_LeEd_Parent/o_LeEd_Parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -16,7 +16,7 @@ switch(mode) {
 if(keyboard_check_pressed(vk_f12)) {
 	var variable = 0;
 	var dir;
-	var val = real(get_string("test", ""));
+	var val = 2;
 	switch(val) { //Different screenshot modes, just incase
 		case 0: //Save in room
 			

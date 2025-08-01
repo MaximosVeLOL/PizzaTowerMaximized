@@ -9,6 +9,6 @@ text += seconds < 10 ? ":0" + string(seconds) : ":" + string(seconds);
 
 
 draw_set_halign(fa_center);
-draw_set_font(o_GameManager.font);
+draw_set_font(global.misc.font);
 draw_text(480, 65, text);
 GUI_RESET;

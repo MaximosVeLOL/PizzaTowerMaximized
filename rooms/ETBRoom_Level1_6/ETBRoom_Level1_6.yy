@@ -18,6 +18,7 @@
     {"name":"inst_5AAB0198","path":"rooms/ETBRoom_Level1_6/ETBRoom_Level1_6.yy",},
     {"name":"inst_2D0734F0","path":"rooms/ETBRoom_Level1_6/ETBRoom_Level1_6.yy",},
     {"name":"inst_6B512FCC","path":"rooms/ETBRoom_Level1_6/ETBRoom_Level1_6.yy",},
+    {"name":"inst_3CDBCC70","path":"rooms/ETBRoom_Level1_6/ETBRoom_Level1_6.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -42,6 +43,7 @@
         {"$GMRInstance":"v2","%Name":"inst_5AAB0198","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5AAB0198","objectId":{"name":"o_Le_RedGuy","path":"objects/o_Le_RedGuy/o_Le_RedGuy.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":352.0,},
         {"$GMRInstance":"v2","%Name":"inst_2D0734F0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2D0734F0","objectId":{"name":"o_Le_Treasure","path":"objects/o_Le_Treasure/o_Le_Treasure.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":431.0,"y":234.0,},
         {"$GMRInstance":"v2","%Name":"inst_6B512FCC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6B512FCC","objectId":{"name":"o_Le_NoiseSpawn","path":"objects/o_Le_NoiseSpawn/o_Le_NoiseSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":256.0,"y":352.0,},
+        {"$GMRInstance":"v2","%Name":"inst_3CDBCC70","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3CDBCC70","objectId":{"name":"o_Player_ETB","path":"objects/o_Player_ETB/o_Player_ETB.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":864.0,"y":338.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"BG","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"BG","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":17,"SerialiseWidth":38,"TileCompressedData":[
           -158,0,26,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,-12,0,26,18,19,18,19,18,19,18,19,18,19,

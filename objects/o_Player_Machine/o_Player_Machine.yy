@@ -10,8 +10,8 @@
   "name":"o_Player_Machine",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Objects/System/Core/Player.yy",
+    "name":"Test",
+    "path":"folders/Objects/System/Core/Test.yy",
   },
   "parentObjectId":{
     "name":"o_PlayerParent",

@@ -31,6 +31,7 @@
     {"$GMFolder":"","%Name":"System","folderPath":"folders/Objects/System.yy","name":"System","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Core","folderPath":"folders/Objects/System/Core.yy","name":"Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Objects/System/Core/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Test","folderPath":"folders/Objects/System/Core/Test.yy","name":"Test","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"UI","folderPath":"folders/Objects/UI.yy","name":"UI","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"GUI","folderPath":"folders/Objects/UI/GUI.yy","name":"GUI","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Transition","folderPath":"folders/Objects/UI/Transition.yy","name":"Transition","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -54,6 +55,7 @@
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Breakable","folderPath":"folders/Sprites/Breakable.yy","name":"Breakable","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Editor","folderPath":"folders/Sprites/Editor.yy","name":"Editor","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"LevelEditor","folderPath":"folders/Sprites/Editor/LevelEditor.yy","name":"LevelEditor","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Sprites/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Enemy","folderPath":"folders/Sprites/Enemy.yy","name":"Enemy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"BombGoblin","folderPath":"folders/Sprites/Enemy/BombGoblin.yy","name":"BombGoblin","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -140,7 +142,9 @@
     {"id":{"name":"o_Le_Door","path":"objects/o_Le_Door/o_Le_Door.yy",},},
     {"id":{"name":"o_Le_En_Cheeseslime","path":"objects/o_Le_En_Cheeseslime/o_Le_En_Cheeseslime.yy",},},
     {"id":{"name":"o_Le_En_Goblin","path":"objects/o_Le_En_Goblin/o_Le_En_Goblin.yy",},},
+    {"id":{"name":"o_Le_En_Knight","path":"objects/o_Le_En_Knight/o_Le_En_Knight.yy",},},
     {"id":{"name":"o_Le_En_Parent","path":"objects/o_Le_En_Parent/o_Le_En_Parent.yy",},},
+    {"id":{"name":"o_Le_En_PepGoblin","path":"objects/o_Le_En_PepGoblin/o_Le_En_PepGoblin.yy",},},
     {"id":{"name":"o_Le_En_SausageMan","path":"objects/o_Le_En_SausageMan/o_Le_En_SausageMan.yy",},},
     {"id":{"name":"o_Le_Key","path":"objects/o_Le_Key/o_Le_Key.yy",},},
     {"id":{"name":"o_Le_KeyDoor","path":"objects/o_Le_KeyDoor/o_Le_KeyDoor.yy",},},
@@ -165,6 +169,7 @@
     {"id":{"name":"o_LevelEditorObject","path":"objects/o_LevelEditorObject/o_LevelEditorObject.yy",},},
     {"id":{"name":"o_MultiplayerSystem","path":"objects/o_MultiplayerSystem/o_MultiplayerSystem.yy",},},
     {"id":{"name":"o_MusicManager","path":"objects/o_MusicManager/o_MusicManager.yy",},},
+    {"id":{"name":"o_NetworkObject","path":"objects/o_NetworkObject/o_NetworkObject.yy",},},
     {"id":{"name":"o_P_Breakable","path":"objects/o_P_Breakable/o_P_Breakable.yy",},},
     {"id":{"name":"o_P_DeadEnemy","path":"objects/o_P_DeadEnemy/o_P_DeadEnemy.yy",},},
     {"id":{"name":"o_P_Effect","path":"objects/o_P_Effect/o_P_Effect.yy",},},
@@ -180,6 +185,7 @@
     {"id":{"name":"o_Player_Bare","path":"objects/o_Player_Bare/o_Player_Bare.yy",},},
     {"id":{"name":"o_Player_ETB","path":"objects/o_Player_ETB/o_Player_ETB.yy",},},
     {"id":{"name":"o_Player_Machine","path":"objects/o_Player_Machine/o_Player_Machine.yy",},},
+    {"id":{"name":"o_Player_Network","path":"objects/o_Player_Network/o_Player_Network.yy",},},
     {"id":{"name":"o_Player_Noise","path":"objects/o_Player_Noise/o_Player_Noise.yy",},},
     {"id":{"name":"o_Player_PreETB","path":"objects/o_Player_PreETB/o_Player_PreETB.yy",},},
     {"id":{"name":"o_Player_Sigma","path":"objects/o_Player_Sigma/o_Player_Sigma.yy",},},
@@ -187,6 +193,7 @@
     {"id":{"name":"o_PlayerParent","path":"objects/o_PlayerParent/o_PlayerParent.yy",},},
     {"id":{"name":"o_ReplaySystem","path":"objects/o_ReplaySystem/o_ReplaySystem.yy",},},
     {"id":{"name":"o_RoomRamOpener","path":"objects/o_RoomRamOpener/o_RoomRamOpener.yy",},},
+    {"id":{"name":"o_Server","path":"objects/o_Server/o_Server.yy",},},
     {"id":{"name":"o_UI_Credits","path":"objects/o_UI_Credits/o_UI_Credits.yy",},},
     {"id":{"name":"o_UI_Disclaimer","path":"objects/o_UI_Disclaimer/o_UI_Disclaimer.yy",},},
     {"id":{"name":"o_UI_DoorTrans","path":"objects/o_UI_DoorTrans/o_UI_DoorTrans.yy",},},
@@ -235,6 +242,7 @@
     {"id":{"name":"Room_MainMenu","path":"rooms/Room_MainMenu/Room_MainMenu.yy",},},
     {"id":{"name":"Room_TestOG","path":"rooms/Room_TestOG/Room_TestOG.yy",},},
     {"id":{"name":"Script_Scripts","path":"scripts/Script_Scripts/Script_Scripts.yy",},},
+    {"id":{"name":"Script_TextureManager","path":"scripts/Script_TextureManager/Script_TextureManager.yy",},},
     {"id":{"name":"Seq_Intro","path":"sequences/Seq_Intro/Seq_Intro.yy",},},
     {"id":{"name":"Shader_Distort","path":"shaders/Shader_Distort/Shader_Distort.yy",},},
     {"id":{"name":"Shader_FullBright","path":"shaders/Shader_FullBright/Shader_FullBright.yy",},},
@@ -543,12 +551,55 @@
   ],
   "templateType":"game",
   "TextureGroups":[
-    {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"TextureG_Unused","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Unused","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"TextureG_Level","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Level","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"TextureG_Enemies","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Enemies","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"TextureG_Hud","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Hud","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_Unused","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"dynamicpages",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Unused","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_Enemies","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"{ \"name\":\"TextureG_Level\", \"path\":\"texturegroups/TextureG_Level\" }",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Enemies","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_Hud","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"dynamicpages",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Hud","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
     {"$GMTextureGroup":"","%Name":"TextureG_Effects","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Effects","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"TextureG_Peppino","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Peppino","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_Peppino","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Peppino","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_Level","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_Level","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"TextureG_PreETB","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"TextureG_PreETB","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
   ],
 }

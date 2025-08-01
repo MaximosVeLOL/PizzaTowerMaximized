@@ -15,9 +15,9 @@ if(active) {
 	for(i = 0 ; i < array_length(commands);i++) {
 		if(string_count(keyboard_string, commands[i].name) > 0) {
 			draw_set_color(c_black);
-			draw_rectangle(0, 100 + (yPos*20), string_width(commands[i]), 140 + (yPos*20), false);
+			draw_rectangle(0, 100 + (yPos*20), string_width(commands[i]), 100 + ((yPos+1)*20), false);
 			draw_set_color(c_white);
-			draw_text(10, 110 + (i*20), commands[i].name);
+			draw_text(10, 110 + (yPos*20), commands[i].name);
 			yPos += 20;
 		}
 	} 

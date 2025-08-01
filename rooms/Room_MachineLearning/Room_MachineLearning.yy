@@ -51,8 +51,8 @@
   ],
   "name":"Room_MachineLearning",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Test",
+    "path":"folders/Objects/System/Core/Test.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -1,8 +1,14 @@
 if(!visible) return;
 //draw_sprite_stretched(sprite_editor_background, -1, -room_width, -room_height, room_width * 2, room_height * 2);
-for(var i=0; i<= max(room_width, room_height); i+=32) {
-	    draw_line(0, i, room_width, i);
-	    draw_line(i, 0, i, room_height);
+var pos = 0;
+while(pos < room_width) {
+	draw_line(pos, 0, pos, room_height);
+	pos += gridSize;
+}
+pos = 0;
+while(pos < room_height) {
+	draw_line(0, pos, room_width, pos);
+	pos += gridSize;
 }
 draw_set_color(c_red);
 var INV_SIZE = 1;

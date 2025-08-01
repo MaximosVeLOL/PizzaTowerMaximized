@@ -66,7 +66,7 @@ global.settings = {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
-		muteAll : true,
+		muteAll : false,
 	},
 	videoSettings : {
 		fullscreen : false,
@@ -75,7 +75,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		multiplayer : true,
+		multiplayer : false,
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -90,10 +90,16 @@ global.misc = { //Bye bye o_GameManager's font!
 	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10)
 }
 audio_group_load(AG_Sound);
+/*
 if(false) {
 	room_goto(Room_MachineLearning);
 	return;
 }
+if(true) {
+	room_goto(Room_FeatureTest);
+	instance_create_depth(200,200,0,o_Player_Network);
+	return;
+}*/
 /*
 if(global.settings.gameplaySettings.debugEnabled) {
 	instance_create_depth(0,0,0,o_DEBUG_Console);
@@ -106,9 +112,9 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 */
 var DEBUG_STARTUP = {
 	startInLevelEditor : false,
-	startInDemoRoom : true,
-	startUpRoom : ETBRoom_Level1_2,
-	startUpPos : [200, 300],
+	startInDemoRoom : false,
+	startUpRoom : Room_DemoRoom,
+	startUpPos : [200, 200],
 }
 if(global.settings.gameplaySettings.debugEnabled) {
 	if(DEBUG_STARTUP.startInLevelEditor) {
@@ -123,3 +129,4 @@ if(global.settings.gameplaySettings.debugEnabled) {
 	}
 	else room_goto(Room_Disclaimer);
 }
+draw_text(480,270, "INITIALIZATION");
