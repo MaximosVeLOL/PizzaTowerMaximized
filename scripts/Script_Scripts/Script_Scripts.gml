@@ -163,8 +163,8 @@ function LoadSettings() {
 function GetPlayer() {
 	return instance_nearest(x,y,o_PlayerParent);
 }
-function CreateParticle(x,y, ob) {
-	var o = instance_create_depth(x,y, 10, ob);
+function CreateParticle(x,y, ob, information = {}) {
+	var o = instance_create_depth(x,y, 10, ob, information);
 	o.parent = object_index;
 }
 /*

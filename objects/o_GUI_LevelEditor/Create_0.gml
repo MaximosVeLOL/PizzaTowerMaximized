@@ -1,4 +1,4 @@
-o_event_inherited();
+event_inherited();
 add(new Screen());
 depth = -1000;
 currentObject = noone;
@@ -53,7 +53,7 @@ createRoom = function() {
 	room_goto(newRoom);
 	maxRoomIndex = newRoom;
 	roomArray[array_length(roomArray)] = "Room " + string(array_length(roomArray));
-	screens[0].Get("editor_utilities").Get()
+	screens[0].Get("editor_utilities").Get().ChangeInformation(roomArray);
 }
 
 startLevel = function() {

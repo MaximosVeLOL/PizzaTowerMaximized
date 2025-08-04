@@ -6,8 +6,8 @@
   "name":"o_Le_En_PepGoblin",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemy",
-    "path":"folders/Objects/Enemy.yy",
+    "name":"PreETB",
+    "path":"folders/Objects/Enemy/PreETB.yy",
   },
   "parentObjectId":null,
   "persistent":false,

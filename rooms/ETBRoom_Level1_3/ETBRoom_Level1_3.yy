@@ -71,6 +71,7 @@
     {"name":"inst_3495F2AE","path":"rooms/ETBRoom_Level1_3/ETBRoom_Level1_3.yy",},
     {"name":"inst_30B6F7D4","path":"rooms/ETBRoom_Level1_3/ETBRoom_Level1_3.yy",},
     {"name":"inst_5516CFBB","path":"rooms/ETBRoom_Level1_3/ETBRoom_Level1_3.yy",},
+    {"name":"inst_5D26F833","path":"rooms/ETBRoom_Level1_3/ETBRoom_Level1_3.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -156,6 +157,7 @@
         {"$GMRInstance":"v2","%Name":"inst_3495F2AE","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3495F2AE","objectId":{"name":"o_Le_Transition","path":"objects/o_Le_Transition/o_Le_Transition.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":4.0,"x":-96.0,"y":928.0,},
         {"$GMRInstance":"v2","%Name":"inst_30B6F7D4","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_30B6F7D4","objectId":{"name":"o_Le_Transition","path":"objects/o_Le_Transition/o_Le_Transition.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":6.0,"x":1536.0,"y":192.0,},
         {"$GMRInstance":"v2","%Name":"inst_5516CFBB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5516CFBB","objectId":{"name":"o_Player_ETB","path":"objects/o_Player_ETB/o_Player_ETB.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1440.0,"y":338.0,},
+        {"$GMRInstance":"v2","%Name":"inst_5D26F833","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5D26F833","objectId":{"name":"o_Le_Slippery","path":"objects/o_Le_Slippery/o_Le_Slippery.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1152.0,"y":352.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_2","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_52203C9A","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_52203C9A","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sprite_level_lamp","path":"sprites/sprite_level_lamp/sprite_level_lamp.yy",},"x":512.0,"y":960.0,},
@@ -186,10 +188,10 @@
           7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,-4,0,27,18,19,18,
           19,18,19,18,19,18,19,18,19,18,19,18,19,18,19,18,19,18,19,18,19,18,19,18,-19,0,20,7,8,7,8,7,8,7,8,7,8,
           7,8,7,8,7,8,7,8,7,8,-394,0,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"tileset_tower","path":"tilesets/tileset_tower/tileset_tower.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"tileset_tower","path":"tilesets/tileset_tower/tileset_tower.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_51C8EF75","animationSpeed":1.0,"colour":4294967295,"frozen":true,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_51C8EF75","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"level1_3","path":"sprites/level1_3/level1_3.yy",},"x":0.0,"y":0.0,},
-      ],"depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Assets_1","properties":[],"resourceType":"GMRAssetLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":false,},
+      ],"depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Assets_1","properties":[],"resourceType":"GMRAssetLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190335,"depth":500,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "name":"ETBRoom_Level1_3",

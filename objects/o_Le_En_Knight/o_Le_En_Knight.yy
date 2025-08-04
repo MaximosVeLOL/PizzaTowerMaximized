@@ -1,15 +1,20 @@
 {
   "$GMObject":"",
   "%Name":"o_Le_En_Knight",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"o_Le_En_Knight",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemy",
-    "path":"folders/Objects/Enemy.yy",
+    "name":"PreETB",
+    "path":"folders/Objects/Enemy/PreETB.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_Le_En_Parent",
+    "path":"objects/o_Le_En_Parent/o_Le_En_Parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

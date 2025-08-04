@@ -903,6 +903,17 @@ switch(state) {
 		}
 	break;
 	
+	case "slip":
+		sprite_index = spr_player_slip;
+		CreateEffect({sprite_index : sprite_effect_dashcloud}); //Same thing, original sprite is spr_slidecloud
+		velocity[0] = movespeed * xscale;
+		movespeed -= 0.2;
+		if(movespeed <= 0) setState("normal");
+		if(PLAYER_TOUCHING) {
+			setState("bump");
+		}
+	break;
+	
 	
 	default:
 		show_message("State not implemented! State: " + state);

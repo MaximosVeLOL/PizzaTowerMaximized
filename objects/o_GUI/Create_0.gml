@@ -192,6 +192,10 @@ function List(_x,_y, w, h, _information, _onChange = function(){}, _informationT
 			
 		}
 	}
+	static ChangeInformation = function(newInformation, changeElementHeight = true) {
+		information = newInformation;
+		if(changeElementHeight) elementHeight = transform.height / array_length(information);
+	}
 }
 function Text(_x,_y, _text, isActive = true ) : Element(_x, _y, 0, 0, isActive) constructor {
 	//x = _x;

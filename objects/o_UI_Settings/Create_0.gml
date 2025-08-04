@@ -1,4 +1,4 @@
-event_inherited();
+o_event_inherited();
 setPlayerMoveset = function() {
 	global.settings.playerSettings.moveSet = currentOption;
     setScreen(4);
