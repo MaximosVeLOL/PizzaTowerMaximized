@@ -1,7 +1,7 @@
-if(GetInput("up", 1, other.PD)) {
+if(GetInput("up", 1)) {
 	with(o_PlayerParent) {
 		if(PLAYER_GROUNDED && velocity[0] == 0 && state != "door" && inventory.key) {
-			CreateParticle(x, y, o_P_DeadEnemy); //I have a theory: What if door sprites changed their origin just to make key particle aligned properly?
+			instance_create_depth(x, y, 0, o_P_DeadEnemy, {sprite_index : sprite_level_door_key_gib}); //I have a theory: What if door sprites changed their origin just to make key particle aligned properly?
 			//instance_create_depth(other.x,other.y,0, o_P_DeadEnemy, {sprite_index : sprite_level_door_key_gib});
 			inventory.key = false;
 			

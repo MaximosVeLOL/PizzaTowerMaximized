@@ -15,7 +15,7 @@ None of the objects to check for (eg. chainsaw, bullets) are implemented yet. So
 if(sprite_index == sprite_level_pizzabox) {
 	if(place_meeting(x,y,o_PlayerParent)) {
 		with(instance_place(x,y,o_PlayerParent)) {
-			if((state == "freefall" || (state == "jump" || state == "highjump") && GetInput("jump", 0, PD)) && velocity[1] > 0) {
+			if((state == "freefall" || (state == "jump" || state == "highjump") && GetInput("jump", 0)) && velocity[1] > 0) {
 				other.open();
 				setState("jump");
 				velocity[1] = -14;

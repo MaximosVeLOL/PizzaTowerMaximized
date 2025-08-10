@@ -6,7 +6,7 @@
 		other.targetPD = PD;
 		other.setState("grabbed");
 	}
-	if((state == "jump" && GetInput("jump", 0, PD) || state == "freefall") && velocity[1] > 0) {
+	if((state == "jump" && GetInput("jump", 0) || state == "freefall") && velocity[1] > 0) {
 		setState("stunned");
 		setSprite("stomped");
 		with(other) {

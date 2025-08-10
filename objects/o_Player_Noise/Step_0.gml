@@ -1,5 +1,11 @@
-var moveX = GetInput("right", 0, PD) - GetInput("left", 0, PD);
-var moveY = GetInput("down", 0, PD) - GetInput("up", 0, PD);
+//This is weird... Whenever I spawn this, it destroys itself. I think its haunted???
+
+
+
+
+
+var moveX = GetInput("right", 0) - GetInput("left", 0);
+var moveY = GetInput("down", 0) - GetInput("up", 0);
 switch(state) {
 	case "normal":
 		velocity[0] = movespeed * moveX;
@@ -13,7 +19,7 @@ switch(state) {
 			sprite_index = sprite_level_noise_button;
 			image_index = 0;
 		}
-		if(GetInput("dash", 1, PD)) setState("button");
+		if(GetInput("dash", 1)) setState("button");
 	break;
 	
 	case "button":

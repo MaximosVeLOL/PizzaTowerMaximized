@@ -4,7 +4,7 @@ reqStatesBottom = ["jump", "superJump", "highJump", "knight"];
 reqStatesTop = ["freefall", "superslam", "knight"];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
 onTopBreak = function() {
-	with(GetPlayer()) {
+	with(o_PlayerParent) {
 		if(state == "freefall") {
 			animVar = true;
 			velocity[1] = -7;
@@ -13,7 +13,7 @@ onTopBreak = function() {
 	}
 }
 onBottomBreak = function() {
-	with(GetPlayer()) {
+	with(o_PlayerParent) {
 		if(state == "jump" && velocity[1] < 0) velocity[1] = 1;
 	}
 }

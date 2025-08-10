@@ -1,5 +1,5 @@
-var moveX = GetInput("right", 0, PD) - GetInput("left", 0, PD);
-var moveY = GetInput("down", 0, PD) - GetInput("up", 0, PD);
+var moveX = GetInput("right", 0) - GetInput("left", 0);
+var moveY = GetInput("down", 0) - GetInput("up", 0);
 switch(state) {
 	case "normal":
 		velocity[0] = movespeed * moveX;
@@ -8,7 +8,7 @@ switch(state) {
 			xscale = moveX;
 			movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 		}
-		if(GetInput("jump", 0, PD)) velocity[1] = -9;
+		if(GetInput("jump", 0)) velocity[1] = -9;
 		if(PLAYER_GROUNDED) {
 			sprite_index = sprite_player_idle_suprise;
 		}

@@ -6,8 +6,10 @@ switch(editorLayer) {
 	case EditorLayers.Object:
 		gridSize = keyboard_check(vk_shift) ? 0 : 32;
 		//Object placement code
-		if(currentObject != noone && mouse_check_button_pressed(mb_left)) {
-			instance_create_depth(round(mouse_x / gridSize) * gridSize, round(mouse_y / gridSize) * gridSize, 0, o_LevelEditorObject, {image_xscale : editorSize[0], image_yscale : editorSize[1]});
+		if(currentObject != noone && mouse_check_button(mb_left) && place_free(round(mouse_x / gridSize) * gridSize, round(mouse_y / gridSize) * gridSize)) {
+			if(GUI_IsInteracting(self, new GUI_Vector2(window_mouse_get_x(), window_mouse_get_y()) )) return;
+			var createdInstance = instance_create_depth(round(mouse_x / gridSize) * gridSize, round(mouse_y / gridSize) * gridSize, 0, currentObject, {image_xscale : editorSize[0], image_yscale : editorSize[1]});
+			//instance_deactivate_object(createdInstance);
 		}
 		//Object edit code
 		if(mouse_check_button(mb_right)) {

@@ -90,7 +90,7 @@ global.settings = {
 global.misc = { //Bye bye o_GameManager's font!
 	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10)
 }
-show_debug_overlay(true);
+//show_debug_overlay(true);
 audio_group_load(AG_Sound);
 /*
 if(false) {

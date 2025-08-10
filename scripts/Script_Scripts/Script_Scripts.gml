@@ -35,27 +35,6 @@ function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 	}
 	throw("Que?"); //We will never get to this point, unless the input type isn't set correctly
 }
-function GetAllInput(reqKey, inputType = 0) {
-	for(var i = 1; i <= o_MultiplayerSystem.totalPlayers;i++) {
-		var s = variable_struct_get(global.settings.keyBinds, "p" + string(i));
-		var c = undefined;
-			switch(inputType) {
-				case 0:
-					c = keyboard_check(variable_struct_get(s, reqKey));
-				break;
-		
-				case 1:
-					c = keyboard_check_pressed(variable_struct_get(s, reqKey));
-				break;
-		
-				case 2:
-					c = keyboard_check_released(variable_struct_get(s, reqKey));
-				break;
-			}
-		if(c) return [c, i];
-	}
-	return [false, -1];
-}
 function CollideAndMove(mass, maxYVelocity = 20) {
 	if(!PLAYER_GROUNDED) velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
@@ -162,14 +141,6 @@ function LoadSettings() {
 	Log("Loaded Settings!");
 	gc_collect();
 }
-function GetPlayer() {
-	return instance_nearest(x,y,o_PlayerParent);
-}
-
-function CreateParticle(_x, _y, ob, information) {
-	instance_create_depth(_x,_y, 0, ob);
-}
-
 
 /*
 function CreateParticle(_x,_y, ob, information = {}) {
@@ -249,8 +220,10 @@ function CreatePlayer(targX,targY) {
 	var inst = movesets[global.settings.playerSettings.moveSet]; //Big brain
 	//M_OPTI - Do we really need inst?
 	Log("Creating Player (" + object_get_name(inst) + ")");
-	with(instance_create_depth(targX,targY, -6, inst)) {
+	instance_create_depth(targX,targY, -6, inst);
+	/*
+	with() {
 		PD = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.registerPlayer() : 1;
-	}
+	}*/
 
 }

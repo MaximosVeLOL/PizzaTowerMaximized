@@ -1,5 +1,5 @@
-var moveX = GetInput("right", 0, PD) - GetInput("left", 0, PD);
-var moveY = GetInput("down", 0, PD) - GetInput("up", 0, PD);
+var moveX = GetInput("right", 0) - GetInput("left", 0);
+var moveY = GetInput("down", 0) - GetInput("up", 0);
 if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "normal";
 switch(state) {
 	
@@ -15,7 +15,7 @@ switch(state) {
 					movespeed = movespeed < 4 ? movespeed + 0.5 : 4;
 				}
 				else sprite_index = spr_player_idle;
-				if(GetInput("jump", 1, PD)) {
+				if(GetInput("jump", 1)) {
 					setState("jump");
 					playSound(sfx_jump);
 					velocity[1] = -9;
@@ -46,7 +46,7 @@ switch(state) {
 		}
 		else sprite_index = spr[1];
 		
-		if(GetInput("jump", 2, PD) && velocity[1] < 0) velocity[1] /= 2;
+		if(GetInput("jump", 2) && velocity[1] < 0) velocity[1] /= 2;
 		if(moveX != xscale) movespeed = 0;
 		if(moveX != 0) {
 			xscale = moveX;
@@ -58,7 +58,7 @@ switch(state) {
 	break;
 	
 	case "noclip":
-		movespeed = GetInput("dash", 0, PD) ? 20 : 10;
+		movespeed = GetInput("dash", 0) ? 20 : 10;
 		x += moveX * movespeed;
 		y += moveY * movespeed;
 		return;

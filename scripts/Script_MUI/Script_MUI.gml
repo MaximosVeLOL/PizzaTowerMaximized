@@ -11,6 +11,17 @@ function GUI_IsTouchingRect(targetRect, _x, _y) {
 	
 }
 
+function GUI_IsInteracting(GUIHandler, targetVector) {
+	for(var i = 0 ; i < array_length(GUIHandler.allObjects);i++) {
+		var currentObject = GUIHandler.allObjects[i];
+		if(!currentObject.active) continue;
+		if(targetVector.x >= currentObject.rect.x && targetVector.x <= currentObject.rect.x + currentObject.rect.width && targetVector.x >= currentObject.rect.y && targetVector.y <= currentObject.rect.y + currentObject.rect.height) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function GUI_FindObject(GUIHandler, objectName) {
 	var j = 0;
 	for(var i = 0 ; i < array_length(GUIHandler.allObjects);i++) {
@@ -256,16 +267,19 @@ function GUI_Component_ObjectList(_elements, _maxHElements, _pageComponent = NUL
 			var currentObjectSprite = object_get_sprite(current);
 			var pRect = parentObject.rect;
 			//draw_sprite(currentObjectSprite, -1, pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE));
-			draw_sprite_pos(currentObjectSprite, -1, pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ((position.x + 1) * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ( (position.x+1) * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), 1);
 			var mouse = new GUI_Vector2(window_mouse_get_x(), window_mouse_get_y());
 			//draw_rectangle(pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ((position.x + 1) * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), false);
 			if(mouse.x >= pRect.x + rect.x + (position.x * IMAGE_SIZE) && mouse.x <= pRect.x + rect.x + ((position.x+1) * IMAGE_SIZE) && mouse.y >= pRect.y + rect.y + (position.y * IMAGE_SIZE) && mouse.y <= pRect.y + rect.y + ((position.y+1) * IMAGE_SIZE)) {
+				draw_set_color(global.GUIStyle.c_Highlight);
+				draw_rectangle(pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ((position.x + 1) * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), false );
 				if(mouse_check_button_pressed(mb_left) && !check) {
 					check = true;
 					index = i;
 					o_MUI_LevelEditor.currentObject = current;
 				} 
 			}
+			draw_sprite_pos(currentObjectSprite, -1, pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ((position.x + 1) * IMAGE_SIZE), pRect.y + rect.y + (position.y * IMAGE_SIZE), pRect.x + rect.x + ( (position.x+1) * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), pRect.x + rect.x + (position.x * IMAGE_SIZE), pRect.y + rect.y + ((position.y + 1) * IMAGE_SIZE), 1);
+
 			position.x++;
 			if(position.x >= maxHElements) {
 				position.x = 0;

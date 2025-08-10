@@ -1,5 +1,5 @@
-var moveX = GetInput("right", 0, PD) - GetInput("left", 0, PD);
-var moveY = GetInput("down", 0, PD) - GetInput("up", 0, PD);
+var moveX = GetInput("right", 0) - GetInput("left", 0);
+var moveY = GetInput("down", 0) - GetInput("up", 0);
 if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "normal";
 //if(keyboard_check(vk_shift)) game_set_speed(1, gamespeed_fps);
 //else game_set_speed(60, gamespeed_fps);
@@ -34,37 +34,37 @@ switch(state) {
 				tempVar[0] = 0;
 				sprite_index = choose(sprite_player_idle_suprise, spr_player_grabbing_throw);
 			}
-			if(GetInput("up", 1, PD) && PLAYER_GROUNDED) setState("highJump", true);
+			if(GetInput("up", 1) && PLAYER_GROUNDED) setState("highJump", true);
 			
 		}
 		movespeed = movespeed > 6 ? movespeed - 0.5 : movespeed;
-		if(GetInput("jump", 1, PD)) {
+		if(GetInput("jump", 1)) {
 			setState("jump");
 			CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_PlayerParent.xscale});
 			velocity[1] = -9;
 		}
-		if(GetInput("down", 0, PD)) setState("crouch");
-		if(GetInput("dash", 0, PD) && !PLAYER_TOUCHING) setState("mach1", true, true);
-		//if(GetInput("shoot", 1, PD) && inventory.gun) setState("shotgun");
+		if(GetInput("down", 0)) setState("crouch");
+		if(GetInput("dash", 0) && !PLAYER_TOUCHING) setState("mach1", true, true);
+		//if(GetInput("shoot", 1) && inventory.gun) setState("shotgun");
 		if(!PLAYER_GROUNDED) setState("jump");
 	break;
 	
 	case "mach1":
 		sprite_index = spr_player_mach1;
 		playSound(sfx_mach1);
-		if(moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD) || PLAYER_TOUCHING) {
+		if(moveX != xscale && moveX != 0 || !GetInput("dash", 0) || PLAYER_TOUCHING) {
 			setState("normal");
 		}
 		movespeed += movespeed <= 8 ? 0.2 : 0;
 		velocity[0] = round(movespeed * xscale);
 		if(PLAYER_GROUNDED) {
-			if(GetInput("down", 0, PD)) setState("crouchslide", false);
+			if(GetInput("down", 0)) setState("crouchslide", false);
 			tempVar[0]++;
 			if(tempVar[0] >= 35) {
 				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : xscale});
 				setState("mach2", false);
 			}	
-			if(GetInput("jump", 0, PD)) {
+			if(GetInput("jump", 0)) {
 				setState("jump");
 				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_PlayerParent.xscale});
 				playSound(sfx_jump);
@@ -79,7 +79,7 @@ switch(state) {
 			case "mach2":
 				movespeed = 10;
 				velocity[0] = xscale * movespeed;
-				if((moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD)) && PLAYER_GROUNDED) {
+				if((moveX != xscale && moveX != 0 || !GetInput("dash", 0)) && PLAYER_GROUNDED) {
 					setState("machslide");
 					tempVar[0] = 35;
 				}
@@ -87,17 +87,17 @@ switch(state) {
 				if(PLAYER_GROUNDED) {
 					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 					sprite_index = spr_player_mach2;
-					if(GetInput("down", 0, PD)) setState("crouchslide", false);
+					if(GetInput("down", 0)) setState("crouchslide", false);
 					playSound(sfx_mach2);
 					tempVar[0]++;
 					if(tempVar[0] >= 100) {
 						setState("mach3", false);
 						CreateEffect({sprite_index : sprite_effect_dust});
-						CreateParticle(x,y,o_P_StateInitEffect);
+						instance_create_depth(x,y,0,o_P_StateInitEffect);
 					}
 					
-					if(GetInput("jump", 1, PD)) velocity[1] = -9;
-					if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
+					if(GetInput("jump", 1)) velocity[1] = -9;
+					if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 				}
 				else setState("machfreefall", false);
 				
@@ -114,21 +114,21 @@ switch(state) {
 				velocity[0] = xscale * movespeed;
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					CreateParticle(x,y,o_P_Mach3Effect);
+					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 				sprite_index = global.settings.playerSettings.useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 				playSound(sfx_mach3);
 				playSound(sfx_mach2);
-				if(GetInput("up", 0, PD)) setState("superJump");
-				if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0, PD) ) && tempVar[2] <= 100 ) {
+				if(GetInput("up", 0)) setState("superJump");
+				if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0) ) && tempVar[2] <= 100 ) {
 					setState("machslide", false);
 					tempVar[0] = 35;
 				}
 				if(PLAYER_GROUNDED) {
 					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
-					if(GetInput("down", 0, PD)) setState("machroll", false);
-					if(GetInput("jump", 0, PD)) velocity[1] = -9;
+					if(GetInput("down", 0)) setState("machroll", false);
+					if(GetInput("jump", 0)) velocity[1] = -9;
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
@@ -137,7 +137,7 @@ switch(state) {
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
 				if(tempVar[2] != 0) tempVar[2]++;
-				if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
+				if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 			break;
 			
 			case "machslide":
@@ -149,7 +149,7 @@ switch(state) {
 				velocity[0] = movespeed * xscale;
 				movespeed -= 0.4;
 				if(movespeed <= 0) {
-					if(GetInput("dash", 0, PD) && moveX != xscale && moveX != 0) {
+					if(GetInput("dash", 0) && moveX != xscale && moveX != 0) {
 						setState("mach2", false);
 						xscale = moveX;
 					}
@@ -169,7 +169,7 @@ switch(state) {
 				sprite_index = spr_player_crouchslide;
 				velocity[0] = movespeed * xscale;
 				movespeed -= 0.2;
-				if(!GetInput("down", 0, PD) && tempVar[0] >= 35) {
+				if(!GetInput("down", 0) && tempVar[0] >= 35) {
 					setState("mach2", false);
 					mask_index = spr_player_mask;
 				}
@@ -192,11 +192,11 @@ switch(state) {
 				movespeed = 12;
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					CreateParticle(x,y,o_P_Mach3Effect);
+					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 				velocity[0] = movespeed * xscale;
-				if(!GetInput("down", 0, PD) && !place_meeting(x, y - 1, o_C_Parent)) {
+				if(!GetInput("down", 0) && !place_meeting(x, y - 1, o_C_Parent)) {
 					setState("mach3", false);
 					mask_index = spr_player_mask;
 					tempVar[0] = 35;
@@ -220,7 +220,7 @@ switch(state) {
 				playSound(sfx_spin);
 				velocity[0] = xscale * 10;
 				if(PLAYER_GROUNDED) {
-					if(!GetInput("dash", 0, PD)) { //If we aren't holding the mach 2 button 
+					if(!GetInput("dash", 0)) { //If we aren't holding the mach 2 button 
 						setState("freefall");
 						tempVar[0] = 2;
 					}
@@ -254,9 +254,9 @@ switch(state) {
 		
 		movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 		velocity[0] = moveX * movespeed;
-		if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
+		if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 		if(round(image_index) == image_number || velocity[1] > 0) sprite_index = spr[1];
-		if(GetInput("down", 0, PD)) {
+		if(GetInput("down", 0)) {
 			setState("freefall");
 			velocity[1] = 0;
 		}
@@ -281,7 +281,7 @@ switch(state) {
 		sprite_index = spr_player_mach2jump;
 		playSound(sfx_spin);
 		velocity = [0,0];
-		movespeed = GetInput("dash", 0, PD) ? 20 : 10;
+		movespeed = GetInput("dash", 0) ? 20 : 10;
 		x += moveX * movespeed;
 		y += moveY * movespeed;
 		return;
@@ -298,7 +298,7 @@ switch(state) {
 				if(tempVar[2] > 30) {
 					tempVar[0] = 1;
 					playSound(sfx_supermove);
-					CreateParticle(x,y,o_P_StateInitEffect);
+					instance_create_depth(x,y,0,o_P_StateInitEffect);
 				}
 			break;
 			
@@ -313,14 +313,14 @@ switch(state) {
 					sprite_index = spr_player_suJump_hit;
 					o_Camera.shakeMag = 10;
 				}
-				if(GetInput("dash", 1, PD)) {
+				if(GetInput("dash", 1)) {
 					velocity = [0,0];
 					if(moveX != 0) xscale = moveX;
 					setState("machfreefall", false);
 				}
 				if(tempVar[1] == 0) {
 					tempVar[1] = 6;
-					CreateParticle(x,y,o_P_Mach3Effect);
+					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
 			break;
@@ -340,13 +340,13 @@ switch(state) {
 				sprite_index = spr_player_highjump_prep;
 				SPRITE_NO_REPEAT;
 				velocity = [0,0];
-				if(GetInput("jump", 1, PD) && round(image_index) == image_number) {
+				if(GetInput("jump", 1) && round(image_index) == image_number) {
 					playSound(sfx_jump);
 					velocity[1] = -12;
 					tempVar[0] = 1;
 					image_speed = 1;
 				}
-				if(!GetInput("up", 0, PD)) setState("normal");
+				if(!GetInput("up", 0)) setState("normal");
 			break;
 			
 			case 1:
@@ -359,7 +359,7 @@ switch(state) {
 				}
 				if(moveY == 1) setState("freefall");
 				if(PLAYER_GROUNDED) {
-					if(GetInput("up", 0, PD))	{
+					if(GetInput("up", 0))	{
 						tempVar[0] = 0;
 						image_index = 0;
 					}
@@ -391,11 +391,11 @@ switch(state) {
 					playSound(sfx_crawl);	
 				}
 				if(!place_meeting(x,y - 1, o_C_Wall)) {
-					if(!GetInput("down", 0, PD)) {
+					if(!GetInput("down", 0)) {
 						setState("normal");
 						mask_index = spr_player_mask;
 					}
-					if(GetInput("jump", 1, PD)) {
+					if(GetInput("jump", 1)) {
 						animVar = false;
 						tempVar[0] = 1;
 						playSound(sfx_jump);
@@ -446,7 +446,7 @@ switch(state) {
 					tempVar[0] = 0;
 				}
 				
-				if(!GetInput("down", 0, PD)) setState("jump");
+				if(!GetInput("down", 0)) setState("jump");
 				tempVar[1]++;
 				if(tempVar[1] >= 30) {
 					tempVar[0] = 1;
@@ -470,7 +470,7 @@ switch(state) {
 				velocity[0] = 0;
 				tempVar[1]++;
 				if(tempVar[1] > 30) setState("superslam");
-				if(GetInput("dash", 0, PD)) setState("mach2");
+				if(GetInput("dash", 0)) setState("mach2");
 			break;
 			
 			case 2:
@@ -531,7 +531,7 @@ switch(state) {
 				sprite_index = spr_player_ladder;
 			break;
 		}
-		if(GetInput("jump", 1, PD)) {
+		if(GetInput("jump", 1)) {
 			setState("jump");
 			playSound(sfx_jump);
 			velocity[1] = -9;
@@ -580,10 +580,10 @@ switch(state) {
 				else if(PLAYER_GROUNDED) sprite_index = spr_player_grabbing; //We have to make a duplicate if statement here
 				
 				if(PLAYER_GROUNDED) {
-					if(GetInput("dash", 0, PD)) {
+					if(GetInput("dash", 0)) {
 						tempVar[0] = 1;
 					}
-					if(GetInput("jump", 0, PD)) {
+					if(GetInput("jump", 0)) {
 						playSound(sfx_jump);
 						velocity[1] = -9;
 						sprite_index = spr_player_grabbing_jump;
@@ -595,12 +595,12 @@ switch(state) {
 						sprite_index = spr_player_grabbing_fall;
 						image_index = 0;
 					}
-					if(!GetInput("jump", 0, PD) && velocity[1] < 0) velocity[1] /= 2;
+					if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 					
-					if(GetInput("dash", 0, PD)) {
+					if(GetInput("dash", 0)) {
 						tempVar[0] = 1;
 					}
-					if(GetInput("jump", 1, PD)) {
+					if(GetInput("jump", 1)) {
 						velocity[1] = -11;
 						tempVar[0] = 3;
 						playSound(sfx_spin);
@@ -622,15 +622,15 @@ switch(state) {
 				if(moveX == xscale && moveX != 0) sprite_index = spr_player_grabbing_punchprep;
 				else if(moveX != 0) sprite_index = spr_player_grabbing_backkickprep;
 				else {
-					if(GetInput("up", 0, PD)) sprite_index = spr_player_grabbing_up_prep;
-					else if(GetInput("down", 0, PD)) sprite_index = spr_player_grabbing_shoulderprep;
+					if(GetInput("up", 0)) sprite_index = spr_player_grabbing_up_prep;
+					else if(GetInput("down", 0)) sprite_index = spr_player_grabbing_shoulderprep;
 					else sprite_index = spr_player_grabbing_charge;
 				}
 				
 				//There are issues with keyboard_check_released not being valid in the first frames of the state!
 				//TODO - Fact check
 				//Yea its true, but only if theres other conditions
-				if(GetInput("dash", 2, PD)) {
+				if(GetInput("dash", 2)) {
 					switch(sprite_index) { //TODO - Find a better way?
 						case spr_player_grabbing_charge:
 							if(tempVar[1] < 20) {
@@ -744,7 +744,7 @@ switch(state) {
 				
 				if(!animVar) {
 					sprite_index = spr_player_knight_start;
-					if(round(image_index) == 9) CreateParticle(x,y-600, o_P_KnightEffect);
+					if(round(image_index) == 9) instance_create_depth(x,y-600, 0,o_P_KnightEffect);
 					if(round(image_index) == image_number) animVar = true;
 				}
 				else {
@@ -765,7 +765,7 @@ switch(state) {
 				else if(!animVar) sprite_index = spr_player_knight_idle;
 				if(animVar) sprite_index = spr_player_knight_land;
 				//Jump handling
-				if(GetInput("jump", 0, PD) && sprite_index != spr_player_knight_jumpprep) sprite_index = spr_player_knight_jumpprep;
+				if(GetInput("jump", 0) && sprite_index != spr_player_knight_jumpprep) sprite_index = spr_player_knight_jumpprep;
 				if(round(image_index) == image_number) {
 					if(sprite_index == spr_player_knight_jumpprep) {
 						velocity[0] = moveX * 4;
@@ -777,11 +777,11 @@ switch(state) {
 					if(animVar) animVar = false;
 				}
 				else if(sprite_index == spr_player_knight_jumpprep) velocity[0] = 0;
-				if(GetInput("dash", 1, PD)) {
+				if(GetInput("dash", 1)) {
 					playSound(sfx_swordswing);
 					CreateEffect({x : self.x + (xscale * 10), sprite_index : sprite_effect_dashcloud}); //Hehehe this is not slidecloud, its dashcloud
 					tempVar[0] = 3;
-					with(instance_create_depth(x,y,0,o_H_Sword, {image_xscale : xscale})) PD = other.PD;
+					instance_create_depth(x,y,0,o_H_Sword, {image_xscale : xscale});
 					image_index = 0;
 				}
 				
@@ -860,7 +860,7 @@ switch(state) {
 					xscale *= -1;
 					tempVar[1]++;
 				}
-				if(GetInput("jump", 1, PD) && PLAYER_GROUNDED) velocity[1] = -9;
+				if(GetInput("jump", 1) && PLAYER_GROUNDED) velocity[1] = -9;
 			break;
 			
 			case 2:

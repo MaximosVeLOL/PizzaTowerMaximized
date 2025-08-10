@@ -1,6 +1,6 @@
 if(variable_struct_get(o_GameManager.level.pizzakin, type)) {
-        image_alpha = instance_find(o_PlayerParent, playerID - 1).image_alpha;
-        if(instance_find(o_PlayerParent, playerID - 1).movespeed != 0) {
+        image_alpha = o_PlayerParent.image_alpha; //This is used when going into the door transition... What a waste of cycles...
+        if(o_PlayerParent.movespeed != 0) {
             setSprite("run");
         }
         else setSprite("idle");
@@ -11,8 +11,8 @@ if(variable_struct_get(o_GameManager.level.pizzakin, type)) {
         }
         */
         
-        ds_queue_enqueue(followQueue, instance_find(o_PlayerParent, playerID - 1).x);
-        ds_queue_enqueue(followQueue, instance_find(o_PlayerParent, playerID - 1).y);
+        ds_queue_enqueue(followQueue, o_PlayerParent.x);
+        ds_queue_enqueue(followQueue, o_PlayerParent.y);
         
         if (ds_queue_size(followQueue) > (LAG_STEPS * 2))
         {
@@ -20,10 +20,10 @@ if(variable_struct_get(o_GameManager.level.pizzakin, type)) {
             y = ds_queue_dequeue(followQueue) + 2
         }
         
-        image_xscale = instance_find(o_PlayerParent, playerID - 1).xscale;
-    if (instance_find(o_PlayerParent, playerID - 1).state == "hurt" || instance_find(o_PlayerParent, playerID - 1).state == "current")
+        image_xscale = o_PlayerParent.xscale;
+    if (o_PlayerParent.state == "hurt" || o_PlayerParent.state == "current")
     {
-        sprite_index = spr_pizzakin_shroom_panic
+		setSprite("panic");
     }
 	
 }

@@ -1,8 +1,11 @@
 image_xscale += faded ? -1 : 1;
 image_yscale += faded ? -1 : 1;
 
-if(image_xscale >= 10 && o_PlayerParent.image_alpha >= 1) { //The Pre-ETB video has a weird effect on the player, where he fades in with the door
+if(image_xscale >= 10 && o_PlayerParent.image_alpha > 0 && !faded) { //The Pre-ETB video has a weird effect on the player, where he fades in with the door
 	o_PlayerParent.image_alpha -= 0.1;
+}
+if(image_xscale <= 50 && o_PlayerParent.image_alpha < 1 && faded) {
+	o_PlayerParent.image_alpha += 0.1;
 }
 
 if(image_xscale >= 60 && !faded) {

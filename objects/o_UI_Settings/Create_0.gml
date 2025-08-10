@@ -14,6 +14,6 @@ screens = [
 	new CreateScreen("VIDEO", ["SMALL (480x270)", "NORMAL (960x540)", "BIG (1920x1080)", "BACK"], [setScreenType, setScreenType, setScreenType, function(){setScreen(2)}]),
 	new CreateScreen("GAMEPLAY", ["DEBUG ENABLED", "GOONER MODE ", "PLAYER SETTINGS", "KEY BINDS", "BACK"], [0,0, function(){setScreen(5)}, function(){instance_create_depth(0,0,0,o_UI_KeyBinds);instance_deactivate_object(self);}, function(){setScreen(0)}], [1,1,0,0,0], ["debugEnabled", "goonerMode"]),
 	new CreateScreen("PLAYER", ["SET MOVESET", "BACK"], [function(){setScreen(6)}, function(){setScreen(0)}]),
-	new CreateScreen("PLAYER", ["THE NOISE, PRE ETB", "ETB (DEFAULT)", "DEMO 1 TESTER", "DEMO 2 TESTER", "BACK"], [setPlayerMoveset, setPlayerMoveset, setPlayerMoveset, setPlayerMoveset, function(){setScreen(4);}], [3,3,3,3,0], ["moveSet"]),
+	new CreateScreen("PLAYER", ["THE NOISE", "PRE ETB", "ETB (DEFAULT)", "BACK"], [setPlayerMoveset, setPlayerMoveset, setPlayerMoveset, function(){setScreen(4);}], [3,3,3,0], ["moveSet"]),
 	
 ];

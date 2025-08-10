@@ -1,4 +1,4 @@
-if(GetInput("up", 1, other.PD)) {
+if(GetInput("up", 1)) {
 	with(o_PlayerParent) {
 		if(PLAYER_GROUNDED && velocity[0] == 0 && state != "door") {
 			if(instance_exists(o_MusicManager)) {

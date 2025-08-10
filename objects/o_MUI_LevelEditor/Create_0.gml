@@ -22,7 +22,7 @@ enum EditorLayers {
 	Tile,
 	EditMode,
 }*/
-editorLayer = 0;
+editorLayer = EditorLayers.None;
 editorSize = [1,1];
 errors = [];
 
@@ -42,6 +42,9 @@ createLevel = function() {
 	room_set_height(newRoom, 540);
 	room_set_view_enabled(newRoom, true);
 	room_goto(newRoom);
+	var bg = layer_background_create("Background", background_clouds);
+	layer_background_htiled(bg, true);
+	layer_background_vtiled(bg, true);
 	minRoomIndex = newRoom;
 	
 	//prompt("Input Level Name", function(str){levelSettings.name = str});
@@ -61,7 +64,7 @@ createRoom = function() {
 
 startLevel = function() {
 	CreatePlayer(0,0);
-	var objects = [o_Camera, o_MultiplayerSystem];
+	var objects = [o_Camera];
 	for(var i = 0 ; i < array_length(objects);i++) {
 		instance_create_depth(0,0,0,objects[i]);
 	}
@@ -138,10 +141,19 @@ buttonShit = function() {
 		}
 		}, 0, [500,500]);
 }
+
+placeHolderFunction = function() {
+	show_message("Placeholder!");
+}
+
 roomArray = ["Room 0"];
 
 //allObjects[0] = GUI_Object("Main");
-allObjects[0] = CreateObjectList(new GUI_Rect(0, 100, 400, 200), "ObjectList", ["Collision", "Warp", "Collectable", "Enemies"], [[o_C_Wall, o_C_Slope, o_C_Platform], [o_Le_Door, o_Le_KeyDoor, o_Le_Transition, o_Le_LevelGate], [o_Le_Points, o_Le_BigPoints, o_Le_Key, o_Le_LapPoints, o_Le_Pizzabox, o_Le_Pizzakin, o_Le_Treasure], [o_Le_En_Cheeseslime, o_Le_En_SausageMan, o_Le_En_Goblin]], 6, false);
-allObjects[1] = (CreateButton(new GUI_Rect(0,0, 100, 100), "ObjectButton", "Objects", function(){allObjects[0].Toggle(); }));
-allObjects[2] = CreateTilesetViewer(new GUI_Rect(100, 100, 400, 300), "TilesetViewer", ["Tower", "City", "Outside", "Secret"], false);
-allObjects[3] = CreateButton(new GUI_Rect(100,0, 100, 100), "TilesetButton", "Tiles", function(){allObjects[2].Toggle();editorLayer = EditorLayers.Object;});
+allObjects[0] = CreateObjectList(new GUI_Rect(0, 75, 400, 200), "ObjectList", ["Collision", "Warp", "Collectable", "Enemies"], [[o_C_Wall, o_C_Slope, o_C_Platform], [o_Le_Door, o_Le_KeyDoor, o_Le_Transition, o_Le_LevelGate], [o_Le_Points, o_Le_BigPoints, o_Le_Key, o_Le_LapPoints, o_Le_Pizzabox, o_Le_Pizzakin, o_Le_Treasure], [o_Le_En_Cheeseslime, o_Le_En_SausageMan, o_Le_En_Goblin]], 6, false);
+allObjects[1] = (CreateButton(new GUI_Rect(0,0, 75, 75), "ObjectButton", "Objects", function(){allObjects[0].Toggle();editorLayer = EditorLayers.Object; }));
+allObjects[2] = CreateTilesetViewer(new GUI_Rect(100, 75, 400, 300), "TilesetViewer", ["Tower", "City", "Outside", "Secret"], false);
+allObjects[3] = CreateButton(new GUI_Rect(75,0, 75, 75), "TilesetButton", "Tiles", function(){allObjects[2].Toggle();});
+allObjects[4] = CreateButton(new GUI_Rect(75 * 2, 0, 75, 75), "EditButton", "Edit", placeHolderFunction);
+allObjects[5] = CreateButton(new GUI_Rect(75 * 3, 0, 75, 75), "SaveButton", "Save", Save);
+allObjects[6] = CreateButton(new GUI_Rect(75 * 4, 0, 75, 75), "PlayButton", "Play", startLevel);
+allObjects[7] = CreateButton(new GUI_Rect(75 * 5, 0, 75, 75), "UtilButton", "Util", placeHolderFunction);

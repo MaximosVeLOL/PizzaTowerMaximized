@@ -5,7 +5,7 @@
 				renderText = true;
 			}
 			with(o_PlayerParent) {
-				if(PLAYER_GROUNDED && GetInput("up", 1, PD) && string_count("mach", state) == 0 && state != "door") {
+				if(PLAYER_GROUNDED && GetInput("up", 1) && string_count("mach", state) == 0 && state != "door") {
 					if(!other.gotoLevel && !instance_exists(o_PizzaTimeManager)) return; //One false can ruin it all
 					setState("door");
 				}

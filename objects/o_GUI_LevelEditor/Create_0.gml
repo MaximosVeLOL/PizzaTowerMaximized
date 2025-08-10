@@ -58,7 +58,7 @@ createRoom = function() {
 
 startLevel = function() {
 	CreatePlayer(0,0);
-	var objects = [o_Camera, o_MultiplayerSystem];
+	var objects = [o_Camera];
 	for(var i = 0 ; i < array_length(objects);i++) {
 		instance_create_depth(0,0,0,objects[i]);
 	}
