@@ -34,7 +34,7 @@ for(var i = 0 ; i < array_length(screens[currentScreen].optionText);i++) {
 			break;
 			
 			case 3:
-				if(i == variable_struct_get(variable_struct_get(global.settings, string_lower(screens[currentScreen].title) + "Settings"), screens[currentScreen].targetVars[0])) draw_set_alpha(1);
+				if(i == variable_struct_get(variable_struct_get(global.settings, string_lower(screens[currentScreen].title) + "Settings"), screens[currentScreen].targetVars[0]) - 1) draw_set_alpha(1);
 				else draw_set_alpha(0.5);
 				draw_text(settings.x, (settings.y + 200) + (i * TEXT_Y_MULT), string_upper(screens[currentScreen].optionText[i]));
 			break;

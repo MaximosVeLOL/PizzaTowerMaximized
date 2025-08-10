@@ -27,11 +27,17 @@ stunStuff = {
 	invincibleFrames : 0,
 	flashing : false,
 };
-
+/*
 PD = 1;
 if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index) > 1) {
 	instance_destroy();
 	return;
+}*/
+
+
+if(instance_number(object_index) > 1) {
+	Log("Extra Player in room" + string(room) + " (" + room_get_name(room) + ")");
+	instance_destroy();
 }
 mask_index = spr_player_mask;
 inventory = {
@@ -43,6 +49,8 @@ inventory = {
 #macro SPRITE_NO_REPEAT if(round(image_index) == image_number) image_speed = 0
 #macro GUI_RESET draw_set_color(c_white); draw_set_halign(fa_left); draw_set_valign(fa_top); draw_set_alpha(1); draw_set_font(-1)
 setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, overrideSound = true) {
+	if(state == "noclip") return; //Useful for debugging
+	
 	state = newState;
 	animVar = false;
 	tempVar = overrideTemp ? [0,0,0] : tempVar;

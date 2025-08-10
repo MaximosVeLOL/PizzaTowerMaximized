@@ -1,10 +1,10 @@
-	ForEachPlayer(function(targetPlayer) {
-		if(targetPlayer.bbox_right >= bbox_left && targetPlayer.bbox_left <= bbox_right && targetPlayer.bbox_bottom >= bbox_top && targetPlayer.bbox_top <= bbox_bottom) {
+
+		if(o_PlayerParent.bbox_right >= bbox_left && o_PlayerParent.bbox_left <= bbox_right && o_PlayerParent.bbox_bottom >= bbox_top && o_PlayerParent.bbox_top <= bbox_bottom) {
 			if(gotoLevel) {
 				image_index = 1; //Open sesame
 				renderText = true;
 			}
-			with(targetPlayer) {
+			with(o_PlayerParent) {
 				if(PLAYER_GROUNDED && GetInput("up", 1, PD) && string_count("mach", state) == 0 && state != "door") {
 					if(!other.gotoLevel && !instance_exists(o_PizzaTimeManager)) return; //One false can ruin it all
 					setState("door");
@@ -35,4 +35,3 @@
 			image_index = 0; //Hey Tim, i'd like to see Mr. Bigweld!
 			renderText = false;
 		}
-	});

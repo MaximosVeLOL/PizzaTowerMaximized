@@ -29,6 +29,7 @@
     {"name":"inst_7F8F84D4_1","path":"rooms/ETBRoom_Level1_1/ETBRoom_Level1_1.yy",},
     {"name":"inst_619A8108_1","path":"rooms/ETBRoom_Level1_1/ETBRoom_Level1_1.yy",},
     {"name":"inst_3456A51C_1","path":"rooms/ETBRoom_Level1_1/ETBRoom_Level1_1.yy",},
+    {"name":"inst_723F8ABF","path":"rooms/ETBRoom_Level1_1/ETBRoom_Level1_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -76,6 +77,7 @@
         {"$GMRInstance":"v2","%Name":"inst_7F8F84D4_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7F8F84D4_1","objectId":{"name":"o_Le_Points","path":"objects/o_Le_Points/o_Le_Points.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":416.0,"y":416.0,},
         {"$GMRInstance":"v2","%Name":"inst_619A8108_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_619A8108_1","objectId":{"name":"o_Le_BigPoints","path":"objects/o_Le_BigPoints/o_Le_BigPoints.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1824.0,"y":320.0,},
         {"$GMRInstance":"v2","%Name":"inst_3456A51C_1","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3456A51C_1","objectId":{"name":"o_Le_Door","path":"objects/o_Le_Door/o_Le_Door.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":2327.0,"y":512.0,},
+        {"$GMRInstance":"v2","%Name":"inst_723F8ABF","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_723F8ABF","objectId":{"name":"o_Le_En_SimpleEnemy","path":"objects/o_Le_En_SimpleEnemy/o_Le_En_SimpleEnemy.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":320.0,"y":448.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"BG","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"BG","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":22,"SerialiseWidth":79,"TileSerialiseData":[
           7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,7,8,

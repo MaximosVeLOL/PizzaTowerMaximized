@@ -13,7 +13,7 @@
   "name":"sfx_punch3",
   "parent":{
     "name":"Punch",
-    "path":"folders/Sounds/Punch.yy",
+    "path":"folders/Sounds/Enemies/Punch.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

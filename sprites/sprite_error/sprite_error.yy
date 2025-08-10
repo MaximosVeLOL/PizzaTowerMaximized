@@ -63,6 +63,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":711.0,
+    "seqWidth":711.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,

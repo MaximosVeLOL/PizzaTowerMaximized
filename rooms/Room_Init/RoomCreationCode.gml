@@ -75,7 +75,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		multiplayer : false,
+		//multiplayer : false, Removed due to it being too hard to implement...
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -86,9 +86,11 @@ global.settings = {
 	},
 	saveFileIndex : -1,
 }
+
 global.misc = { //Bye bye o_GameManager's font!
 	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10)
 }
+show_debug_overlay(true);
 audio_group_load(AG_Sound);
 /*
 if(false) {
@@ -113,7 +115,7 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 var DEBUG_STARTUP = {
 	startInLevelEditor : false,
 	startInDemoRoom : false,
-	startUpRoom : Room_DemoRoom,
+	startUpRoom : ETBRoom_Level1_1,
 	startUpPos : [200, 200],
 }
 if(global.settings.gameplaySettings.debugEnabled) {

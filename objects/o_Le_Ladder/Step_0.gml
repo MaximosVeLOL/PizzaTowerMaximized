@@ -1,5 +1,5 @@
-ForEachPlayer(function(player) {
-	with(player) {
+
+	with(o_PlayerParent) {
 		if(state != "ladder" && string_count(state, "mach") == 0 && state != "knight" && state != "bomb") {
 			other.buffer++;
 			if( (GetInput("up", 0, PD) && place_meeting(x,y-1,other) || GetInput("down", 0, PD) && place_meeting(x,y+1,other)) && other.buffer >= 20 ) {
@@ -14,4 +14,3 @@ ForEachPlayer(function(player) {
 		}
 		if(PLAYER_GROUNDED) buffer = 0;
 	}
-});

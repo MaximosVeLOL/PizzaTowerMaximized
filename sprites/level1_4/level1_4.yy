@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+      "textureGroupId":"{ \"name\":\"TextureG_DevOnly\", \"path\":\"texturegroups/TextureG_DevOnly\" }",
     },
   },
   "DynamicTexturePage":false,

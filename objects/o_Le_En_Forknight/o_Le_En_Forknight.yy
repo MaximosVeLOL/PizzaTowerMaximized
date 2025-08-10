@@ -1,15 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"o_Le_En_PepGoblin",
-  "eventList":[],
+  "%Name":"o_Le_En_Forknight",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"o_Le_En_PepGoblin",
+  "name":"o_Le_En_Forknight",
   "overriddenProperties":[],
   "parent":{
     "name":"PreETB",
     "path":"folders/Objects/Enemy/PreETB.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_Le_En_SimpleEnemy",
+    "path":"objects/o_Le_En_SimpleEnemy/o_Le_En_SimpleEnemy.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

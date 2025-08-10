@@ -15,6 +15,7 @@ setScreen = function(index) {
 	lastScreens[array_length(lastScreens) - 1] = currentScreen;
 	currentScreen = index;
 	currentOption = 0;
+	//if(array_length(lastScreens) > 10) throw("Implement automatic removal of this!!!");
 }
 settings = {
 	x : 480,

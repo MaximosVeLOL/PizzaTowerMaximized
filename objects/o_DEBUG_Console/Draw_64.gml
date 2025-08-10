@@ -13,7 +13,7 @@ if(active) {
 	//Hoo boy! We went from 3 for loops (2 for visuals), to just one for loop...
 	var yPos = 0;
 	for(i = 0 ; i < array_length(commands);i++) {
-		if(string_count(keyboard_string, commands[i].name) > 0) {
+		if(string_count(commands[i].name, keyboard_string) > 0) {
 			draw_set_color(c_black);
 			draw_rectangle(0, 100 + (yPos*20), string_width(commands[i]), 100 + ((yPos+1)*20), false);
 			draw_set_color(c_white);

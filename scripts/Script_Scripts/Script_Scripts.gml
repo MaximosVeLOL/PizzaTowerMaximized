@@ -111,20 +111,21 @@ repeat(abs(velocity[0])) {
 	*/
 }
 function ApplySettings() {
+	/*
 	if(global.settings.gameplaySettings.multiplayer && (global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover && global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary )) {
 		if(!instance_exists(o_MultiplayerSystem)) instance_create_depth(0,0,0,o_MultiplayerSystem)
 		if(instance_exists(o_PlayerParent)) CreatePlayer(o_PlayerParent.x,o_PlayerParent.y);
-	}
+	}*/
 	//var type = [[480, 270], [960, 540], [1920, 1080]];
 	//window_set_size(type[global.settings.videoSettings.resolutionOpt][0], type[global.settings.videoSettings.resolutionOpt][1]);
 	window_set_fullscreen(global.settings.videoSettings.fullscreen);
 	display_reset(0, global.settings.videoSettings.vSync);
-	if(global.settings.gameplaySettings.debugEnabled && !instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0, o_DEBUG_Console);
-	if(global.settings.audioSettings.muteAll || global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
+	if(global.settings.gameplaySettings.debugEnabled) if(!instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0, o_DEBUG_Console);
+	else instance_destroy(o_DEBUG_Console);
+	if(global.settings.audioSettings.muteAll || global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) {
 		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
 		if(global.settings.audioSettings.muteAll) audio_stop_all();
 	}
-	else instance_destroy(o_DEBUG_Console);
 	
 	
 	Log("Applied Settings!");
@@ -159,14 +160,34 @@ function LoadSettings() {
 	for(var i = 0 ; i < array_length(names);i++) variable_struct_set(global.settings, names[i], variable_struct_get(parsed, names[i])); //This will let the future settings still exist, while updating the previous version.
 	buffer_delete(file);
 	Log("Loaded Settings!");
+	gc_collect();
 }
 function GetPlayer() {
 	return instance_nearest(x,y,o_PlayerParent);
 }
-function CreateParticle(x,y, ob, information = {}) {
-	var o = instance_create_depth(x,y, 10, ob, information);
-	o.parent = object_index;
+
+function CreateParticle(_x, _y, ob, information) {
+	instance_create_depth(_x,_y, 0, ob);
 }
+
+
+/*
+function CreateParticle(_x,_y, ob, information = {}) {
+	//I hate this, I hate this so much.
+	//It gives too many errors, and crashes the game way too much.
+	//This makes me have dark thoughts... Anyways, enjoy the master and slave system!!!111
+	
+	//Cancelled, due to the many issues this brings...
+	//Why can't there be an owner? Why do the particles disappear when using this system, i want to cancel this game, just because of this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	//if(object_get_parent(ob) != o_P_Parent) Log("Warning! Our particle (" + string(ob) + ") does not have the particle object as its parent, bad things might happen...");
+	var object = noone;
+	for(var i = 0 ; i < instance_number(ob);i++) {
+		object = instance_find(ob, i);
+		if(variable_instance_exists(object, "owner") && object.owner == self) return;
+	}
+	instance_create_depth(_x,_y, 10, ob, information);
+}*/
 /*
 function GetParticle(reqOb) {
 	var inst = noone;
@@ -209,6 +230,11 @@ function StrCat() {
 	return s;
 }
 function Log(_message) { // 0 1 2 3 (size = 4)
+	if(!instance_exists(o_DEBUG_Console)) return;
+	
+	if(array_length(o_DEBUG_Console.logs) > 1 && _message == o_DEBUG_Console.logs[array_length(o_DEBUG_Console.logs) - 1]) return;
+	
+	
 	var log = "(" + string(get_timer() / 1_000_000) ;
 	if(false) log += ", " + StrCat(room, _GMFILE_, _GMFUNCTION_, _GMLINE_ );
 	log += ") : " + _message;
@@ -219,20 +245,12 @@ function Log(_message) { // 0 1 2 3 (size = 4)
 	}
 }
 function CreatePlayer(targX,targY) {
-	repeat((instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.maxPlayers : 1)) {
-		var movesets = [o_Player_Noise, o_Player_PreETB, o_Player_ETB];
-		var inst = movesets[global.settings.playerSettings.moveSet]; //Big brain
-		//M_OPTI - Do we really need inst?
-		Log("Creating Player (" + object_get_name(inst) + ")");
-		with(instance_create_depth(targX,targY, -6, inst)) {
-			PD = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.registerPlayer() : 1;
-		}
+	var movesets = [o_Player_Noise, o_Player_PreETB, o_Player_ETB];
+	var inst = movesets[global.settings.playerSettings.moveSet]; //Big brain
+	//M_OPTI - Do we really need inst?
+	Log("Creating Player (" + object_get_name(inst) + ")");
+	with(instance_create_depth(targX,targY, -6, inst)) {
+		PD = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.registerPlayer() : 1;
 	}
 
-}
-function ForEachPlayer(func) {
-	var amt = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.totalPlayers : instance_number(o_PlayerParent);
-	for(var i = 0 ; i < amt;i++) {
-		func(instance_find(o_PlayerParent, i), i);
-	}
 }

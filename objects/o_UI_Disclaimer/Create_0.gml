@@ -6,7 +6,7 @@ This time, there is much more new content to see. But also,
 
 Controls:
 Z-Jump, X-Dash, Enter-Pause, Arrow Keys-Move, Tab-Noclip
-Press Enter to continue";
+Press Enter to continue.";
 currentText = "";
 textDelay = 0;
 draw_set_color(c_white);

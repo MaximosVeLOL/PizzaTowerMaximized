@@ -8,6 +8,11 @@
   "bitDepth":1,
   "bitRate":128,
   "compression":0,
+  "ConfigValues":{
+    "Debug":{
+      "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
+    },
+  },
   "conversionMode":0,
   "duration":5.669637,
   "name":"sfx_keyjingle",

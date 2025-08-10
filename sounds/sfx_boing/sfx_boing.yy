@@ -12,8 +12,8 @@
   "duration":0.7938322,
   "name":"sfx_boing",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Enemies",
+    "path":"folders/Sounds/Enemies.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

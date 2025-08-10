@@ -1,4 +1,5 @@
-alpha += faded ? -0.05 : 0.05; //This relies heavily on the game manager, so just don't use it (when saving fps) !
+//alpha += faded ? -0.05 : 0.05; //This relies heavily on the game manager, so just don't use it (when saving fps) !
+alpha += faded ? -0.1 : 0.1; //Remain original to our ancestors.
 if(alpha == 1 && !faded) {
 	room_goto(o_GameManager.transSettings.nextRoom);
 	if(instance_exists(o_PlayerParent)) {

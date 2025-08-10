@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"o_Le_En_PinaCool",
-  "eventList":[],
+  "%Name":"o_H_Fork",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_PlayerParent","path":"objects/o_PlayerParent/o_PlayerParent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"o_Le_En_PinaCool",
+  "name":"o_H_Fork",
   "overriddenProperties":[],
   "parent":{
     "name":"PreETB",
@@ -27,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprite_mask_fork",
+    "path":"sprites/sprite_mask_fork/sprite_mask_fork.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
