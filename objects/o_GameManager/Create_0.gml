@@ -59,14 +59,35 @@ restartLevel = function() {
 	o_PlayerParent.setState("door");
 	o_PlayerParent.tempVar[0] = 1;
 }
-endLevel = function() {
+goToHub = function() {
+	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	score = 0;
+	room_goto(Room_DemoRoom);
+	var instances = [o_MusicManager, o_Camera];
+	for(var i = 0 ; i < array_length(instances);i++) {
+		if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
+	}
+	if(!instance_exists(o_PlayerParent)) CreatePlayer(256, 658);
+	
+	o_MusicManager.playNewSong(music_demoroom);
+}
+
+endLevel = function(win = false, instantly = false) {
+	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	if(instance_exists(o_PizzaTimeManager)) instance_destroy(o_PizzaTimeManager);
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
-	//instance_destroy(o_Camera);
-	//instance_destroy(o_MusicManager);
-	//instance_destroy(o_PlayerParent);
+	instance_destroy(o_Camera);
+	instance_destroy(o_MusicManager);
+	instance_destroy(o_PlayerParent);
 	mode = "none";
-	room_goto(Room_Empty);
-	instance_create_depth(0,0,0,o_UI_Rank);
+	
+	if(instantly) {
+		goToHub();
+	}
+	else {
+		room_goto(Room_Empty);
+		instance_create_depth(0,0,0,( win ? o_UI_Rank : o_UI_GameOver) );
+	}
 }
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
 	transSettings.nextRoom = _nextRoom;

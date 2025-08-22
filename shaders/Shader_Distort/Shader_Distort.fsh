@@ -1,4 +1,6 @@
-    varying vec2 v_vTexcoord;
+//This is NOT stolen from thecore0.
+
+	varying vec2 v_vTexcoord;
     varying vec4 v_vColour;
     uniform float time;
     #define A 0.01  //(A)mplitude

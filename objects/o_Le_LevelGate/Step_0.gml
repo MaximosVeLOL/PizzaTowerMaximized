@@ -4,19 +4,20 @@
 				image_index = 1; //Open sesame
 				renderText = true;
 			}
-			with(o_PlayerParent) {
+			else if(instance_exists(o_PizzaTimeManager)) image_index = 1;
+			with(o_PlayerParent) { // Door opening code
 				if(PLAYER_GROUNDED && GetInput("up", 1) && string_count("mach", state) == 0 && state != "door") {
 					if(!other.gotoLevel && !instance_exists(o_PizzaTimeManager)) return; //One false can ruin it all
 					setState("door");
 				}
-				if(round(image_index) == image_number && state == "door" && tempVar[0] == 0) {
+				if(round(image_index) == image_number && state == "door" && tempVar[0] == 0) { //On image complete
 					if(instance_exists(o_GameManager)) {
 						if(other.gotoLevel){
 							if(!instance_exists(o_UI_DoorTrans) ) {
 								o_GameManager.startLevel(other.targetRoom, other.newPos, other.newSong, other.loopData);
 							}
 						}
-						else if(instance_exists(o_PizzaTimeManager)) o_GameManager.endLevel();
+						else if(instance_exists(o_PizzaTimeManager)) o_GameManager.endLevel(true);
 					}
 					else {
 						if(!other.gotoLevel) instance_create_depth(0,0,0,o_UI_LevelEnd); // ???

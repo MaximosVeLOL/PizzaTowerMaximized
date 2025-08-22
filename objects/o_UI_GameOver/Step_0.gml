@@ -14,4 +14,6 @@ if(run) {
 */
 
 
-draw_text(480,270, "GAME OVER PLACEHOLDER");
+if(keyboard_check(vk_anykey)) {
+	o_GameManager.goToHub();
+}

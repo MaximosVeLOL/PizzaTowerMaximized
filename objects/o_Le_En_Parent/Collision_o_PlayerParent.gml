@@ -1,12 +1,11 @@
 
-	if(other.state == "stunned" && state == "normal") { //Grabbing when stunned
-		CreateEffect({x : (self.x + (xscale * 40)), sprite_index : sprite_effect_punchdust});
-		setState("enemy");
-		tempVar[2] = self;
-		other.targetPD = PD;
-		other.setState("grabbed");
+	if(state == "stunned" && other.state == "normal") { //Grabbing when stunned
+		CreateEffect({x : (other.x + (other.xscale * 40)), sprite_index : sprite_effect_punchdust});
+		other.setState("enemy");
+		other.tempVar[2] = self;
+		setState("grabbed");
 	}
-	if((state == "jump" && GetInput("jump", 0) || state == "freefall") && velocity[1] > 0) {
+	if((other.state == "jump" && GetInput("jump", 0) || other.state == "freefall") && other.velocity[1] > 0) {
 		setState("stunned");
 		setSprite("stomped");
 		with(other) {
@@ -17,9 +16,9 @@
 		tempVar[0] = 200;
 	}
 	//There is another if statement, but it gets replaced by this. HE is so stupiddddddeddddddd
-	if(state != "hitspecial" && PLAYER_GROUNDED && string_count("mach", state) && state != "mach1" && state != "normal" ) {
-		image_xscale = -xscale;
-		velocity[0] = xscale * 5;
+	if(state != "hitspecial" && PLAYER_GROUNDED && string_count("mach", other.state) && other.state != "mach1" && other.state != "normal" ) {
+		image_xscale = -other.xscale;
+		velocity[0] = other.xscale * 5;
 		if(other.state == "mach3" || other.state == "machroll") velocity[1] = -18;
 		else velocity[1] = -10;
 		setState("hit");

@@ -1,6 +1,7 @@
 var moveX = GetInput("right", 0) - GetInput("left", 0);
 var moveY = GetInput("down", 0) - GetInput("up", 0);
 if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "normal";
+//if(keyboard_check_pressed(ord("2") ) ) with(o_Le_En_Goblin){ with(instance_create_depth(x,y,0, o_Le_Bomb)) velocity = [5 * image_xscale, -2];}
 //if(keyboard_check(vk_shift)) game_set_speed(1, gamespeed_fps);
 //else game_set_speed(60, gamespeed_fps);
 switch(state) {
@@ -169,7 +170,7 @@ switch(state) {
 				sprite_index = spr_player_crouchslide;
 				velocity[0] = movespeed * xscale;
 				movespeed -= 0.2;
-				if(!GetInput("down", 0) && tempVar[0] >= 35) {
+				if(!GetInput("down", 0) && tempVar[0] >= 35 && !place_meeting(x, y - 1, o_C_Parent)) {
 					setState("mach2", false);
 					mask_index = spr_player_mask;
 				}
@@ -270,7 +271,7 @@ switch(state) {
 		velocity[0] = -2.5 * xscale;
 		sprite_index = spr_player_bump;
 		tempVar[0]++;
-		if (PLAYER_GROUNDED && velocity[1] >= 0 && tempVar[0] > 10) {
+		if (tempVar[0] >= 10) {
 			setState("normal");
 			if(place_meeting(x,y - 1, o_C_Parent) || place_meeting(x,y,o_C_Parent)) setState("crouch");
 		}
@@ -432,6 +433,8 @@ switch(state) {
 			CreateEffect({sprite_index : sprite_effect_landcloud});
 			playSound(sfx_land);
 			image_index = 0;
+			ShakeCamera((tempVar[0] == 0 ? 10 : 20), 0.5);
+			CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale});
 		}
 		switch(tempVar[0]) {
 			case 0:
@@ -474,6 +477,11 @@ switch(state) {
 			break;
 			
 			case 2:
+				if(!tempVar[2]) {
+
+					tempVar[2] = true;
+				}
+			
 				velocity[0] = 0;
 				image_speed = 1;
 				sprite_index = spr_player_freefall_impact;
@@ -572,12 +580,16 @@ switch(state) {
 			case 0: //Holding him
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
+					PlaySound(sfx_footstep);
 					xscale = moveX;
 					if(PLAYER_GROUNDED) sprite_index = spr_player_grabbing_move; //I hate animations!
 					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 					image_speed = movespeed/6;
 				}
-				else if(PLAYER_GROUNDED) sprite_index = spr_player_grabbing; //We have to make a duplicate if statement here
+				else {
+					if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep);
+					if(PLAYER_GROUNDED) sprite_index = spr_player_grabbing; //We have to make a duplicate if statement here
+				}
 				
 				if(PLAYER_GROUNDED) {
 					if(GetInput("dash", 0)) {
@@ -744,7 +756,7 @@ switch(state) {
 				
 				if(!animVar) {
 					sprite_index = spr_player_knight_start;
-					if(round(image_index) == 9) instance_create_depth(x,y-600, 0,o_P_KnightEffect);
+					if(round(image_index) == 9 && !instance_exists(o_P_KnightEffect) ) instance_create_depth(x,y-600, 0,o_P_KnightEffect);
 					if(round(image_index) == image_number) animVar = true;
 				}
 				else {
@@ -800,6 +812,8 @@ switch(state) {
 					image_index = 0;
 					movespeed = 0;
 					playSound(sfx_landmetal);
+					ShakeCamera(10, 0.5);
+					CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale});
 				}
 			break;
 			
@@ -854,13 +868,19 @@ switch(state) {
 				movespeed = movespeed < 8 ? movespeed + 0.2 : 8;
 				if(PLAYER_TOUCHING) {
 					if(tempVar[1] == 1) tempVar[2] = true;
-					if(tempVar[1] == 2) tempVar[0] = 3;
+					if(tempVar[1] == 2) {
+						if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
+						tempVar[0] = 3;
+					}
 					playSound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 					xscale *= -1;
 					tempVar[1]++;
 				}
-				if(GetInput("jump", 1) && PLAYER_GROUNDED) velocity[1] = -9;
+				if(PLAYER_GROUNDED) {
+					playSound(sfx_mach1); //Why wasn't this here?
+					if(GetInput("jump", 1)) velocity[1] = -9;
+				}
 			break;
 			
 			case 2:
@@ -873,7 +893,7 @@ switch(state) {
 			break;
 			
 			case 3:
-				if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
+				
 				if(!instance_exists(o_Le_BombExplosion))instance_create_depth(x,y,0,o_Le_BombExplosion);
 				tempVar[0] = 2;
 			break;

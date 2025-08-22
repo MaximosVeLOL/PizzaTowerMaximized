@@ -5,4 +5,4 @@ newPos = [0,0];
 loopData = [-1, -1];
 levelName = "";
 renderText = false;
-depth = 0;
+depth = 150;

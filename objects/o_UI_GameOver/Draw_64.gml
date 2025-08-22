@@ -1,0 +1,1 @@
+draw_text(480,270, "GAME OVER PLACEHOLDER");

@@ -1,2 +1,2 @@
-velocity = [0, -5];
+velocity = [0,0];
 time = 200;

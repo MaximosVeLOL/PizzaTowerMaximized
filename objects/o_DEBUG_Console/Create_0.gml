@@ -55,8 +55,9 @@ commands = [
 	}, "hurt"),
 	
 	new createCommand("pizza_time", function() {
+		if(array_length(currentArguments) == 0) currentArguments[0] = 340;
 		instance_create_depth(0,0,0,o_PizzaTimeManager);
-		o_PizzaTimeManager.time = currentArguments[0];
+		o_GameManager.level.time = currentArguments[0];
 	}, "pizza_time [time]"),
 	
 	new createCommand("new_song", function() {

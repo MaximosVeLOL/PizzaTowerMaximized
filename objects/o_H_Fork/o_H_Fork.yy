@@ -34,5 +34,5 @@
     "path":"sprites/sprite_mask_fork/sprite_mask_fork.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

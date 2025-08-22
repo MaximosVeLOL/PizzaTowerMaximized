@@ -1,0 +1,1 @@
+o_MusicManager.stopMusic(true);

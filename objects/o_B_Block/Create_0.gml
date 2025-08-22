@@ -1,6 +1,6 @@
 event_inherited();
 reqStatesX = ["mach2", "mach3", "machroll", "machfreefall"];
-reqStatesBottom = ["jump", "superJump", "highJump", "knight"];
+reqStatesBottom = ["jump", "mach2", "mach3", "superJump", "highJump", "knight"];
 reqStatesTop = ["freefall", "superslam", "knight"];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
 onTopBreak = function() {
@@ -8,6 +8,7 @@ onTopBreak = function() {
 		if(state == "freefall") {
 			animVar = true;
 			velocity[1] = -7;
+			tempVar[0] = 0;
 			tempVar[1] = 0;
 		}
 	}

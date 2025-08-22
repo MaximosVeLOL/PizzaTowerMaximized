@@ -11,6 +11,26 @@ function GUI_IsTouchingRect(targetRect, _x, _y) {
 	
 }
 
+function GUI_DestroyObject(handler, objectName) {
+	var successful = false;
+	var checkIndex = 0;
+	
+	for(checkIndex = 0 ; checkIndex < array_length(handler.allObjects);checkIndex++) {
+		
+		if(handler.allObjects[checkIndex].name == objectName) {
+			handler.allObjects[checkIndex] = NULL;
+			successful = true;
+			break;
+		}
+	}
+	if(!successful) return;
+	for(var i = checkIndex + 1 ; i < array_length(handler.allObjects) - 1; i++) {
+		handler.allObjects[i] = handler.allObjects[i] + 1;
+	}
+	array_resize(handler.allObjects, array_length(handler.allObjects) - 1);
+	
+}
+
 function GUI_IsInteracting(GUIHandler, targetVector) {
 	for(var i = 0 ; i < array_length(GUIHandler.allObjects);i++) {
 		var currentObject = GUIHandler.allObjects[i];
@@ -104,7 +124,7 @@ function GUI_Component(_name, _rect = new GUI_Rect(), isActive = true) construct
 			draw_rectangle(rect.x, rect.y, rect.x + rect.width, rect.y + rect.height, true);
 		}
 	}
-	static DrawRectBoth = function(overrideBGColor = true, useOutline = global.GUI.useOutline) {
+	static DrawRectBoth = function(overrideBGColor = true, useOutline = global.GUIStyle.useOutline) {
 		var pRect = parentObject.rect;
 		
 		if(!overrideBGColor) draw_set_color(global.GUIStyle.c_Background);
@@ -114,8 +134,14 @@ function GUI_Component(_name, _rect = new GUI_Rect(), isActive = true) construct
 			draw_rectangle(pRect.x + rect.x, pRect.y + rect.y, pRect.x + rect.x + rect.width, pRect.y + rect.y + rect.height, true);
 		}
 	}
-	static IsMouseOverRect = function() {
+	static IsMouseOverParentRect = function() {
 		return window_mouse_get_x() >= parentObject.rect.x && window_mouse_get_x() <= parentObject.rect.x + parentObject.rect.width && window_mouse_get_y() >= parentObject.rect.y && window_mouse_get_y() <= parentObject.rect.y + parentObject.rect.height;
+	}
+	static IsMouseOverRect = function() {
+		return window_mouse_get_x() >= rect.x && window_mouse_get_x() <= rect.x + rect.width && window_mouse_get_y() >= rect.y && window_mouse_get_y() <= rect.y + rect.height;
+	}
+	static IsMouseOverBoth = function() {
+		return window_mouse_get_x() >= parentObject.rect.x + rect.x && window_mouse_get_x() <= parentObject.rect.x + rect.x + rect.width && window_mouse_get_y() >= parentObject.rect.x + rect.y && window_mouse_get_y() <= parentObject.rect.x + rect.y + rect.height;
 	}
 	create = function(){};
 	step = function(){};
@@ -150,6 +176,9 @@ function GUI_Object(_name, _rect = new GUI_Rect(), _components = [], _children =
 		}
 		if(array_length(children) > 0) {
 			for(i = 0 ; i < array_length(children);i++) {
+				show_message("I: " + string(i) + "\n" + string(children[i]));
+				show_message( (variable_struct_exists(children[i], "Exectute") ? "Does exist" : "Doesn't exist") );
+				show_message(string(children[i].Exectute));
 				children[i].Execute();
 			}
 		}
@@ -183,26 +212,28 @@ function GUI_Object(_name, _rect = new GUI_Rect(), _components = [], _children =
 
 #region Components
 
-function GUI_Component_Text(_text) : GUI_Component("text") constructor {
-	text = _text;
+function GUI_Component_Text(_rect, _text = "") : GUI_Component("Text", _rect) constructor {
+	textDisplay = _text;
 	step = function() {
+		return;
 		draw_set_font(global.GUIStyle.font);
 		draw_set_color(global.GUIStyle.c_Text);
 		//show_debug_message(rect);
-		draw_text(parentObject.rect.x + rect.x, parentObject.rect.y + rect.y, text);
+		draw_text(parentObject.rect.x + rect.x, parentObject.rect.y + rect.y, textDisplay);
 	}
 }
-function GUI_Component_Button(_onClick) : GUI_Component("button") constructor {
+function GUI_Component_Button(_onClick, _rect = new GUI_Rect()) : GUI_Component("Button", _rect) constructor {
 	
 	onClick = _onClick;
 	
 	step = function() {
 		draw_set_color(global.GUIStyle.c_Background);
-		if(IsMouseOverRect()) {
+		if(rect.width == 0 && IsMouseOverParentRect() || rect.width != 0 && IsMouseOverRect()) {
 			draw_set_color(global.GUIStyle.c_Highlight);
 			if(mouse_check_button_pressed(mb_left)) onClick();
 		}
-		DrawParentRect();
+		if(rect.width == 0) DrawParentRect();
+		else DrawRect();
 	}
 }
 
@@ -290,8 +321,6 @@ function GUI_Component_ObjectList(_elements, _maxHElements, _pageComponent = NUL
 	
 }
 function GUI_Component_TextInput(_characterType, _rect = parentObject.rect, defaultInput = "t", _maxCharacters = -1, _onComplete = function(){}) : GUI_Component("TextInput", _rect) constructor {
-	textComponent = NULL;
-	buttonComponent = NULL;
 	
 	characterType = _characterType == "t" || _characterType == "n" ? _characterType : "t"; // t - text, n - num
 	
@@ -308,13 +337,14 @@ function GUI_Component_TextInput(_characterType, _rect = parentObject.rect, defa
 	
 	step = function() {
 		draw_set_color(global.GUIStyle.c_Background);
-		if(GUI_IsTouchingRect(rect, window_mouse_get_x(), window_mouse_get_y()))  {
+		if(IsMouseOverBoth())  {
 			draw_set_color(global.GUIStyle.c_Highlight);
 			if(mouse_check_button_pressed(mb_left)) typing = true;
 		}
 		if(typing) draw_set_color(global.GUIStyle.c_Selected);
 		//DrawParentRect();
-		draw_rectangle(parentObject.rect.x + rect.x, parentObject.rect.y + rect.y, parentObject.rect.x + rect.x + rect.width, parentObject.rect.y +  rect.y + rect.height, false);
+		DrawRectBoth();
+		
 		if(typing) {
 			inputIndex += (keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left));
 			inputIndex = clamp(inputIndex, 0, maxCharacters);
@@ -329,7 +359,7 @@ function GUI_Component_TextInput(_characterType, _rect = parentObject.rect, defa
 			//if(keyboard_check_pressed(vk_backspace)) input = string_copy(input, 0, inputIndex);
 		}
 		draw_set_color(global.GUIStyle.c_Text);
-		draw_text(parentObject.rect.x + rect.x, parentObject.rect.y + rect.y, MinimizeTextWithNewLines(input + (pleaseTypeDelay <= 0.5 ? "|" : ""), parentObject.rect.width) );
+		draw_text(parentObject.rect.x + rect.x, parentObject.rect.y + rect.y, input + (pleaseTypeDelay <= 0.5 ? "|" : "") );
 		
 	}
 }
@@ -380,9 +410,12 @@ function GUI_Component_TilesetViewer(_data, _rect) : GUI_Component("TilesetViewe
 
 
 
-function GUI_Component_Bar() : GUI_Component("Bar") constructor {
+function GUI_Component_Bar(_rect,) : GUI_Component("Bar", _rect) constructor {
 	step = function() {
-		var pRect = parentObject.rect;
+		draw_set_color(global.GUIStyle.c_Background);
+		if(rect.width == 0) DrawParentRect();
+		else DrawRect();
+		//var pRect = parentObject.rect;
 		//draw_rectangle(pRect.x + rect.x, pRect.y + rect.y + pRect)
 	}
 }
@@ -428,4 +461,17 @@ function CreateTilesetViewer(pos, name, inListElements, isActive = true) {
 	return object;
 }
 
+function CreatePrompt(pos, name, promptText, dataType, maxChars, onDestroy) { //This destroyed GUI, and this shows the true purpose of MGUI
+	//FUNC NAME - FUN_DEADBEEF
+	
+	var FUN_DEADBEEF = function() {
+		onDestroy(GUI_FindObject(o_MUI, name).GetComponent("TextInput").input);
+		GUI_DestroyObject(o_MUI, parentObject.name);
+	}
+	var object = new GUI_Object("name", pos, [new GUI_Component_Bar(pos),new GUI_Component_Text(new GUI_Rect(pos.width, 10, 0, 0), promptText), new GUI_Component_TextInput(dataType, new GUI_Rect((pos.width / 2) - 300, 100, 300, 100  ), "", maxChars, FUN_DEADBEEF)]);
+	object.AddChild(CreateButton(new GUI_Rect(pos.width - 100, pos.height - 200, 200, 100), "OkButton", "Ok!", FUN_DEADBEEF));
+	object.AddChild(CreateButton(new GUI_Rect(pos.width + 100, pos.height - 200, 200, 100), "CancelButton", "Cancel", FUN_DEADBEEF));
+	return object;
+
+}
 #endregion

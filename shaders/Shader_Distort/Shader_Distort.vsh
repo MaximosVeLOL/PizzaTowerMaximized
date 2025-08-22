@@ -1,3 +1,5 @@
+//This is NOT stolen from thecore0.
+
 //
 // Simple passthrough vertex shader
 //

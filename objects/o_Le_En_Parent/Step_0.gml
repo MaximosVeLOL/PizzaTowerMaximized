@@ -117,7 +117,7 @@ switch(state) {
 	
 	case "grabbed":
 		setSprite("stunfall"); //Grabbed sprite is the same as stun fall.
-		var parent = instance_find(o_PlayerParent, targetPD - 1);
+		var parent = o_PlayerParent;
 		image_xscale = -parent.xscale;
 		x = parent.x + (15 * parent.xscale);
 		y = parent.y;

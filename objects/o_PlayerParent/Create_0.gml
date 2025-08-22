@@ -76,7 +76,7 @@ hurt = function() {
 	setState("hurt");
 	tempVar[1] = 20;
 	stunStuff.invincibleFrames = 200;
-	playSound(choose(va_happy1, va_happy2, va_happy3));
+	playSound(choose(va_hurt1, va_hurt2, va_hurt3));
 	
 }
 playSound = function(snd, override = false) {

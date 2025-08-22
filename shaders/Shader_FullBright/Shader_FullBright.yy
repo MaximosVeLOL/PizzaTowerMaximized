@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"Shader_FullBright",
-  "name":"Shader_FullBright",
+  "%Name":"Shader_Fullbright",
+  "name":"Shader_Fullbright",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",

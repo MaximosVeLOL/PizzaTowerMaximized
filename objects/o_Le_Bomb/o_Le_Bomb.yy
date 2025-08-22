@@ -35,6 +35,9 @@
     "name":"sprite_level_bomb",
     "path":"sprites/sprite_level_bomb/sprite_level_bomb.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"sprite_level_bomb",
+    "path":"sprites/sprite_level_bomb/sprite_level_bomb.yy",
+  },
   "visible":true,
 }

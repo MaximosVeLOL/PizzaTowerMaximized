@@ -1,1 +1,1 @@
-y += sin(10.5 * (get_timer() / 1000000));
+offset += sin(10.5 * (get_timer() / 1000000));

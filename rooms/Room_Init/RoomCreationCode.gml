@@ -24,7 +24,7 @@ global.settings = {
 				dash : gp_face3,
 				shoot : gp_shoulderlb,
 			}
-		},
+		},/*
 		p2 : {
 			up : ord("W"),
 			down : ord("S"),
@@ -60,13 +60,14 @@ global.settings = {
 				dash : gp_face3,
 				shoot : gp_shoulderlb,
 			}
-		},
+		},*/
 	},
 	audioSettings : {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
 		muteAll : false,
+		surroundSound : false,
 	},
 	videoSettings : {
 		fullscreen : false,
@@ -74,7 +75,7 @@ global.settings = {
 		vSync : false,
 	},
 	gameplaySettings : {
-		debugEnabled : true,
+		debugEnabled : false,
 		//multiplayer : false, Removed due to it being too hard to implement...
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
@@ -112,13 +113,13 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 	instance_create_depth(0,0,0, o_GameManager);
 }
 */
-var DEBUG_STARTUP = {
-	startInLevelEditor : false,
-	startInDemoRoom : false,
-	startUpRoom : ETBRoom_Level1_1,
-	startUpPos : [200, 200],
-}
 if(global.settings.gameplaySettings.debugEnabled) {
+	var DEBUG_STARTUP = {
+		startInLevelEditor : false,
+		startInDemoRoom : true,
+		startUpRoom : ETBRoom_T5,
+		startUpPos : [200, 200],
+	}
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor);
 	}
@@ -130,5 +131,7 @@ if(global.settings.gameplaySettings.debugEnabled) {
 		CreatePlayer(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]);
 	}
 	else room_goto(Room_Disclaimer);
+
 }
+else room_goto(Room_Disclaimer);
 draw_text(480,270, "INITIALIZATION");

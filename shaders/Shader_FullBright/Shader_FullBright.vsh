@@ -1,10 +1,13 @@
-attribute vec2 in_Position;
-attribute vec2 in_Texcoord;
+//This uses stolen code from a decompile, thanks thecore0!
+
+attribute vec3 in_Position;
 attribute vec4 in_Colour;
-varying vec2 v_Texcoord;
-varying vec4 v_Colour;
-void main() {
-    v_Texcoord = in_Texcoord;
-    v_Colour = in_Colour;
-    gl_Position = vec4(in_Position.x, in_Position.y, 0.0, 1.0);
+attribute vec2 in_TextureCoord;
+
+varying vec2 v_texcoord;
+
+void main()
+{
+    gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] *     vec4(in_Position, 1.0);
+    v_texcoord = in_TextureCoord;
 }

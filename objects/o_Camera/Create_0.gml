@@ -6,3 +6,4 @@ if(instance_number(object_index) > 1) {
 image_speed = 0.35;
 hudVisible = true;
 shakeMag = 0;
+shakeMag_acc = 0;

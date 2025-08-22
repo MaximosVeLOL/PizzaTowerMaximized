@@ -3,7 +3,6 @@
   "%Name":"o_H_Sword",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_C_Parent","path":"objects/o_C_Parent/o_C_Parent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_H_Sword",

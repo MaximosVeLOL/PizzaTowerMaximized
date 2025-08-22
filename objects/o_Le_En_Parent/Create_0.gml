@@ -5,7 +5,6 @@ curMass = mass;
 velocity = [0,0];
 tempVar = [0,0,20];
 animVar = false;
-targetPD = -1;
 stunnable = true;
 die = function(dead_sprite, canMove = false) {
 	instance_destroy();
@@ -30,7 +29,7 @@ for(var i = 0; i <= string_length(obName);i++) {
 		name = "";
 	}
 }
-//mask_index = spr_player_mask;
+mask_index = spr_player_mask;
 setSprite = function(reqSpriteName) {
 	//if(!is_string(reqSpriteName)) LogError("Invalid type!", true);
 	sprite_index = asset_get_index("sprite_enemy_" + name + "_" + reqSpriteName);

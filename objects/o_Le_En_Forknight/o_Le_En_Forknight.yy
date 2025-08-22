@@ -3,6 +3,7 @@
   "%Name":"o_Le_En_Forknight",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_Le_En_Forknight",
@@ -32,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprite_enemy_forknight_walk",
+    "path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

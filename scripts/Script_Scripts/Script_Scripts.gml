@@ -1,12 +1,21 @@
-function PlaySound(snd, override = false, loop = false, canRepeat = false) {
-	if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll) {
-		return -1;
+ function PlaySound(snd, override = false, loop = false, canRepeat = false) {
+	var aud = -1;
+	try {
+		if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll) {
+			return -1;
+		}
+		if(override) audio_stop_sound(snd);
+		
+		aud = global.settings.audioSettings.surroundSound ? audio_play_sound_at(snd, x, y, 0, 100, 300, 0, loop, 999) : audio_play_sound(snd, 999, loop);
+		if(!loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
 	}
-	if(override) audio_stop_sound(snd);
-	//var aud = audio_play_sound(snd, 999, loop);
-	var aud = audio_play_sound_at(snd, x, y, 0, 100, 300, 0, loop, 999);
-	if(!loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
 	return aud;
+}
+function ShakeCamera(mag, acc) {
+	with(o_Camera) {
+		shake.mag += mag;
+		shake.acc += acc;
+	}
 }
 function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false) {
 	if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll) {

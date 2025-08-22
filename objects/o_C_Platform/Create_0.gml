@@ -4,3 +4,5 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderCollision)
 	visible = true;
 }
 else visible = false;
+
+child = noone;
