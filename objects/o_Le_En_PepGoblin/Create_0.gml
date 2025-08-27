@@ -1,2 +1,2 @@
 event_inherited();
-spriteBaseName = "pepgoblin"
+baseSpriteName = "pepgoblin";

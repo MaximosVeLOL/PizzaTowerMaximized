@@ -1,6 +1,15 @@
-CreateEffect({x : (other.x + (other.xscale * 40)), sprite_index : sprite_effect_punchdust});
+if(state != "hit" && state != "fly" || other.state == "grabbed") return;
+CreateEffect({sprite_index : sprite_effect_bang});
+
+if(state == "fly") {
+	other.setState("hit");
+	other.velocity = [5 * image_xscale,-10];
+	return;
+}
+
+
 setState("hit");
-other.tempVar[2] = self;
-setState("stunned");
-setSprite("stomped");
-PlaySound(sfx_bump);
+velocity[1] = -12;
+other.setState("stunned");
+other.setSprite("stomped");
+other.tempVar[0] = 200;

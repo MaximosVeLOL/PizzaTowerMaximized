@@ -1,2 +1,3 @@
 instance_activate_all(); 
-o_MusicManager.toggleMusicPlaying();
+if(instance_exists(o_MusicManager)) o_MusicManager.continueMusic();
+ApplySettings();

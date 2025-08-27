@@ -105,9 +105,48 @@ commands = [
 	
 	new createCommand("save", SaveSettings, "save"),
 	new createCommand("load", LoadSettings, "load"),
+	
+	new createCommand("shake_cam", function(){
+		ShakeCamera(currentArguments[0], currentArguments[1]);
+	}, "shake_cam [mag] [acc]")
 
 ];
+executeCommand = function(commandString) {
+		var reqCommand = "";
+		//Get the arguments
+		var _temp = "";
+		for(var i = 1; i <= string_length(commandString);i++) {
+			_temp += string_copy(commandString, i, 1);
+			if(string_count(" ", _temp) > 0 || i == string_length(commandString)) {
+				var actual = i == string_length(commandString) ? _temp : string_copy(_temp, 0, string_length(_temp) - 1); //Because it includes a space
+				
+				if(reqCommand == "") reqCommand = actual;
+				else {
+					array_resize(currentArguments, array_length(currentArguments) + 1);
+					currentArguments[array_length(currentArguments) - 1] = actual;
+				}
+				_temp = "";
+			}
+		}
+		array_resize(prevCommands, array_length(prevCommands) + 1);
+		prevCommands[array_length(prevCommands) - 1] = commandString;
+		prevCommandIndex = array_length(prevCommands) - 1;
+		//Find the command
+		for(var i = 0 ; i < array_length(commands);i++) {
+			if(commands[i].name == reqCommand) {
+				try {
+					commands[i].does();
+				}
+				catch(e) {
+					var m = "Error!\n" + e.longMessage;
+					Log(m);
+					show_message(m);
+				}
+			}
+		}
+		currentArguments = [];
 
+}
 settings = {
 	renderDebugText : true,
 	renderPlayerMask : false,

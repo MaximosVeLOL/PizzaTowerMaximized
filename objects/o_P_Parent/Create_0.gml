@@ -6,4 +6,4 @@ canMove = true;
 velocity = [0, 0];
 mass = 0.25;
 owner = noone;
-depth = -1;
+depth = -100;

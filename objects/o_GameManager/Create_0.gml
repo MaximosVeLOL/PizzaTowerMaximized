@@ -15,7 +15,6 @@ level = {
 	lap : 0,
 	time : 340, //5:40
 };
-#macro FPS_CRUNCH false
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
 #macro IMAGE_COMPLETE round(image_index) == image_number
@@ -61,6 +60,7 @@ restartLevel = function() {
 }
 goToHub = function() {
 	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);
 	score = 0;
 	room_goto(Room_DemoRoom);
 	var instances = [o_MusicManager, o_Camera];
@@ -68,13 +68,13 @@ goToHub = function() {
 		if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 	}
 	if(!instance_exists(o_PlayerParent)) CreatePlayer(256, 658);
-	
 	o_MusicManager.playNewSong(music_demoroom);
 }
 
 endLevel = function(win = false, instantly = false) {
 	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
 	if(instance_exists(o_PizzaTimeManager)) instance_destroy(o_PizzaTimeManager);
+	if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	instance_destroy(o_Camera);
 	instance_destroy(o_MusicManager);
@@ -85,19 +85,19 @@ endLevel = function(win = false, instantly = false) {
 		goToHub();
 	}
 	else {
+		room_instance_add(Room_Empty, 0, 0, ( win ? o_UI_Rank : o_UI_GameOver));
 		room_goto(Room_Empty);
-		instance_create_depth(0,0,0,( win ? o_UI_Rank : o_UI_GameOver) );
 	}
 }
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
 	transSettings.nextRoom = _nextRoom;
 	transSettings.newPos = _newPos;
 	if(!isDoorTrans) {
-		instance_create_depth(x,y,0,o_UI_FadeTrans);
+		instance_create_depth(x,y,-100,o_UI_FadeTrans);
 		transSettings.state = o_PlayerParent.state;
 		o_PlayerParent.state = "transition";
 	}
-	else instance_create_depth(o_PlayerParent.x,o_PlayerParent.y, 0, o_UI_DoorTrans);
+	else instance_create_depth(o_PlayerParent.x,o_PlayerParent.y, -100, o_UI_DoorTrans);
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!", true);
 	}

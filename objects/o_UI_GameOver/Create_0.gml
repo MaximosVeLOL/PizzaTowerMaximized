@@ -1,10 +1,9 @@
-/*
-gameOverYPos = 0;
-gameOverYVelo = 0;
-playerPos = [0,0];
+
+gameOverYPos = -200;
+playerPos = [480,270];
+tempVar = 0;
 killPlayer = false;
 run = false;
 alarm[0] = 40;
 
-*/
-PlaySound(music_lose);
+s = PlaySound(music_lose);

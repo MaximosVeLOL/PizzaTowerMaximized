@@ -7,10 +7,6 @@ if(GetInput("up", 1)) {
 			
 			setState("door");
 			tempVar[0] = 2; //M_OPTI - Wasting CPU cycles...
-			if(global.settings.playerSettings.moveSet == Moveset.PreETB && other.isPreETBDoor) {
-				tempVar[0] = 3;
-				instance_create_depth(other.x, other.y, 0, o_UI_DoorWin);
-			}
 			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover) {
 				var door = other;
 				with(instance_create_depth(other.x,other.y,other.depth, o_Le_Door)) {
@@ -18,6 +14,7 @@ if(GetInput("up", 1)) {
 					targetPos = door.targetPos;
 					newSong = door.newSong;
 					loopData = door.loopData;
+					isPreETBDoor = door.isPreETBDoor;
 				}
 				instance_destroy(door);
 				//delete door;
@@ -26,6 +23,11 @@ if(GetInput("up", 1)) {
 	}
 }
 if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) {
+	if(global.settings.playerSettings.moveSet == Moveset.PreETB && isPreETBDoor) {
+		instance_create_depth(x,y,0,o_UI_DoorWin);
+		return;
+	}
+	
 	if(instance_exists(o_GameManager)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);
 	else {
 		room_goto(targetRoom);

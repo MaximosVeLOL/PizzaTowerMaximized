@@ -1,6 +1,3 @@
-//This uses stolen code from a decompile, thanks thecore0!
-
-
 //
 // Simple passthrough vertex shader
 //

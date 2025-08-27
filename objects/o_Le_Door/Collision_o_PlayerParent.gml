@@ -10,8 +10,11 @@ if(GetInput("up", 1)) {
 		}
 	}
 }
-if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans)) {
-	
+if(other.state == "door" && round(other.image_index) == other.image_number && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) {
+	if(global.settings.playerSettings.moveSet == Moveset.PreETB && isPreETBDoor) {
+		instance_create_depth(x,y,0,o_UI_DoorWin);
+		return;
+	}
 	if(instance_exists(o_GameManager)) o_GameManager.gotoRoom(targetRoom, targetPos, true, newSong, loopData);
 	else {
 		room_goto(targetRoom);

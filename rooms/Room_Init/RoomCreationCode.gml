@@ -82,8 +82,8 @@ global.settings = {
 	},
 	playerSettings : {
 		moveSet : Moveset.ETB,
-		useOldMach3 : true,
-		
+		ETB_useOldMach3 : true,
+		PreETB_betterRunning : true,
 	},
 	saveFileIndex : -1,
 }
@@ -117,7 +117,7 @@ if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
 		startInDemoRoom : true,
-		startUpRoom : ETBRoom_T5,
+		startUpRoom : ETBRoom_Tutorial1,
 		startUpPos : [200, 200],
 	}
 	if(DEBUG_STARTUP.startInLevelEditor) {

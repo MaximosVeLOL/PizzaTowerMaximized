@@ -104,7 +104,8 @@ switch(state) {
 				
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					playSound(sfx_bump);
+					velocity[1] = -3;
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
 			break;
@@ -118,7 +119,7 @@ switch(state) {
 					instance_create_depth(x,y,0,o_P_Mach3Effect);
 				}
 				tempVar[1]--;
-				sprite_index = global.settings.playerSettings.useOldMach3 ? spr_player_mach3 : spr_player_mach4;
+				sprite_index = global.settings.playerSettings.ETB_useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 				playSound(sfx_mach3);
 				playSound(sfx_mach2);
 				if(GetInput("up", 0)) setState("superJump");
@@ -133,9 +134,10 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					o_Camera.shakeMag = 5;
-					playSound(sfx_bump);
-					CreateEffect({sprite_index : sprite_effect_bump});
+					velocity[1] = -6;
+					ShakeCamera(20, 2/3);
+					PlaySound(sfx_bump);
+					CreateEffect({sprite_index : sprite_effect_bang});
 				}
 				if(tempVar[2] != 0) tempVar[2]++;
 				if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
@@ -160,7 +162,7 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					playSound(sfx_bump);
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
 			break;
@@ -180,7 +182,7 @@ switch(state) {
 				
 				if(PLAYER_TOUCHING && !place_meeting(x, y - 1, o_C_Parent)) {
 					setState("bump");
-					playSound(sfx_bump);
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 					velocity[1] = -3;
 				}
@@ -208,7 +210,7 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					playSound(sfx_bump);
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 					mask_index = spr_player_mask;
 					velocity[1] = -3;
@@ -231,7 +233,7 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					playSound(sfx_bump);
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 					velocity[1] = -3;
 				}
@@ -268,13 +270,14 @@ switch(state) {
 	break;
 	
 	case "bump":
-		velocity[0] = -2.5 * xscale;
+		velocity[0] = movespeed * xscale;
 		sprite_index = spr_player_bump;
-		tempVar[0]++;
-		if (tempVar[0] >= 10) {
+		tempVar[0] += TIME_BASE;
+		if (tempVar[0] >= 1/3) { //M_OPTI - Is the math correct?
 			setState("normal");
 			if(place_meeting(x,y - 1, o_C_Parent) || place_meeting(x,y,o_C_Parent)) setState("crouch");
 		}
+		movespeed = PLAYER_GROUNDED ? 0 : -2.5;
 		
 	break;
 	
@@ -312,7 +315,7 @@ switch(state) {
 					tempVar[0] = 2;
 					movespeed = 0;
 					sprite_index = spr_player_suJump_hit;
-					o_Camera.shakeMag = 10;
+					ShakeCamera(10, 1/2);
 				}
 				if(GetInput("dash", 1)) {
 					velocity = [0,0];
@@ -428,16 +431,19 @@ switch(state) {
 	
 	case "freefall":
 		if(PLAYER_GROUNDED && tempVar[0] != 2) {
+			if(tempVar[0] != 0) {
+				ShakeCamera(20, 0.5);
+				CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale});
+			}
 			tempVar[0] = 2;
 			playSound(sfx_facestomp);
 			CreateEffect({sprite_index : sprite_effect_landcloud});
 			playSound(sfx_land);
 			image_index = 0;
-			ShakeCamera((tempVar[0] == 0 ? 10 : 20), 0.5);
-			CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale});
+
 		}
 		switch(tempVar[0]) {
-			case 0:
+			case 0: //Prepare
 				velocity[0] = moveX * movespeed;
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
@@ -468,25 +474,23 @@ switch(state) {
 				
 			break;
 			
-			case 1:
+			case 1: //Superslam
 				sprite_index = spr_player_freefalling;
 				velocity[0] = 0;
 				tempVar[1]++;
 				if(tempVar[1] > 30) setState("superslam");
-				if(GetInput("dash", 0)) setState("mach2");
+				if(GetInput("dash", 0)) {
+					setState("mach2");
+					velocity[1] = 0;
+				}
 			break;
 			
-			case 2:
-				if(!tempVar[2]) {
-
-					tempVar[2] = true;
-				}
-			
+			case 2: //Stomp
 				velocity[0] = 0;
 				image_speed = 1;
 				sprite_index = spr_player_freefall_impact;
 				SPRITE_NO_REPEAT;
-				if(round(image_index) == image_number) {
+				if(IMAGE_COMPLETE) {
 					if(tempVar[1] > 30) {
 						setState("machfreefall");
 						velocity[1] = -7;
@@ -504,7 +508,7 @@ switch(state) {
 			setState("freefall");
 			tempVar[0] = 2;
 			tempVar[1] = 31;
-			o_Camera.shakeMag = 10;
+			ShakeCamera(20, 2/3);
 			with(o_Le_En_Parent) {
 				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
 					setState("stunned");
@@ -609,11 +613,11 @@ switch(state) {
 					}
 					if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 					
-					if(GetInput("dash", 0)) {
+					if(GetInput("dash", 0)) { //This used to do the same thing as throwing whilist grounded. This is so stupid.
 						tempVar[0] = 1;
 					}
 					if(GetInput("jump", 1)) {
-						velocity[1] = -11;
+						velocity[1] = -13; //OG - 11
 						tempVar[0] = 3;
 						playSound(sfx_spin);
 					}
@@ -622,6 +626,9 @@ switch(state) {
 			break;
 			
 			case 1: //Charging
+
+			
+			
 				velocity[0] = 0;
 				if(tempVar[1] < 20) {
 					tempVar[1]++;
@@ -639,12 +646,17 @@ switch(state) {
 					else sprite_index = spr_player_grabbing_charge;
 				}
 				
+				
+				
+				if(!PLAYER_GROUNDED) sprite_index = spr_player_grabbing_charge; //M_OPTI - Terrible hack...
+				
 				//There are issues with keyboard_check_released not being valid in the first frames of the state!
 				//TODO - Fact check
 				//Yea its true, but only if theres other conditions
-				if(GetInput("dash", 2)) {
+				if(GetInput("dash", 2) || !PLAYER_GROUNDED) { //Releasing grab
+					
 					switch(sprite_index) { //TODO - Find a better way?
-						case spr_player_grabbing_charge:
+						case spr_player_grabbing_charge: //Throwing an enemy
 							if(tempVar[1] < 20) {
 								with(tempVar[2]) {
 									velocity[0] = other.xscale * 7;
@@ -652,7 +664,7 @@ switch(state) {
 								}
 							}
 							else {
-								with(tempVar[2]) {
+								with(tempVar[2]) { //Throw enemy
 									velocity[0] = other.xscale * 10;
 									velocity[1] = -12;
 								}
@@ -660,7 +672,7 @@ switch(state) {
 							sprite_index = spr_player_grabbing_throw;
 						break;
 						
-						case spr_player_grabbing_punchprep:
+						case spr_player_grabbing_punchprep: //Right hit
 							if(tempVar[1] < 20) {
 								with(tempVar[2]) {
 									velocity[0] = other.xscale * 7;
@@ -673,6 +685,7 @@ switch(state) {
 									setState("fly");
 								}
 							}
+							tempVar[2].tempVar[1] = tempVar[2].velocity[0];
 							sprite_index = spr_player_grabbing_punch;
 						break;
 						
@@ -692,7 +705,7 @@ switch(state) {
 							sprite_index = spr_player_grabbing_backkick;
 						break;
 						
-						case spr_player_grabbing_up_prep: //There is no fucking code! I love ETB
+						case spr_player_grabbing_up_prep: //There is no code! I love ETB
 							if(tempVar[1] < 20) {
 								tempVar[2].velocity[1] = -14;
 							}
@@ -700,10 +713,16 @@ switch(state) {
 							sprite_index = spr_player_grabbing_up;
 						break;
 					}
-					playSound(sfx_woosh);
+					
+					//BUG: When throwing an enemy into a collision object, it gets stuck. The following 2 lines of code fixes this issue.
+					tempVar[2].x = x;
+					tempVar[2].y = y;
+					PlaySound(sfx_woosh);
 					image_index = 0;
 					image_speed = 1;
-					if(tempVar[1] >= 20) CreateEffect({x : self.x + (self.xscale * 10), sprite_index : sprite_effect_bang});
+					if(tempVar[1] == 20) {
+						CreateEffect({x : self.x + (self.xscale * 10), sprite_index : sprite_effect_bang});
+					}
 					if(tempVar[2].state != "fly") tempVar[2].setState("hit");
 					tempVar[0] = 2;
 				}
@@ -725,7 +744,7 @@ switch(state) {
 				}
 				if(round(image_index) == 4) image_speed = 0;
 				if(PLAYER_GROUNDED) {
-					o_Camera.shakeMag = 10;
+					ShakeCamera(10, 1/2)
 					tempVar[0] = 2;
 					tempVar[2].velocity[1] = -7;
 					tempVar[2].setState("stunned");
@@ -757,11 +776,10 @@ switch(state) {
 				if(!animVar) {
 					sprite_index = spr_player_knight_start;
 					if(round(image_index) == 9 && !instance_exists(o_P_KnightEffect) ) instance_create_depth(x,y-600, 0,o_P_KnightEffect);
-					if(round(image_index) == image_number) animVar = true;
 				}
 				else {
 					sprite_index = spr_player_knight_thunder;
-					if(round(image_index) == image_number) tempVar[0] = 1;
+					if(IMAGE_COMPLETE) tempVar[0] = 1;
 				}
 			break;
 			
@@ -859,6 +877,7 @@ switch(state) {
 				sprite_index = spr_player_bomb_start;
 				if(round(image_index) == image_number) {
 					tempVar[0] = 1;
+					if(instance_exists(o_MusicManager)) o_MusicManager.tempPlaySong(music_bomb);
 				}
 			break;
 			
@@ -871,8 +890,9 @@ switch(state) {
 					if(tempVar[1] == 2) {
 						if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
 						tempVar[0] = 3;
+						instance_create_depth(x,y,0,o_Le_BombExplosion);
 					}
-					playSound(sfx_bump);
+					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 					xscale *= -1;
 					tempVar[1]++;

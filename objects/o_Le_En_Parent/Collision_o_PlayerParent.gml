@@ -1,5 +1,5 @@
 
-	if(state == "stunned" && other.state == "normal") { //Grabbing when stunned
+	if(state == "stunned" && other.state == "normal" && global.settings.playerSettings.moveSet != Moveset.PreETB ) { //Grabbing when stunned
 		CreateEffect({x : (other.x + (other.xscale * 40)), sprite_index : sprite_effect_punchdust});
 		other.setState("enemy");
 		other.tempVar[2] = self;

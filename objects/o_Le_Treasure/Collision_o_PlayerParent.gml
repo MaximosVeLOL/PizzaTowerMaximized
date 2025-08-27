@@ -1,4 +1,7 @@
-if(sprite_index == sprite_level_treasure_get) return;
+
+
+
+if(sprite_index == sprite_level_treasure_get || global.settings.playerSettings.moveSet == Moveset.PreETB) return;
 other.setState("treasure");
 sprite_index = sprite_level_treasure_get;
 x = other.x;

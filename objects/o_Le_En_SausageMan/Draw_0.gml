@@ -1,4 +1,19 @@
+if(isCigarMan) {
+	shader_set(Shader_PaletteSwap);
+	texture_set_stage(shader_get_sampler_index(Shader_PaletteSwap, "samplePalette"), sprite_get_texture(sprite_enemy_sausageman_pal_base, 0) );
+	shader_set_uniform_f(shader_get_uniform(Shader_PaletteSwap, "palIndex"), 0);
+	shader_set_uniform_f(shader_get_uniform(Shader_PaletteSwap, "palSize"), sprite_get_height(sprite_enemy_sausageman_pal_base) );
+	draw_self();
+	shader_reset();
+	
+	return;
+}
+
+
 draw_self();
+
+
+
 /*
 if(isCigarMan) { //The og method was useless, using advanced systems meant for different objects with different palettes, not this...
 	shader_set(Shader_PaletteSwap);

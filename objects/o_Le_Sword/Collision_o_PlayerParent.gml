@@ -1,4 +1,4 @@
-if(image_index != 1 && other.state != "knight" && other.state != "bomb") {
+if(image_index != 1 && other.state != "knight" && other.state != "bomb" && global.settings.playerSettings.moveSet != Moveset.PreETB) {
 	o_MusicManager.stopTempSong(); //Just incase...
 	other.setState("knight");
 	image_index = 1;

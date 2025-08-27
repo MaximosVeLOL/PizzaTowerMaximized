@@ -2,7 +2,6 @@
 //That's mostly the reason why I made states string values.
 enum Moveset {
 	Invalid = -1,
-	TheNoise,
 	PreETB,
 	ETB,
 	Demo1Tester,
@@ -10,11 +9,8 @@ enum Moveset {
 	Demo2Tester,
 	Demo2,
 };
-movesetSettings = {
-	canBeManyCharacters : false,
-};
 
-depth = -1000;
+depth = -10;
 mass = 0.5;
 velocity = [0,0];
 movespeed = 0;
@@ -35,7 +31,7 @@ if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index
 }*/
 
 
-if(instance_number(object_index) > 1) {
+if(instance_number(o_PlayerParent) > 1) {
 	Log("Extra Player in room" + string(room) + " (" + room_get_name(room) + ")");
 	instance_destroy();
 }
@@ -71,12 +67,13 @@ hurt = function() {
 	if(stunStuff.invincibleFrames > 0) return;
 	if(state == "knight") {
 		if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
+		instance_destroy(o_H_Sword);
 		for(var i = 0 ; i <= 5 ; i++) { instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_player_knightdebris,  image_index : i})}
 	}
 	setState("hurt");
 	tempVar[1] = 20;
 	stunStuff.invincibleFrames = 200;
-	playSound(choose(va_hurt1, va_hurt2, va_hurt3));
+	PlaySound(choose(va_hurt1, va_hurt2, va_hurt3));
 	
 }
 playSound = function(snd, override = false) {

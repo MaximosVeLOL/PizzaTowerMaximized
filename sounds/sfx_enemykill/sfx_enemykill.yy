@@ -1,0 +1,30 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_enemykill",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "ConfigValues":{
+    "Debug":{
+      "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
+    },
+  },
+  "conversionMode":0,
+  "duration":0.20911564,
+  "name":"sfx_enemykill",
+  "parent":{
+    "name":"Enemies",
+    "path":"folders/Sounds/Enemies.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_enemykill.ogg",
+  "type":0,
+  "volume":1.0,
+}

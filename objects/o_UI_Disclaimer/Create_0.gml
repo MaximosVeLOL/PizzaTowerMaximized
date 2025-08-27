@@ -1,30 +1,24 @@
 var buildText = "Beta Version " + string(GM_version);
-buildText = "Beta Version 1.5";
+buildText = "Pre-Beta Version 2.0";
 
 
 
 text = buildText + @" of PT:M
 
 Welcome to another beta build!
-This time, there is much more new content to see. Some of the big ones being:
+This fangame was so close to dying. First of all, there were many big things to implement:
+A Level Editor, Multiplayer, and Online. But then I realized I was wasting too much time,
+So I decided to remove most of the features, and focus on the important things. So that's
+why theres a lot of bug fixes. Anyways, heres some of the big features that are implemented:
 
-Parralax Backgrounds (scaling is broken for some reason)
-Level Editor (Still being worked on...)
+Parralax Backgrounds
+The Pre-ETB moveset
+Ranking System (Its hard to control so many things at once)
 
 
 Controls:
 Z-Jump, X-Dash, Enter-Pause, Arrow Keys-Move, Tab-Noclip
 Press Enter to continue.";
-
-text = buildText + @"of PT:M
-
-This game is dying! There were big ideas for this fangame,
-but most have been scrapped in this build. (multiplayer, parralax backgrounds, a level editor)
-The only new content that is exciting in this build, is some new slopes, and Pre-ETB's level 1.
-Most scrapped things are eventually going to return in future builds. Now, lets enjoy the only
-good stuff in this build: a new level.
-
-"
 
 
 currentText = "";

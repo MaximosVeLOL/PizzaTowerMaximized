@@ -61,6 +61,15 @@ stopMusic = function(instantly = true) {
 	
 	currentSong = -1;
 }
+//Just incase...
+pauseMusic = function() {
+	audio_pause_sound(currentSong);
+}
+continueMusic = function() {
+	audio_resume_sound(currentSong);
+}
+
+
 toggleMusicPlaying = function() {
 	if(audio_is_paused(currentSong)) audio_resume_sound(currentSong);
 	else audio_pause_sound(currentSong);

@@ -10,6 +10,7 @@ die = function(dead_sprite, canMove = false) {
 	instance_destroy();
 	if(canMove) instance_create_depth(x,y,0,o_P_Effect, {sprite_index : dead_sprite});
 	else instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : dead_sprite});
+	PlaySound(sfx_enemykill);
 }
 dropPoints = false;
 setState = function(newState, overTemp = true) {

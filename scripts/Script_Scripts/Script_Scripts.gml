@@ -12,10 +12,8 @@
 	return aud;
 }
 function ShakeCamera(mag, acc) {
-	with(o_Camera) {
-		shake.mag += mag;
-		shake.acc += acc;
-	}
+	o_Camera.shake.mag = mag;
+	o_Camera.shake.acc = acc;
 }
 function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false) {
 	if(audio_is_playing(snd) && !override && !canRepeat || global.settings.audioSettings.muteAll) {
@@ -44,7 +42,7 @@ function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
 	}
 	throw("Que?"); //We will never get to this point, unless the input type isn't set correctly
 }
-function CollideAndMove(mass, maxYVelocity = 20) {
+function CollideAndMove(mass, maxYVelocity = 20, useSlopes = true) {
 	if(!PLAYER_GROUNDED) velocity[1] += mass;
 	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
 	
@@ -59,13 +57,16 @@ repeat(abs(velocity[1])) {
 
 // Horizontal
 repeat(abs(velocity[0])) {
-    // Move up slope
-    if place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y - 1, o_C_Parent)
-        y--
+	if(useSlopes) {
+	    // Move up slope
+	    if place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y - 1, o_C_Parent)
+	        y--
     
-    // Move down slope
-    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y + 1, o_C_Parent) && place_meeting(x + sign(velocity[0]), y + 2, o_C_Parent)
-        y++;
+
+	    // Move down slope
+	    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y + 1, o_C_Parent) && place_meeting(x + sign(velocity[0]), y + 2, o_C_Parent)
+	        y++;
+	}
 
     if !place_meeting(x + sign(velocity[0]), y, o_C_Parent)
         x += sign(velocity[0]); 
@@ -114,6 +115,16 @@ function ApplySettings() {
 		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
 		if(global.settings.audioSettings.muteAll) audio_stop_all();
 	}
+	if(PlayerObjectToMovesetEnum(o_PlayerParent) != global.settings.playerSettings.moveSet && room != Room_MainMenu) {
+		var information = [o_PlayerParent.x, o_PlayerParent.y, o_PlayerParent.xscale/*, o_PlayerParent.state, o_PlayerParent.tempVar, o_PlayerParent.movespeed*/];
+		instance_destroy(o_PlayerParent);
+		var inst = CreatePlayer(information[0], information[1]);
+		inst.xscale = information[2];
+		/* This breaks movesets... Uncomment this if you wanna break it!
+		inst.state = information[3];
+		inst.tempVar = information[4];
+		inst.movespeed = information[5] */
+	}
 	
 	
 	Log("Applied Settings!");
@@ -129,6 +140,8 @@ function SaveSettings() {
 	buffer_save(buffer_compress(buf, 0, buffer_tell(buf)), "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
 	buffer_delete(buf);
 	Log("Saved Settings!");
+	
+	
 }
 function LoadSettings() {
 	var INVALID = false;
@@ -194,7 +207,7 @@ function CreateEffect(information) {
 		//M_OPTI - Find a better way to check for same effects
 		if(instance_find(o_P_Effect, i).sprite_index == information.sprite_index) return;
 	}
-	instance_create_depth(x,y,0,o_P_Effect, information);
+	instance_create_depth(x,y,-100,o_P_Effect, information);
 }
 function LogError(_message, crash = false) {
 	//if(!global.settings.gameplaySettings.debugEnabled) return;
@@ -225,14 +238,21 @@ function Log(_message) { // 0 1 2 3 (size = 4)
 	}
 }
 function CreatePlayer(targX,targY) {
-	var movesets = [o_Player_Noise, o_Player_PreETB, o_Player_ETB];
+	var movesets = [o_Player_PreETB, o_Player_ETB];
 	var inst = movesets[global.settings.playerSettings.moveSet]; //Big brain
 	//M_OPTI - Do we really need inst?
 	Log("Creating Player (" + object_get_name(inst) + ")");
-	instance_create_depth(targX,targY, -6, inst);
+	return instance_create_depth(targX,targY, -6, inst);
 	/*
 	with() {
 		PD = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.registerPlayer() : 1;
 	}*/
 
+}
+function PlayerObjectToMovesetEnum(inObject) {
+	var movesets = [Moveset.PreETB, Moveset.ETB];
+	var objects = [o_Player_PreETB, o_Player_ETB];
+	for(var i = 0 ; i < array_length(objects);i++) {
+		if(inObject == objects[i] ) return movesets[i];
+	}
 }

@@ -1,2 +1,2 @@
-targetPos = [2048, 1024];
+targetPos = [2048, 928];
 targetRoom = ETBRoom_T4;

@@ -11,8 +11,9 @@ if(variable_struct_get(o_GameManager.level.pizzakin, type)) {
         }
         */
         
-        ds_queue_enqueue(followQueue, o_PlayerParent.x);
-        ds_queue_enqueue(followQueue, o_PlayerParent.y);
+        ds_queue_enqueue(followQueue, masterObject.x);
+		var realValue = (object_get_parent(masterObject.object_index) == o_PlayerParent ? o_PlayerParent.y : masterObject.y - 2);
+        ds_queue_enqueue(followQueue, realValue);
         
         if (ds_queue_size(followQueue) > (LAG_STEPS * 2))
         {

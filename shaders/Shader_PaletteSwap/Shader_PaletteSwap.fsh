@@ -1,30 +1,13 @@
-//This uses stolen code from a decompile, thanks thecore0!
-
-
-//
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
-uniform sampler2D palette_texture;
-uniform vec2 texel_size;
-uniform vec4 palette_UVs;
-uniform float palette_index;
+uniform sampler2D samplePalette;
 
-void main()
-{
-    vec4 source = texture2D( gm_BaseTexture, v_vTexcoord );
-    
-    DoAlphaTest( source );
-    
-    for(float i = palette_UVs.y; i < palette_UVs.w; i+=texel_size.y )
-    {
-        if (distance(source, texture2D(palette_texture, vec2(palette_UVs.x, i))) <= 0.004)
-        {
-            float palette_V = palette_UVs.x + texel_size.x * palette_index;
-            source = texture2D(palette_texture, vec2(palette_V, i));
-            break;
-        }
-    }
+uniform float palIndex;
+uniform float palSize;
 
-    gl_FragColor = source * v_vColour;
+void main() {
+	vec4 index = texture2D(gm_BaseTexture, v_vTexcoord);
+	vec4 sampledColor = texture2D(samplePalette, vec2(index.r, palIndex / palSize ));
+	gl_FragColor = vec4(sampledColor.rgb, index.a);
 }
