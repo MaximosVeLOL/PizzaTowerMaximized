@@ -59,7 +59,7 @@ restartLevel = function() {
 	o_PlayerParent.tempVar[0] = 1;
 }
 goToHub = function() {
-	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	if(instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
 	if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);
 	score = 0;
 	room_goto(Room_DemoRoom);
@@ -68,17 +68,18 @@ goToHub = function() {
 		if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 	}
 	if(!instance_exists(o_PlayerParent)) CreatePlayer(256, 658);
-	o_MusicManager.playNewSong(music_demoroom);
+	if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(music_demoroom);
 }
 
 endLevel = function(win = false, instantly = false) {
-	if(!instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	if(instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
 	if(instance_exists(o_PizzaTimeManager)) instance_destroy(o_PizzaTimeManager);
 	if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	instance_destroy(o_Camera);
 	instance_destroy(o_MusicManager);
 	instance_destroy(o_PlayerParent);
+	instance_destroy(o_Le_Pizzakin);
 	mode = "none";
 	
 	if(instantly) {

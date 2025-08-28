@@ -14,6 +14,6 @@ startGame = function() {
 }
 
 screens = [
-	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){show_message("Level editor is broken!") }, function(){game_end(1);}]),
+	new CreateScreen("", ["PLAY", "OPTIONS", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){game_end(1);}]),
 	new CreateScreen("", ["FILE 1", "FILE 2", "FILE 3", "FILE 4", "FILE 5", "BACK"], [startGame, startGame, startGame, startGame, startGame, function(){setScreen(0);settings.background.render = false}]),
 ];

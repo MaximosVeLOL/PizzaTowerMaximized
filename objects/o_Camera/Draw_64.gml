@@ -51,7 +51,7 @@ if(hudVisible) {
 					break;
 		
 					case "mach3":
-						sprite = global.settings.playerSettings.useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4;
+						sprite = global.settings.playerSettings.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4;
 					break;
 		
 					case "mach4":

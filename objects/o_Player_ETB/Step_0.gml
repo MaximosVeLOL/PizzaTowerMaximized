@@ -261,7 +261,7 @@ switch(state) {
 		if(round(image_index) == image_number || velocity[1] > 0) sprite_index = spr[1];
 		if(GetInput("down", 0)) {
 			setState("freefall");
-			velocity[1] = 0;
+			if(velocity[1] < 0) velocity[1] = 0;
 		}
 		if(PLAYER_GROUNDED) {
 			setState("normal");
@@ -315,6 +315,8 @@ switch(state) {
 					tempVar[0] = 2;
 					movespeed = 0;
 					sprite_index = spr_player_suJump_hit;
+					PlaySound(sfx_superimpact);
+					CreateEffect({sprite_index : sprite_effect_bang});
 					ShakeCamera(10, 1/2);
 				}
 				if(GetInput("dash", 1)) {
@@ -451,7 +453,6 @@ switch(state) {
 					sprite_index = spr_player_move;
 					xscale = moveX;
 					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
-					image_speed = movespeed/6;
 					tempVar[0] = 0;
 				}
 				
@@ -468,7 +469,6 @@ switch(state) {
 					SPRITE_NO_REPEAT;
 					if(round(image_index) == image_number) {
 						animVar = false;
-						image_speed = 1;
 					}
 				}
 				
@@ -824,6 +824,7 @@ switch(state) {
 					if(round(image_index) == image_number) animVar = true;
 				}
 				else sprite_index = spr_player_knight_fall;
+				
 				if(PLAYER_GROUNDED && sprite_index == spr_player_knight_fall) {
 					animVar = true;
 					tempVar[0] = 1;
@@ -831,7 +832,7 @@ switch(state) {
 					movespeed = 0;
 					playSound(sfx_landmetal);
 					ShakeCamera(10, 0.5);
-					CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale});
+					CreateEffect({sprite_index : sprite_effect_bang, image_xscale : self.xscale, y : self.bbox_bottom});
 				}
 			break;
 			
@@ -938,6 +939,7 @@ switch(state) {
 			break;
 			
 			case 1:
+				if(round(image_index) == 4) PlaySound(choose(va_hurt1, va_hurt2, va_hurt3));
 				if(round(image_index) == image_number) setState("normal");
 			break;
 		}

@@ -8,6 +8,7 @@ if(!instance_exists(o_PlayerParent)) return;
 		_pos[1] += random_range(-shake.mag, shake.mag);
 	}
 	camera_set_view_pos(view_camera[0], _pos[0], _pos[1]);
+	/* Whoops
 if(string_count("Secret", room_get_name(room) ) > 0) {
 	shader_set(Shader_Distort);
 	var s = shader_get_uniform(Shader_Distort, "time");

@@ -1,0 +1,1 @@
+if(o_PlayerParent.state != "knight" && image_index == 1) image_index = 0;

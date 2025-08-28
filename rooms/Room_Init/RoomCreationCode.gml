@@ -119,7 +119,8 @@ if(global.settings.gameplaySettings.debugEnabled) {
 		startInDemoRoom : true,
 		startUpRoom : ETBRoom_Tutorial1,
 		startUpPos : [200, 200],
-	}
+	};
+	instance_create_depth(0,0,0,o_DEBUG_Console);
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor);
 	}
@@ -131,6 +132,7 @@ if(global.settings.gameplaySettings.debugEnabled) {
 		CreatePlayer(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]);
 	}
 	else room_goto(Room_Disclaimer);
+	
 
 }
 else room_goto(Room_Disclaimer);
