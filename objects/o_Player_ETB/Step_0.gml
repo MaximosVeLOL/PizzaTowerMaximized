@@ -62,7 +62,7 @@ switch(state) {
 			if(GetInput("down", 0)) setState("crouchslide", false);
 			tempVar[0]++;
 			if(tempVar[0] >= 35) {
-				CreateEffect({sprite_index : sprite_effect_dust, image_xscale : xscale});
+				CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 				setState("mach2", false);
 			}	
 			if(GetInput("jump", 0)) {
@@ -104,7 +104,7 @@ switch(state) {
 				
 				if(PLAYER_TOUCHING) {
 					setState("bump");
-					velocity[1] = -3;
+					velocity[1] = -6;
 					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
@@ -122,15 +122,19 @@ switch(state) {
 				sprite_index = global.settings.playerSettings.ETB_useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 				playSound(sfx_mach3);
 				playSound(sfx_mach2);
-				if(GetInput("up", 0)) setState("superJump");
-				if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0) ) && tempVar[2] <= 100 ) {
-					setState("machslide", false);
-					tempVar[0] = 35;
+				if(GetInput("up", 0)) {
+					setState("superJump");
+					playSound(sfx_woosh);
 				}
+
 				if(PLAYER_GROUNDED) {
 					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 					if(GetInput("down", 0)) setState("machroll", false);
 					if(GetInput("jump", 0)) velocity[1] = -9;
+					if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0) )) {
+						setState("machslide", false);
+						tempVar[0] = 35;
+					}
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
@@ -139,7 +143,6 @@ switch(state) {
 					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bang});
 				}
-				if(tempVar[2] != 0) tempVar[2]++;
 				if(!GetInput("jump", 0) && velocity[1] < 0) velocity[1] /= 2;
 			break;
 			
@@ -162,6 +165,7 @@ switch(state) {
 				}
 				if(PLAYER_TOUCHING) {
 					setState("bump");
+					velocity[1] = -4;
 					PlaySound(sfx_bump);
 					CreateEffect({sprite_index : sprite_effect_bump});
 				}
@@ -271,19 +275,19 @@ switch(state) {
 	
 	case "bump":
 		velocity[0] = movespeed * xscale;
+		movespeed = PLAYER_GROUNDED ? 0 : -2.5;
 		sprite_index = spr_player_bump;
 		tempVar[0] += TIME_BASE;
 		if (tempVar[0] >= 1/3) { //M_OPTI - Is the math correct?
 			setState("normal");
 			if(place_meeting(x,y - 1, o_C_Parent) || place_meeting(x,y,o_C_Parent)) setState("crouch");
 		}
-		movespeed = PLAYER_GROUNDED ? 0 : -2.5;
+		
 		
 	break;
 	
 	case "noclip":
-		sprite_index = spr_player_mach2jump;
-		playSound(sfx_spin);
+		sprite_index = sprite_player_noclip;
 		velocity = [0,0];
 		movespeed = GetInput("dash", 0) ? 20 : 10;
 		x += moveX * movespeed;
@@ -294,12 +298,12 @@ switch(state) {
 	
 	case "superJump":
 		velocity = [0,0];
+		mass = 0;
 		switch(tempVar[0]) {
 			case 0:
-				mass = 0;
-				sprite_index = spr_player_suJump_prep
-				tempVar[2]++;
-				if(tempVar[2] > 30) {
+				sprite_index = spr_player_suJump_prep;
+				tempVar[2] += TIME_BASE;
+				if(tempVar[2] >= 0.28) {
 					tempVar[0] = 1;
 					playSound(sfx_supermove);
 					instance_create_depth(x,y,0,o_P_StateInitEffect);
@@ -307,7 +311,7 @@ switch(state) {
 			break;
 			
 			case 1:
-				mass = 1/2;
+				
 				sprite_index = spr_player_suJump;
 				velocity = [0, -movespeed];
 				movespeed += 0.5;
@@ -332,9 +336,9 @@ switch(state) {
 			break;
 			
 			case 2:
-				mass = 0;
 				if(round(image_index) == image_number) {
 					setState("jump");
+					mass = 1/2;
 				}
 			break;
 		}
@@ -509,14 +513,7 @@ switch(state) {
 			tempVar[0] = 2;
 			tempVar[1] = 31;
 			ShakeCamera(20, 2/3);
-			with(o_Le_En_Parent) {
-				if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
-					setState("stunned");
-					velocity[1] = -7;
-					velocity[0] = 0;
-					tempVar[0] = 200;
-				}
-			}
+
 			CreateEffect({y : y + 12, sprite_index : sprite_effect_meteor, image_angle : 270});
 		}
 	break;
@@ -584,9 +581,12 @@ switch(state) {
 			case 0: //Holding him
 				if(moveX != xscale) movespeed = 0;
 				if(moveX != 0) {
-					PlaySound(sfx_footstep);
+					
 					xscale = moveX;
-					if(PLAYER_GROUNDED) sprite_index = spr_player_grabbing_move; //I hate animations!
+					if(PLAYER_GROUNDED) {
+						playSound(sfx_footstep);
+						sprite_index = spr_player_grabbing_move; //I hate animations!
+					}
 					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 					image_speed = movespeed/6;
 				}
@@ -600,6 +600,7 @@ switch(state) {
 						tempVar[0] = 1;
 					}
 					if(GetInput("jump", 0)) {
+						if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep);
 						playSound(sfx_jump);
 						velocity[1] = -9;
 						sprite_index = spr_player_grabbing_jump;

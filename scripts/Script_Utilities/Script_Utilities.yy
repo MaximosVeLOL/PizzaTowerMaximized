@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script_TextureManager",
+  "%Name":"Script_Utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script_TextureManager",
+  "name":"Script_Utilities",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

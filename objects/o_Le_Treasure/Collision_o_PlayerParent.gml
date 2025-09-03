@@ -8,4 +8,4 @@ x = other.x;
 y = other.y - 35;
 PlaySound(sfx_treasureget);
 PlaySound(choose(va_happy1, va_happy2, va_happy3));
-o_MusicManager.stopMusic(true);
+if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);

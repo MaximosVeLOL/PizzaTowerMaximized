@@ -25,16 +25,13 @@ if(x > room_width + 300) {
     with(instance_create_depth(0,0,0,o_UI_Fade)) {
         onFade = function() {
 			//LoadTextureGroup("TextureG_Level");
-			
-            room_goto(Room_DemoRoom);
+			if(LoadSettings()) ApplySettings();
 			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
-				//Actually we need to 
-				//instance_create_depth(0,0,0,o_GameManager);
 				//if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
         		o_GameManager.mode = "game";
+				o_GameManager.goToHub();
 			}
-			if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(music_demoroom);
-			CreatePlayer(256, 658);
+	
         }
     }
 }

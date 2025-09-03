@@ -25,9 +25,9 @@ commands = [
 		struct_set(settings, currentArguments[0], currentArguments[1]);
 	}, "option_debug_set [variable name] [new val]"),
 	
-	new createCommand("option_set [option type struct] [option name] [new value]", function() {
+	new createCommand("option_set", function() {
 		variable_struct_set(struct_get(global.settings, currentArguments[0]), currentArguments[1], currentArguments[2]);
-	}, "option_set [option name] [new value]"),
+	}, "option_set [option type struct] [option name] [new value]"),
 	
 	new createCommand("reset", game_restart, "reset"),
 	
@@ -55,9 +55,9 @@ commands = [
 	}, "hurt"),
 	
 	new createCommand("pizza_time", function() {
-		if(array_length(currentArguments) == 0) currentArguments[0] = 340;
-		instance_create_depth(0,0,0,o_PizzaTimeManager);
 		o_GameManager.level.time = currentArguments[0];
+		instance_create_depth(0,0,0,o_PizzaTimeManager);
+		
 	}, "pizza_time [time]"),
 	
 	new createCommand("new_song", function() {
@@ -108,45 +108,18 @@ commands = [
 	
 	new createCommand("shake_cam", function(){
 		ShakeCamera(currentArguments[0], currentArguments[1]);
-	}, "shake_cam [mag] [acc]")
+	}, "shake_cam [mag] [acc]"),
+	
+	new createCommand("collect_all", function() {
+		instance_destroy(o_Le_Pizzakin); //Destory all pizzakins collected before becuase it causes errors with masterObjects.
+		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "shroom";
+		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "cheese";
+		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "tomato";
+		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "sausage";
+		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "pineapple";
+	}, "collect_all"),
 
 ];
-executeCommand = function(commandString) {
-		var reqCommand = "";
-		//Get the arguments
-		var _temp = "";
-		for(var i = 1; i <= string_length(commandString);i++) {
-			_temp += string_copy(commandString, i, 1);
-			if(string_count(" ", _temp) > 0 || i == string_length(commandString)) {
-				var actual = i == string_length(commandString) ? _temp : string_copy(_temp, 0, string_length(_temp) - 1); //Because it includes a space
-				
-				if(reqCommand == "") reqCommand = actual;
-				else {
-					array_resize(currentArguments, array_length(currentArguments) + 1);
-					currentArguments[array_length(currentArguments) - 1] = actual;
-				}
-				_temp = "";
-			}
-		}
-		array_resize(prevCommands, array_length(prevCommands) + 1);
-		prevCommands[array_length(prevCommands) - 1] = commandString;
-		prevCommandIndex = array_length(prevCommands) - 1;
-		//Find the command
-		for(var i = 0 ; i < array_length(commands);i++) {
-			if(commands[i].name == reqCommand) {
-				try {
-					commands[i].does();
-				}
-				catch(e) {
-					var m = "Error!\n" + e.longMessage;
-					Log(m);
-					show_message(m);
-				}
-			}
-		}
-		currentArguments = [];
-
-}
 settings = {
 	renderDebugText : true,
 	renderPlayerMask : false,

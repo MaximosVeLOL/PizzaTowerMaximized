@@ -75,7 +75,7 @@ global.settings = {
 		vSync : false,
 	},
 	gameplaySettings : {
-		debugEnabled : false,
+		debugEnabled : true,
 		//multiplayer : false, Removed due to it being too hard to implement...
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
@@ -116,7 +116,7 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInDemoRoom : true,
+		startInDemoRoom : false,
 		startUpRoom : ETBRoom_Tutorial1,
 		startUpPos : [200, 200],
 	};

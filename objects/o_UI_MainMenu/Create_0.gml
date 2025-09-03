@@ -5,15 +5,11 @@ startGame = function() {
 	if(instance_exists(o_GameManager)) o_GameManager.sessions.save++;
     o_UI_MainMenu_Pep.active = true;
     PlaySound(sound_menuselect, false, false, true);
-	if(os_browser == browser_not_a_browser) {
-		global.settings.saveFileIndex = currentOption;
-		if(LoadSettings() != false) ApplySettings();
-	}
-	else show_message("Save file support is not on browser. You cannot save settings, and progress.");
+	if(os_browser != browser_not_a_browser) show_message("Save file support is not on browser. You cannot save settings, and progress.");
 	instance_deactivate_object(self);
 }
 
 screens = [
-	new CreateScreen("", ["PLAY", "OPTIONS", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){game_end(1);}]),
+	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL SELECT", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){room_instance_add(Room_Empty, 0, 0, o_LevelSelect);room_goto(Room_Empty)}, -1, function(){game_end(1);}]),
 	new CreateScreen("", ["FILE 1", "FILE 2", "FILE 3", "FILE 4", "FILE 5", "BACK"], [startGame, startGame, startGame, startGame, startGame, function(){setScreen(0);settings.background.render = false}]),
 ];

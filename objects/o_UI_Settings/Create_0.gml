@@ -1,4 +1,15 @@
+if(os_browser != browser_not_a_browser) {
+	instance_destroy();
+	if(room != Room_MainMenu) instance_activate_object(o_UI_PauseMenu);else instance_activate_object(o_UI_MainMenu);
+	return;
+}
+
+
 event_inherited();
+
+
+
+
 setPlayerMoveset = function() {
 	global.settings.playerSettings.moveSet = currentOption;
     setScreen(4);
