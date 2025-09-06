@@ -1,7 +1,6 @@
 //room_set_viewport, and camera_create_view do not work with the current room, so I have to do this.
 
 view_enabled = true;
-room_persistent = true;
 
 view_visible[0] = true;
 view_wport[0] = 960;

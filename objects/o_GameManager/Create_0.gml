@@ -50,7 +50,7 @@ startLevel = function(data) {
 		
 	}
 	level.startParameters = data;
-	level.index = data.
+	level.index = data.index;
 	mode = "game";
 }
 restartLevel = function() {

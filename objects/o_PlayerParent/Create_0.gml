@@ -32,7 +32,7 @@ if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index
 
 
 if(instance_number(o_PlayerParent) > 1) {
-	Log("Extra Player in room" + string(room) + " (" + room_get_name(room) + ")");
+	Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 	instance_destroy();
 }
 mask_index = spr_player_mask;
@@ -64,9 +64,9 @@ setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, ov
 	movespeed = overrideMoveSpeed ? 0 : movespeed; //I don't know why we didn't implement this, even though we had the option for it. We only figured this out when mach1 accelleration was being a bad boy.
 }
 hurt = function() {
-	if(stunStuff.invincibleFrames > 0) return;
+	if(stunStuff.invincibleFrames > 0 || state == "noclip") return;
+	if(instance_exists(o_MusicManager) && o_MusicManager.tempSong != -1) o_MusicManager.stopTempSong();
 	if(state == "knight") {
-		if(instance_exists(o_MusicManager)) o_MusicManager.stopTempSong();
 		instance_destroy(o_H_Sword);
 		for(var i = 0 ; i <= 5 ; i++) { instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_player_knightdebris,  image_index : i})}
 	}

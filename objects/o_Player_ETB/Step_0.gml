@@ -23,18 +23,7 @@ switch(state) {
 		}
 		else {
 			if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep); //Why didn't we do this???
-			if(!animVar || !tempVar[1]) {
-				tempVar[0]++;
-				sprite_index = spr_player_idle;
-			}
-			else {
-				if(round(image_index) == image_number) animVar = false;
-			}
-			if(tempVar[0] == 400) {
-				animVar = true;
-				tempVar[0] = 0;
-				sprite_index = choose(sprite_player_idle_suprise, spr_player_grabbing_throw);
-			}
+			sprite_index = spr_player_idle;
 			if(GetInput("up", 1) && PLAYER_GROUNDED) setState("highJump", true);
 			
 		}
@@ -147,6 +136,7 @@ switch(state) {
 			break;
 			
 			case "machslide":
+				playSound(sfx_slide);
 				if(!animVar) {
 					sprite_index = spr_player_machslide_start;
 					if(round(image_index) == image_number) animVar = true;
@@ -172,6 +162,7 @@ switch(state) {
 			break;
 			
 			case "crouchslide":
+				PlaySound(sfx_slide); //We want to keep playing the sound, even when going into another state
 				mask_index = spr_player_mask_crouch;
 				sprite_index = spr_player_crouchslide;
 				velocity[0] = movespeed * xscale;
@@ -498,8 +489,10 @@ switch(state) {
 					if(tempVar[1] > 30) {
 						setState("machfreefall");
 						velocity[1] = -7;
+						tempVar[0] = true;
 					}
-					else setState("normal");
+					else 
+						setState("normal");
 				}
 			break;
 		}
@@ -956,7 +949,6 @@ switch(state) {
 			setState("bump");
 		}
 	break;
-	
 	
 	default:
 		show_message("State not implemented! State: " + state);

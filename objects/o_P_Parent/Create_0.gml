@@ -3,7 +3,7 @@ if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary || 
 	return;
 }
 canMove = true;
-velocity = [0, 0];
-mass = 0.25;
+gravity = 0.25;
+gravity_direction = 90;
 owner = noone;
 depth = -100;

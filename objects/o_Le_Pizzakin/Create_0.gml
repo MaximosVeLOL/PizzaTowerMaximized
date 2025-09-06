@@ -12,5 +12,5 @@ setSprite = function(target) {
 }
 followQueue = ds_queue_create();
 masterObject = o_PlayerParent;
-depth = -999;
+depth = 0;
 

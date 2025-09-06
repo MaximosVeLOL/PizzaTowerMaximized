@@ -1,15 +1,16 @@
 function ShakeCamera(mag, acc) {
 	o_Camera.shake.mag = mag;
 	o_Camera.shake.acc = acc;
-	ShakeEnemies();
-}
-function ShakeEnemies() {
 	with(o_Le_En_Parent) {
 		if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
 			velocity = [0, -7];
+			setState("hit");
+			setSprite("hit");
+			tempVar[0] = 200;
 		}
 	}
 }
+
 
 function CollideAndMove(mass, maxYVelocity = 20, useSlopes = true) {
 	if(!PLAYER_GROUNDED) velocity[1] += mass;
@@ -84,11 +85,12 @@ function ApplySettings() {
 	}
 	else instance_destroy(o_DEBUG_Console);
 	show_message(PlayerObjectToMovesetEnum(o_PlayerParent));
-	if(global.settings.playerSettings.moveSet != PlayerObjectToMovesetEnum(o_PlayerParent)) {
+	var m = PlayerObjectToMovesetEnum(o_PlayerParent);
+	if(global.settings.playerSettings.moveSet != m && m != Moveset.Invalid) {
 		if(room != Room_DemoRoom && room != Room_MainMenu) {
 			show_message("You can only change movesets when you are not in a level!");
 		}
-		else { //You still want to apply the other settings, so using return isn't an option
+		else { //You still want to apply the other settings, so using return isn't an option.
 			var PlayerPos = [o_PlayerParent.x, o_PlayerParent.y];
 			instance_destroy(o_PlayerParent);
 			CreatePlayer(PlayerPos[0], PlayerPos[1]);
@@ -163,4 +165,5 @@ function PlayerObjectToMovesetEnum(inObject) {
 	for(var i = 0 ; i < array_length(objects);i++) {
 		if(inObject == objects[i] ) return movesets[i];
 	}
+	return Moveset.Invalid;
 }

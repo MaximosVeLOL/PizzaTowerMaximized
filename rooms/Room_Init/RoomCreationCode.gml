@@ -66,7 +66,7 @@ global.settings = {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
-		muteAll : false,
+		muteAll : true,
 		surroundSound : false,
 	},
 	videoSettings : {
@@ -84,6 +84,7 @@ global.settings = {
 		moveSet : Moveset.ETB,
 		ETB_useOldMach3 : true,
 		PreETB_betterRunning : true,
+		waterInteraction : true,
 	},
 	saveFileIndex : -1,
 }
@@ -116,9 +117,9 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInDemoRoom : false,
-		startUpRoom : ETBRoom_Tutorial1,
-		startUpPos : [200, 200],
+		startInDemoRoom : true,
+		startUpRoom : Room_FeatureTest,
+		startUpPos : [2167, 630],
 	};
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	if(DEBUG_STARTUP.startInLevelEditor) {

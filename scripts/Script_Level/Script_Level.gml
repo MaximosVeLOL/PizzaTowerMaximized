@@ -41,8 +41,9 @@ function ResetLevel(levelIndex) {
 		break;
 	}
 	for(var i = 0 ; i < array_length(rooms);i++) {
-		room_set_persistent(rooms[i], false);
-		//room_goto(rooms[i]);
+		room_goto(rooms[i]);
+		show_message("ROOM IND: " + string(room) + "\nIND: " + string(i));
+		room_restart();
 	}
 	room_goto(originalRoom);
 }

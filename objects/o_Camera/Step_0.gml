@@ -1,4 +1,7 @@
-if(!instance_exists(o_PlayerParent)) return;
+if(!instance_exists(o_PlayerParent)) {
+	LogError("There is no player to capture!");
+	return;
+}
 
 var _pos = [ clamp(o_PlayerParent.x - 480, 0, room_width - 960), clamp(o_PlayerParent.y - 270, 0, room_height - 540) ];
 if(shake.mag > 0) {
