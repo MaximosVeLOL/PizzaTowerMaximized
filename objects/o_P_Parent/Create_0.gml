@@ -3,7 +3,7 @@ if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary || 
 	return;
 }
 canMove = true;
-gravity = 0.25;
-gravity_direction = 90;
+mass = 1/4;
+velocity = new Vector();
 owner = noone;
 depth = -100;

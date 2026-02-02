@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_pine_walk",
   "bboxMode":0,
   "bbox_bottom":97,
@@ -12,16 +12,16 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"56f4d534-9c9f-48ae-a4cd-214c18072222","name":"56f4d534-9c9f-48ae-a4cd-214c18072222","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b034c09a-c74f-4238-b411-a2524d58d5bc","name":"b034c09a-c74f-4238-b411-a2524d58d5bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"cfa0a415-d633-4deb-b642-5b9218315653","name":"cfa0a415-d633-4deb-b642-5b9218315653","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"3eec7c44-241b-4784-96f8-47a6eacca51e","name":"3eec7c44-241b-4784-96f8-47a6eacca51e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ba9835b1-4c47-4724-853b-471542d17936","name":"ba9835b1-4c47-4724-853b-471542d17936","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"56f4d534-9c9f-48ae-a4cd-214c18072222","name":"56f4d534-9c9f-48ae-a4cd-214c18072222","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b034c09a-c74f-4238-b411-a2524d58d5bc","name":"b034c09a-c74f-4238-b411-a2524d58d5bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cfa0a415-d633-4deb-b642-5b9218315653","name":"cfa0a415-d633-4deb-b642-5b9218315653","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3eec7c44-241b-4784-96f8-47a6eacca51e","name":"3eec7c44-241b-4784-96f8-47a6eacca51e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ba9835b1-4c47-4724-853b-471542d17936","name":"ba9835b1-4c47-4724-853b-471542d17936","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -79,36 +79,16 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e2f4f5ec-4d7c-446a-91fd-0fe44061f294","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"75aa211c-a060-4360-a11e-4855685bd670","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"56f4d534-9c9f-48ae-a4cd-214c18072222","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ce28d3a9-cb49-4a29-9745-2370c620f6a4","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d5e1980a-0e60-4d04-b753-883e41e8c60e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c2f67e1f-25e3-447c-9497-14f5dee920f3","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b034c09a-c74f-4238-b411-a2524d58d5bc","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"5f94556f-39a0-4d3a-a0c6-891c988887dd","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cfa0a415-d633-4deb-b642-5b9218315653","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"cc012478-ff14-4162-9889-8317f3c990e5","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3eec7c44-241b-4784-96f8-47a6eacca51e","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"32839098-0522-4b45-84ec-1e10531cc321","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f02a543a-3464-4c0c-8f41-f2c4e4ce3119","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba9835b1-4c47-4724-853b-471542d17936","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e27bf050-5356-453d-a8ff-abbb6043b9cb","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d27f9f47-14c8-4fce-ae13-874584aef5bc","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e2f4f5ec-4d7c-446a-91fd-0fe44061f294","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"1fbab0af-6812-4d0c-a1da-a19b14c39815","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"75aa211c-a060-4360-a11e-4855685bd670","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"56f4d534-9c9f-48ae-a4cd-214c18072222","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ce28d3a9-cb49-4a29-9745-2370c620f6a4","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e2203130-cd3a-456f-83d4-1adeb88f83e3","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d5e1980a-0e60-4d04-b753-883e41e8c60e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e390434f-8f6a-44de-86d2-e3c8e633a2c3","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c2f67e1f-25e3-447c-9497-14f5dee920f3","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b034c09a-c74f-4238-b411-a2524d58d5bc","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"5f94556f-39a0-4d3a-a0c6-891c988887dd","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"cfa0a415-d633-4deb-b642-5b9218315653","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cc012478-ff14-4162-9889-8317f3c990e5","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"3eec7c44-241b-4784-96f8-47a6eacca51e","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"32839098-0522-4b45-84ec-1e10531cc321","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a449cab1-4b23-47ab-a427-3b260c8b97d9","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f02a543a-3464-4c0c-8f41-f2c4e4ce3119","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba9835b1-4c47-4724-853b-471542d17936","path":"sprites/sprite_enemy_pine_walk/sprite_enemy_pine_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e27bf050-5356-453d-a8ff-abbb6043b9cb","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_fall",
   "bboxMode":0,
   "bbox_bottom":92,
@@ -17,9 +17,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"fe1d67a0-4987-472a-9be3-e72946637cf1","name":"fe1d67a0-4987-472a-9be3-e72946637cf1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fe1d67a0-4987-472a-9be3-e72946637cf1","name":"fe1d67a0-4987-472a-9be3-e72946637cf1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,15 +77,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6746ff01-1095-499b-b2f4-94d50b18d5d2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fe1d67a0-4987-472a-9be3-e72946637cf1","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8056b271-335a-4ea4-87e7-9aeb2e24b872","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c271f0ab-58b7-4c6a-81ca-c4f35d154885","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5a87a6e6-c5dc-4ee9-bc1e-3d2ca17bf306","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6746ff01-1095-499b-b2f4-94d50b18d5d2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fe1d67a0-4987-472a-9be3-e72946637cf1","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8056b271-335a-4ea4-87e7-9aeb2e24b872","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f10ec479-f3ee-4f2f-8c32-b18c8b9b9f1e","path":"sprites/sprite_enemy_sausageman_fall/sprite_enemy_sausageman_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c271f0ab-58b7-4c6a-81ca-c4f35d154885","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

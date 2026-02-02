@@ -4,6 +4,6 @@ if(time == 0) {
 	instance_destroy();
 	instance_create_depth(x,y,0,o_Le_BombExplosion);
 }
-if(PLAYER_TOUCHING_IMAGE) velocity[0] *= -1;
-if(PLAYER_GROUNDED) velocity[0] = 0;
+if(PLAYER_TOUCHING_IMAGE) velocity.x *= -1;
+if(PLAYER_GROUNDED) velocity.x = 0;
 CollideAndMove(0.5);

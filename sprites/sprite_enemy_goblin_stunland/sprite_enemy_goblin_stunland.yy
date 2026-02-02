@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_stunland",
   "bboxMode":0,
   "bbox_bottom":97,
@@ -17,12 +17,12 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b61540c1-b589-4790-9e25-cc958cac60a8","name":"b61540c1-b589-4790-9e25-cc958cac60a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"28f35381-235c-4dd6-abbc-42613d14d054","name":"28f35381-235c-4dd6-abbc-42613d14d054","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"338a006d-bba8-434e-98c1-76ba44849ebb","name":"338a006d-bba8-434e-98c1-76ba44849ebb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f14298ae-d166-4072-bc3b-5e674bbb891c","name":"f14298ae-d166-4072-bc3b-5e674bbb891c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b61540c1-b589-4790-9e25-cc958cac60a8","name":"b61540c1-b589-4790-9e25-cc958cac60a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"28f35381-235c-4dd6-abbc-42613d14d054","name":"28f35381-235c-4dd6-abbc-42613d14d054","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"338a006d-bba8-434e-98c1-76ba44849ebb","name":"338a006d-bba8-434e-98c1-76ba44849ebb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f14298ae-d166-4072-bc3b-5e674bbb891c","name":"f14298ae-d166-4072-bc3b-5e674bbb891c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -80,24 +80,12 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b61540c1-b589-4790-9e25-cc958cac60a8","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a85492fc-1d4c-4929-a81b-ca5a0826aef6","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3acb3c6b-cb9d-4689-8ce7-9d6031dfc64e","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"28f35381-235c-4dd6-abbc-42613d14d054","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e9eb7258-97a7-4a19-8784-8fe612ceadbc","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"338a006d-bba8-434e-98c1-76ba44849ebb","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2bd52c82-db6c-4288-8358-dbf6bc0a02b4","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9b0b9c26-8f26-41d6-a457-7fe49ddbbb55","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f14298ae-d166-4072-bc3b-5e674bbb891c","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f7799e5b-ee8b-446b-a965-5501fbdd8ff3","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b61540c1-b589-4790-9e25-cc958cac60a8","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a85492fc-1d4c-4929-a81b-ca5a0826aef6","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6a966ec2-46db-47eb-a5ca-ac05c8a99801","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3acb3c6b-cb9d-4689-8ce7-9d6031dfc64e","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"28f35381-235c-4dd6-abbc-42613d14d054","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e9eb7258-97a7-4a19-8784-8fe612ceadbc","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"338a006d-bba8-434e-98c1-76ba44849ebb","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2bd52c82-db6c-4288-8358-dbf6bc0a02b4","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d87a0fbd-8339-49d6-b06d-71ac0f43d480","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"9b0b9c26-8f26-41d6-a457-7fe49ddbbb55","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f14298ae-d166-4072-bc3b-5e674bbb891c","path":"sprites/sprite_enemy_goblin_stunland/sprite_enemy_goblin_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f7799e5b-ee8b-446b-a965-5501fbdd8ff3","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

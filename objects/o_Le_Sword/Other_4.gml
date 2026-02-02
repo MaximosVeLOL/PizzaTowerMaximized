@@ -1,1 +1,1 @@
-if(o_PlayerParent.state != "knight" && image_index == 1) image_index = 0;
+if(o_Player.state != "knight" && image_index == 1) image_index = 0;

@@ -24,6 +24,7 @@ hspeed = movespeed;
 if(x > room_width + 300) {
     with(instance_create_depth(0,0,0,o_UI_Fade)) {
         onFade = function() {
+			instance_create_depth(0,0,0,o_Player);
 			//LoadTextureGroup("TextureG_Level");
 			if(LoadSettings()) ApplySettings();
 			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {

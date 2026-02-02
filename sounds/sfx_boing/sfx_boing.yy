@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_boing",
   "audioGroupId":{
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "conversionMode":0,
   "duration":0.7938322,
+  "exportDir":"",
   "name":"sfx_boing",
   "parent":{
     "name":"Enemies",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_boing.ogg",
-  "type":0,
   "volume":1.0,
 }

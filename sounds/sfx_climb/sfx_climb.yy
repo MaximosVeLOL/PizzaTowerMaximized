@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_climb",
   "audioGroupId":{
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "conversionMode":0,
   "duration":0.33088437,
+  "exportDir":"",
   "name":"sfx_climb",
   "parent":{
     "name":"Player",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_climb.ogg",
-  "type":0,
   "volume":1.0,
 }

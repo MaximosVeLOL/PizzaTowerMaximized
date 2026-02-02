@@ -1,13 +1,14 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_noisespawn",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
       "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
@@ -15,6 +16,7 @@
   },
   "conversionMode":0,
   "duration":1.4812245,
+  "exportDir":"",
   "name":"sfx_noisespawn",
   "parent":{
     "name":"Sounds",
@@ -25,6 +27,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_noisespawn.wav",
-  "type":0,
   "volume":1.0,
 }

@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"va_happy3",
   "audioGroupId":{
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "conversionMode":0,
   "duration":1.2016326,
+  "exportDir":"",
   "name":"va_happy3",
   "parent":{
     "name":"Voice",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"va_happy3.ogg",
-  "type":0,
   "volume":1.0,
 }

@@ -1,21 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"o_Player_ETB",
+  "%Name":"o_MultiplayerHandler",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_Player_ETB",
+  "name":"o_MultiplayerHandler",
   "overriddenProperties":[],
   "parent":{
     "name":"Player",
     "path":"folders/Objects/System/Core/Player.yy",
   },
-  "parentObjectId":{
-    "name":"o_PlayerParent",
-    "path":"objects/o_PlayerParent/o_PlayerParent.yy",
-  },
-  "persistent":true,
+  "parentObjectId":null,
+  "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -32,10 +29,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_player_idle",
-    "path":"sprites/spr_player_idle/spr_player_idle.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

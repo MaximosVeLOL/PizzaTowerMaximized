@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_stunfalltrans",
   "bboxMode":0,
   "bbox_bottom":88,
@@ -17,11 +17,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"935047d9-d78a-4882-ba6f-0188fb645db1","name":"935047d9-d78a-4882-ba6f-0188fb645db1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"9d6585b2-20da-462f-a313-87be423ac125","name":"9d6585b2-20da-462f-a313-87be423ac125","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"935047d9-d78a-4882-ba6f-0188fb645db1","name":"935047d9-d78a-4882-ba6f-0188fb645db1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9d6585b2-20da-462f-a313-87be423ac125","name":"9d6585b2-20da-462f-a313-87be423ac125","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -79,21 +79,11 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"935047d9-d78a-4882-ba6f-0188fb645db1","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a5282eba-439a-4a1f-983a-960a421d1675","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"df66ab92-a184-45d9-b35a-109598c8d0bf","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"23f392be-7c7c-4814-8e17-3c94ff776f3a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7bbe3747-d829-42d5-839e-4b48b5e22520","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9d6585b2-20da-462f-a313-87be423ac125","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"4b228c2d-52a5-44b5-bc40-83c9cc933359","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"935047d9-d78a-4882-ba6f-0188fb645db1","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a5282eba-439a-4a1f-983a-960a421d1675","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b5000aee-1f01-4127-a587-4d5599a4c4cf","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"df66ab92-a184-45d9-b35a-109598c8d0bf","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0f8dce1-5371-4db1-a5db-0e99c7e2addb","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"23f392be-7c7c-4814-8e17-3c94ff776f3a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b7bfdc18-adb6-4c93-9269-0fa7b2f69608","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7bbe3747-d829-42d5-839e-4b48b5e22520","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9d6585b2-20da-462f-a313-87be423ac125","path":"sprites/sprite_enemy_sausageman_stunfalltrans/sprite_enemy_sausageman_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4b228c2d-52a5-44b5-bc40-83c9cc933359","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

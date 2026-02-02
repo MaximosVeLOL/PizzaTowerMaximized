@@ -1,9 +1,9 @@
-if((other.state == "jump" && GetInput("jump", 0) || other.state == "freefall") && other.velocity[1] > 0) {
+if((other.state == "jump" && GetInput("jump", 0) || other.state == "freefall") && other.velocity.y > 0) {
 	setState("stunned");
 	sprite_index = spr_enemy_cheeseslime_bumped;
 	if(other.state == "jump") PlaySound(sfx_boing);
 	other.tempVar[1] = true;
-	other.velocity[1] = other.state == "freefall" ? -7 : -14;
+	other.velocity.y = other.state == "freefall" ? -7 : -14;
 	tempVar[0] = 200;
 }
 with(other) {

@@ -1,15 +1,15 @@
-if(!instance_exists(o_PlayerParent)) {
+if(!instance_exists(o_Player)) {
 	Log("The Player is dead!");
 	return;
 }
 if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText) {
 	draw_set_font(-1);
 	var toDraw = [
-		"State: " + o_PlayerParent.state,
-		"TempVar: " + string(o_PlayerParent.tempVar[0]) + ", " + string(o_PlayerParent.tempVar[1]) + ", " + string(o_PlayerParent.tempVar[2]),
-		"Velocity: " + string(o_PlayerParent.velocity[0]) + ", " + string(o_PlayerParent.velocity[1]),
-		"MoveSpeed: " + string(o_PlayerParent.movespeed),
-		"Player Pos: " + string(o_PlayerParent.x) + ", " + string(o_PlayerParent.y),
+		"State: " + o_Player.state,
+		"TempVar: " + string(o_Player.tempVar[0]) + ", " + string(o_Player.tempVar[1]) + ", " + string(o_Player.tempVar[2]),
+		"velocity.x & velocity.y: " + string(o_Player.velocity.x) + ", " + string(o_Player.velocity.y),
+		"MoveSpeed: " + string(o_Player.movespeed),
+		"Player Pos: " + string(o_Player.x) + ", " + string(o_Player.y),
 		"FPS: " + string(fps_real) + " : " + string(fps),
 		"ShakeMag: " + string(shake.mag),
 		"ShakeAcc: " + string(shake.acc),
@@ -33,14 +33,14 @@ if(hudVisible) {
 	switch(global.settings.playerSettings.moveSet) {
 		case Moveset.PreETB:
 			draw_sprite(sprite_hud_inventory, 0, 480, 40);
-			if(o_PlayerParent.inventory.key) draw_sprite(sprite_level_key, -1, 480, 40);
+			if(o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 480, 40);
 		break;
 		
 		case Moveset.ETB: //OLD
 			var sprite = sprite_error;
-			for(var i = 0 ; i < instance_number(o_PlayerParent);i++) {
+			for(var i = 0 ; i < instance_number(o_Player);i++) {
 				var X_ADD = (i * 200);
-				switch(instance_find(o_PlayerParent, i).state) {
+				switch(instance_find(o_Player, i).state) {
 		
 					case "mach1":
 						sprite = sprite_hud_pep_mach1;
@@ -68,8 +68,8 @@ if(hudVisible) {
 					break;
 				}
 				draw_sprite(sprite, -1, 120 + X_ADD, 80);
-				if(string_count("mach", instance_find(o_PlayerParent, i).state) > 0) {
-					var mach =  instance_find(o_PlayerParent, i).tempVar[0];
+				if(string_count("mach", instance_find(o_Player, i).state) > 0) {
+					var mach =  instance_find(o_Player, i).tempVar[0];
 					if(mach >= 7) sprite = 1;
 					if(mach >= 35) sprite = 2;
 					if(mach >= 50) sprite = 3;
@@ -82,7 +82,7 @@ if(hudVisible) {
 				else draw_sprite(sprite_hud_speedbar, 0, 120 + X_ADD,120);
 	
 	
-			    if (instance_find(o_PlayerParent, i).inventory.key) draw_sprite(sprite_level_key, -1, 180 + X_ADD, 30)
+			    if (instance_find(o_Player, i).inventory.key) draw_sprite(sprite_level_key, -1, 180 + X_ADD, 30)
 			    draw_sprite(sprite_hud_inventory, -1, 180 + X_ADD, 30)
 				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
 				//draw_sprite(sprite_hud_inventory, -1, 240, 30);

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_stunned",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -17,14 +17,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2af071c0-70ce-4583-9253-4aa289921064","name":"2af071c0-70ce-4583-9253-4aa289921064","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b0ff0498-883a-4540-bd93-9d60fb311687","name":"b0ff0498-883a-4540-bd93-9d60fb311687","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2af071c0-70ce-4583-9253-4aa289921064","name":"2af071c0-70ce-4583-9253-4aa289921064","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b0ff0498-883a-4540-bd93-9d60fb311687","name":"b0ff0498-883a-4540-bd93-9d60fb311687","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -82,30 +82,14 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"985e7848-2d2e-4b13-bdda-885ab60e9881","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3e42ba80-78f8-4e48-8644-8eb7bd3c3e74","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f75a5cbc-44fc-47b0-8e6a-a2d94baeb5ae","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2af071c0-70ce-4583-9253-4aa289921064","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c4b99eff-a51a-43a8-9442-96638ee40e45","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"55ffde55-5b92-4e55-a039-38420d07d3ed","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"66b711b8-70d1-41b1-9595-7a277152427b","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a27d7aaa-bb09-48ec-9cec-5b1faf4b383e","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0ff0498-883a-4540-bd93-9d60fb311687","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e58b59e9-8d92-4872-a486-cf4dbbf38b33","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a8e30dc5-f876-4771-ad04-0a54e6f016ea","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"985e7848-2d2e-4b13-bdda-885ab60e9881","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d641fcc4-265b-4ab8-b99e-75306df28e0f","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3e42ba80-78f8-4e48-8644-8eb7bd3c3e74","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6b46b022-a74e-466c-a757-a0a067fb0dc7","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f75a5cbc-44fc-47b0-8e6a-a2d94baeb5ae","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2af071c0-70ce-4583-9253-4aa289921064","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c4b99eff-a51a-43a8-9442-96638ee40e45","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a46bd161-e2fd-4db3-8a15-08e7df55e5e9","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"55ffde55-5b92-4e55-a039-38420d07d3ed","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b1c4a3a7-5360-4b6d-88e4-18a6cf10e211","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"66b711b8-70d1-41b1-9595-7a277152427b","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ab43ec3f-3a1d-4922-989e-3923fe21e3fa","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a27d7aaa-bb09-48ec-9cec-5b1faf4b383e","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0ff0498-883a-4540-bd93-9d60fb311687","path":"sprites/sprite_enemy_sausageman_stunned/sprite_enemy_sausageman_stunned.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e58b59e9-8d92-4872-a486-cf4dbbf38b33","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

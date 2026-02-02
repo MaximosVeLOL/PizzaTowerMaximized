@@ -3,13 +3,14 @@ CreateEffect({sprite_index : sprite_effect_bang});
 
 if(state == "fly") {
 	other.setState("hit");
-	other.velocity = [5 * image_xscale,-10];
+	other.velocity.x = 5 * image_xscale;
+	other.velocity.y = -10;
 	return;
 }
 
 
 setState("hit");
-velocity[1] = -12;
+velocity.y = -12;
 other.setState("stunned");
 other.setSprite("stomped");
 other.tempVar[0] = 200;

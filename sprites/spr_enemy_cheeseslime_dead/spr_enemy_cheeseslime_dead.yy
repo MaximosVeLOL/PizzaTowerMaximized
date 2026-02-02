@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_enemy_cheeseslime_dead",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -12,18 +12,18 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a747e683-95f7-4067-82ef-1d52fd51fbef","name":"a747e683-95f7-4067-82ef-1d52fd51fbef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"9c11fbc2-0884-4160-a375-31a2666f0c68","name":"9c11fbc2-0884-4160-a375-31a2666f0c68","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a747e683-95f7-4067-82ef-1d52fd51fbef","name":"a747e683-95f7-4067-82ef-1d52fd51fbef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9c11fbc2-0884-4160-a375-31a2666f0c68","name":"9c11fbc2-0884-4160-a375-31a2666f0c68","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -79,42 +79,18 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"605f5e59-4687-4acf-9fc9-e0113b57b2f3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"4f6c5a4b-aa92-4164-94d4-f7c30e948296","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"81e184e6-4e2f-4b2b-bf56-58b81883a133","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"833149a2-5a69-4dfc-a191-1245ecbf89a0","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a747e683-95f7-4067-82ef-1d52fd51fbef","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3515a310-6b96-4233-9ece-765952d3f8b5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"215529dd-5f58-4d12-a7e7-2355d1723974","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c11fbc2-0884-4160-a375-31a2666f0c68","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"57755faf-21fc-4d69-97ad-536e1c7785c1","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a394eec4-49e6-49c9-8fc0-a0a62a06b3e3","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"90fdfda9-81e0-422f-8375-0cf60e7fc808","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3c35a9e2-1bb4-4883-ad6b-7b3dcdd46c0e","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"0dff75f6-9eb6-4b71-8377-3aed77311c32","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"350c4b96-ed2d-4301-938e-ad21e527bacb","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fbd26e90-f2f4-4cea-93e7-0a3e508bd642","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"605f5e59-4687-4acf-9fc9-e0113b57b2f3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"bb2a9cb0-2e50-4e42-88d4-aa315dce8560","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4f6c5a4b-aa92-4164-94d4-f7c30e948296","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"877f28c7-18bb-4624-b7a1-685fea2d9a10","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"81e184e6-4e2f-4b2b-bf56-58b81883a133","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba37f8cc-86dc-4196-91f1-ad01cac43bfc","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"833149a2-5a69-4dfc-a191-1245ecbf89a0","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a747e683-95f7-4067-82ef-1d52fd51fbef","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3515a310-6b96-4233-9ece-765952d3f8b5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"04bb940e-ca3d-4b23-8919-d20b5e9be23b","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"215529dd-5f58-4d12-a7e7-2355d1723974","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c11fbc2-0884-4160-a375-31a2666f0c68","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"57755faf-21fc-4d69-97ad-536e1c7785c1","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d173c3b1-c8ea-4054-90cc-b26ebbdb6fcd","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a394eec4-49e6-49c9-8fc0-a0a62a06b3e3","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6cacd4a1-9faa-42b1-a3da-561bd47fb957","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"90fdfda9-81e0-422f-8375-0cf60e7fc808","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"3bf4f31b-a34a-4938-baf3-044ecb8d8972","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3c35a9e2-1bb4-4883-ad6b-7b3dcdd46c0e","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"36ec25b1-6656-41d6-b1fd-fe93e139db60","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"0dff75f6-9eb6-4b71-8377-3aed77311c32","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"98bf04be-e6d1-45f3-b095-727ac99b18bd","path":"sprites/spr_enemy_cheeseslime_dead/spr_enemy_cheeseslime_dead.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"350c4b96-ed2d-4301-938e-ad21e527bacb","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

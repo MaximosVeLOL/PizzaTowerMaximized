@@ -2,10 +2,10 @@ movespeed = 1.5;
 state = "idle";
 mass = 0.5;
 curMass = mass;
-velocity = [0,0];
 tempVar = [0,0,20];
 animVar = false;
 stunnable = true;
+velocity = new Vector();
 die = function(dead_sprite, canMove = false) {
 	instance_destroy();
 	if(canMove) instance_create_depth(x,y,0,o_P_Effect, {sprite_index : dead_sprite});

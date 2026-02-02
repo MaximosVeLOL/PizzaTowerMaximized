@@ -10,6 +10,8 @@ view_yport[0] = 0;
 camera_set_view_size(view_camera[0],  960, 540);
 
 
+
+
 /*
 ForEachPlayer(function(p, index) {
 	var MAX = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.maxPlayers : 1;

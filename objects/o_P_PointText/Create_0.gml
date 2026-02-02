@@ -1,3 +1,4 @@
+event_inherited();
 canMove = true;
-velocity = [0,-3];
+velocity.y = -3;
 mass = 0;

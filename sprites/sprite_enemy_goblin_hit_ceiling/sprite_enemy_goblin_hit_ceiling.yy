@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_hit_ceiling",
   "bboxMode":0,
   "bbox_bottom":91,
@@ -17,9 +17,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bc3d07ff-9542-445d-be50-f406e9f4f378","name":"bc3d07ff-9542-445d-be50-f406e9f4f378","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"e4aae25b-26c8-477e-b57e-8fb597441044","name":"e4aae25b-26c8-477e-b57e-8fb597441044","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bc3d07ff-9542-445d-be50-f406e9f4f378","name":"bc3d07ff-9542-445d-be50-f406e9f4f378","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e4aae25b-26c8-477e-b57e-8fb597441044","name":"e4aae25b-26c8-477e-b57e-8fb597441044","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,15 +77,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bc3d07ff-9542-445d-be50-f406e9f4f378","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2bcdde9a-e324-44c4-b118-4dd971c4aa33","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e4aae25b-26c8-477e-b57e-8fb597441044","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2081d9a5-bfca-497d-99e6-62f9f5949839","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"82da9f50-9737-432f-8fe8-1b9c92f0e6e1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"bc3d07ff-9542-445d-be50-f406e9f4f378","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2bcdde9a-e324-44c4-b118-4dd971c4aa33","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e4aae25b-26c8-477e-b57e-8fb597441044","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2081d9a5-bfca-497d-99e6-62f9f5949839","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d0796fab-7dd8-42a4-8dfe-9d7cfd0ecdfc","path":"sprites/sprite_enemy_goblin_hit_ceiling/sprite_enemy_goblin_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"82da9f50-9737-432f-8fe8-1b9c92f0e6e1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

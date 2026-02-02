@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_cigar_turn",
   "bboxMode":0,
   "bbox_bottom":62,
@@ -12,13 +12,13 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ae6a2152-add5-470f-b9e2-1d00061758e8","name":"ae6a2152-add5-470f-b9e2-1d00061758e8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"dc2e39e7-8304-437f-90ad-012492c89367","name":"dc2e39e7-8304-437f-90ad-012492c89367","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a75e1a95-8111-4b69-b626-ca7634393640","name":"a75e1a95-8111-4b69-b626-ca7634393640","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"515d6af3-89d0-4d52-9a20-875b82c18d98","name":"515d6af3-89d0-4d52-9a20-875b82c18d98","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"76fb714d-de68-413d-ad07-3007ed864465","name":"76fb714d-de68-413d-ad07-3007ed864465","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ae6a2152-add5-470f-b9e2-1d00061758e8","name":"ae6a2152-add5-470f-b9e2-1d00061758e8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dc2e39e7-8304-437f-90ad-012492c89367","name":"dc2e39e7-8304-437f-90ad-012492c89367","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a75e1a95-8111-4b69-b626-ca7634393640","name":"a75e1a95-8111-4b69-b626-ca7634393640","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"515d6af3-89d0-4d52-9a20-875b82c18d98","name":"515d6af3-89d0-4d52-9a20-875b82c18d98","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"76fb714d-de68-413d-ad07-3007ed864465","name":"76fb714d-de68-413d-ad07-3007ed864465","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -76,27 +76,13 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"bfc6515c-0077-4d0b-a99f-fa42a35bee7a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"00c0af0d-aa65-4530-a5db-3074d2785bf8","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae6a2152-add5-470f-b9e2-1d00061758e8","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1e3b548b-4c09-4efd-81c4-d572fdb81d56","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dc2e39e7-8304-437f-90ad-012492c89367","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1826cdb2-eece-41bd-931a-357a89586689","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a75e1a95-8111-4b69-b626-ca7634393640","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"04e0dcf8-5d20-48a2-82fe-ef9d3dec93a6","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"515d6af3-89d0-4d52-9a20-875b82c18d98","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3f68b5d9-7d67-4665-995c-860ba40c1a48","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"76fb714d-de68-413d-ad07-3007ed864465","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6e6fefd4-e693-43e0-ba4c-bf3918020ccb","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"11b79cb2-1849-4f7c-ac45-5615e15bcea1","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"bfc6515c-0077-4d0b-a99f-fa42a35bee7a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9c3f2021-4ae9-4f3a-8b75-3b6e2cddc76e","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"00c0af0d-aa65-4530-a5db-3074d2785bf8","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae6a2152-add5-470f-b9e2-1d00061758e8","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1e3b548b-4c09-4efd-81c4-d572fdb81d56","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"dc2e39e7-8304-437f-90ad-012492c89367","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1826cdb2-eece-41bd-931a-357a89586689","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a75e1a95-8111-4b69-b626-ca7634393640","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"04e0dcf8-5d20-48a2-82fe-ef9d3dec93a6","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"515d6af3-89d0-4d52-9a20-875b82c18d98","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3f68b5d9-7d67-4665-995c-860ba40c1a48","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"76fb714d-de68-413d-ad07-3007ed864465","path":"sprites/sprite_enemy_sausageman_cigar_turn/sprite_enemy_sausageman_cigar_turn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6e6fefd4-e693-43e0-ba4c-bf3918020ccb","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

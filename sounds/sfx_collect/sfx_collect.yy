@@ -1,13 +1,14 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_collect",
   "audioGroupId":{
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":0,
   "compression":0,
+  "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
       "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
@@ -15,6 +16,7 @@
   },
   "conversionMode":0,
   "duration":0.3599093,
+  "exportDir":"",
   "name":"sfx_collect",
   "parent":{
     "name":"Sounds",
@@ -25,6 +27,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_collect.ogg",
-  "type":0,
   "volume":1.0,
 }

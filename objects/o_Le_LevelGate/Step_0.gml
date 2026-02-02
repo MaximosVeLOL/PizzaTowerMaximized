@@ -1,5 +1,5 @@
 
-		if(o_PlayerParent.bbox_right >= bbox_left && o_PlayerParent.bbox_left <= bbox_right && o_PlayerParent.bbox_bottom >= bbox_top && o_PlayerParent.bbox_top <= bbox_bottom) {
+		if(o_Player.bbox_right >= bbox_left && o_Player.bbox_left <= bbox_right && o_Player.bbox_bottom >= bbox_top && o_Player.bbox_top <= bbox_bottom) {
 			if(gotoLevel) {
 				image_index = 1; //Open sesame
 				renderText = true;
@@ -7,7 +7,7 @@
 			}
 			else if(instance_exists(o_PizzaTimeManager)) image_index = 1;
 			
-			with(o_PlayerParent) { // Door opening code
+			with(o_Player) { // Door opening code
 				if(PLAYER_GROUNDED && GetInput("up", 1) && string_count("mach", state) == 0 && state != "door") {
 					if(!other.gotoLevel && !instance_exists(o_PizzaTimeManager)) return; //One false can ruin it all
 					setState("door");
@@ -24,9 +24,9 @@
 					else {
 						var LevelData = GetLevelInfo(levelIndex);
 						room_goto(LevelData.targetRoom);
-						o_PlayerParent.tempVar[0] = 1;
-						o_PlayerParent.x = LevelData.newPos[0];
-						o_PlayerParent.y = LevelData.newPos[1];
+						o_Player.tempVar[0] = 1;
+						o_Player.x = LevelData.newPos[0];
+						o_Player.y = LevelData.newPos[1];
 						if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(LevelData.newSong, LevelData.loopData);
 					}
 				}

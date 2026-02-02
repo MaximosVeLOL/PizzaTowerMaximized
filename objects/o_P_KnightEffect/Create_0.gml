@@ -1,4 +1,4 @@
-//event_inherited();
+event_inherited();
 canMove = true;
-velocity[1] = 15; //Why was this moving up???
+velocity.y = 15; //Why was this moving up???
 mass = 0;

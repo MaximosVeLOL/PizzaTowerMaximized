@@ -1,2 +1,2 @@
-velocity = [0,0];
+velocity = new Vector();
 time = 200;

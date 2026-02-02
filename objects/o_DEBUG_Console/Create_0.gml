@@ -32,12 +32,12 @@ commands = [
 	new createCommand("reset", game_restart, "reset"),
 	
 	new createCommand("player_set_state", function() {
-		o_PlayerParent.setState(currentArguments[0]);
+		o_Player.setState(currentArguments[0]);
 	}, "player_set_state [new state]"),
 	
 	new createCommand("room_goto", function() {
 		if(asset_get_index(currentArguments[0]) != -1) {
-			if(instance_exists(o_GameManager) && instance_exists(o_PlayerParent)) o_GameManager.gotoRoom(asset_get_index(string(currentArguments[0])), [currentArguments[1], currentArguments[2]], -1, false);
+			if(instance_exists(o_GameManager) && instance_exists(o_Player)) o_GameManager.gotoRoom(asset_get_index(string(currentArguments[0])), [currentArguments[1], currentArguments[2]], -1, false);
 			else room_goto(asset_get_index(string(currentArguments[0])));
 		}
 	}, "room_goto [room] [x] [y]"),
@@ -51,7 +51,7 @@ commands = [
 	}, "instances_list"),
 	
 	new createCommand("hurt", function() {
-		o_PlayerParent.hurt();
+		o_Player.hurt();
 	}, "hurt"),
 	
 	new createCommand("pizza_time", function() {
@@ -112,11 +112,11 @@ commands = [
 	
 	new createCommand("collect_all", function() {
 		instance_destroy(o_Le_Pizzakin); //Destory all pizzakins collected before becuase it causes errors with masterObjects.
-		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "shroom";
-		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "cheese";
-		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "tomato";
-		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "sausage";
-		instance_create_depth(o_PlayerParent.x, o_PlayerParent.y, 0, o_Le_Pizzakin).type = "pineapple";
+		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "shroom";
+		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "cheese";
+		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "tomato";
+		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "sausage";
+		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "pineapple";
 	}, "collect_all"),
 
 ];

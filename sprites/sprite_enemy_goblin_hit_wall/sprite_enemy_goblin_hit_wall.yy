@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_hit_wall",
   "bboxMode":0,
   "bbox_bottom":99,
@@ -17,9 +17,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6211423d-5d1e-4b90-8b52-5b15892b5259","name":"6211423d-5d1e-4b90-8b52-5b15892b5259","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6211423d-5d1e-4b90-8b52-5b15892b5259","name":"6211423d-5d1e-4b90-8b52-5b15892b5259","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,15 +77,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2a92a9b4-23f1-4fe9-b1a6-c77243c82d7d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6211423d-5d1e-4b90-8b52-5b15892b5259","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"110456d1-e993-4b72-896c-e29bf66ec323","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"75a779dd-ac0a-4a5a-a6f9-56ec5c0f036b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e7ddf173-e426-4fee-b4ca-1e4558e9cc1c","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2a92a9b4-23f1-4fe9-b1a6-c77243c82d7d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6211423d-5d1e-4b90-8b52-5b15892b5259","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"110456d1-e993-4b72-896c-e29bf66ec323","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d3ea6fc6-723f-40c2-a07b-3588351d8226","path":"sprites/sprite_enemy_goblin_hit_wall/sprite_enemy_goblin_hit_wall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"75a779dd-ac0a-4a5a-a6f9-56ec5c0f036b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_flying",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -17,8 +17,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"25c851c6-b9fa-4765-914c-d590c12a3738","name":"25c851c6-b9fa-4765-914c-d590c12a3738","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"25c851c6-b9fa-4765-914c-d590c12a3738","name":"25c851c6-b9fa-4765-914c-d590c12a3738","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -76,12 +76,8 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"25c851c6-b9fa-4765-914c-d590c12a3738","path":"sprites/sprite_enemy_goblin_flying/sprite_enemy_goblin_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6c383177-61a7-42c1-a2e1-dd304d6892f2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","path":"sprites/sprite_enemy_goblin_flying/sprite_enemy_goblin_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"45e81a97-8b4e-4be5-ad57-9abbc4f835f2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"25c851c6-b9fa-4765-914c-d590c12a3738","path":"sprites/sprite_enemy_goblin_flying/sprite_enemy_goblin_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6c383177-61a7-42c1-a2e1-dd304d6892f2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8b5bef6c-c4fa-4d0a-bcb3-d1e6fec7b800","path":"sprites/sprite_enemy_goblin_flying/sprite_enemy_goblin_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"45e81a97-8b4e-4be5-ad57-9abbc4f835f2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

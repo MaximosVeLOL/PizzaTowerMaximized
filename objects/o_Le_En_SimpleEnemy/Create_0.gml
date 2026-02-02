@@ -1,4 +1,4 @@
-velocity = [0,0];
+velocity = new Vector();
 movespeed = 1.5;
 mass = 0.5;
 state = "walk";

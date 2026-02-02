@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_stomped",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -17,10 +17,10 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b6c12748-a288-4a35-9ae1-154c426dee7a","name":"b6c12748-a288-4a35-9ae1-154c426dee7a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"c595fd27-f981-48e6-9e6b-5603fb32218b","name":"c595fd27-f981-48e6-9e6b-5603fb32218b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b6c12748-a288-4a35-9ae1-154c426dee7a","name":"b6c12748-a288-4a35-9ae1-154c426dee7a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c595fd27-f981-48e6-9e6b-5603fb32218b","name":"c595fd27-f981-48e6-9e6b-5603fb32218b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -78,18 +78,10 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"0f510b91-5efa-4a93-bd32-e3739f918db7","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b6c12748-a288-4a35-9ae1-154c426dee7a","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c1b8e209-811c-489a-9188-7f245913e5fe","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c595fd27-f981-48e6-9e6b-5603fb32218b","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8041ac11-c7ce-453f-8dca-830d728ac99f","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"80cbd16b-fecd-47ec-9998-e4e9b045666f","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"271d8aa2-36e2-4377-b6c6-28d2d1c60272","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"0f510b91-5efa-4a93-bd32-e3739f918db7","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b6c12748-a288-4a35-9ae1-154c426dee7a","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c1b8e209-811c-489a-9188-7f245913e5fe","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c595fd27-f981-48e6-9e6b-5603fb32218b","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8041ac11-c7ce-453f-8dca-830d728ac99f","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"64cec7f1-1712-464d-a92c-9ace279cdb1f","path":"sprites/sprite_enemy_sausageman_stomped/sprite_enemy_sausageman_stomped.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"80cbd16b-fecd-47ec-9998-e4e9b045666f","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

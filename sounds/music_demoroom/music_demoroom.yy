@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"music_demoroom",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":1,
   "compression":3,
+  "compressionQuality":4,
   "conversionMode":0,
   "duration":115.82767,
+  "exportDir":"",
   "name":"music_demoroom",
   "parent":{
     "name":"Music",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"music_demoroom.ogg",
-  "type":1,
   "volume":1.0,
 }

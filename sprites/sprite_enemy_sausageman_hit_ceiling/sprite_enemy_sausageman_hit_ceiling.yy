@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_hit_ceiling",
   "bboxMode":0,
   "bbox_bottom":74,
@@ -17,9 +17,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"864c1954-50f7-4ff3-af72-57977041c33e","name":"864c1954-50f7-4ff3-af72-57977041c33e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"864c1954-50f7-4ff3-af72-57977041c33e","name":"864c1954-50f7-4ff3-af72-57977041c33e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,15 +77,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"864c1954-50f7-4ff3-af72-57977041c33e","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b1665db7-8934-4be7-8144-3f264876c29f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e87b2511-375c-466c-ad7e-d17685916ec4","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e8223c94-717f-4f50-b1d1-b5fac238c5e3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"864c1954-50f7-4ff3-af72-57977041c33e","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b1665db7-8934-4be7-8144-3f264876c29f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e39adc09-77ef-4a8f-ba09-bb2e5b2e7238","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e87b2511-375c-466c-ad7e-d17685916ec4","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"7f171e3e-c77a-42c7-80e7-9f5f5e0db6e6","path":"sprites/sprite_enemy_sausageman_hit_ceiling/sprite_enemy_sausageman_hit_ceiling.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e8223c94-717f-4f50-b1d1-b5fac238c5e3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

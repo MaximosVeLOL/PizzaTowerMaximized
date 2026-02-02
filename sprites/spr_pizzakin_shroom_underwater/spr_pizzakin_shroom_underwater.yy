@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_pizzakin_shroom_underwater",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,12 +12,12 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0c282397-02a2-4552-86a0-be92893e0330","name":"0c282397-02a2-4552-86a0-be92893e0330","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"68399918-0503-418f-b29d-9f17fd2b1e71","name":"68399918-0503-418f-b29d-9f17fd2b1e71","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0c282397-02a2-4552-86a0-be92893e0330","name":"0c282397-02a2-4552-86a0-be92893e0330","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"68399918-0503-418f-b29d-9f17fd2b1e71","name":"68399918-0503-418f-b29d-9f17fd2b1e71","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -75,24 +75,12 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c282397-02a2-4552-86a0-be92893e0330","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"341b4ecc-8eb0-434e-920e-a1a6f80ffb17","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1dab3f54-9226-4ee3-a8ca-77fb81fcb49d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7520d4e1-1bb1-4d9a-8df6-3ee1ec4ccaf1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"491b9867-bba2-4624-8427-e50f3b74cab9","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"859de8c0-4ba7-46d1-b4eb-3cc1160c2550","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"68399918-0503-418f-b29d-9f17fd2b1e71","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"09098d2c-41ee-4696-ab54-7cdc072fc354","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c282397-02a2-4552-86a0-be92893e0330","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"341b4ecc-8eb0-434e-920e-a1a6f80ffb17","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b65b6583-2f67-4096-a7c4-c1cd51beec17","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1dab3f54-9226-4ee3-a8ca-77fb81fcb49d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"6bf81529-514c-46e9-9b8e-bb36bcf5ddb5","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7520d4e1-1bb1-4d9a-8df6-3ee1ec4ccaf1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"cf33dfe5-331b-47f0-82c2-0fe6efe58b8c","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"491b9867-bba2-4624-8427-e50f3b74cab9","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"23cef58c-2393-4f5a-b918-6d2bdf0d5cc2","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"859de8c0-4ba7-46d1-b4eb-3cc1160c2550","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"68399918-0503-418f-b29d-9f17fd2b1e71","path":"sprites/spr_pizzakin_shroom_underwater/spr_pizzakin_shroom_underwater.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"09098d2c-41ee-4696-ab54-7cdc072fc354","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_land",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -17,10 +17,10 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"571cf1a2-795a-41e0-8533-bcb70bc75347","name":"571cf1a2-795a-41e0-8533-bcb70bc75347","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"571cf1a2-795a-41e0-8533-bcb70bc75347","name":"571cf1a2-795a-41e0-8533-bcb70bc75347","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -78,18 +78,10 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a8f8fa53-56b5-409e-a979-d61322cef786","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"571cf1a2-795a-41e0-8533-bcb70bc75347","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"cb55454f-bf4d-4e7c-92a1-7a2269277340","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c814c955-b11e-45a3-b973-7b562a0b54b1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2c52fd32-d218-4fec-b887-23a2f1c95c5d","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"09d99b0f-834a-4602-88c5-3427fb9d5bb9","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a8f8fa53-56b5-409e-a979-d61322cef786","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"571cf1a2-795a-41e0-8533-bcb70bc75347","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cb55454f-bf4d-4e7c-92a1-7a2269277340","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a8cf5a58-e838-4f7d-85a4-e84b141adc23","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c814c955-b11e-45a3-b973-7b562a0b54b1","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8a4bf6db-b7ae-4dae-9f89-409b8c754521","path":"sprites/sprite_enemy_goblin_land/sprite_enemy_goblin_land.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2c52fd32-d218-4fec-b887-23a2f1c95c5d","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

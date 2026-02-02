@@ -2,8 +2,9 @@ function ShakeCamera(mag, acc) {
 	o_Camera.shake.mag = mag;
 	o_Camera.shake.acc = acc;
 	with(o_Le_En_Parent) {
-		if(point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
-			velocity = [0, -7];
+		if(object_index != o_Le_En_Cheeseslime && point_in_rectangle(x,y,camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + 960, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]) + 540 )) {
+			velocity.x = 0;
+			velocity.y = -7;
 			setState("hit");
 			setSprite("hit");
 			tempVar[0] = 200;
@@ -13,60 +14,59 @@ function ShakeCamera(mag, acc) {
 
 
 function CollideAndMove(mass, maxYVelocity = 20, useSlopes = true) {
-	if(!PLAYER_GROUNDED) velocity[1] += mass;
-	velocity[1] = clamp(velocity[1], -maxYVelocity, maxYVelocity);
-	
-repeat(abs(velocity[1])) {
-    if !place_meeting(x, y + sign(velocity[1]), o_C_Parent)
-        y += sign(velocity[1]); 
-    else {
-        velocity[1] = 0;
-        break;
-    }
-}
-
-// Horizontal
-repeat(abs(velocity[0])) {
-	if(useSlopes) {
-	    // Move up slope
-	    if place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y - 1, o_C_Parent)
-	        y--
-    
-
-	    // Move down slope
-	    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent) && !place_meeting(x + sign(velocity[0]), y + 1, o_C_Parent) && place_meeting(x + sign(velocity[0]), y + 2, o_C_Parent)
-	        y++;
+	if(!PLAYER_GROUNDED) velocity.y += mass;
+	repeat(abs(velocity.y)) {
+	    if !place_meeting(x, y + sign(velocity.y), o_C_Parent)
+	        y += sign(velocity.y); 
+	    else {
+	        velocity.y = 0;
+	        break;
+	    }
 	}
 
-    if !place_meeting(x + sign(velocity[0]), y, o_C_Parent)
-        x += sign(velocity[0]); 
-    else {
-        velocity[0] = 0;
-        break;
-    }
-}
+	// Horizontal
+	repeat(abs(velocity.x)) {
+
+		if(useSlopes) {
+		    // Move up slope
+		    if place_meeting(x + sign(velocity.x), y, o_C_Parent) && !place_meeting(x + sign(velocity.x), y - 1, o_C_Parent)
+		        y--
+    
+
+		    // Move down slope
+		    if !place_meeting(x + sign(velocity.x), y, o_C_Parent) && !place_meeting(x + sign(velocity.x), y + 1, o_C_Parent) && place_meeting(x + sign(velocity.x), y + 2, o_C_Parent)
+		        y++;
+		}
+
+	    if !place_meeting(x + sign(velocity.x), y, o_C_Parent)
+	        x += sign(velocity.x); 
+	    else {
+	        velocity.x = 0;
+	        break;
+	    }
+	}
 	/*
-	if(place_meeting(x + velocity[0], y, o_C_Parent)) {
-		// Alternative: if(!place_meeting(x + velocity[0], y - (abs(velocity[0]) + 1), o_C_Parent ) ) while(place_meeting(x + velocity[0], y, o_C_Parent)) y--;
-		for(var i = 0 ; i <= abs(velocity[0] * 16);i++) {
-			if(!place_meeting(x+velocity[0], y - i, o_C_Parent)) {
+	if(place_meeting(x + velocity.x, y, o_C_Parent)) {
+		// Alternative: if(!place_meeting(x + velocity.x, y - (abs(velocity.x) + 1), o_C_Parent ) ) while(place_meeting(x + velocity.x, y, o_C_Parent)) y--;
+		for(var i = 0 ; i <= abs(velocity.x * 16);i++) {
+			if(!place_meeting(x+velocity.x, y - i, o_C_Parent)) {
 				y -= i;
 				break;
 			}
 		}
-		if(place_meeting(x+velocity[0],y,o_C_Parent)) {
-			while(!place_meeting(x+sign(velocity[0]), y, o_C_Parent)) x += sign(velocity[0]);
-			velocity[0] = 0;
+		if(place_meeting(x+velocity.x,y,o_C_Parent)) {
+			while(!place_meeting(x+sign(velocity.x), y, o_C_Parent)) x += sign(velocity.x);
+			velocity.x = 0;
 		}
 	}
-	if(place_meeting(x + velocity[0], y + velocity[1], o_C_Parent)) {
-		while(!place_meeting(x + velocity[0], y + sign(velocity[1]), o_C_Parent)) {
-			y += sign(velocity[1]);
+	if(place_meeting(x + velocity.x, y + velocity.y, o_C_Parent)) {
+		while(!place_meeting(x + velocity.x, y + sign(velocity.y), o_C_Parent)) {
+			y += sign(velocity.y);
 		}
-		velocity[1] = 0;
+		velocity.y = 0;
 	}
-	x += velocity[0];
-	y += velocity[1];
+	x += velocity.x;
+	y += velocity.y;
 	*/
 }
 function ApplySettings() {
@@ -79,23 +79,28 @@ function ApplySettings() {
 	else {
 		if(!instance_exists(o_MusicManager)) instance_create_depth(0,0,0,o_MusicManager);
 	}
-	
+	if(global.settings.gameplaySettings.multiplayer) {
+	}
 	if(global.settings.gameplaySettings.debugEnabled) {
 		if(!instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0,o_DEBUG_Console);
 	}
 	else instance_destroy(o_DEBUG_Console);
-	show_message(PlayerObjectToMovesetEnum(o_PlayerParent));
-	var m = PlayerObjectToMovesetEnum(o_PlayerParent);
+	//show_message(PlayerObjectToMovesetEnum(o_Player));
+	//var m = PlayerObjectToMovesetEnum(o_Player);
+	/*
 	if(global.settings.playerSettings.moveSet != m && m != Moveset.Invalid) {
 		if(room != Room_DemoRoom && room != Room_MainMenu) {
 			show_message("You can only change movesets when you are not in a level!");
 		}
 		else { //You still want to apply the other settings, so using return isn't an option.
-			var PlayerPos = [o_PlayerParent.x, o_PlayerParent.y];
-			instance_destroy(o_PlayerParent);
+			var PlayerPos = [o_Player.x, o_Player.y];
+			instance_destroy(o_Player);
 			CreatePlayer(PlayerPos[0], PlayerPos[1]);
 		}
 	}
+	The way movesets are handled now destroy this...
+	
+	*/
 	window_set_fullscreen(global.settings.videoSettings.fullscreen);
 	display_reset(display_aa, global.settings.videoSettings.vSync);
 	
@@ -146,24 +151,4 @@ function CreateEffect(information) {
 		if(instance_find(o_P_Effect, i).sprite_index == information.sprite_index) return;
 	}
 	instance_create_depth(x,y,-100,o_P_Effect, information);
-}
-function CreatePlayer(targX,targY) {
-	var movesets = [o_Player_PreETB, o_Player_ETB];
-	var inst = movesets[global.settings.playerSettings.moveSet]; //Big brain
-	//M_OPTI - Do we really need inst?
-	Log("Creating Player (" + object_get_name(inst) + ")");
-	return instance_create_depth(targX,targY, -6, inst);
-	/*
-	with() {
-		PD = instance_exists(o_MultiplayerSystem) ? o_MultiplayerSystem.registerPlayer() : 1;
-	}*/
-
-}
-function PlayerObjectToMovesetEnum(inObject) {
-	var movesets = [Moveset.PreETB, Moveset.ETB];
-	var objects = [o_Player_PreETB, o_Player_ETB];
-	for(var i = 0 ; i < array_length(objects);i++) {
-		if(inObject == objects[i] ) return movesets[i];
-	}
-	return Moveset.Invalid;
 }

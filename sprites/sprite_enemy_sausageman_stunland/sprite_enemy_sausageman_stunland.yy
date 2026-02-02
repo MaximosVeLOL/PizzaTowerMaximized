@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_stunland",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -17,12 +17,12 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"38e4c5e5-f51d-4846-9133-44f2371b9812","name":"38e4c5e5-f51d-4846-9133-44f2371b9812","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ad3afc72-4088-443d-a48e-e75b8263f218","name":"ad3afc72-4088-443d-a48e-e75b8263f218","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"796f9018-e0ef-45bb-bb15-e7f29927814e","name":"796f9018-e0ef-45bb-bb15-e7f29927814e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"38e4c5e5-f51d-4846-9133-44f2371b9812","name":"38e4c5e5-f51d-4846-9133-44f2371b9812","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ad3afc72-4088-443d-a48e-e75b8263f218","name":"ad3afc72-4088-443d-a48e-e75b8263f218","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"796f9018-e0ef-45bb-bb15-e7f29927814e","name":"796f9018-e0ef-45bb-bb15-e7f29927814e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -80,24 +80,12 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"38e4c5e5-f51d-4846-9133-44f2371b9812","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9b2a1147-f1c8-499f-9fd4-fad989f0861b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b421ebcd-7c4b-433b-95fa-7193a399fde2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ad3afc72-4088-443d-a48e-e75b8263f218","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"4edb71ea-44eb-48f2-86f0-34f153b27cf3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"512200a7-925f-4d97-96ff-bddd55b85473","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d2614ae9-7743-4954-8487-55971ee39083","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"796f9018-e0ef-45bb-bb15-e7f29927814e","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"07ea5354-cc53-4477-849e-4973aea1a89b","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"38e4c5e5-f51d-4846-9133-44f2371b9812","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"9b2a1147-f1c8-499f-9fd4-fad989f0861b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"bd07b439-c514-43c1-8cc6-0c5519c4546b","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b421ebcd-7c4b-433b-95fa-7193a399fde2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ad3afc72-4088-443d-a48e-e75b8263f218","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4edb71ea-44eb-48f2-86f0-34f153b27cf3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4bc3f825-2b8c-437d-9d80-0eb72007fdd1","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"512200a7-925f-4d97-96ff-bddd55b85473","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f0b57c02-ab58-49e2-9eff-d168955a40a8","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d2614ae9-7743-4954-8487-55971ee39083","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"796f9018-e0ef-45bb-bb15-e7f29927814e","path":"sprites/sprite_enemy_sausageman_stunland/sprite_enemy_sausageman_stunland.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"07ea5354-cc53-4477-849e-4973aea1a89b","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

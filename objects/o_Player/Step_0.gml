@@ -1,0 +1,1 @@
+HandlePlayer(global.settings.playerSettings.moveSet);

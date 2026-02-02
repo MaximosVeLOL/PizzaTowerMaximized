@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_forknight_walk",
   "bboxMode":0,
   "bbox_bottom":96,
@@ -12,18 +12,18 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"bcd04183-caf3-4271-a9fe-0596616c1771","name":"bcd04183-caf3-4271-a9fe-0596616c1771","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"148ca5a4-3775-4759-9836-f56684de269c","name":"148ca5a4-3775-4759-9836-f56684de269c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"58c06e6e-0600-4c57-9092-5910610ff4ba","name":"58c06e6e-0600-4c57-9092-5910610ff4ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"cf528259-ebbd-469e-8581-ab066ba7237f","name":"cf528259-ebbd-469e-8581-ab066ba7237f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"30cf334d-6e46-475e-83ae-7668898a76f3","name":"30cf334d-6e46-475e-83ae-7668898a76f3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bcd04183-caf3-4271-a9fe-0596616c1771","name":"bcd04183-caf3-4271-a9fe-0596616c1771","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"148ca5a4-3775-4759-9836-f56684de269c","name":"148ca5a4-3775-4759-9836-f56684de269c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"58c06e6e-0600-4c57-9092-5910610ff4ba","name":"58c06e6e-0600-4c57-9092-5910610ff4ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cf528259-ebbd-469e-8581-ab066ba7237f","name":"cf528259-ebbd-469e-8581-ab066ba7237f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"30cf334d-6e46-475e-83ae-7668898a76f3","name":"30cf334d-6e46-475e-83ae-7668898a76f3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -81,42 +81,18 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f90b086e-362d-4618-8353-d581bd210ac3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bcd04183-caf3-4271-a9fe-0596616c1771","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"247e44d9-c720-4700-b360-9029e1738ac7","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"fb213922-29a7-4621-a873-dc8e4d78bb54","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"48fc1fc0-3ec0-45fc-8863-f37385371994","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"148ca5a4-3775-4759-9836-f56684de269c","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"0ac57dbf-34d9-42b7-bf8f-2fdc4d088712","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"88bc16cd-37d3-49cd-88fb-5f80cc995652","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"58c06e6e-0600-4c57-9092-5910610ff4ba","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c9ac5446-095e-4700-8a8f-c50c78281e18","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cf528259-ebbd-469e-8581-ab066ba7237f","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ed178562-837f-4148-89f1-d7f46d093853","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1cca8949-2578-44a8-93b6-b60e9b746e44","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"30cf334d-6e46-475e-83ae-7668898a76f3","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"4b1339e3-c08b-485f-980d-53a066ea8632","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"36ce23af-9f24-4d91-8c9b-f12bb6f01f4a","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"debcb3cb-f0b3-498d-8f2a-48eebab9cb9e","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c5a75395-e7bb-492d-85cf-9e38de5dc9ce","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f90b086e-362d-4618-8353-d581bd210ac3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"bcd04183-caf3-4271-a9fe-0596616c1771","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"247e44d9-c720-4700-b360-9029e1738ac7","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"cc15217b-f3ef-4214-b1d8-83466d57ba51","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"fb213922-29a7-4621-a873-dc8e4d78bb54","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2c6e1ae2-c40e-4636-ad8d-52e489d560ad","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"48fc1fc0-3ec0-45fc-8863-f37385371994","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"148ca5a4-3775-4759-9836-f56684de269c","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"0ac57dbf-34d9-42b7-bf8f-2fdc4d088712","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fec482d9-a40f-435e-aa48-5af2b067a6ca","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"88bc16cd-37d3-49cd-88fb-5f80cc995652","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"58c06e6e-0600-4c57-9092-5910610ff4ba","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c9ac5446-095e-4700-8a8f-c50c78281e18","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"cf528259-ebbd-469e-8581-ab066ba7237f","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ed178562-837f-4148-89f1-d7f46d093853","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ccb6e3c-e273-415c-b50c-8e58b3372409","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1cca8949-2578-44a8-93b6-b60e9b746e44","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"30cf334d-6e46-475e-83ae-7668898a76f3","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4b1339e3-c08b-485f-980d-53a066ea8632","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8a4aeda0-b5e6-4908-a8b7-afe2f4c3c5c6","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"36ce23af-9f24-4d91-8c9b-f12bb6f01f4a","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"aec3b382-8ae8-493d-9b3c-b6fd04fff3c1","path":"sprites/sprite_enemy_forknight_walk/sprite_enemy_forknight_walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"debcb3cb-f0b3-498d-8f2a-48eebab9cb9e","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

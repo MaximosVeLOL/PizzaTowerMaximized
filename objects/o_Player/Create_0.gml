@@ -1,18 +1,9 @@
 //Movesets are enums because it shouldn't be to hard to debug,
 //That's mostly the reason why I made states string values.
-enum Moveset {
-	Invalid = -1,
-	PreETB,
-	ETB,
-	Demo1Tester,
-	Demo1,
-	Demo2Tester,
-	Demo2,
-};
 
+//currentMoveset = Moveset.Invalid;
 depth = -10;
 mass = 0.5;
-velocity = [0,0];
 movespeed = 0;
 xscale = 1;
 state = "normal";
@@ -23,6 +14,7 @@ stunStuff = {
 	invincibleFrames : 0,
 	flashing : false,
 };
+velocity = new Vector();
 /*
 PD = 1;
 if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index) > 1) {
@@ -31,7 +23,7 @@ if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index
 }*/
 
 
-if(instance_number(o_PlayerParent) > 1) {
+if(instance_number(o_Player) > 1) {
 	Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 	instance_destroy();
 }

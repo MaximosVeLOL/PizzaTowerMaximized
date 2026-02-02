@@ -1,13 +1,14 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"sfx_break",
   "audioGroupId":{
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
   "bitDepth":1,
-  "bitRate":128,
+  "channelFormat":1,
   "compression":0,
+  "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
       "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
@@ -15,6 +16,7 @@
   },
   "conversionMode":0,
   "duration":0.4469841,
+  "exportDir":"",
   "name":"sfx_break",
   "parent":{
     "name":"Sounds",
@@ -25,6 +27,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sfx_break.ogg",
-  "type":1,
   "volume":1.0,
 }

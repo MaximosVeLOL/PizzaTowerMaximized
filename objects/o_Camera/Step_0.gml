@@ -1,9 +1,9 @@
-if(!instance_exists(o_PlayerParent)) {
+if(!instance_exists(o_Player)) {
 	LogError("There is no player to capture!");
 	return;
 }
 
-var _pos = [ clamp(o_PlayerParent.x - 480, 0, room_width - 960), clamp(o_PlayerParent.y - 270, 0, room_height - 540) ];
+var _pos = [ clamp(o_Player.x - 480, 0, room_width - 960), clamp(o_Player.y - 270, 0, room_height - 540) ];
 if(shake.mag > 0) {
 	shake.mag -= shake.acc; 
 	//if(shake.mag < 0) shake.mag = 0; M_OPTI - This is useless, because we don't apply the shake mag when its never above 0!

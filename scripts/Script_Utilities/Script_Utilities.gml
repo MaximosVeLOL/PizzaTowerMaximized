@@ -1,3 +1,9 @@
+function Vector(_x = 0, _y = 0) constructor {
+	x = _x;
+	y = _y;
+}
+
+
 function PlaySound(snd, override = false, loop = false, canRepeat = false) {
 	var aud = -1;
 	try {

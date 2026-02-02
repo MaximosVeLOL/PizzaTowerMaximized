@@ -1,5 +1,5 @@
 
-	with(o_PlayerParent) {
+	with(o_Player) {
 		if(state != "ladder" && string_count("mach", state) == 0 && state != "knight" && state != "bomb" && state != "bump") {
 			other.buffer++;
 			if( (GetInput("up", 0) && place_meeting(x,y-1,other) || GetInput("down", 0) && place_meeting(x,y+1,other)) && other.buffer >= 20 ) {

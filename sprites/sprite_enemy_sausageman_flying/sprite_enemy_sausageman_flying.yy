@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_flying",
   "bboxMode":0,
   "bbox_bottom":87,
@@ -17,8 +17,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -76,12 +76,8 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","path":"sprites/sprite_enemy_sausageman_flying/sprite_enemy_sausageman_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"52479150-845b-4eee-89fe-4e00d3636bd3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","path":"sprites/sprite_enemy_sausageman_flying/sprite_enemy_sausageman_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d52d98ef-bbb7-4e54-b6e5-73c8989a5d87","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c56edc89-8b6f-412e-b040-44e5ba5e27b1","path":"sprites/sprite_enemy_sausageman_flying/sprite_enemy_sausageman_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"52479150-845b-4eee-89fe-4e00d3636bd3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"960e6d34-9a6a-458e-90ad-15e3b5a5626c","path":"sprites/sprite_enemy_sausageman_flying/sprite_enemy_sausageman_flying.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d52d98ef-bbb7-4e54-b6e5-73c8989a5d87","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

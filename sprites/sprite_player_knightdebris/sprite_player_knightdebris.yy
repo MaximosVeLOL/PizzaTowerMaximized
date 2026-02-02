@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_player_knightdebris",
   "bboxMode":0,
   "bbox_bottom":113,
@@ -17,12 +17,12 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0a102796-a01b-4dfd-914c-d210a717eddf","name":"0a102796-a01b-4dfd-914c-d210a717eddf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"8f070631-421a-467f-8103-da9cc4a2c1ba","name":"8f070631-421a-467f-8103-da9cc4a2c1ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"80693c30-b23a-4667-a706-eb5d07a12f85","name":"80693c30-b23a-4667-a706-eb5d07a12f85","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0a102796-a01b-4dfd-914c-d210a717eddf","name":"0a102796-a01b-4dfd-914c-d210a717eddf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8f070631-421a-467f-8103-da9cc4a2c1ba","name":"8f070631-421a-467f-8103-da9cc4a2c1ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"80693c30-b23a-4667-a706-eb5d07a12f85","name":"80693c30-b23a-4667-a706-eb5d07a12f85","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -80,24 +80,12 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0a102796-a01b-4dfd-914c-d210a717eddf","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"73fdd191-9163-45c7-8623-f1c874326002","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8f070631-421a-467f-8103-da9cc4a2c1ba","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ddf04847-28be-4889-bdbc-e85e972094af","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"792e8c44-082b-4e67-9553-aa4cd50fa861","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"80693c30-b23a-4667-a706-eb5d07a12f85","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"05a29776-e110-41c6-9499-e0bfeb055359","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9ea0b13b-1fe6-41cb-a32e-11ba8039f3ce","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2434fad7-36be-40d1-9b86-666acc764b23","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"0a102796-a01b-4dfd-914c-d210a717eddf","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"73fdd191-9163-45c7-8623-f1c874326002","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8f070631-421a-467f-8103-da9cc4a2c1ba","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ddf04847-28be-4889-bdbc-e85e972094af","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"0cc2fcee-bc72-4c4a-8871-34e8a4a49163","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"792e8c44-082b-4e67-9553-aa4cd50fa861","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"80693c30-b23a-4667-a706-eb5d07a12f85","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"05a29776-e110-41c6-9499-e0bfeb055359","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"b8f9484f-8d6f-4987-b8d5-876e0296b7af","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"9ea0b13b-1fe6-41cb-a32e-11ba8039f3ce","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"19b644c0-91b3-4a18-8fb1-e9057c495d08","path":"sprites/sprite_player_knightdebris/sprite_player_knightdebris.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2434fad7-36be-40d1-9b86-666acc764b23","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

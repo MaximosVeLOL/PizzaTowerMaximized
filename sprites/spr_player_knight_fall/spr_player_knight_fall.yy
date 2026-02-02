@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_player_knight_fall",
   "bboxMode":0,
   "bbox_bottom":118,
@@ -17,9 +17,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,15 +77,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1867fa0a-ae28-40bf-884b-49c908fdde1c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"beb4b0f7-3cad-4d35-9d7d-db11d6e9ad81","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"057e18ad-c5ea-4e70-875b-97e0496aaaca","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5225b813-f01f-48d7-a44a-f5a52fc6c2ad","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1867fa0a-ae28-40bf-884b-49c908fdde1c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fed4e3c3-9f1d-4459-8c3c-ccb42ed7a85a","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"beb4b0f7-3cad-4d35-9d7d-db11d6e9ad81","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"98981277-b8ff-4e10-8ed6-56e4802d55e9","path":"sprites/spr_player_knight_fall/spr_player_knight_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"057e18ad-c5ea-4e70-875b-97e0496aaaca","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,14 +1,14 @@
 {
-  "$GMWindowsOptions":"",
+  "$GMWindowsOptions":"v1",
   "%Name":"Windows",
   "ConfigValues":{
     "Debug":{
-      "option_windows_use_splash":"false",
-      "option_windows_splash_screen":"splash/splash.png",
-      "option_windows_description_info":"Remake of Pizza Tower's ETB Build",
-      "option_windows_copyright_info":"Tour De Pizza",
       "option_windows_company_info":"Maximos Ve",
+      "option_windows_copyright_info":"Tour De Pizza",
+      "option_windows_description_info":"Remake of Pizza Tower's ETB Build",
       "option_windows_scale":"0",
+      "option_windows_splash_screen":"splash/splash.png",
+      "option_windows_use_splash":"false",
     },
   },
   "name":"Windows",
@@ -17,6 +17,7 @@
   "option_windows_company_info":"YoYo Games Ltd",
   "option_windows_copyright_info":"",
   "option_windows_copy_exe_to_dest":false,
+  "option_windows_d3dswapeffectdiscard":false,
   "option_windows_description_info":"A GameMaker Game",
   "option_windows_disable_sandbox":false,
   "option_windows_display_cursor":true,

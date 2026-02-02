@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_sausageman_cigar_fall",
   "bboxMode":0,
   "bbox_bottom":65,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"486e6ba5-126e-4e64-8c96-f550a46081d1","name":"486e6ba5-126e-4e64-8c96-f550a46081d1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"047b706f-fb41-4daa-8425-914beede1c95","name":"047b706f-fb41-4daa-8425-914beede1c95","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"486e6ba5-126e-4e64-8c96-f550a46081d1","name":"486e6ba5-126e-4e64-8c96-f550a46081d1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"047b706f-fb41-4daa-8425-914beede1c95","name":"047b706f-fb41-4daa-8425-914beede1c95","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -72,15 +72,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"486e6ba5-126e-4e64-8c96-f550a46081d1","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b24e26c2-0289-483e-9228-b950ce1a2c4d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"047b706f-fb41-4daa-8425-914beede1c95","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b08ca844-f639-40a9-9213-ea68597d2af0","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2f8480c4-2218-46b6-bdcd-713041ca98e9","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"486e6ba5-126e-4e64-8c96-f550a46081d1","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b24e26c2-0289-483e-9228-b950ce1a2c4d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"047b706f-fb41-4daa-8425-914beede1c95","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b08ca844-f639-40a9-9213-ea68597d2af0","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f1f44ab4-ccd1-44e1-856b-247458adc7dd","path":"sprites/sprite_enemy_sausageman_cigar_fall/sprite_enemy_sausageman_cigar_fall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2f8480c4-2218-46b6-bdcd-713041ca98e9","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprite_enemy_goblin_stunfalltrans",
   "bboxMode":0,
   "bbox_bottom":99,
@@ -17,11 +17,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"33b1bbef-3599-4ba5-8216-1050d4312d82","name":"33b1bbef-3599-4ba5-8216-1050d4312d82","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"33b1bbef-3599-4ba5-8216-1050d4312d82","name":"33b1bbef-3599-4ba5-8216-1050d4312d82","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -79,21 +79,11 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"358c687f-9547-45e2-851c-6c833b370422","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"434b7136-7f45-492d-9c9b-ea12da769302","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"39e222ed-83c3-4852-b1ae-c139a2598797","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"33b1bbef-3599-4ba5-8216-1050d4312d82","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"91d0f11e-5e44-4aca-ae81-57fd42104042","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7ccb8955-a53e-498a-91de-9f031544ee19","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9aced0c3-ae43-4c16-bc7c-1160f0d72e5e","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"358c687f-9547-45e2-851c-6c833b370422","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d59eea8e-343d-44f4-aef7-b0be295c30f5","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"434b7136-7f45-492d-9c9b-ea12da769302","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"76c288ac-1397-4fef-a3d7-ebbe5227deb0","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"39e222ed-83c3-4852-b1ae-c139a2598797","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"33b1bbef-3599-4ba5-8216-1050d4312d82","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"91d0f11e-5e44-4aca-ae81-57fd42104042","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"dc6338a4-3e09-4502-8de9-85429f66bf2c","path":"sprites/sprite_enemy_goblin_stunfalltrans/sprite_enemy_goblin_stunfalltrans.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7ccb8955-a53e-498a-91de-9f031544ee19","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

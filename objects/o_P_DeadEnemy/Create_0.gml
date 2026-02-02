@@ -1,5 +1,5 @@
 event_inherited();
 canMove = true;
-velocity[1] = -abs(o_PlayerParent.velocity[0]);
-velocity[0] = 5 * o_PlayerParent.xscale;
-image_xscale = o_PlayerParent.xscale;
+velocity.y = -abs(o_Player.velocity.x);
+velocity.x = 5 * o_Player.xscale;
+image_xscale = o_Player.xscale;

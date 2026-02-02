@@ -1,7 +1,7 @@
 if(other.state != "hurt" && other.state != "tackle") { //Hump hump hump!
 	if(state != "stun") {
-		if(other.state == "jump" && other.velocity[1] > 0) {
-			other.velocity[1] = -7;
+		if(other.state == "jump" && other.velocity.y > 0) {
+			other.velocity.y = -7;
 			other.tempVar[1] = true;
 			PlaySound(sfx_boing);
 			return;
@@ -9,8 +9,12 @@ if(other.state != "hurt" && other.state != "tackle") { //Hump hump hump!
 		
 		var newV = image_xscale * -3;
 		image_xscale *= -1;
-		velocity = [newV, -3];
-		other.velocity = [newV, -3];
+		velocity.x = newV;
+		
+		velocity.x = newV;
+		velocity.y = -3;
+		other.velocity.x = newV;
+		other.velocity.y = -3;
 		state = "stun";
 		tempVar[0] = (other.state != "mach3" && other.state != "mach2");
 		other.setState("bump");

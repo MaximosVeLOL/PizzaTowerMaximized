@@ -4,18 +4,18 @@ reqStatesBottom = ["jump", "mach2", "mach3", "machfreefall", "superJump", "highJ
 reqStatesTop = ["freefall", "superslam", "knight"];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
 onTopBreak = function() {
-	with(o_PlayerParent) {
+	with(o_Player) {
 		if(state == "freefall") {
 			animVar = true;
-			velocity[1] = -7;
+			velocity.y = -7;
 			tempVar[0] = 0;
 			tempVar[1] = 0;
 		}
 	}
 }
 onBottomBreak = function() {
-	with(o_PlayerParent) {
-		if(state == "jump" && velocity[1] < 0) velocity[1] = 1;
+	with(o_Player) {
+		if(state == "jump" && velocity.y < 0) velocity.y = 1;
 	}
 }
 if(image_xscale == 2) {

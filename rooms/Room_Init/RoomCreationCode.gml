@@ -66,7 +66,7 @@ global.settings = {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
-		muteAll : true,
+		muteAll : false,
 		surroundSound : false,
 	},
 	videoSettings : {
@@ -76,7 +76,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		//multiplayer : false, Removed due to it being too hard to implement...
+		multiplayer : true, //We're back!
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -117,20 +117,21 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInDemoRoom : true,
-		startUpRoom : Room_FeatureTest,
-		startUpPos : [2167, 630],
+		startInStartingRoom : true,
+		startUpRoom : ETBRoom_Level2_1,
+		startUpPos : [/*2167*/100, 100],
 	};
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor);
 	}
-	else if(DEBUG_STARTUP.startInDemoRoom) {
+	else if(DEBUG_STARTUP.startInStartingRoom) {
 		room_goto(DEBUG_STARTUP.startUpRoom);
 		//var instances = [o_GameManager, o_MultiplayerSystem, o_MusicManager, o_Camera];
 		var instances = [o_GameManager, o_MusicManager, o_Camera];
 		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
-		CreatePlayer(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]);
+		o_GameManager.mode = "game";
+		instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
 	}
 	else room_goto(Room_Disclaimer);
 	

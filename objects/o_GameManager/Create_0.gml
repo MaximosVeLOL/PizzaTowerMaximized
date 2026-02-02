@@ -42,11 +42,11 @@ startLevel = function(data) {
 	data = GetLevelInfo(data);
 	score = 0;
 	level.time = data.newTime;
-	if(instance_exists(o_PlayerParent) ) o_GameManager.gotoRoom(data.targetRoom, data.newPos, true, data.newSong, data.loopData);
+	if(instance_exists(o_Player) ) o_GameManager.gotoRoom(data.targetRoom, data.newPos, true, data.newSong, data.loopData);
 	else { //Leftover from when we went from the disclaimer to the level directly.
 		room_goto(data.targetRoom);
 		if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(data.newSong, data.loopData);
-		CreatePlayer(200,200); //Temporary!
+		instance_create_depth(200, 200, 0, o_Player);
 		
 	}
 	level.startParameters = data;
@@ -57,8 +57,8 @@ restartLevel = function() {
 	ResetLevel(0);
 	instance_destroy(o_Le_Pizzakin);
 	room_goto(level.startParameters[0]);
-	o_PlayerParent.x = level.startParameters[1][0];
-	o_PlayerParent.y = level.startParameters[1][1];
+	o_Player.x = level.startParameters[1][0];
+	o_Player.y = level.startParameters[1][1];
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
 	level.pizzakin.tomato = false;
@@ -71,10 +71,16 @@ restartLevel = function() {
 		o_MusicManager.stopMusic(true);
 		o_MusicManager.playNewSong(level.startParameters[2], level.startParameters[3]);
 	}
-	o_PlayerParent.setState("door");
-	o_PlayerParent.tempVar[0] = 1;
+	o_Player.setState("door");
+	o_Player.tempVar[0] = 1;
 }
 goToHub = function() {
+	if(!instance_exists(o_Player)) instance_create_depth(256, 658, 0, o_Player);
+	else {
+		o_Player.x = 256;
+		o_Player.y = 658;
+		o_Player.setState("normal");
+	}
 	score = 0; //Score is used in the rank screen, so reset it here.
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
@@ -94,12 +100,6 @@ goToHub = function() {
 	}
 	else instance_create_depth(0,0,0,o_MusicManager).playNewSong(music_demoroom);
 	if(!instance_exists(o_Camera)) instance_create_depth(0,0,0,o_Camera);
-	if(!instance_exists(o_PlayerParent)) CreatePlayer(256, 658);
-	else {
-		o_PlayerParent.x = 256;
-		o_PlayerParent.y = 658;
-		o_PlayerParent.setState("normal");
-	}
 }
 
 endLevel = function(win = false, instantly = false) {
@@ -111,7 +111,7 @@ endLevel = function(win = false, instantly = false) {
 	}
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	instance_destroy(o_Camera);
-	instance_destroy(o_PlayerParent);
+	instance_destroy(o_Player);
 	instance_destroy(o_Le_Pizzakin);
 	mode = "none";
 	ResetLevel(level.index);
@@ -131,10 +131,10 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	transSettings.newPos = _newPos;
 	if(!isDoorTrans) {
 		instance_create_depth(x,y,-100,o_UI_FadeTrans);
-		transSettings.state = o_PlayerParent.state;
-		o_PlayerParent.state = "transition";
+		transSettings.state = o_Player.state;
+		o_Player.state = "transition";
 	}
-	else instance_create_depth(o_PlayerParent.x,o_PlayerParent.y, -100, o_UI_DoorTrans);
+	else instance_create_depth(o_Player.x,o_Player.y, -100, o_UI_DoorTrans);
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!", true);
 	}
