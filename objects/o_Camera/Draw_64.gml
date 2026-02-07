@@ -7,13 +7,13 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 	var toDraw = [
 		"State: " + o_Player.state,
 		"TempVar: " + string(o_Player.tempVar[0]) + ", " + string(o_Player.tempVar[1]) + ", " + string(o_Player.tempVar[2]),
-		"velocity.x & velocity.y: " + string(o_Player.velocity.x) + ", " + string(o_Player.velocity.y),
+		"Velocity: " + string(o_Player.velocity.x) + ", " + string(o_Player.velocity.y),
 		"MoveSpeed: " + string(o_Player.movespeed),
 		"Player Pos: " + string(o_Player.x) + ", " + string(o_Player.y),
 		"FPS: " + string(fps_real) + " : " + string(fps),
 		"ShakeMag: " + string(shake.mag),
 		"ShakeAcc: " + string(shake.acc),
-		
+		"Camera Pos: " + string(camera_get_view_x(view_camera[0])) + ", " + string(camera_get_view_y(view_camera[0])),
 		//"SelfScore: " + string(o_Player_Machine.selfScore),
 		//"Time: " + string(o_Player_Machine.time),
 		//"BestInputs: " + string(global.bestInputs),
@@ -39,7 +39,7 @@ if(hudVisible) {
 		case Moveset.ETB: //OLD
 			var sprite = sprite_error;
 			for(var i = 0 ; i < instance_number(o_Player);i++) {
-				var X_ADD = (i * 200);
+				var X_ADD = (i * 180);
 				switch(instance_find(o_Player, i).state) {
 		
 					case "mach1":
@@ -51,7 +51,8 @@ if(hudVisible) {
 					break;
 		
 					case "mach3":
-						sprite = global.settings.playerSettings.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4;
+						//Dont use asset_get_index to save time
+						sprite = (global.settings.playerSettings.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4);
 					break;
 		
 					case "mach4":
@@ -67,7 +68,7 @@ if(hudVisible) {
 						sprite = sprite_hud_pep_idle;
 					break;
 				}
-				draw_sprite(sprite, -1, 120 + X_ADD, 80);
+				draw_sprite(sprite, -1, 120, 80 + X_ADD);
 				if(string_count("mach", instance_find(o_Player, i).state) > 0) {
 					var mach =  instance_find(o_Player, i).tempVar[0];
 					if(mach >= 7) sprite = 1;
@@ -75,15 +76,15 @@ if(hudVisible) {
 					if(mach >= 50) sprite = 3;
 					if(mach >= 75) sprite = 4;
 					if(mach >= 100) {
-						draw_sprite(sprite_hud_speedbar_max, -1, 120 + X_ADD, 120);
+						draw_sprite(sprite_hud_speedbar_max, -1, 120, 120 + X_ADD);
 					}
-					else draw_sprite(sprite_hud_speedbar, sprite, 120 + X_ADD,120);
+					else draw_sprite(sprite_hud_speedbar, sprite, 120, 120 + X_ADD);
 				}
-				else draw_sprite(sprite_hud_speedbar, 0, 120 + X_ADD,120);
+				else draw_sprite(sprite_hud_speedbar, 0, 120, 120 + X_ADD);
 	
 	
-			    if (instance_find(o_Player, i).inventory.key) draw_sprite(sprite_level_key, -1, 180 + X_ADD, 30)
-			    draw_sprite(sprite_hud_inventory, -1, 180 + X_ADD, 30)
+			    if (instance_find(o_Player, i).inventory.key) draw_sprite(sprite_level_key, -1, 180, 30 + X_ADD)
+			    draw_sprite(sprite_hud_inventory, -1, 180, 30 + X_ADD)
 				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
 				//draw_sprite(sprite_hud_inventory, -1, 240, 30);
 			}

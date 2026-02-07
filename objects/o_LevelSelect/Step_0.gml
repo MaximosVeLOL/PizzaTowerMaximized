@@ -8,7 +8,7 @@ if(GetInput("jump", 1)) {
 	with(levelData) {
 		room_goto(targetRoom);
 		instance_create_depth(0,0,0,o_Camera);
-		instance_create_depth(newPos[0], newPos[1], 0, o_Player);
+		instance_create_depth(newPos.x, newPos.y, 0, o_Player);
 		if(instance_exists(o_MusicManager)) {
 			o_MusicManager.playNewSong(newSong, loopData);
 		}

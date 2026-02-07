@@ -1,4 +1,4 @@
-if(instance_number(object_index) > 1) {
+if(instance_number(o_Camera) > 1) {
 	Log("Extra Camera!");
 	instance_destroy();
 	return;
@@ -8,4 +8,5 @@ hudVisible = true;
 shake = {
 	mag : 0,
 	acc : 0,
-}
+};
+pos = new Vector();

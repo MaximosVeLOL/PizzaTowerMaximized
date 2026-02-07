@@ -26,7 +26,17 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"targetRoom","filters":[
+        "GMRoom",
+      ],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"targetPos","filters":[],"listItems":[],"multiselect":false,"name":"targetPos","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"new Vector();","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"newSong","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"newSong","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"loopData","filters":[],"listItems":[],"multiselect":false,"name":"loopData","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[-1, -1]","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"isPreETBDoor","filters":[],"listItems":[],"multiselect":false,"name":"isPreETBDoor","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

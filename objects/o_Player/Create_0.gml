@@ -23,10 +23,11 @@ if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index
 }*/
 
 
-if(instance_number(o_Player) > 1) {
+if(instance_number(o_Player) > 1 && !global.settings.gameplaySettings.multiplayer) {
 	Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 	instance_destroy();
 }
+if(!global.settings.gameplaySettings.multiplayer) playerID = 0;
 mask_index = spr_player_mask;
 inventory = {
 	key : false,

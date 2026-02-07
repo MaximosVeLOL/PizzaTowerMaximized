@@ -1,7 +1,7 @@
 if(GetInput("up", 1)) {
 	with(o_Player) {
 		if(PLAYER_GROUNDED && velocity.x == 0 && state != "door") {
-			if(instance_exists(o_MusicManager)) {
+			if(!global.settings.audioSettings.muteAll) {
 				if(string_count("Secret", room_get_name(other.targetRoom)) > 0) o_MusicManager.tempPlaySong(music_secret);
 				if(string_count("Secret", room_get_name(room)) > 0) o_MusicManager.stopTempSong();
 			}
@@ -20,6 +20,6 @@ if(other.state == "door" && round(other.image_index) == other.image_number && !i
 		room_goto(targetRoom);
 		o_Player.x = targetPos[0];
 		o_Player.y = targetPos[1];
-		if(instance_exists(o_MusicManager) && newSong != -1) o_MusicManager.playNewSong(newSong, loopData);
+		if(!global.settings.audioSettings.muteAll && newSong != -1) o_MusicManager.playNewSong(newSong, loopData);
 	}
 }

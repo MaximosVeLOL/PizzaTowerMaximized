@@ -3,7 +3,6 @@
   "%Name":"o_Le_Transition",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_Player","path":"objects/o_Player/o_Player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_Le_Transition",
@@ -26,7 +25,16 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"targetRoom","filters":[
+        "GMRoom",
+      ],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"targetPos","filters":[],"listItems":[],"multiselect":false,"name":"targetPos","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"new Vector();","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"newSong","filters":[
+        "GMSound",
+      ],"listItems":[],"multiselect":false,"name":"newSong","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"loopData","filters":[],"listItems":[],"multiselect":false,"name":"loopData","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[-1, -1]","varType":4,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

@@ -26,7 +26,8 @@ function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false
 	if(!loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
 	return aud;
 }
-function GetInput(reqKey, inputType = 0, reqPlayer = 1) {
+function GetInput(reqKey, inputType = 0, reqPlayer = 0) {
+	reqPlayer++;
 	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
 	switch(inputType) {

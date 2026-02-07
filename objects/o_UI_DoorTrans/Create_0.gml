@@ -1,3 +1,3 @@
-depth = 0;
+depth = -5;
 PlaySound(sfx_door);
 faded = false;

@@ -5,7 +5,6 @@ with(other) {
 		other.velocity.x = 10 * xscale; //us
 		sprite_index = spr_player_hook_slide;
 	}
-
-	
 }
+plr = other;
 

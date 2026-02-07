@@ -75,6 +75,7 @@ function ApplySettings() {
 	
 	if(global.settings.audioSettings.muteAll) {
 		audio_stop_all();
+		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager)
 	}
 	else {
 		if(!instance_exists(o_MusicManager)) instance_create_depth(0,0,0,o_MusicManager);

@@ -21,10 +21,10 @@ else {
     sprite_index = spr_player_mach3;
 }
 hspeed = movespeed;
-if(x > room_width + 300) {
+if(x > room_width + 300 && !instance_exists(o_UI_Fade)) {
     with(instance_create_depth(0,0,0,o_UI_Fade)) {
         onFade = function() {
-			instance_create_depth(0,0,0,o_Player);
+			//instance_create_depth(0,0,0,o_Player);
 			//LoadTextureGroup("TextureG_Level");
 			if(LoadSettings()) ApplySettings();
 			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {

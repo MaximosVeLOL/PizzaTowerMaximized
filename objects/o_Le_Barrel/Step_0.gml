@@ -11,4 +11,7 @@ if(PLAYER_GROUNDED) {
 		y--;
 	}
 }
+if(place_meeting(x,y, o_Le_Water)) {
+
+}
 CollideAndMove(1);

@@ -3,6 +3,6 @@ if(instance_exists(o_GameManager)) {
 }
 else {
 	room_goto(targetRoom);
-	o_Player.x = targetPos[0];
-	o_Player.y = targetPos[1];
+	o_Player.x = targetPos.x;
+	o_Player.y = targetPos.y;
 }

@@ -3,7 +3,6 @@
 			if(gotoLevel) {
 				image_index = 1; //Open sesame
 				renderText = true;
-				if(textToRender == "") textToRender = GetLevelInfo(targetLevel).levelName;
 			}
 			else if(instance_exists(o_PizzaTimeManager)) image_index = 1;
 			

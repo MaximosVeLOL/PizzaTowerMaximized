@@ -1,6 +1,6 @@
 transSettings = {
 	nextRoom : -1,
-	newPos : [0,0],
+	newPos : new Vector(),
 	state : "",
 };
 level = {

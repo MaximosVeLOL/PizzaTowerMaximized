@@ -24,7 +24,7 @@ global.settings = {
 				dash : gp_face3,
 				shoot : gp_shoulderlb,
 			}
-		},/*
+		},
 		p2 : {
 			up : ord("W"),
 			down : ord("S"),
@@ -60,7 +60,7 @@ global.settings = {
 				dash : gp_face3,
 				shoot : gp_shoulderlb,
 			}
-		},*/
+		},
 	},
 	audioSettings : {
 		sfxVolume : 100,
@@ -76,7 +76,7 @@ global.settings = {
 	},
 	gameplaySettings : {
 		debugEnabled : true,
-		multiplayer : true, //We're back!
+		multiplayer : false, //We're back!
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
@@ -117,7 +117,7 @@ if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInStartingRoom : true,
+		startInStartingRoom : false,
 		startUpRoom : ETBRoom_Level2_1,
 		startUpPos : [/*2167*/100, 100],
 	};
@@ -131,7 +131,11 @@ if(global.settings.gameplaySettings.debugEnabled) {
 		var instances = [o_GameManager, o_MusicManager, o_Camera];
 		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 		o_GameManager.mode = "game";
-		instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
+		//instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
+		o_MultiplayerHandler.AddPlayer(new Vector(200, 200));
+		o_MultiplayerHandler.AddPlayer(new Vector(300, 200));
+		o_MultiplayerHandler.AddPlayer(new Vector(400, 200));
+		//o_MultiplayerHandler.AddPlayer(new Vector(500, 200));
 	}
 	else room_goto(Room_Disclaimer);
 	

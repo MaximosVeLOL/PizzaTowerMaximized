@@ -1,4 +1,19 @@
-var MAX_PLAYERS = 4;
+#macro MAX_PLAYERS 4
+
+playerCount = 1;
+players = array_create(MAX_PLAYERS, noone);
 
 
-players = array_create(MAX_PLAYERS, instance_create_depth(0, 0, 0, o_Player));
+AddPlayer = function(position) {
+	players[playerCount] = instance_create_depth(position.x, position.y, 0, o_Player, {playerID : self.playerCount});
+	//show_message(players[playerCount].playerID);
+	playerCount++;
+	if(playerCount > MAX_PLAYERS) {
+		throw("Implement me");
+	}
+}
+
+DefinePlayer = function(plr) {
+	plr.playerID = playerCount;
+	playerCount++;
+}

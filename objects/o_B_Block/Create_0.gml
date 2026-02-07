@@ -3,6 +3,8 @@ reqStatesX = ["mach2", "mach3", "machroll", "machfreefall"];
 reqStatesBottom = ["jump", "mach2", "mach3", "machfreefall", "superJump", "highJump", "knight"];
 reqStatesTop = ["freefall", "superslam", "knight"];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
+if(sprite_index == spr_glassblock) brokenSprite = spr_breakable_broken;
+
 onTopBreak = function() {
 	with(o_Player) {
 		if(state == "freefall") {

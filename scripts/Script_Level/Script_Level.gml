@@ -27,7 +27,7 @@ function ResetLevel(levelIndex) {
 			];
 		break;
 		
-		case 1:
+		case LevelIndex.PreETB_Level1:
 			rooms = [
 				ETBRoom_Level1_1,
 				ETBRoom_Level1_2,
@@ -37,6 +37,13 @@ function ResetLevel(levelIndex) {
 				ETBRoom_Level1_6,
 				ETBRoom_Level1_Secret1,
 				ETBRoom_Level1_Secret2,
+			];
+		break;
+		
+		case LevelIndex.PreETB_Level2:
+			rooms = [
+				ETBRoom_Level2_1,
+				//ETBRoom_Level2_2,
 			];
 		break;
 	}
@@ -54,14 +61,14 @@ function GetLevelInfo(levelIndex) {
 		loopData : [-1, -1],
 		levelName : "INVALID LEVEL",
 		newTime : -1,
-		newPos : [-1, -1],
+		newPos : new Vector(),
 		index : -1,
 	}
 	switch(levelIndex) {
 		case LevelIndex.ETB_Ancient:
 			levelInfo.targetRoom = ETBRoom_Tutorial1;
 			levelInfo.newSong = music_pizza;
-			levelInfo.newPos = [723, 401];
+			levelInfo.newPos = new Vector(723, 401);
 			levelInfo.loopData = [-1,-1];
 			levelInfo.levelName = "ETB'S ANCIENT";
 			levelInfo.newTime = 340;
@@ -70,8 +77,16 @@ function GetLevelInfo(levelIndex) {
 		case LevelIndex.PreETB_Level1:
 			levelInfo.targetRoom = ETBRoom_Level1_1;
 			levelInfo.newSong = music_pizza;
-			levelInfo.newPos = [224, 465];
+			levelInfo.newPos = new Vector(224, 465);
 			levelInfo.levelName = "PRE-ETB'S LEVEL 1";
+			levelInfo.newTime = 130;
+		break;
+		
+		case LevelIndex.PreETB_Level2:
+			levelInfo.targetRoom = ETBRoom_Level2_1;
+			levelInfo.newSong = music_water;
+			levelInfo.newPos = new Vector(224, 200);
+			levelInfo.levelName = "PRE-ETB'S LEVEL 2";
 			levelInfo.newTime = 130;
 		break;
 	}

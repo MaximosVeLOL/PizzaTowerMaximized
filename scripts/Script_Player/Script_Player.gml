@@ -10,8 +10,8 @@ enum Moveset {
 
 
 function HandlePlayer(type) {
-	var moveX = GetInput("right", 0) - GetInput("left", 0);
-	var moveY = GetInput("down", 0) - GetInput("up", 0);
+	var moveX = GetInput("right", 0, playerID) - GetInput("left", 0, playerID);
+	var moveY = GetInput("down", 0, playerID) - GetInput("up", 0, playerID);
 	if(keyboard_check_pressed(vk_tab)) state = state != "noclip" ? "noclip" : "normal";
 	switch(type) {
 		
@@ -29,7 +29,7 @@ case Moveset.PreETB:
 								image_speed = movespeed / 4;
 								sprite_index = spr_player_move;
 								movespeed = movespeed < 4 ? movespeed + 0.5 : 4;
-								if(GetInput("dash", 0) && !PLAYER_TOUCHING) {
+								if(GetInput("dash", 0, playerID) && !PLAYER_TOUCHING) {
 									setState("mach1", true, true);
 								}
 								if(moveX != xscale) {
@@ -41,14 +41,14 @@ case Moveset.PreETB:
 								movespeed = 0;
 								sprite_index = spr_player_idle;
 							}
-							if(GetInput("jump", 1)) {
+							if(GetInput("jump", 1, playerID)) {
 								setState("jump");
 								playSound(sfx_jump);
 								velocity.y = -9;
 							}
 
 							if(!PLAYER_GROUNDED) setState("jump");
-							if(GetInput("down", 1)) {
+							if(GetInput("down", 1, playerID)) {
 								setState("crouch");
 							}
 				
@@ -78,13 +78,13 @@ case Moveset.PreETB:
 					}
 					else sprite_index = spr[1];
 		
-					if(GetInput("jump", 2) && velocity.y < 0) velocity.y /= 2;
+					if(GetInput("jump", 2, playerID) && velocity.y < 0) velocity.y /= 2;
 					if(moveX != xscale) movespeed = 0;
 					if(moveX != 0) {
 						xscale = moveX;
 						movespeed = movespeed < 4 ? movespeed + 0.5 : 4;
 					}
-					if(GetInput("down", 1)) {
+					if(GetInput("down", 1, playerID)) {
 						setState("freefall");
 						tempVar[0] = 3;
 						PlaySound(sfx_woosh);
@@ -101,7 +101,7 @@ case Moveset.PreETB:
 					sprite_index = spr_player_run;
 					tempVar[0]++;
 					playSound(sfx_mach1);
-					if(GetInput("dash", 2) || moveX != xscale || PLAYER_TOUCHING) {
+					if(GetInput("dash", 2, playerID) || moveX != xscale || PLAYER_TOUCHING) {
 						if(moveX != 0 ) xscale = moveX;
 						setState("normal");
 					}
@@ -124,10 +124,10 @@ case Moveset.PreETB:
 					if(PLAYER_GROUNDED) {
 						CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : self.xscale});
 						playSound(sfx_mach2);
-						if(GetInput("jump", 1)) {
+						if(GetInput("jump", 1, playerID)) {
 							velocity.y = -9;
 						} 
-								if(global.settings.playerSettings.PreETB_betterRunning && (GetInput("dash", 2) || moveX != xscale) ) setState("CUSTOMmachSlide");
+								if(global.settings.playerSettings.PreETB_betterRunning && (GetInput("dash", 2, playerID) || moveX != xscale) ) setState("CUSTOMmachSlide");
 
 					}
 					else if(GetInput("jump", 2) && velocity.y < 0) velocity.y /= 2;
@@ -153,7 +153,7 @@ case Moveset.PreETB:
 						velocity.y = -3;
 					}
 					if(movespeed <= 0) {
-						if(moveX != xscale && moveX != 0 && GetInput("dash")) {
+						if(moveX != xscale && moveX != 0 && GetInput("dash", playerID)) {
 							xscale = moveX;
 							setState("mach1");
 						}
@@ -243,7 +243,7 @@ case Moveset.PreETB:
 							sprite_index = spr_player_ladder;
 						break;
 					}
-					if(GetInput("jump", 1)) {
+					if(GetInput("jump", 1, playerID)) {
 						setState("jump");
 						playSound(sfx_jump);
 						velocity.y = -9;
@@ -273,11 +273,11 @@ case Moveset.PreETB:
 								playSound(sfx_crawl);	
 							}
 							if(!place_meeting(x,y - 1, o_C_Wall)) {
-								if(!GetInput("down", 0)) {
+								if(!GetInput("down", 0, playerID)) {
 									setState("normal");
 									mask_index = spr_player_mask;
 								}
-								if(GetInput("jump", 1)) {
+								if(GetInput("jump", 1, playerID)) {
 									animVar = false;
 									tempVar[0] = 1;
 									playSound(sfx_jump);
@@ -355,7 +355,7 @@ case Moveset.PreETB:
 				break;
 	
 				case "noclip":
-					movespeed = GetInput("dash", 0) ? 20 : 10;
+					movespeed = GetInput("dash", 0, playerID) ? 20 : 10;
 					x += moveX * movespeed;
 					y += moveY * movespeed;
 					return;
@@ -394,17 +394,17 @@ case Moveset.ETB: //ETB code lies here
 					else {
 						if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep); //Why didn't we do this???
 						sprite_index = spr_player_idle;
-						if(GetInput("up", 1) && PLAYER_GROUNDED) setState("highJump", true);
+						if(GetInput("up", 1, playerID) && PLAYER_GROUNDED) setState("highJump", true);
 			
 					}
 					movespeed = movespeed > 6 ? movespeed - 0.5 : movespeed;
-					if(GetInput("jump", 1)) {
+					if(GetInput("jump", 1, playerID)) {
 						setState("jump");
 						CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_Player.xscale});
 						velocity.y = -9;
 					}
-					if(GetInput("down", 0)) setState("crouch");
-					if(GetInput("dash", 0) && !PLAYER_TOUCHING) setState("mach1", true, true);
+					if(GetInput("down", 0, playerID)) setState("crouch");
+					if(GetInput("dash", 0, playerID) && !PLAYER_TOUCHING) setState("mach1", true, true);
 					//if(GetInput("shoot", 1) && inventory.gun) setState("shotgun");
 					if(!PLAYER_GROUNDED) setState("jump");
 				break;
@@ -412,19 +412,19 @@ case Moveset.ETB: //ETB code lies here
 				case "mach1":
 					sprite_index = spr_player_mach1;
 					playSound(sfx_mach1);
-					if(moveX != xscale && moveX != 0 || !GetInput("dash", 0) || PLAYER_TOUCHING) {
+					if(moveX != xscale && moveX != 0 || !GetInput("dash", 0, playerID) || PLAYER_TOUCHING) {
 						setState("normal");
 					}
 					movespeed += movespeed <= 8 ? 0.2 : 0;
 					velocity.x = round(movespeed * xscale);
 					if(PLAYER_GROUNDED) {
-						if(GetInput("down", 0)) setState("crouchslide", false);
+						if(GetInput("down", 0, playerID)) setState("crouchslide", false);
 						tempVar[0]++;
 						if(tempVar[0] >= 35) {
 							CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 							setState("mach2", false);
 						}	
-						if(GetInput("jump", 0)) {
+						if(GetInput("jump", 0, playerID)) {
 							setState("jump");
 							CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_Player.xscale});
 							playSound(sfx_jump);
@@ -439,7 +439,7 @@ case Moveset.ETB: //ETB code lies here
 						case "mach2":
 							movespeed = 10;
 							velocity.x = xscale * movespeed;
-							if((moveX != xscale && moveX != 0 || !GetInput("dash", 0)) && PLAYER_GROUNDED) {
+							if((moveX != xscale && moveX != 0 || !GetInput("dash", 0, playerID)) && PLAYER_GROUNDED) {
 								setState("machslide");
 								tempVar[0] = 35;
 							}
@@ -447,7 +447,7 @@ case Moveset.ETB: //ETB code lies here
 							if(PLAYER_GROUNDED) {
 								CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
 								sprite_index = spr_player_mach2;
-								if(GetInput("down", 0)) setState("crouchslide", false);
+								if(GetInput("down", 0, playerID)) setState("crouchslide", false);
 								playSound(sfx_mach2);
 								tempVar[0]++;
 								if(tempVar[0] >= 100) {
@@ -456,8 +456,8 @@ case Moveset.ETB: //ETB code lies here
 									instance_create_depth(x,y,0, o_P_StateInitEffect);
 								}
 					
-								if(GetInput("jump", 1)) velocity.y = -9;
-								if(!GetInput("jump", 0) && velocity.y < 0) velocity.y /= 2;
+								if(GetInput("jump", 1, playerID)) velocity.y = -9;
+								if(!GetInput("jump", 0, playerID) && velocity.y < 0) velocity.y /= 2;
 							}
 							else setState("machfreefall", false);
 				
@@ -481,16 +481,16 @@ case Moveset.ETB: //ETB code lies here
 							sprite_index = global.settings.playerSettings.ETB_useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 							playSound(sfx_mach3);
 							playSound(sfx_mach2);
-							if(GetInput("up", 0)) {
+							if(GetInput("up", 0, playerID)) {
 								setState("superJump");
 								playSound(sfx_woosh);
 							}
 
 							if(PLAYER_GROUNDED) {
 								CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : xscale});
-								if(GetInput("down", 0)) setState("machroll", false);
-								if(GetInput("jump", 0)) velocity.y = -9;
-								if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0) )) {
+								if(GetInput("down", 0, playerID)) setState("machroll", false);
+								if(GetInput("jump", 0, playerID)) velocity.y = -9;
+								if( (moveX != xscale && moveX != 0 || !GetInput("dash", 0, playerID) )) {
 									setState("machslide", false);
 									playSound(sfx_slide);
 									tempVar[0] = 35;
@@ -503,7 +503,7 @@ case Moveset.ETB: //ETB code lies here
 								PlaySound(sfx_bump);
 								CreateEffect({sprite_index : sprite_effect_bang});
 							}
-							if(!GetInput("jump", 0) && velocity.y < 0) velocity.y /= 2;
+							if(!GetInput("jump", 0, playerID) && velocity.y < 0) velocity.y /= 2;
 						break;
 			
 						case "machslide":
@@ -516,7 +516,7 @@ case Moveset.ETB: //ETB code lies here
 							velocity.x = movespeed * xscale;
 							movespeed -= 0.4;
 							if(movespeed <= 0) {
-								if(GetInput("dash", 0) && moveX != xscale && moveX != 0) {
+								if(GetInput("dash", 0, playerID) && moveX != xscale && moveX != 0) {
 									setState("mach2", false);
 									xscale = moveX;
 								}
@@ -538,7 +538,7 @@ case Moveset.ETB: //ETB code lies here
 							sprite_index = spr_player_crouchslide;
 							velocity.x = movespeed * xscale;
 							movespeed -= 0.2;
-							if(!GetInput("down", 0) && tempVar[0] >= 35 && !place_meeting(x, y - 1, o_C_Parent)) {
+							if(!GetInput("down", 0, playerID) && tempVar[0] >= 35 && !place_meeting(x, y - 1, o_C_Parent)) {
 								setState("mach2", false);
 								mask_index = spr_player_mask;
 							}
@@ -565,7 +565,7 @@ case Moveset.ETB: //ETB code lies here
 							}
 							tempVar[1]--;
 							velocity.x = movespeed * xscale;
-							if(!GetInput("down", 0) && !place_meeting(x, y - 1, o_C_Parent)) {
+							if(!GetInput("down", 0, playerID) && !place_meeting(x, y - 1, o_C_Parent)) {
 								setState("mach3", false);
 								mask_index = spr_player_mask;
 								tempVar[0] = 35;
@@ -589,7 +589,7 @@ case Moveset.ETB: //ETB code lies here
 							playSound(sfx_spin);
 							velocity.x = xscale * 10;
 							if(PLAYER_GROUNDED) {
-								if(!GetInput("dash", 0)) { //If we aren't holding the mach 2 button 
+								if(!GetInput("dash", 0, playerID)) { //If we aren't holding the mach 2 button 
 									setState("freefall");
 									tempVar[0] = 2;
 								}
@@ -623,9 +623,9 @@ case Moveset.ETB: //ETB code lies here
 		
 					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 					velocity.x = moveX * movespeed;
-					if(!GetInput("jump", 0) && velocity.y < 0) velocity.y /= 2;
+					if(!GetInput("jump", 0, playerID) && velocity.y < 0) velocity.y /= 2;
 					if(round(image_index) == image_number || velocity.y > 0) sprite_index = spr[1];
-					if(GetInput("down", 0)) {
+					if(GetInput("down", 0, playerID)) {
 						setState("freefall");
 						if(velocity.y < 0) velocity.y = 0;
 					}
@@ -652,7 +652,7 @@ case Moveset.ETB: //ETB code lies here
 					sprite_index = sprite_player_noclip;
 					velocity.x = 0;
 					velocity.y = 0;
-					movespeed = GetInput("dash", 0) ? 20 : 10;
+					movespeed = GetInput("dash", 0, playerID) ? 20 : 10;
 					x += moveX * movespeed;
 					y += moveY * movespeed;
 					return;
@@ -688,7 +688,7 @@ case Moveset.ETB: //ETB code lies here
 								CreateEffect({sprite_index : sprite_effect_bang});
 								ShakeCamera(10, 1/2);
 							}
-							if(GetInput("dash", 1)) {
+							if(GetInput("dash", 1, playerID)) {
 								velocity.y = 0;
 								if(moveX != 0) xscale = moveX;
 								setState("machfreefall", false);
@@ -717,13 +717,13 @@ case Moveset.ETB: //ETB code lies here
 				
 							velocity.x = 0;
 							velocity.y = 0;
-							if(GetInput("jump", 1) && round(image_index) == image_number) {
+							if(GetInput("jump", 1, playerID) && round(image_index) == image_number) {
 								playSound(sfx_jump);
 								velocity.y = -12;
 								tempVar[0] = 1;
 								image_speed = 1;
 							}
-							if(!GetInput("up", 0)) setState("normal");
+							if(!GetInput("up", 0, playerID)) setState("normal");
 						break;
 			
 						case 1:
@@ -736,7 +736,7 @@ case Moveset.ETB: //ETB code lies here
 							}
 							if(moveY == 1) setState("freefall");
 							if(PLAYER_GROUNDED) {
-								if(GetInput("up", 0))	{
+								if(GetInput("up", 0, playerID))	{
 									tempVar[0] = 0;
 									image_index = 0;
 								}
@@ -768,11 +768,11 @@ case Moveset.ETB: //ETB code lies here
 								playSound(sfx_crawl);	
 							}
 							if(!place_meeting(x,y - 1, o_C_Wall)) {
-								if(!GetInput("down", 0)) {
+								if(!GetInput("down", 0, playerID)) {
 									setState("normal");
 									mask_index = spr_player_mask;
 								}
-								if(GetInput("jump", 1)) {
+								if(GetInput("jump", 1, playerID)) {
 									animVar = false;
 									tempVar[0] = 1;
 									playSound(sfx_jump);
@@ -827,7 +827,7 @@ case Moveset.ETB: //ETB code lies here
 								tempVar[0] = 0;
 							}
 				
-							if(!GetInput("down", 0)) setState("jump");
+							if(!GetInput("down", 0, playerID)) setState("jump");
 							tempVar[1]++;
 							if(tempVar[1] >= 30) {
 								tempVar[0] = 1;
@@ -850,7 +850,7 @@ case Moveset.ETB: //ETB code lies here
 							velocity.x = 0;
 							tempVar[1]++;
 							if(tempVar[1] > 30) setState("superslam");
-							if(GetInput("dash", 0)) {
+							if(GetInput("dash", 0, playerID)) {
 								setState("mach2");
 								velocity.y = 0;
 							}
@@ -909,7 +909,7 @@ case Moveset.ETB: //ETB code lies here
 							sprite_index = spr_player_ladder;
 						break;
 					}
-					if(GetInput("jump", 1)) {
+					if(GetInput("jump", playerID, 1, playerID)) {
 						setState("jump");
 						playSound(sfx_jump);
 						velocity.y = -9;
@@ -965,10 +965,10 @@ case Moveset.ETB: //ETB code lies here
 							}
 				
 							if(PLAYER_GROUNDED) {
-								if(GetInput("dash", 0)) {
+								if(GetInput("dash", 0, playerID)) {
 									tempVar[0] = 1;
 								}
-								if(GetInput("jump", 0)) {
+								if(GetInput("jump", 0, playerID)) {
 									if(audio_is_playing(sfx_footstep)) audio_stop_sound(sfx_footstep);
 									playSound(sfx_jump);
 									velocity.y = -9;
@@ -981,12 +981,12 @@ case Moveset.ETB: //ETB code lies here
 									sprite_index = spr_player_grabbing_fall;
 									image_index = 0;
 								}
-								if(!GetInput("jump", 0) && velocity.y < 0) velocity.y /= 2;
+								if(!GetInput("jump", 0, playerID) && velocity.y < 0) velocity.y /= 2;
 					
-								if(GetInput("dash", 0)) { //This used to do the same thing as throwing whilist grounded. This is so stupid.
+								if(GetInput("dash", 0, playerID)) { //This used to do the same thing as throwing whilist grounded. This is so stupid.
 									tempVar[0] = 1;
 								}
-								if(GetInput("jump", 1)) {
+								if(GetInput("jump", 1, playerID)) {
 									velocity.y = -13; //OG - 11
 									tempVar[0] = 3;
 									playSound(sfx_spin);
@@ -1011,8 +1011,8 @@ case Moveset.ETB: //ETB code lies here
 							if(moveX == xscale && moveX != 0) sprite_index = spr_player_grabbing_punchprep;
 							else if(moveX != 0) sprite_index = spr_player_grabbing_backkickprep;
 							else {
-								if(GetInput("up", 0)) sprite_index = spr_player_grabbing_up_prep;
-								else if(GetInput("down", 0)) sprite_index = spr_player_grabbing_shoulderprep;
+								if(GetInput("up", 0, playerID)) sprite_index = spr_player_grabbing_up_prep;
+								else if(GetInput("down", 0, playerID)) sprite_index = spr_player_grabbing_shoulderprep;
 								else sprite_index = spr_player_grabbing_charge;
 							}
 				
@@ -1023,7 +1023,7 @@ case Moveset.ETB: //ETB code lies here
 							//There are issues with keyboard_check_released not being valid in the first frames of the state!
 							//TODO - Fact check
 							//Yea its true, but only if theres other conditions
-							if(GetInput("dash", 2) || !PLAYER_GROUNDED) { //Releasing grab
+							if(GetInput("dash", 2, playerID) || !PLAYER_GROUNDED) { //Releasing grab
 					
 								switch(sprite_index) { //TODO - Find a better way?
 									case spr_player_grabbing_charge: //Throwing an enemy
@@ -1163,7 +1163,7 @@ case Moveset.ETB: //ETB code lies here
 							else if(!animVar) sprite_index = spr_player_knight_idle;
 							if(animVar) sprite_index = spr_player_knight_land;
 							//Jump handling
-							if(GetInput("jump", 0) && sprite_index != spr_player_knight_jumpprep) sprite_index = spr_player_knight_jumpprep;
+							if(GetInput("jump", 0, playerID) && sprite_index != spr_player_knight_jumpprep) sprite_index = spr_player_knight_jumpprep;
 							if(round(image_index) == image_number) {
 								if(sprite_index == spr_player_knight_jumpprep) {
 									velocity.x = moveX * 4;
@@ -1175,7 +1175,7 @@ case Moveset.ETB: //ETB code lies here
 								if(animVar) animVar = false;
 							}
 							else if(sprite_index == spr_player_knight_jumpprep) velocity.x = 0;
-							if(GetInput("dash", 1)) {
+							if(GetInput("dash", 1, playerID)) {
 								playSound(sfx_swordswing);
 								CreateEffect({x : self.x + (xscale * 10), sprite_index : sprite_effect_dashcloud}); //Hehehe this is not slidecloud, its dashcloud
 								tempVar[0] = 3;
@@ -1269,7 +1269,7 @@ case Moveset.ETB: //ETB code lies here
 							}
 							if(PLAYER_GROUNDED) {
 								playSound(sfx_mach1); //Why wasn't this here?
-								if(GetInput("jump", 1)) velocity.y = -9;
+								if(GetInput("jump", 1, playerID)) velocity.y = -9;
 							}
 						break;
 			
