@@ -10,6 +10,6 @@ startGame = function() {
 }
 
 screens = [
-	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL SELECT", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){room_instance_add(Room_Empty, 0, 0, o_LevelSelect);room_goto(Room_Empty)}, -1, function(){game_end(1);}]),
+	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL SELECT", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){room_instance_add(Room_Empty, 0, 0, o_LevelSelect);room_goto(Room_Empty)}, function(){room_goto(Room_LevelEditor)}, function(){game_end(1);}]),
 	new CreateScreen("", ["FILE 1", "FILE 2", "FILE 3", "FILE 4", "FILE 5", "BACK"], [startGame, startGame, startGame, startGame, startGame, function(){setScreen(0);settings.background.render = false}]),
 ];

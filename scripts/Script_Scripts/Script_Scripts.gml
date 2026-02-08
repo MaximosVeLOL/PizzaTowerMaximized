@@ -14,7 +14,8 @@ function ShakeCamera(mag, acc) {
 
 
 function CollideAndMove(mass, maxYVelocity = 20, useSlopes = true) {
-	if(!PLAYER_GROUNDED) velocity.y += mass;
+	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) ? (velocity.y >= 0 ? mass/2 : mass*2) : mass);
+	
 	repeat(abs(velocity.y)) {
 	    if !place_meeting(x, y + sign(velocity.y), o_C_Parent)
 	        y += sign(velocity.y); 

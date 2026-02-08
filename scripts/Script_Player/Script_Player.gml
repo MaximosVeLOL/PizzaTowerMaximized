@@ -1338,6 +1338,5 @@ case Moveset.ETB: //ETB code lies here
 		stunStuff.invincibleFrames--;
 	}
 	if(xscale != 1 && xscale != -1) show_message("Scale not in range! \n" + state);
-	
 	CollideAndMove(mass, 30);
 } 

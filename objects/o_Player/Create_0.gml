@@ -33,6 +33,7 @@ inventory = {
 	key : false,
 	gun : false,
 };
+isUnderwater = true;
 #macro PLAYER_GROUNDED place_meeting(x, y + 1, o_C_Parent)
 #macro PLAYER_TOUCHING place_meeting(x + xscale, y, o_C_Wall)
 #macro SPRITE_NO_REPEAT if(round(image_index) == image_number) image_speed = 0

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"MaxGUI_Scripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"MaxGUI_Scripts",
+  "parent":{
+    "name":"MaxGUI",
+    "path":"folders/MaxGUI.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
