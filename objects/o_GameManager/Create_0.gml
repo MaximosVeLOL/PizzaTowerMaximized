@@ -129,15 +129,20 @@ endLevel = function(win = false, instantly = false) {
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
 	transSettings.nextRoom = _nextRoom;
 	transSettings.newPos = _newPos;
+	if(_nextRoom == -1) {
+		LogError("Invalid Room!");
+		o_Player.x = o_Player.xstart;
+		o_Player.y = o_Player.ystart;
+		o_Player.setState("normal");
+		return;
+	}
 	if(!isDoorTrans) {
 		instance_create_depth(x,y,-100,o_UI_FadeTrans);
 		transSettings.state = o_Player.state;
 		o_Player.state = "transition";
 	}
 	else instance_create_depth(o_Player.x,o_Player.y, -100, o_UI_DoorTrans);
-	if(_nextRoom == -1) {
-		LogError("Invalid Room!", true);
-	}
+
 	if(_newSong != -1 && instance_exists(o_MusicManager)) o_MusicManager.playNewSong(_newSong, _loopData); //I'm tired of it logging unneccesary stuff.
 }
 sessions = {

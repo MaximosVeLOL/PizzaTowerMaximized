@@ -1,4 +1,4 @@
-if(!o_GUIHandler.active || !visible) return;
+if(!o_MaxGUI_Handler.active || !visible) return;
 if(mouse_check_button_pressed(mb_left) && inBounds) {
 	onClick();
 }
@@ -6,7 +6,7 @@ if(mouse_check_button_pressed(mb_left) && inBounds) {
 
 
 draw_self();
-draw_set_color(COLOR_TEXT);
+draw_set_color(MAXGUI_COLOR_TEXT);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 

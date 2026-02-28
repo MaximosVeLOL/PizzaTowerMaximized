@@ -1,4 +1,4 @@
-if(!o_GUIHandler.active) return;
+if(!o_MaxGUI_Handler.active) return;
 var i = 0;
 
 var PAGE_WIDTH = 100;
@@ -26,18 +26,21 @@ for(; i < array_length(objectList);i++) {
 var yPos = 0;
 var ignore = false;
 
+
+var objectToShow = noone;
 for(i = 1 ; i < array_length(objectList[objectPage]);i++) {
 	var curObject = objectList[objectPage][i];
 	var blend = c_white;
 	if(mouse_x >= bbox_left + PAGE_WIDTH + (OBJECT_WIDTH * (i - 1)) && mouse_x <= bbox_left + PAGE_WIDTH + (OBJECT_WIDTH * i) && mouse_y >= y + 1 + (OBJECT_HEIGHT * yPos) && mouse_y <= y + 1 + (OBJECT_HEIGHT * (yPos + 1))  ) {
 		blend = c_gray;
+		objectToShow = curObject;
 		if(mouse_check_button_pressed(mb_left) && !ignore) {
 			objectSelected = [objectPage, curObject];
 			onObjectSelect(curObject);
 			ignore = true;
 		}
 	}
-	if(objectSelected[0] == objectPage  && objectSelected[1] == i) blend = c_green;
+	//if(objectSelected[0] == objectPage  && objectSelected[1] == i) blend = c_green;
 	
 	//draw_sprite_general(object_get_sprite(curObject), 0, 0, 0, OBJECT_WIDTH, OBJECT_HEIGHT, x + PAGE_WIDTH + (OBJECT_WIDTH * (i - 1)), y + 1 +(OBJECT_HEIGHT * yPos), 1, 1, 0, blend, blend, blend, blend, 1);
 	var sprite = object_get_sprite(curObject);
@@ -46,5 +49,12 @@ for(i = 1 ; i < array_length(objectList[objectPage]);i++) {
 	//draw_text(x + PAGE_WIDTH + (OBJECT_WIDTH * i), y + (OBJECT_HEIGHT * yPos), string(i) + ", " + string(yPos));
 	if(i % MAX_OBJECT_WIDTH == 0 && i > 0) yPos++;
 }
-
+if(objectToShow != noone) {
+	draw_set_color(c_black);
+	var namea = object_get_name(objectToShow);
+	draw_rectangle(mouse_x, mouse_y, mouse_x + 12 + (string_length(namea) * 12), mouse_y + 25, false);
+	draw_set_color(MAXGUI_COLOR_TEXT);
+	draw_set_valign(fa_center);
+	draw_text(mouse_x + 10, mouse_y + (25/2), namea);
+}
 GUI_RESET;

@@ -1,13 +1,8 @@
-if(!o_GUIHandler.active || !visible) return;
+if(!o_MaxGUI_Handler.active || !visible) return;
 
 //We still need to check even though we dont highlight
-inBounds = (mouse_x >= bbox_left && mouse_x <= bbox_right && mouse_y >= bbox_top && mouse_y <= bbox_bottom);
+inBounds = (mouse_x >= x && mouse_x <= x + sprite_width && mouse_y >= y && mouse_y <= y + sprite_height);
 
 if(doHighlight) {
-	if(mouse_x >= bbox_left && mouse_x <= bbox_right && mouse_y >= bbox_top && mouse_y <= bbox_bottom) {
-		image_blend = c_gray;
-	}
-	else {
-		image_blend = COLOR_HIGHLIGHT;
-	}
+	image_blend = (inBounds ? c_gray : MAXGUI_COLOR_HIGHLIGHT);
 }

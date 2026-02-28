@@ -1,4 +1,4 @@
-if(!o_GUIHandler.active) return;
+if(!o_MaxGUI_Handler.active) return;
 draw_set_halign(horAlign);
 draw_set_valign(verAlign);
 draw_set_color(color);

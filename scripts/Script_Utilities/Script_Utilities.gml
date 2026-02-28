@@ -3,6 +3,9 @@ function Vector(_x = 0, _y = 0) constructor {
 	y = _y;
 }
 
+function instance_create(x, y, object, var_struct = {}) {
+	return instance_create_layer(x, y, layer, object, var_struct);
+}
 
 function PlaySound(snd, override = false, loop = false, canRepeat = false) {
 	var aud = -1;
@@ -13,7 +16,7 @@ function PlaySound(snd, override = false, loop = false, canRepeat = false) {
 		if(override) audio_stop_sound(snd);
 		
 		aud = global.settings.audioSettings.surroundSound ? audio_play_sound_at(snd, x, y, 0, 100, 300, 0, loop, 999) : audio_play_sound(snd, 999, loop);
-		if(!loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
+		if(aud != -1 && !loop) audio_sound_gain(aud, global.settings.audioSettings.sfxVolume / 100, 0);
 	}
 	return aud;
 }

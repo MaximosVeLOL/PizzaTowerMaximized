@@ -5,5 +5,5 @@ typeTimer = 0;
 FinishTyping = function() {
 	onDoneTyping(text);
 	isTyping = false;
-	o_GUIHandler.isInteracting = false;
+	o_MaxGUI_Handler.isInteracting = false;
 }

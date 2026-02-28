@@ -1,2 +1,3 @@
+event_inherited();
 doHighlight = false;
-if(color == $FFFF00FF) color = COLOR_TEXT;
+if(color == $FFFF00FF) color = MAXGUI_COLOR_TEXT;

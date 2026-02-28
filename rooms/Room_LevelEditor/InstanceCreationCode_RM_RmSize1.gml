@@ -1,5 +1,5 @@
 onClick = function() {
-	CreatePrompt(680, 270, 14, 9, function(text){
+	MaxGUI_CreatePrompt(o_LevelEditor.offset[0] + 270, o_LevelEditor.offset[1] + 180, 14, 9, function(text){
 		var _temp = "";
 		var out = [];
 		for(var i = 1 ; i <= string_length(text);i++) {

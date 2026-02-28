@@ -1,6 +1,7 @@
 disabled = false;
 doHighlight = true;
 inBounds = false;
+persistent = true;
 if(customSprite != noone) {
 	sprite_index = customSprite;
 	image_xscale = 1;

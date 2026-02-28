@@ -5,7 +5,7 @@ i = 0;
 if(array_length(elements) > 0 && is_string(elements[0])) {
 	for(i = 0 ; i < array_length(elements);i++) {
 		var elName = elements[i];
-		elements[i] = FindElement(elements[i]);
+		elements[i] = MaxGUI_FindElement(elements[i]);
 		//show_message(elements[i]);
 		if(elements[i] == noone) {
 			throw("Undefined element at " + string(i) + " (" + elName + ")");
@@ -25,6 +25,9 @@ Toggle = function() {
 }
 Add = function(element) {
 	array_push(elements, element);
+	element.alignedToGUI = alignedToGUI;
+	element.visible = alignedToGUI;
+	//element.active = active;
 }
 Destroy = function() {
 	instance_destroy();

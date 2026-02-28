@@ -1,11 +1,10 @@
 event_inherited();
-if(!o_GUIHandler.active) {
+if(!o_MaxGUI_Handler.active) {
 	if(keyboard_check_pressed(vk_escape)) {
 		DestroyLevel();
 	}
 	return;
 }
-
 
 if(!isInteracting) {
 	offset[0] += (keyboard_check(ord("D")) - keyboard_check(ord("A")) ) * 32;
@@ -13,19 +12,40 @@ if(!isInteracting) {
 	camera_set_view_pos(view_camera[0], offset[0], offset[1]);
 
 	if(mouse_check_button(mb_left)) {
-		if(mode == "place") {
-			if(collision_point(Grid(mouse_x), Grid(mouse_y), all, false, true) == noone && selectedObject != noone) {
-					instance_create_depth(Grid(mouse_x), Grid(mouse_y), 0, o_LevelObject, {ID : selectedObject});
-
+		var inst = GetObjectTouching(mouse_x, mouse_y, o_LevelObject);
+		if(mode == "place" && inst == noone && selectedObject != noone) {
+			var yes = false;
+			with(o_LevelObject) {
+				if(x == Grid(mouse_x) && y == Grid(mouse_y)) {
+					yes = true;
+					break;
+				}
 			}
+			if(yes) instance_create_depth(Grid(mouse_x), Grid(mouse_y), 0, o_LevelObject, {ID : selectedObject});
 		}
 		else if(mode == "edit") {
-			var inst = collision_point(Grid(mouse_x), Grid(mouse_y), all, false, true);
-			if(inst != noone && inst.object_index == o_LevelObject) {
-				instance_create_depth(mouse_x, mouse_y, 0, o_MaxGUI_E_PropertyEditor, {targetObject : inst.settings, alignedToGUI : false});
+			if(editObject == noone) {
+				if(inst != noone) editObject = inst;
+			}
+			else {
+				editObject.x = Grid(mouse_x);
+				editObject.y = Grid(mouse_y);
 			}
 		}
+
 	}
+	if(keyboard_check(vk_control)) {
+		if(mode == "edit") {
+			if(keyboard_check_pressed(ord("C")) && editObject != noone)
+				Log("Copy placeholder!");
+			if(keyboard_check_pressed(ord("V")) )
+				Log("Paste placeholder!");
+			if(keyboard_check_pressed(ord("S")) )
+				ExportLevel();
+		}
+	}
+	
+	if((mouse_check_button_released(mb_right) || mouse_check_button_released(mb_left)) && mode == "edit") editObject = noone;
 /*
 		var detected = false;
 		var checkables = [o_Player];
@@ -44,22 +64,42 @@ if(!isInteracting) {
 		if(!detected)
 		*/
 	if(mouse_check_button(mb_right)) {
-		var inst = collision_point(mouse_x, mouse_y, all, false, true);
-		if(inst != noone && inst.object_index == o_LevelObject) {
+		var inst = GetObjectTouching(mouse_x, mouse_y, o_LevelObject)
+		if(inst != noone) {
+			
+			if(mode == "place") {
+
 				instance_destroy(inst);
 				//instance_create_depth(mouse_x, mouse_y, 0, o_MaxGUI_E_PropertyEditor, {targetObject : inst, alignedToGUI : false});
+
+			}
+			else if(mode == "edit") {
+				if(editObject == noone) {
+					editObject = inst;
+				}
+				else {
+					editObject.image_xscale = (Grid(mouse_x) - editObject.x ) / 32;
+					if(editObject.image_xscale == 0)
+						editObject.image_xscale = 1;
+					editObject.image_yscale = (Grid(mouse_y) - editObject.y ) / 32;
+					if(editObject.image_yscale == 0)
+						editObject.image_yscale = 1;
+				}
+			}
 		}
+
 	}
-	/*
+
 	if(mouse_check_button_pressed(mb_middle)) {
 		var inst = collision_point(mouse_x, mouse_y, all, false, true);
 		if(inst != noone && inst.object_index == o_LevelObject) {
 				
-				instance_create_depth(mouse_x, mouse_y, 0, o_MaxGUI_E_PropertyEditor, {targetObject : inst.settings, alignedToGUI : false});
+				instance_create_depth(mouse_x, mouse_y, -10, o_MaxGUI_E_PropertyEditor, {targetObject : inst.settings, alignedToGUI : false});
 		}
 	}
-	*/
+
 	
-	if(keyboard_check_pressed(ord("I"))) ImportLevel("MaximizedGM2/level.PTMLVL");
-	if(keyboard_check_pressed(ord("O"))) ExportLevel();
+	if(keyboard_check_pressed(ord("I"))) ImportLevel("test");
+	if(keyboard_check_pressed(ord("O"))) ExportLevel("test");
 }
+previousMouse = new Vector(mouse_x, mouse_y);

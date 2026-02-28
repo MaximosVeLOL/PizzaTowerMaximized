@@ -1,21 +1,41 @@
-#macro DEBUG true
-#macro COLOR_HIGHLIGHT c_white
-#macro COLOR_TEXT c_white
+#macro MAXGUI_DEBUG true
+#macro MAXGUI_COLOR_HIGHLIGHT c_white
+#macro MAXGUI_COLOR_TEXT c_white
 
-function FindElement(elName) { //Como se llama guey?
+function MaxGUI_FindElement(elName) { //Como se llama guey?
 	with(o_MaxGUI_E_ElementParent) {
 		if(name == elName) return id;
 	}
 	return noone;
 }
-function GetElementVariable(element, varName) {
+function MaxGUI_GetElementVariable(element, varName) {
 	if(element == noone || !variable_instance_exists(element, varName)) return undefined;
 	return variable_instance_get(element, varName);
 }
 
 
+function MaxGUI_CreateAlert(x,y,w,h, textToDisplay, onComplete = function(){}) {
+	var exists = false;
+	with(o_MaxGUI_E_Group) {
+		if(name == "AlertGroup") {
+			exists = true;
+			break;
+			
+		}
+	}
+	var groupMaster = instance_create_depth(x,y,0,o_MaxGUI_E_Group);
+	groupMaster.alignedToGUI = false;
+	groupMaster.name = "AlertGroup";
+	//x -= w * 16;
+	//y -= h * 16;
+	groupMaster.Add(instance_create_depth(x, y, -20, o_MaxGUI_E_Window, {image_xscale : w, image_yscale : h}));
+	groupMaster.Add(instance_create_depth(x + 64, y + 32, -25, o_MaxGUI_E_Text, {text : textToDisplay  }));
+	groupMaster.Add(instance_create_depth(x + 64, y + 192, -25, o_MaxGUI_E_Button, {image_xscale : 2, image_yscale : 2, onClick : function(){onComplete(true);}, text : "Ok"  }));
+	groupMaster.Add(instance_create_depth(x + 320, y + 192, -25, o_MaxGUI_E_Button, {image_xscale : 2, image_yscale : 2, onClick : function(){onComplete(false);}, text : "Cancel"  }));
+	return groupMaster;
+}
 
-function CreatePrompt( x, y, w, h, onComplete, textToDisplay = "This is a prompt, type something!") {
+function MaxGUI_CreatePrompt( x, y, w, h, onComplete, textToDisplay = "This is a prompt, type something!") {
 	var groupMaster = instance_create_depth(x,y,0,o_MaxGUI_E_Group);
 	groupMaster.name = "PromptGroup";
 	x -= w * 16;
@@ -25,11 +45,11 @@ function CreatePrompt( x, y, w, h, onComplete, textToDisplay = "This is a prompt
 	groupMaster.Add(instance_create_depth(x + 32,y + 64,-25,o_MaxGUI_E_TextInput, {image_xscale : w - 2, image_yscale : 2, onDoneTyping : onComplete, name : "PromptTextInput"}));
 	
 	groupMaster.Add(instance_create_depth(x + 96,y + 160,-25,o_MaxGUI_E_Button, {image_xscale : 3, image_yscale : 3, text : "Ok", onClick : function() {
-		if(FindElement("PromptTextInput").FinishTyping())
-			FindElement("PromptGroup").Destroy();
+		MaxGUI_FindElement("PromptTextInput").FinishTyping();
+		MaxGUI_FindElement("PromptGroup").Destroy();
 	}}));
 	groupMaster.Add(instance_create_depth(x + 256, y + 160, -25, o_MaxGUI_E_Button, {image_xscale : 3, image_yscale : 3, text : "Cancel", onClick : function(){
-		FindElement("PromptGroup").Destroy();
+		MaxGUI_FindElement("PromptGroup").Destroy();
 	}}));
 
 	return groupMaster;

@@ -5,7 +5,6 @@ enum LevelIndex {
 	PreETB_Level2,
 	Last,
 };
-
 function ResetLevel(levelIndex) {
 	var originalRoom = room;
 	var rooms = [];

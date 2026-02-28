@@ -1,4 +1,4 @@
-if(!o_GUIHandler.active || !visible) return;
+if(!o_MaxGUI_Handler.active || !visible) return;
 draw_self();
 
 renderStruct(targetObject, x, y);

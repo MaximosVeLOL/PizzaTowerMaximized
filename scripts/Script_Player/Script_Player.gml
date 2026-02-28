@@ -722,6 +722,7 @@ case Moveset.ETB: //ETB code lies here
 								velocity.y = -12;
 								tempVar[0] = 1;
 								image_speed = 1;
+								CreateEffect({sprite_index : sprite_effect_dust, image_xscale : o_Player.xscale});
 							}
 							if(!GetInput("up", 0, playerID)) setState("normal");
 						break;
@@ -1330,6 +1331,28 @@ case Moveset.ETB: //ETB code lies here
 					show_message("State not implemented! State: " + state);
 					setState("normal");
 				break;
+				
+				
+				case "barrel":
+					sprite_index = spr_player_barrelF_idle;
+					switch(tempVar[0]) {
+						case 0: //Normal
+							if(moveX != 0) xscale = moveX;
+							velocity.x = moveX * 2.5; 
+							if(place_meeting(x, bbox_bottom - (sprite_height / 2), o_Le_Water)) velocity.y = -1;
+							if(GetInput("jump", 2, playerID)) {
+								setState("jump");
+								velocity.y = -9;
+							}
+						break;
+						
+						case 1: //Dashing
+						
+						break;
+						
+						case 2: //Rolling
+					}
+				break;
 			}
 		break;
 	}
@@ -1338,5 +1361,5 @@ case Moveset.ETB: //ETB code lies here
 		stunStuff.invincibleFrames--;
 	}
 	if(xscale != 1 && xscale != -1) show_message("Scale not in range! \n" + state);
-	CollideAndMove(mass, 30);
-} 
+	CollideAndMove(mass, 30, true);
+}

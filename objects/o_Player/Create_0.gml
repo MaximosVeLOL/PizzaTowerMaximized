@@ -33,7 +33,7 @@ inventory = {
 	key : false,
 	gun : false,
 };
-isUnderwater = true;
+isUnderwater = false;
 #macro PLAYER_GROUNDED place_meeting(x, y + 1, o_C_Parent)
 #macro PLAYER_TOUCHING place_meeting(x + xscale, y, o_C_Wall)
 #macro SPRITE_NO_REPEAT if(round(image_index) == image_number) image_speed = 0
@@ -72,8 +72,9 @@ hurt = function() {
 }
 playSound = function(snd, override = false) {
 	//M_OPTI - This looks like something very low languagey, but is this faster, or slower?
-	array_resize(sounds, array_length(sounds) + 1);
-	sounds[array_length(sounds) - 1] = PlaySound(snd, override);
+	//array_resize(sounds, array_length(sounds) + 1);
+	//sounds[array_length(sounds) - 1] = PlaySound(snd, override);
+	array_push(sounds, PlaySound(snd, override));
 }
 stopSound = function(snd) {
 	audio_stop_sound(snd);return;

@@ -6,12 +6,21 @@ if(PLAYER_GROUNDED) {
 		//CreateEffect({sprite_index : sprite_effect_bump}); This is Pre-ETB! There are no effects yet.
 		o_Player.setState("bump");
 		o_Player.velocity.y = -6;
-		velocity.x = 5 * o_Player.xscale;
-		velocity.y = -7;
+		velocity.x = 3 * o_Player.xscale;
+		velocity.y = -3;
 		y--;
 	}
+	
+		
 }
-if(place_meeting(x,y, o_Le_Water)) {
-
+else if(place_meeting(x,y - (sprite_height / 2), o_Le_Water)) {
+	velocity.y = -3;
+	velocity.x = 0;
+	sprite_index = sprite_level_barrelF;
 }
-CollideAndMove(1);
+else if(place_meeting(x, bbox_top - 2, o_Player) && usable) {
+	instance_place(x, bbox_top - 2, o_Player).setState("barrel");
+	instance_destroy();
+	
+}
+CollideAndMove(0.4, 20, false);

@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"sprite_button_room",
-  "bboxMode":0,
-  "bbox_bottom":95,
+  "bboxMode":2,
+  "bbox_bottom":0,
   "bbox_left":0,
-  "bbox_right":95,
+  "bbox_right":0,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,

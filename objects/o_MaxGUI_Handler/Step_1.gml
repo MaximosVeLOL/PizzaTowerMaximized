@@ -1,10 +1,12 @@
 //if(!active) return;
+other.isInteracting = false;
 with(o_MaxGUI_E_ElementParent) {
 	if(alignedToGUI) {
 		x = xstart + other.offset[0];
 		y = ystart + other.offset[1];
 	}
-	other.isInteracting = (mouse_x >= bbox_left && mouse_x <= bbox_right && mouse_y >= bbox_top && mouse_y <= bbox_bottom);
+	other.isInteracting = (other.isInteracting || inBounds);
+	//other.isInteracting = (mouse_x >= bbox_left && mouse_x <= bbox_right && mouse_y >= bbox_top && mouse_y <= bbox_bottom);
 }
 /*
 if(keyboard_check_pressed(vk_tab)) {
