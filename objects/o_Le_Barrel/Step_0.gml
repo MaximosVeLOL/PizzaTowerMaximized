@@ -17,9 +17,11 @@ else if(place_meeting(x,y - (sprite_height / 2), o_Le_Water)) {
 	velocity.y = -3;
 	velocity.x = 0;
 	sprite_index = sprite_level_barrelF;
+	mask_index = -1;
 }
-else if(place_meeting(x, bbox_top - 2, o_Player) && usable) {
+if(place_meeting(x, bbox_top - 2, o_Player) && usable) {
 	instance_place(x, bbox_top - 2, o_Player).setState("barrel");
+	instance_place(x, bbox_top - 2, o_Player).tempVar[0] = (place_meeting(x,y, o_Le_Water) ? 3 : 0)
 	instance_destroy();
 	
 }

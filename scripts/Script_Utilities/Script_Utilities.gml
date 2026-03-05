@@ -4,7 +4,7 @@ function Vector(_x = 0, _y = 0) constructor {
 }
 
 function instance_create(x, y, object, var_struct = {}) {
-	return instance_create_layer(x, y, layer, object, var_struct);
+	return instance_create_layer(x, y, (layer == -1 ? layer_get_id("Instances") : layer), object, var_struct);
 }
 
 function PlaySound(snd, override = false, loop = false, canRepeat = false) {

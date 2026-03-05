@@ -1334,23 +1334,72 @@ case Moveset.ETB: //ETB code lies here
 				
 				
 				case "barrel":
-					sprite_index = spr_player_barrelF_idle;
+					var touchingWater = place_meeting(x, bbox_bottom - (sprite_height / 2), o_Le_Water);
 					switch(tempVar[0]) {
 						case 0: //Normal
-							if(moveX != 0) xscale = moveX;
+							if(moveX != 0) {
+								sprite_index = spr_player_barrel_move;
+								xscale = moveX;
+							}
+							else sprite_index = spr_player_barrel_idle;
 							velocity.x = moveX * 2.5; 
-							if(place_meeting(x, bbox_bottom - (sprite_height / 2), o_Le_Water)) velocity.y = -1;
-							if(GetInput("jump", 2, playerID)) {
-								setState("jump");
+							if(GetInput("jump", 1, playerID)) {
+								//setState("jump");
 								velocity.y = -9;
+								//instance_create(x, y, o_Le_Barrel, {usable : true});
+							}
+							if(GetInput("dash", 0, playerID)) {
+								tempVar[0] = 1;
 							}
 						break;
 						
 						case 1: //Dashing
-						
+							sprite_index = spr_player_barrel_mach;
+							tempVar[1]++;
+							movespeed = (movespeed < 8 ? movespeed + 0.2 : 8);
+							if(tempVar[1] >= 35) {
+								tempVar[1] = 0;
+								tempVar[0] = 2;
+								sprite_index = spr_player_barrel_rollS;
+								mask_index = spr_player_mask_crouch;
+							}
+							velocity.x = xscale * movespeed;
+							
+							CreateEffect({sprite_index : sprite_effect_dashcloud});
 						break;
 						
 						case 2: //Rolling
+							if(sprite_index == spr_player_barrel_rollS && IMAGE_COMPLETE) sprite_index = spr_player_barrel_roll;
+							velocity.x = 10 * xscale;
+							
+							if(GetInput("jump", 1, playerID)) {
+								velocity.y = -5;
+							}
+							instance_create(x, y, o_P_MachEffect);
+							if(PLAYER_TOUCHING) tempVar[0] = 0;
+						break;
+						
+						case 3: //Floating
+							sprite_index = spr_player_barrel_float;
+							if(moveX != 0) xscale = moveX;
+							velocity.x = moveX * 2.5; 
+							if(touchingWater) velocity.y = -1;
+							if(GetInput("jump", 1, playerID)) {
+								setState("jump");
+								velocity.y = -9;
+								instance_create(x, y, o_Le_Barrel, {usable : true});
+							}
+						break;
+						
+						case 4: //Falling
+							if(touchingWater) {
+								tempVar[0] = 3;
+								velocity.y = -1;
+							}
+							else if(PLAYER_GROUNDED) {
+								tempVar[0] = 0;
+							}
+						break;
 					}
 				break;
 			}

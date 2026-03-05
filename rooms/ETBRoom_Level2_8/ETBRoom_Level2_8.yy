@@ -65,6 +65,7 @@
     {"name":"inst_26E40208","path":"rooms/ETBRoom_Level2_8/ETBRoom_Level2_8.yy",},
     {"name":"inst_8731008","path":"rooms/ETBRoom_Level2_8/ETBRoom_Level2_8.yy",},
     {"name":"inst_6673C4C","path":"rooms/ETBRoom_Level2_8/ETBRoom_Level2_8.yy",},
+    {"name":"inst_1A6E1843","path":"rooms/ETBRoom_Level2_8/ETBRoom_Level2_8.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -128,6 +129,7 @@
         {"$GMRInstance":"v4","%Name":"inst_4D650CB9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4D650CB9","objectId":{"name":"o_Le_Water","path":"objects/o_Le_Water/o_Le_Water.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":5.0,"scaleY":33.0,"x":1088.0,"y":480.0,},
         {"$GMRInstance":"v4","%Name":"inst_8731008","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_8731008","objectId":{"name":"o_Le_Points","path":"objects/o_Le_Points/o_Le_Points.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":672.0,"y":160.0,},
         {"$GMRInstance":"v4","%Name":"inst_6673C4C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6673C4C","objectId":{"name":"o_Le_Points","path":"objects/o_Le_Points/o_Le_Points.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":576.0,"y":160.0,},
+        {"$GMRInstance":"v4","%Name":"inst_1A6E1843","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1A6E1843","objectId":{"name":"o_Player","path":"objects/o_Player/o_Player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":210.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_79806FE1","animationSpeed":1.0,"colour":2432696319,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_79806FE1","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"level2_6","path":"sprites/level2_6/level2_6.yy",},"x":-64.0,"y":-32.0,},

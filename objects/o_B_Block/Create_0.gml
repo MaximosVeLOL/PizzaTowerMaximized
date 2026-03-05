@@ -15,6 +15,13 @@ onTopBreak = function() {
 		}
 	}
 }
+onXBreak = function() {
+	with(o_Player) {
+		if(state == "barrel" && tempVar[0] == 2) {
+			instance_destroy(other);
+		}
+	}
+}
 onBottomBreak = function() {
 	with(o_Player) {
 		if(state == "jump" && velocity.y < 0) velocity.y = 1;

@@ -31,10 +31,10 @@ for(var i = 0 ; i < instance_number(o_Player);i++) {
 	}
 	else {
 		if(plr.bbox_top >= bbox_top + 1) {
-			if(pushDir != 0 && (plr.state != "slip" && plr.movespeed != pushDir * 3)) {
+			if(pushDir != 0 && plr.state != "slip") {
 				plr.setState("slip");
 				plr.xscale = -pushDir;
-				plr.movespeed = pushDir * 3;
+				plr.movespeed = pushDir * 15;
 			}
 		}
 	}
