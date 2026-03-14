@@ -6,9 +6,14 @@ enum LevelIndex {
 	Last,
 };
 function ResetLevel(levelIndex) {
-	var originalRoom = room;
+	//var originalRoom = room;
 	var rooms = [];
 	switch(levelIndex) {
+		case LevelIndex.None:
+			throw("We are not in a level or we are not given a level!");
+		break;
+		
+		
 		case LevelIndex.ETB_Ancient: //ETB Ancient
 			rooms = [
 				ETBRoom_Tutorial1,
@@ -42,16 +47,30 @@ function ResetLevel(levelIndex) {
 		case LevelIndex.PreETB_Level2:
 			rooms = [
 				ETBRoom_Level2_1,
-				//ETBRoom_Level2_2,
+				ETBRoom_Level2_2,
+				ETBRoom_Level2_3,
+				ETBRoom_Level2_4,
+				ETBRoom_Level2_5,
+				ETBRoom_Level2_6,
+				ETBRoom_Level2_7,
+				ETBRoom_Level2_8,
+				ETBRoom_Level2_9,
+				ETBRoom_Level2_10,
+				ETBRoom_Level2_Treasure,
 			];
 		break;
 	}
+	/*
 	for(var i = 0 ; i < array_length(rooms);i++) {
 		room_goto(rooms[i]);
 		show_message("ROOM IND: " + string(room) + "\nIND: " + string(i));
 		room_restart();
 	}
 	room_goto(originalRoom);
+	
+	This doesn't work, for some reason.
+	*/
+	instance_create_depth(x, y, 0, o_LevelEnd, {roomData : rooms})
 }
 function GetLevelInfo(levelIndex) {
 	var levelInfo = {

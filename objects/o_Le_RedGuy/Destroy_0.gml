@@ -1,0 +1,2 @@
+//Do this so that when o_PizzaTimeManager is created, we can destroy all the red guys in the room, instead of having a step event checking for the same thing.
+instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_level_redguy_dead});

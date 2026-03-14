@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"MaxGUI_click",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.14564626,
+  "exportDir":"",
+  "name":"MaxGUI_click",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/MaxGUI/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"MaxGUI_click.wav",
+  "volume":1.0,
+}

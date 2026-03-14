@@ -1,3 +1,4 @@
+event_inherited();
 if(isCigarMan) {
 	shader_set(Shader_PaletteSwap);
 	texture_set_stage(shader_get_sampler_index(Shader_PaletteSwap, "samplePalette"), sprite_get_texture(sprite_enemy_sausageman_pal_base, 0) );

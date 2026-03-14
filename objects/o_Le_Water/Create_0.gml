@@ -1,9 +1,9 @@
 someoneOnTop = place_meeting(x, bbox_top - 1, o_Le_Water);
 var someoneOnBottom = place_meeting(x, bbox_bottom + 1, o_Le_Water);
 sprite_index = (someoneOnTop ? sprite_level_waterBtm : sprite_level_waterTop);
-
+if(pushDir != 0) sprite_index = sprite_level_waterCur;
 child = noone;
-if(image_yscale != 1 && someoneOnBottom && !someoneOnTop) {
+if(image_yscale != 1 && !someoneOnTop) {
 	y += 32;
 	image_yscale--;
 	

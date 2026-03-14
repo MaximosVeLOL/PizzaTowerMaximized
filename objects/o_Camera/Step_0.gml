@@ -16,7 +16,7 @@ if(global.settings.gameplaySettings.multiplayer) {
 			pos.x += random_range(-shake.mag, shake.mag);
 			pos.y += random_range(-shake.mag, shake.mag);
 		}
-		camera_set_view_pos(view_camera[i], pos.x, pos.x);
+		camera_set_view_pos(view_camera[i], pos.x, pos.y);
 
 	}
 }

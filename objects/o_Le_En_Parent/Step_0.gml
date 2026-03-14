@@ -1,6 +1,6 @@
 switch(state) {
 	case "idle":
-		velocity.x = 0;
+		velocity.x = movespeed * image_xscale;
 		if(PLAYER_GROUNDED) {
 				if(curSprite == "fall") {
 				PlaySound(sfx_land);
@@ -9,10 +9,15 @@ switch(state) {
 				//setSprite("land");
 			}
 			setSprite("idle");
+			movespeed = 0;
+			if(IMAGE_COMPLETE) {
+				setState("walk");
+				movespeed = 1.5;
+			}
 		}
-		else setSprite("fall");
-		if(round(image_index) == image_number) {
-			setState("walk");
+		else {
+			setSprite("fall");
+			movespeed = (movespeed < 0 ? movespeed + 0.1 : 0);
 		}
 	break;
 	
@@ -80,12 +85,13 @@ switch(state) {
 	break;
 	
 	case "hit":
-		if(round(image_index) == image_number) {
-			if(curSprite == "hit") {
-				if(velocity.y < 0) setSprite("flying");
-				else setSprite("stunfalltrans");
-			}
-			else if(curSprite == "flying") setSprite("stunfalltrans"); //Why wasn't this here ay?
+		if(curSprite == "stunfall" && !animVar) {
+			setSprite("flying");
+			animVar = true;
+		}
+		else if(curSprite == "flying" && velocity.y >= 0) setSprite("stunfalltrans"); //Why wasn't this here ay?
+		if(IMAGE_COMPLETE) {
+			if(curSprite == "hit") setSprite("flying");
 			else if(curSprite == "stunfalltrans") setSprite("stunfall");
 		}
 		if(place_meeting(x,y-2,o_C_Wall)) {

@@ -1,0 +1,1 @@
+attack = 1; //1 So we can prepare for normal state

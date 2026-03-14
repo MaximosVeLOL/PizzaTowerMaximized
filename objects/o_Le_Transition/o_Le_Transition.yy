@@ -43,5 +43,5 @@
     "path":"sprites/sprite_editor_trigger/sprite_editor_trigger.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

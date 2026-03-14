@@ -8,9 +8,11 @@ if(state == "fly") {
 	return;
 }
 
-
-setState("hit");
-velocity.y = -12;
+//if(bbox_bottom > other.y) return;
+setState("idle");
+movespeed = -7; //When thrown, we are always 7.
+setSprite("fall");
+velocity.y = -14;
 other.setState("stunned");
 other.setSprite("stomped");
 other.tempVar[0] = 200;

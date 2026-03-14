@@ -1,4 +1,4 @@
-reusedFromBoxingBeast = true;
+o_reusedFromBoxingBeast = true;
 //Reused from another game called Boxing Beast
 active = false;
 currentArguments = [];

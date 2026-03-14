@@ -2,7 +2,7 @@ movespeed = 1.5;
 state = "idle";
 mass = 0.5;
 curMass = mass;
-tempVar = [0,0,20];
+tempVar = [0,0,5];
 animVar = false;
 stunnable = true;
 velocity = new Vector();
@@ -26,7 +26,7 @@ curSprite = "";
 var obName = object_get_name(object_index);
 for(var i = 0; i <= string_length(obName);i++) {
 	name += string_lower(string_char_at(obName, i));
-	if(string_count("en_", name) > 0) {
+	if(string_count("en_", name) > 0) { //For some reason, names are lowercase when ingame???
 		name = "";
 	}
 }

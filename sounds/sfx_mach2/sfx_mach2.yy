@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.12013605,
+  "duration":0.11723356,
   "exportDir":"",
   "name":"sfx_mach2",
   "parent":{

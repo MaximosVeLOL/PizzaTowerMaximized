@@ -30,9 +30,10 @@ function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false
 	return aud;
 }
 function GetInput(reqKey, inputType = 0, reqPlayer = 0) {
-	reqPlayer++;
 	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
+	//Log(string(s));
+	//Log(string(reqPlayer));
 	switch(inputType) {
 		case 0:
 			return keyboard_check(variable_struct_get(s, reqKey)) || gamepad_button_check(reqPlayer - 1, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));

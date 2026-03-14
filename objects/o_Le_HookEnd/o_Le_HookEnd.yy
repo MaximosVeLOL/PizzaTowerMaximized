@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprite_editor_placeholder",
-    "path":"sprites/sprite_editor_placeholder/sprite_editor_placeholder.yy",
+    "name":"sprite_level_hookend",
+    "path":"sprites/sprite_level_hookend/sprite_level_hookend.yy",
   },
   "spriteMaskId":null,
   "visible":true,

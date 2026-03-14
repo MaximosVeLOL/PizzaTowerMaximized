@@ -6,7 +6,7 @@ switch(state) {
 	
 	case "walk":
 		velocity.x = movespeed * image_xscale;
-		if(!place_meeting(x + (32*image_xscale), bbox_bottom, o_C_Parent) || place_meeting( (image_xscale == 1 ? bbox_right : bbox_left),y, o_C_Wall) ) image_xscale *= -1;
+		if(place_meeting(x + (32*image_xscale), bbox_bottom, o_C_Parent) || place_meeting( (image_xscale == 1 ? bbox_right : bbox_left),y, o_C_Wall) ) image_xscale *= -1;
 	break;
 	
 	case "stun":

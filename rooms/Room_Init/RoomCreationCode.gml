@@ -7,7 +7,7 @@ enum FPSSaveMode {
 }
 global.settings = {
 	keyBinds : {
-		p1 : {
+		p0 : {
 			up : vk_up,
 			down : vk_down,
 			left : vk_left,
@@ -25,7 +25,7 @@ global.settings = {
 				shoot : gp_shoulderlb,
 			}
 		},
-		p2 : {
+		p1: {
 			up : ord("W"),
 			down : ord("S"),
 			left : ord("A"),
@@ -43,7 +43,7 @@ global.settings = {
 				shoot : gp_shoulderlb,
 			}
 		},
-		p3 : {
+		p2 : {
 			up : ord("I"),
 			down : ord("K"),
 			left : ord("J"),
@@ -118,24 +118,25 @@ if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
 		startInStartingRoom : true,
-		startUpRoom : ETBRoom_Level2_2,
-		startUpPos : [/*2167*/5670, 100],
+		startUpRoom : ETBRoom_T1,
+		startUpPos : [/*2167*/200, 200],
 	};
 	instance_create_depth(0,0,0,o_DEBUG_Console);
+	//show_debug_overlay(true, true);
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor);
 	}
 	else if(DEBUG_STARTUP.startInStartingRoom) {
 		room_goto(DEBUG_STARTUP.startUpRoom);
-		//var instances = [o_GameManager, o_MultiplayerSystem, o_MusicManager, o_Camera];
+		//var instances = [o_GameManager, o_MultiplayerHandler, o_MusicManager, o_Camera];
 		var instances = [o_GameManager, o_MusicManager, o_Camera];
 		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 		o_GameManager.mode = "game";
 		instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
-		//o_MultiplayerHandler.AddPlayer(new Vector(200, 200));
-		//o_MultiplayerHandler.AddPlayer(new Vector(300, 200));
-		//o_MultiplayerHandler.AddPlayer(new Vector(400, 200));
-		//o_MultiplayerHandler.AddPlayer(new Vector(500, 200));
+		//o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]));
+		//o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 10, DEBUG_STARTUP.startUpPos[1]));
+		//o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 20, DEBUG_STARTUP.startUpPos[1]));
+		//o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 30, DEBUG_STARTUP.startUpPos[1]));
 	}
 	else room_goto(Room_Disclaimer);
 	

@@ -9,6 +9,8 @@ onTopBreak = function() {
 	with(o_Player) {
 		if(state == "freefall") {
 			animVar = true;
+			image_index = 0;
+			image_speed = 1;
 			velocity.y = -7;
 			tempVar[0] = 0;
 			tempVar[1] = 0;

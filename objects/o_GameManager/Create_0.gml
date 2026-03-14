@@ -18,7 +18,7 @@ level = {
 };
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
-#macro IMAGE_COMPLETE round(image_index) == image_number
+#macro IMAGE_COMPLETE (round(image_index) == image_number)
 mode = "none";
 
 /*
@@ -139,7 +139,7 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	if(!isDoorTrans) {
 		instance_create_depth(x,y,-100,o_UI_FadeTrans);
 		transSettings.state = o_Player.state;
-		o_Player.state = "transition";
+		//o_Player.state = "transition";
 	}
 	else instance_create_depth(o_Player.x,o_Player.y, -100, o_UI_DoorTrans);
 

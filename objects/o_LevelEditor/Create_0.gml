@@ -4,14 +4,23 @@ selectedObject = noone;
 depth = 99;
 gridSize = 32;
 mode = "place";
-//Used for exporting/importing
+//Room index for exporting/importing
 rmIndex = 0;
+//The buffer for importing/exporting
 outBuffer = -1;
+//Amount of rooms when importing
 roomCount = 0;
+//All of the rooms in the level
 rooms = [Room_LevelEditor];
-projectName = "unset";
 notification = [false, 0];
-alarm[0] = (60 ^ 2) * 5; //Save every 5 minutes
+
+level = {
+	name : "UnsetName",
+	song : music_water,
+	
+};
+
+alarm[0] = (60 * 60) * 5; //Save every 5 minutes
 if(!global.settings.audioSettings.muteAll) o_MusicManager.playNewSong(music_editor);
 
 function Grid(value) {
@@ -48,9 +57,15 @@ createRoom = function(width = 960, height = 540, backgroundSprite = sprite_edito
 	room_set_width(_room, width);
 	room_set_height(_room, height);
 	layer_set_target_room(_room);
+	//Create all the layers
+	layer_create(0, "FG");
+	layer_create(100, "FG");
+	layer_create(200, "Instances");
 	var bg = layer_background_create(layer_create(100, "Background"), backgroundSprite);
 	layer_background_htiled(bg, true);
 	layer_background_vtiled(bg, true);
+
+	
 }
 
 enum ErrorType {
@@ -76,13 +91,14 @@ SetupLevel = function() {
 		visible = true;
 		active = true;
 		ShowError(ErrorType.UserFault, "No suitable o_Le_LevelGate to spawn the player in!");
-		return;
+		return false;
 	}
 	instance_create_depth(0, 0, 0, o_Camera);
 	with(o_LevelObject) {
 		Summon();
 	}
 	o_MusicManager.playNewSong(music_water);
+	return true;
 }
 DestroyLevel = function() {
 	visible = true;

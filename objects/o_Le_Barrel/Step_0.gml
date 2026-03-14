@@ -20,8 +20,13 @@ else if(place_meeting(x,y - (sprite_height / 2), o_Le_Water)) {
 	mask_index = -1;
 }
 if(place_meeting(x, bbox_top - 2, o_Player) && usable) {
-	instance_place(x, bbox_top - 2, o_Player).setState("barrel");
-	instance_place(x, bbox_top - 2, o_Player).tempVar[0] = (place_meeting(x,y, o_Le_Water) ? 3 : 0)
+	var plr = instance_place(x, bbox_top - 2, o_Player)
+	plr.setState("barrel");
+	if(place_meeting(x,y, o_Le_Water)) {
+		plr.tempVar[0] = 3;
+		plr.x = x;
+		plr.y = y;
+	}
 	instance_destroy();
 	
 }

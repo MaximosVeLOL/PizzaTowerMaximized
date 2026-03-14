@@ -8,7 +8,7 @@ if((other.state == "jump" && GetInput("jump", 0) || other.state == "freefall") &
 }
 with(other) {
 	//There is another if statement, but it gets replaced by this. HE is so stupiddddddeddddddd
-	if(other.state != "hitspecial" && PLAYER_GROUNDED && (string_count("mach", state) || state == "something") ) {
+	if(other.state != "hitspecial" && PLAYER_GROUNDED && (string_count("mach", state) || state == "barrel" && tempVar[0] == 2) ) {
 		other.die(spr_enemy_cheeseslime_dead, true);
 	}
 }

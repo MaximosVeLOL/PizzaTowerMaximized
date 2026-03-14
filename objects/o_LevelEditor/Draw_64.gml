@@ -14,6 +14,6 @@ if(notification[0]) {
 	notification[1] -= TIME_BASE;
 	notification[0] = notification[1] >= 0;
 	if(notification[1] <= 0.5) 
-		alarm[0] = (60 ^ 2) * 5;
+		alarm[0] = (60 * 60) * 5;
 }
 GUI_RESET;

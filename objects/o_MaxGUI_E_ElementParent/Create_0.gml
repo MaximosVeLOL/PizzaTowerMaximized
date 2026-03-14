@@ -1,6 +1,7 @@
 disabled = false;
 doHighlight = true;
 inBounds = false;
+sound = -1;
 persistent = true;
 if(customSprite != noone) {
 	sprite_index = customSprite;

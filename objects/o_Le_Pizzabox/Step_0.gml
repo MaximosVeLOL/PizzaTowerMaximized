@@ -26,5 +26,5 @@ if(sprite_index == sprite_level_pizzabox) {
 }
 else {
 	if(round(image_index) == 4) instance_create_depth(x - 32,y - 64,0,o_Le_BigPoints);
-	if(round(image_index) == image_number) instance_destroy();
+	if(IMAGE_COMPLETE) instance_destroy();
 }

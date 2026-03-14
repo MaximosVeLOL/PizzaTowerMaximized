@@ -12,16 +12,17 @@ if(!isInteracting) {
 	camera_set_view_pos(view_camera[0], offset[0], offset[1]);
 
 	if(mouse_check_button(mb_left)) {
-		var inst = GetObjectTouching(mouse_x, mouse_y, o_LevelObject);
-		if(mode == "place" && inst == noone && selectedObject != noone) {
-			var yes = false;
-			with(o_LevelObject) {
-				if(x == Grid(mouse_x) && y == Grid(mouse_y)) {
-					yes = true;
-					break;
-				}
+		var inst = noone;
+
+		with(o_LevelObject) {
+			if(x == o_LevelEditor.Grid(mouse_x) && y == o_LevelEditor.Grid(mouse_y)) {
+				inst = self;
+				break;
 			}
-			if(yes) instance_create_depth(Grid(mouse_x), Grid(mouse_y), 0, o_LevelObject, {ID : selectedObject});
+		}
+		if(inst != noone) Log("Touching an object! (" + object_get_name(inst.object_index) + ")");
+		if(mode == "place" && inst == noone && selectedObject != noone) {
+			instance_create_depth(Grid(mouse_x), Grid(mouse_y), 0, o_LevelObject, {ID : selectedObject});
 		}
 		else if(mode == "edit") {
 			if(editObject == noone) {
