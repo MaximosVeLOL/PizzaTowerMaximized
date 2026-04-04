@@ -14,7 +14,7 @@ function AI_Input(_index, _value) constructor {
 }
 function Generation(pSuceeded, pEndScore, pInputs, pTotalTime) constructor {
 	suceeded = pSuceeded;
-	endScore = pEndScore;
+	endglobal.misc.score = pEndglobal.misc.score;
 	totalTime = pTotalTime;
 	inputs = pInputs;
 }
@@ -109,7 +109,7 @@ ImportGenerations = function() {
 		if(i > 0) array_push(generations, new Generation(false, 0, [], 0));
 		
 		generations[i].suceeded = buffer_read(buffer, buffer_u8);
-		generations[i].endScore = buffer_read(buffer, buffer_u8);
+		generations[i].endglobal.misc.score = buffer_read(buffer, buffer_u8);
 		generations[i].totalTime = buffer_read(buffer, buffer_u16);
 		inputsLength = buffer_read(buffer, buffer_u8);
 		for(var j = 0; j < inputsLength;j++) {
@@ -125,7 +125,7 @@ ExportGenerations = function() {
 	buffer_write(buffer, buffer_u8, array_length(generations));
 	for(var i = 0 ; i < array_length(generations);i++) {
 		buffer_write(buffer, buffer_u8, generations[i].suceeded);
-		buffer_write(buffer, buffer_u8, generations[i].endScore);
+		buffer_write(buffer, buffer_u8, generations[i].endglobal.misc.score);
 		buffer_write(buffer, buffer_u16, generations[i].totalTime);
 		buffer_write(buffer, buffer_u8, array_length(generations[i].inputs));
 		for(var j = 0; j < array_length(generations[i].inputs);j++) {

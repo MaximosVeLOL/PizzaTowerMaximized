@@ -17,17 +17,17 @@ stunStuff = {
 velocity = new Vector();
 /*
 PD = 1;
-if(!global.settings.gameplaySettings.multiplayer && instance_number(object_index) > 1) {
+if(!global.settings.multiplayerSettings.enabled && instance_number(object_index) > 1) {
 	instance_destroy();
 	return;
 }*/
 
 
-if(instance_number(o_Player) > 1 && !global.settings.gameplaySettings.multiplayer) {
+if(instance_number(o_Player) > 1 && !global.settings.multiplayerSettings.enabled) {
 	Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 	instance_destroy();
 }
-if(!global.settings.gameplaySettings.multiplayer) playerID = 0;
+if(!global.settings.multiplayerSettings.enabled) playerID = 0;
 mask_index = spr_player_mask;
 inventory = {
 	key : false,
@@ -50,7 +50,6 @@ setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, ov
 	mask_index = spr_player_mask;
 	if(overrideSound) {
 		for(var i = 0 ; i < array_length(sounds) ; i++) {
-			if(sounds[i] != undefined)
 				audio_stop_sound(sounds[i]);
 		}
 		sounds = [];
@@ -63,6 +62,12 @@ hurt = function() {
 	if(state == "knight") {
 		instance_destroy(o_H_Sword);
 		for(var i = 0 ; i <= 5 ; i++) { instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_player_knightdebris,  image_index : i})}
+	}
+	else if(state == "barrel") {
+		repeat(15) {
+			instance_create_depth(x+random_range(-15, 15),y+random_range(-15, 15), 0, o_P_Breakable, {sprite_index : spr_breakabledoor_broken});
+		}
+		instance_destroy(o_P_MachEffect);
 	}
 	setState("hurt");
 	tempVar[1] = 20;
@@ -77,10 +82,11 @@ playSound = function(snd, override = false) {
 	array_push(sounds, PlaySound(snd, override));
 }
 stopSound = function(snd) {
-	audio_stop_sound(snd);return;
+	//audio_stop_sound(snd);return;
 	for(var i = 0 ; i < array_length(sounds);i++) {
 		if(snd == asset_get_index(audio_get_name(sounds[i]))) {
 			audio_stop_sound(sounds[i]);
+			break;
 			for(var j = i ; j < array_length(sounds) - 1;j++) {
 				sounds[j] = sounds[j] + 1;
 			}
@@ -88,4 +94,11 @@ stopSound = function(snd) {
 			break;
 		}
 	}
+}
+playingSound = function(snd) {
+	for(var i = 0 ; i < array_length(sounds);i++) {
+		if(audio_sound_get_asset(sounds[i]) == snd)
+			return sounds[i];
+	}
+	return -1;
 }

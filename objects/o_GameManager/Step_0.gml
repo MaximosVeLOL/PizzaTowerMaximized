@@ -20,24 +20,24 @@ if(keyboard_check_pressed(vk_f12)) {
 	switch(val) { //Different screenshot modes, just incase
 		case 0: //Save in room
 			
-			while(file_exists("MaximizedGM2/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable) + ".png" )) {
+			while(file_exists(BASE_DIRECTORY + "/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable) + ".png" )) {
 				variable++;
 			}
-			dir = "MaximizedGM2/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable);
+			dir = BASE_DIRECTORY + "/Screenshots/Rooms/" + room_get_name(room) + "/screenshot" + string(variable);
 		break;
 		
 		case 1: //Save in session
-			while(file_exists("MaximizedGM2/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable) + ".png" )) {
+			while(file_exists(BASE_DIRECTORY + "/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable) + ".png" )) {
 				variable++;
 			}
-			dir = "MaximizedGM2/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable)
+			dir = BASE_DIRECTORY + "/Screenshots/Sessions/session" + string(sessions.total) + "/screenshot" + string(variable)
 		break;
 		
 		case 2: //Save in save file
-			while(file_exists("MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable) + ".png" )) {
+			while(file_exists(BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable) + ".png" )) {
 				variable++;
 			}
-			dir = "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable);
+			dir = BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/Screenshots/screenshot" + string(variable);
 		break;
 		
 		

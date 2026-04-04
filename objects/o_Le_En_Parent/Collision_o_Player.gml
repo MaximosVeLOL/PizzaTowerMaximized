@@ -3,15 +3,28 @@
 		CreateEffect({x : (other.x + (other.xscale * 40)), sprite_index : sprite_effect_punchdust});
 		other.setState("enemy");
 		other.tempVar[2] = self;
+		depth = other.depth; //M_OPTI - Should we do this?
+		plr = other;
 		setState("grabbed");
 	}
 	if((other.state == "jump" && GetInput("jump", 0) || other.state == "freefall") && other.velocity.y > 0) {
 		setState("stunned");
 		setSprite("stomped");
 		with(other) {
-			if(state == "jump") PlaySound(sfx_boing, true);
-			tempVar[1] = true;
-			velocity.y = state == "freefall" ? -7 : -14;
+			if(state == "jump") { 
+				PlaySound(sfx_boing, true);
+				image_index = 0;
+				tempVar[2] = 1;
+				velocity.y = -14;
+			}
+			else if(state == "freefall") {
+				CreateEffect({sprite_index : sprite_effect_bang});
+				tempVar[0] = 0; //State
+				tempVar[1] = 0; //Timer
+				animVar = true; //Hit animation
+				image_index = 0;
+				velocity.y = -7;
+			}
 		}
 		tempVar[0] = 200;
 	}

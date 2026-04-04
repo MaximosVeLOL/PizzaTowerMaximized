@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"sprite_enemy_piranapple",
   "bboxMode":2,
-  "bbox_bottom":86,
+  "bbox_bottom":85,
   "bbox_left":29,
   "bbox_right":80,
   "bbox_top":49,

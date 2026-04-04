@@ -2,11 +2,11 @@
 	instance_destroy();
 	return;
 }*/
-if(!file_exists("MaximizedGM2/SESSION")) {
+if(!file_exists(BASE_DIRECTORY + "/SESSION")) {
 	sessions.total++; //Still increase so we can create an accurate file next time
 	return;
 }
-var bufferFile = buffer_load("MaximizedGM2/SESSION");
+var bufferFile = buffer_load(BASE_DIRECTORY + "/SESSION");
 /*
 for(var i = 0 ; i < 8;i++) {
 	buffer_seek(bufferFile, buffer_seek_start, i);

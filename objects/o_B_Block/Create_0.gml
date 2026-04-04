@@ -5,9 +5,9 @@ reqStatesTop = ["freefall", "superslam", "knight"];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
 if(sprite_index == spr_glassblock) brokenSprite = spr_breakable_broken;
 
-onTopBreak = function() {
-	with(o_Player) {
-		if(state == "freefall") {
+onTopBreak = function(plr) {
+	with(plr) {
+		if(state == "freefall" && tempVar[0] == 0) {
 			animVar = true;
 			image_index = 0;
 			image_speed = 1;
@@ -17,15 +17,18 @@ onTopBreak = function() {
 		}
 	}
 }
-onXBreak = function() {
-	with(o_Player) {
+onXBreak = function(plr) {
+	with(plr) {
 		if(state == "barrel" && tempVar[0] == 2) {
+			instance_destroy(other);
+		}
+		else if(state == "slip" && movespeed > 6) {
 			instance_destroy(other);
 		}
 	}
 }
-onBottomBreak = function() {
-	with(o_Player) {
+onBottomBreak = function(plr) {
+	with(plr) {
 		if(state == "jump" && velocity.y < 0) velocity.y = 1;
 	}
 }

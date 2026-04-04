@@ -15,7 +15,7 @@
     },
   },
   "conversionMode":0,
-  "duration":0.5839683,
+  "duration":0.5810658,
   "exportDir":"",
   "name":"sfx_woosh",
   "parent":{

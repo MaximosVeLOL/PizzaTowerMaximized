@@ -96,6 +96,7 @@ switch(state) {
 		}
 		if(place_meeting(x,y-2,o_C_Wall)) {
 			if(place_meeting(x,y-2,o_B_Block)) instance_destroy(instance_place(x,y-2,o_B_Block));
+			if(place_meeting(x+16,y-2,o_B_Block)) instance_destroy(instance_place(x+16,y-2,o_B_Block));
 			setState("hitspecial");
 			tempVar[1] = true;
 			PlaySound(sfx_facestomp);
@@ -133,11 +134,11 @@ switch(state) {
 	
 	case "grabbed":
 		setSprite("stunfall"); //Grabbed sprite is the same as stun fall.
-		var parent = o_Player;
-		image_xscale = -parent.xscale;
-		x = parent.x + ((15 + parent.movespeed) * parent.xscale);
-		y = parent.y;
-		if(parent.state != "enemy") setState("hit");
+
+		image_xscale = -plr.xscale;
+		x = plr.x + ((15 + plr.movespeed) * plr.xscale);
+		y = plr.y;
+		if(plr.state != "enemy") setState("hit");
 		return;
 	break;
 	

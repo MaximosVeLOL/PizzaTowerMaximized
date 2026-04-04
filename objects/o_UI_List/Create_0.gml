@@ -5,14 +5,16 @@ function CreateScreen(_title, _options, _events, _types = undefined, _targetVars
 	optionTypes = _types;
 	targetVars = _targetVars;
 }
-screens = [new CreateScreen("Test", ["Test", "Test", "Test", "Test"], [function(){Log("Test")}, game_restart])];
+screens = [];
+//screens = [new CreateScreen("Test", ["Test", "Test", "Test", "Test"], [function(){Log("Test")}, game_restart])];
 currentScreen = 0;
 lastScreens = [];
 currentOption = 0;
 subOption = 0;
 setScreen = function(index) {
-	array_resize(lastScreens, array_length(lastScreens) + 1);
-	lastScreens[array_length(lastScreens) - 1] = currentScreen;
+	array_push(lastScreens, currentScreen);
+	//array_resize(lastScreens, array_length(lastScreens) + 1);
+	//lastScreens[array_length(lastScreens) - 1] = currentScreen;
 	currentScreen = index;
 	currentOption = 0;
 	//if(array_length(lastScreens) > 10) throw("Implement automatic removal of this!!!");

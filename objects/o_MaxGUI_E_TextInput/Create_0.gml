@@ -1,5 +1,5 @@
 event_inherited();
-text = "Type here";
+text = placeholder;
 isTyping = false;
 typeTimer = 0;
 FinishTyping = function() {

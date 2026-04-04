@@ -2,6 +2,7 @@ event_inherited();
 settings.background.render = false;
 if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(music_mainmenu);
 startGame = function() {
+	global.settings.saveFileIndex = currentOption;
 	if(instance_exists(o_GameManager)) o_GameManager.sessions.save++;
     o_UI_MainMenu_Pep.active = true;
     PlaySound(sound_menuselect, false, false, true);
@@ -10,6 +11,6 @@ startGame = function() {
 }
 
 screens = [
-	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL SELECT", "CREDITS", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){room_instance_add(Room_Empty, 0, 0, o_LevelSelect);room_goto(Room_Empty)}, function(){instance_deactivate_object(self);instance_create(0, 0, o_UI_Credits)}, function(){room_goto(Room_LevelEditor)}, function(){game_end(1);}]),
+	new CreateScreen("", ["PLAY", "OPTIONS", "LEVEL SELECT", "ONLINE", "CREDITS", "LEVEL EDITOR", "QUIT"], [function(){setScreen(1);}, function(){instance_deactivate_object(self);instance_create_depth(0,0,0,o_UI_Settings)}, function(){instance_deactivate_object(self);instance_create(0, 0, o_UI_LevelSelect);}, function(){room_goto(Net_Room_NetGame);}, function(){instance_deactivate_object(self);instance_create(0, 0, o_UI_Credits);}, function(){room_goto(Room_LevelEditor_Menu);}, function(){game_end(1);}]),
 	new CreateScreen("", ["FILE 1", "FILE 2", "FILE 3", "FILE 4", "FILE 5", "BACK"], [startGame, startGame, startGame, startGame, startGame, function(){setScreen(0);settings.background.render = false}]),
 ];

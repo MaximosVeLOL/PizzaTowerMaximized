@@ -20,13 +20,20 @@ level = {
 	
 };
 
+ReturnToMenu = function() {
+	mode = "exit";
+	rmIndex = 0;
+	o_MusicManager.stopMusic(true);
+	room_goto(rooms[0]);
+}
+
 alarm[0] = (60 * 60) * 5; //Save every 5 minutes
 if(!global.settings.audioSettings.muteAll) o_MusicManager.playNewSong(music_editor);
 
 function Grid(value) {
 	return floor(value / gridSize) * gridSize;
 }
-function GetObjectTouching(_x, _y, object) {
+function GetObjectTouching() {
 	/*
 	for(var i = 0 ; i < instance_number(object);i++) {
 		var inst = instance_find(object, i);
@@ -34,14 +41,22 @@ function GetObjectTouching(_x, _y, object) {
 			return 
 	}
 	*/
-	with(object) {
-		/*
-		if(_x >= x && _x <= x + sprite_width && _y >= y && _y <= y + sprite_height) {
-			return id;
-		}*/
-		if(_x >= bbox_left && _x <= bbox_right && _y >= bbox_top && _y <= bbox_bottom) {
+	var _x = Grid(mouse_x);
+	var _y = Grid(mouse_y);
+	with(o_LevelObject) {
+
+		if(x == o_LevelEditor.Grid(mouse_x) && y == o_LevelEditor.Grid(mouse_y)) {
 			return id;
 		}
+
+		//if(_x >= x && _x <= x + (sprite_width * image_xscale) && _y >= y && _y <= y + (sprite_height * image_xscale)) {
+		//	return id;
+		//}
+		
+		//This also checks for object size, which is needed by the edit mode.
+		//if(_x >= bbox_left && _x <= bbox_right && _y >= bbox_top && _y <= bbox_bottom) {
+		//	return id;
+		//}
 	}
 	return noone;
 }
@@ -90,7 +105,7 @@ SetupLevel = function() {
 	if(!instance_exists(o_Player)) {
 		visible = true;
 		active = true;
-		ShowError(ErrorType.UserFault, "No suitable o_Le_LevelGate to spawn the player in!");
+		//ShowError(ErrorType.UserFault, "No suitable o_Le_LevelGate to spawn the player in!");
 		return false;
 	}
 	instance_create_depth(0, 0, 0, o_Camera);

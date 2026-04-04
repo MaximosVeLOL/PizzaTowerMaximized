@@ -1,0 +1,1 @@
+if(sprite_index == sprite_level_slipperyS) depth = -1;

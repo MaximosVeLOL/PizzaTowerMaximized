@@ -10,4 +10,11 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderPlayerMask
 	draw_arrow(x,y, x + (50 * xscale), y, 25);	
 }
 
-if(global.settings.gameplaySettings.multiplayer) draw_text(x - 20,bbox_top - 50, "P" + string(playerID));
+if(global.settings.multiplayerSettings.enabled) draw_text(x - 20,bbox_top - 50, "P" + string(playerID + 1));
+/* from camera draw event
+var data = audio_listener_get_data(0);
+draw_set_color(c_green);
+draw_ellipse(data[? "x"], data[? "y"], data [? "x"] + 25, data[? "y"] + 25, false);
+ds_map_destroy(data);
+GUI_RESET;
+*/

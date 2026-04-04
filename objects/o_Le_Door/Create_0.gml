@@ -1,3 +1,4 @@
+depth = 0;
 /*
 if(targetRoom == -1) {
 	LogError("We are useless! Destroying...");

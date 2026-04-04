@@ -16,6 +16,7 @@ if(array_length(elements) > 0 && is_string(elements[0])) {
 SetVisibility = function(visbililty) {
 	for(i = 0 ; i < array_length(elements);i++) {
 		elements[i].visible = visbililty;
+		elements[i].inBounds = false;
 	}
 }
 Toggle = function() {

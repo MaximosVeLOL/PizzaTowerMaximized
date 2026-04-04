@@ -1,1 +1,0 @@
-draw_text(480, 270, "IND: " + string(levelIndex) + "\n" + levelData.levelName);

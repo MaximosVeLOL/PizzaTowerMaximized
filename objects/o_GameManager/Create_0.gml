@@ -15,6 +15,8 @@ level = {
 	lap : 0,
 	time : 340, //5:40
 	index : LevelIndex.None,
+	//If we are not in a save
+	demo : false,
 };
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
@@ -40,13 +42,12 @@ exception_unhandled_handler(function(ex) {
 
 startLevel = function(data) {
 	data = GetLevelInfo(data);
-	score = 0;
 	level.time = data.newTime;
 	if(instance_exists(o_Player) ) o_GameManager.gotoRoom(data.targetRoom, data.newPos, true, data.newSong, data.loopData);
 	else { //Leftover from when we went from the disclaimer to the level directly.
 		room_goto(data.targetRoom);
 		if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(data.newSong, data.loopData);
-		instance_create_depth(200, 200, 0, o_Player);
+		instance_create_depth(data.newPos.x, data.newPos.y, -10, o_Player);
 		
 	}
 	level.startParameters = data;
@@ -54,7 +55,7 @@ startLevel = function(data) {
 	mode = "game";
 }
 restartLevel = function() {
-	ResetLevel(0);
+	ResetLevel(level.index);
 	instance_destroy(o_Le_Pizzakin);
 	room_goto(level.startParameters[0]);
 	o_Player.x = level.startParameters[1][0];
@@ -66,7 +67,7 @@ restartLevel = function() {
 	level.pizzakin.pineapple = false;
 	level.time = level.startParameters[4];
 	level.lap = 0;
-	score = 0;
+	global.misc.score = 0;
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
 		o_MusicManager.playNewSong(level.startParameters[2], level.startParameters[3]);
@@ -75,13 +76,30 @@ restartLevel = function() {
 	o_Player.tempVar[0] = 1;
 }
 goToHub = function() {
+	if(level.demo && !instance_exists(Net_o_Player)) {
+		//instance_destroy(o_Camera);
+		//instance_destroy(o_Player);
+		if(instance_exists(o_MusicManager)) 
+			o_MusicManager.playNewSong(music_mainmenu);
+		with(all) {
+			if(object_index != o_GameManager && object_index != o_MusicManager) {
+				instance_destroy();
+				Log("Destroyed " + object_get_name(object_index));
+			}
+		}
+		room_goto(Room_MainMenu);
+		level.demo = false;
+		mode = "none";
+		return;
+	}
+	
 	if(!instance_exists(o_Player)) instance_create_depth(256, 658, 0, o_Player);
 	else {
 		o_Player.x = 256;
 		o_Player.y = 658;
 		o_Player.setState("normal");
 	}
-	score = 0; //Score is used in the rank screen, so reset it here.
+	global.misc.score = 0; //global.misc.score is used in the rank screen, so reset it here.
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
 	level.pizzakin.tomato = false;
@@ -92,7 +110,6 @@ goToHub = function() {
 	level.lap = 0;
 	mode = "game";
 	room_goto(Room_DemoRoom);
-	
 	
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
@@ -107,13 +124,15 @@ endLevel = function(win = false, instantly = false) {
 	if(instance_exists(o_PizzaTimeManager)) instance_destroy(o_PizzaTimeManager);
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
-		instance_destroy(o_MusicManager);
+		//instance_destroy(o_MusicManager);
 	}
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
+	SaveLevelInfo();
 	instance_destroy(o_Camera);
 	instance_destroy(o_Player);
 	instance_destroy(o_Le_Pizzakin);
 	mode = "none";
+	global.misc.score = 0;
 	ResetLevel(level.index);
 	if(instantly) {
 		goToHub();

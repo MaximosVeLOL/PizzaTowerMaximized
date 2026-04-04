@@ -1,0 +1,31 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sound_splash",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "ConfigValues":{
+    "Debug":{
+      "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
+    },
+  },
+  "conversionMode":0,
+  "duration":3.389025,
+  "exportDir":"",
+  "name":"sound_splash",
+  "parent":{
+    "name":"Level",
+    "path":"folders/Sounds/Level.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_splash.wav",
+  "volume":1.0,
+}

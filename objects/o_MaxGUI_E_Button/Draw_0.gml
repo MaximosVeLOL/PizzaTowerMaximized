@@ -2,7 +2,7 @@ if(!o_MaxGUI_Handler.active || !visible) return;
 if(mouse_check_button_pressed(mb_left) && inBounds) {
 	var returnVal = onClick();
 	var isBool = (typeof(returnVal) == "bool");
-	if(returnVal == undefined || isBool && returnVal) PlaySound(MaxGUI_click);
+	if(returnVal == undefined || isBool && returnVal) PlaySound(MaxGUI_click, true);
 	if(isBool && !returnVal) PlaySound(MaxGUI_error, true);
 }
 

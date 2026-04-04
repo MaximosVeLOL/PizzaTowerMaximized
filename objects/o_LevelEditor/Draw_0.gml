@@ -17,7 +17,8 @@ if(mode == "place" && selectedObject != noone) {
 	//draw_sprite(sp, 0, Grid(mouse_x), Grid(mouse_y));
 }
 if(editObject != noone) {
-	draw_set_color(c_green);
-	draw_ellipse(editObject.x, editObject.y, editObject.bbox_right, editObject.bbox_bottom, false);
+	draw_set_color(c_aqua);
+	//draw_ellipse(editObject.x, editObject.y, editObject.bbox_right, editObject.bbox_bottom, false);
+	draw_rectangle(editObject.x, editObject.y, editObject.bbox_right, editObject.bbox_bottom, true);
 }
 GUI_RESET;

@@ -1,5 +1,5 @@
 if(attack == 0) {
-	if(PLAYER_TOUCHING_IMAGE) {
+	if(place_meeting(x + image_xscale, y, o_C_Wall)) {
 		image_xscale *= -1;
 		hspeed *= -1;
 	}

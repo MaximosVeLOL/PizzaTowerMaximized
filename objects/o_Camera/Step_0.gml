@@ -3,21 +3,25 @@ if(!instance_exists(o_Player)) {
 	return;
 }
 
-
-if(global.settings.gameplaySettings.multiplayer) {
+if(global.settings.multiplayerSettings.enabled) {
 	var cur = noone;
-	for(var i = 0 ; i < o_MultiplayerHandler.playerCount;i++) {
-		cur = instance_find(o_Player, i);
-		pos.x = clamp(cur.x - 480, 0, room_width - 960);
-		pos.y = clamp(cur.y - (270/o_MultiplayerHandler.playerCount), 0, room_height - (540/o_MultiplayerHandler.playerCount));
-		if(shake.mag > 0) {
-			shake.mag -= shake.acc; 
-			//if(shake.mag < 0) shake.mag = 0; M_OPTI - This is useless, because we don't apply the shake mag when its never above 0!
-			pos.x += random_range(-shake.mag, shake.mag);
-			pos.y += random_range(-shake.mag, shake.mag);
-		}
-		camera_set_view_pos(view_camera[i], pos.x, pos.y);
-
+	var style = 0;
+	if(style != 2) {
+		ForEachPlayer(function(i, cur) {
+			pos.x = clamp(cur.x - (view_wport[i] / 2), 0, room_width - view_wport[i]);
+			pos.y = clamp(cur.y - (view_hport[i] / 2), 0, room_height - view_hport[i]);
+			if(shake.mag > 0) {
+				shake.mag -= shake.acc; 
+				//if(shake.mag < 0) shake.mag = 0; M_OPTI - This is useless, because we don't apply the shake mag when its never above 0!
+				pos.x += random_range(-shake.mag, shake.mag);
+				pos.y += random_range(-shake.mag, shake.mag);
+			}
+			camera_set_view_pos(view_camera[i], pos.x, pos.y);
+		
+		});
+	}
+	else {
+		return;
 	}
 }
 else {

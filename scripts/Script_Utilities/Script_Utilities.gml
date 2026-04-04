@@ -3,6 +3,8 @@ function Vector(_x = 0, _y = 0) constructor {
 	y = _y;
 }
 
+//#macro BASE_DIRECTORY "%localappdata%/Pizza_Tower/MaximizedGM2"
+#macro BASE_DIRECTORY working_directory + "MaximizedGM2"
 function instance_create(x, y, object, var_struct = {}) {
 	return instance_create_layer(x, y, (layer == -1 ? layer_get_id("Instances") : layer), object, var_struct);
 }
@@ -77,8 +79,4 @@ function Log(_message) { // 0 1 2 3 (size = 4)
 		array_resize(logs, array_length(logs) + 1);
 		logs[array_length(logs) - 1] = log;
 	}
-}
-
-function ResetAllRooms(startingRoom = room_first, endingRoom = room_last) {
-
 }

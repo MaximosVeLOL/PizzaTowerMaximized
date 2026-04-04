@@ -5,6 +5,8 @@ curMass = mass;
 tempVar = [0,0,5];
 animVar = false;
 stunnable = true;
+plr = noone;
+ogDepth = depth;
 velocity = new Vector();
 die = function(dead_sprite, canMove = false) {
 	instance_destroy();

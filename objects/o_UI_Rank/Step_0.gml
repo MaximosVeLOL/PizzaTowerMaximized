@@ -2,7 +2,7 @@ if(fadeAlpha < 1) {
 	fadeAlpha += 0.1;
 }
 if(sprite_index == sprite_hud_rank_trans) {
-	if(IMAGE_COMPLETE) sprite_index = rankSprites[clamp(floor(score / 500), 1, 6) - 1]; //I am so unbelievable
+	if(IMAGE_COMPLETE) sprite_index = rankSprites[clamp(floor(global.misc.score / 500), 1, 6) - 1]; //I am so unbelievable
 
 }
 else {

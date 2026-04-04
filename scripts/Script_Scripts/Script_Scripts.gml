@@ -14,7 +14,7 @@ function ShakeCamera(mag, acc) {
 
 
 function CollideAndMove(mass, maxYVelocity = 20, interactWithWater = false, useSlopes = true) {
-	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater ? (velocity.y >= 0 ? mass/2 : mass*2) : mass);
+	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater && global.settings.playerSettings.waterInteraction ? (velocity.y >= 0 ? mass/1.25 : mass*1.25) : mass);
 	
 	repeat(abs(velocity.y)) {
 	    if !place_meeting(x, y + sign(velocity.y), o_C_Parent)
@@ -76,12 +76,15 @@ function ApplySettings() {
 	
 	if(global.settings.audioSettings.muteAll) {
 		audio_stop_all();
-		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager)
+		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
 	}
 	else {
 		if(!instance_exists(o_MusicManager)) instance_create_depth(0,0,0,o_MusicManager);
 	}
-	if(global.settings.gameplaySettings.multiplayer) {
+	if(global.settings.multiplayerSettings.enabled) {
+		if(!instance_exists(o_MultiplayerHandler)) {
+			instance_create_depth(0, 0, 0, o_MultiplayerHandler);
+		}
 	}
 	if(global.settings.gameplaySettings.debugEnabled) {
 		if(!instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0,o_DEBUG_Console);
@@ -119,14 +122,14 @@ function SaveSettings() {
 	var buf = buffer_create(string_length(toString), buffer_grow, 1); //Make it like this for buffer_load to be happy!
 	buffer_write(buf, buffer_string, toString);
 	//buffer_compress(buf, 0, buffer_tell(buf));
-	buffer_save(buffer_compress(buf, 0, buffer_tell(buf)), "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
+	buffer_save(buffer_compress(buf, 0, buffer_tell(buf)), BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
 	buffer_delete(buf);
 	Log("Saved Settings!");
 }
 function LoadSettings() {
 	Log("Going to load settings...");
 	if(global.settings.saveFileIndex == -1 || os_browser != browser_not_a_browser) return false;
-	var file = buffer_load("MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
+	var file = buffer_load(BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
 	if(file == -1) {
 		Log("Cannot load settings! (File doesn't exist, or something else.)");
 		return false;
@@ -145,12 +148,13 @@ function LoadSettings() {
 	return true;
 }
 function CreateEffect(information) {
+	if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.VisualRemover || global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) return;
 	//if(!is_struct(information)) LogError("Invalid Effect!", true);
-	if(information.sprite_index == sprite_effect_bang) PlaySound(choose(sfx_punch1, sfx_punch2, sfx_punch3, sfx_punch4, sfx_punch5))
+	if(information.sprite_index == sprite_effect_bang) PlaySound(choose(sfx_punch1, sfx_punch2, sfx_punch3, sfx_punch4, sfx_punch5), true);
 	
 	for(var i = 0 ; i < instance_number(o_P_Effect);i++) {
 		//M_OPTI - Find a better way to check for same effects
 		if(instance_find(o_P_Effect, i).sprite_index == information.sprite_index) return;
 	}
-	instance_create_depth(x,y,-100,o_P_Effect, information);
+	instance_create_depth(x,y,-1,o_P_Effect, information);
 }

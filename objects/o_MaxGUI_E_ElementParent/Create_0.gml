@@ -11,5 +11,6 @@ if(customSprite != noone) {
 else sprite_index = x16;
 Toggle = function() {
 	visible = !visible;
+	inBounds = false;
 }
 depth = -10;

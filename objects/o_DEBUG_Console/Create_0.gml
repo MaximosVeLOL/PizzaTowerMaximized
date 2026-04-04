@@ -99,9 +99,9 @@ commands = [
 		Log(currentArguments[0]);
 	}, "log [message]"),
 	
-	new createCommand("set_score", function() {
-		score = currentArguments[0];
-	}, "set_score [new score]"),
+	new createCommand("set_global.misc.score", function() {
+		global.misc.score = currentArguments[0];
+	}, "set_global.misc.score [new global.misc.score]"),
 	
 	new createCommand("save", SaveSettings, "save"),
 	new createCommand("load", LoadSettings, "load"),
@@ -118,7 +118,12 @@ commands = [
 		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "sausage";
 		instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Pizzakin).type = "pineapple";
 	}, "collect_all"),
-
+	new createCommand("give_key", function() {
+		if(array_length(currentArguments) == 0) {
+			instance_create_depth(o_Player.x, o_Player.y, 0, o_Le_Key);
+		}
+		else instance_create_depth(currentArguments[0], currentArguments[1], 0, o_Le_Key);
+	}, "give_key [x] [y]"),
 ];
 settings = {
 	renderDebugText : true,

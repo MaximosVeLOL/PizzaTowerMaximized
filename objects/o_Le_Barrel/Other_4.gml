@@ -1,0 +1,2 @@
+if(visible) return;
+Activate();

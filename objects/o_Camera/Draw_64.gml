@@ -14,7 +14,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 		"ShakeMag: " + string(shake.mag),
 		"ShakeAcc: " + string(shake.acc),
 		"Camera Pos: " + string(camera_get_view_x(view_camera[0])) + ", " + string(camera_get_view_y(view_camera[0])),
-		//"SelfScore: " + string(o_Player_Machine.selfScore),
+		//"Selfglobal.misc.score: " + string(o_Player_Machine.selfglobal.misc.score),
 		//"Time: " + string(o_Player_Machine.time),
 		//"BestInputs: " + string(global.bestInputs),
 		//"Inputs: " + string(o_Player_Machine.inputs),
@@ -32,20 +32,21 @@ if(hudVisible) {
 	}
 	switch(global.settings.playerSettings.moveSet) {
 		case Moveset.PreETB:
+			//Key is global across all players, so we don't need to update for each player!
 			draw_sprite(sprite_hud_inventory, 0, 480, 40);
-			if(o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 480, 40);
+			if(GetPlayer(0).inventory.key) draw_sprite(sprite_level_key, -1, 480, 40);
 		break;
 		
 		case Moveset.ETB: //OLD
 			var sprite = sprite_error;
-			for(var i = 0 ; i < instance_number(o_Player);i++) {
-				var X_ADD = (i * 180);
-				switch(instance_find(o_Player, i).state) {
+			ForEachPlayer(function(i, plr) {
+				switch(plr.state) {
 		
 					case "mach1":
 						sprite = sprite_hud_pep_mach1;
 					break;
 		
+					case "machfreefall":
 					case "mach2":
 						sprite = sprite_hud_pep_mach2;
 					break;
@@ -58,7 +59,10 @@ if(hudVisible) {
 					case "mach4":
 						sprite = sprite_hud_pep_mach4;
 					break;
-		
+					
+					case "freefall":
+						if(plr.tempVar[0] != 2)
+							break;
 					case "hurt":
 						sprite = sprite_hud_pep_hurt;
 					break;
@@ -68,28 +72,43 @@ if(hudVisible) {
 						sprite = sprite_hud_pep_idle;
 					break;
 				}
-				draw_sprite(sprite, -1, 120, 80 + X_ADD);
-				if(string_count("mach", instance_find(o_Player, i).state) > 0) {
-					var mach =  instance_find(o_Player, i).tempVar[0];
+				var renderPos = (global.settings.multiplayerSettings.enabled ? (global.settings.multiplayerSettings.hudType == 0 ? new Vector(100 + (i * 160), 0) : new Vector(view_xport[i] + 100, view_yport[i] - 15)) : new Vector(120, 0));
+				draw_sprite(sprite, -1, renderPos.x, renderPos.y + 80);
+				if(string_count("mach", plr.state) > 0) {
+					var mach =  plr.tempVar[0];
 					if(mach >= 7) sprite = 1;
 					if(mach >= 35) sprite = 2;
 					if(mach >= 50) sprite = 3;
 					if(mach >= 75) sprite = 4;
 					if(mach >= 100) {
-						draw_sprite(sprite_hud_speedbar_max, -1, 120, 120 + X_ADD);
+						draw_sprite(sprite_hud_speedbar_max, -1, renderPos.x, renderPos.y + 120);
 					}
-					else draw_sprite(sprite_hud_speedbar, sprite, 120, 120 + X_ADD);
+					else draw_sprite(sprite_hud_speedbar, sprite, renderPos.x, renderPos.y + 120);
 				}
-				else draw_sprite(sprite_hud_speedbar, 0, 120, 120 + X_ADD);
-	
-	
-			    if (instance_find(o_Player, i).inventory.key) draw_sprite(sprite_level_key, -1, 180, 30 + X_ADD)
-			    draw_sprite(sprite_hud_inventory, -1, 180, 30 + X_ADD)
+				else draw_sprite(sprite_hud_speedbar, 0, renderPos.x, renderPos.y + 120);
+
 				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
 				//draw_sprite(sprite_hud_inventory, -1, 240, 30);
+			});
+			if(global.settings.multiplayerSettings.enabled) {
+				if(GetPlayer(0).inventory.key) draw_sprite(sprite_level_key, -1, 480, 30);
+				draw_sprite(sprite_hud_inventory, -1, 480, 30);
+				draw_text(480, 270, string(global.misc.score));
 			}
-			draw_text(180, 80, string(score));
+			else {
+				if (o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 180, 30);
+				draw_sprite(sprite_hud_inventory, -1, 180, 30);
+				draw_text(180, 80, string(global.misc.score));
+			}
 		break;
 	}
 }
+/*
+var c = [c_blue, c_lime, c_red, c_aqua];
+
+for(var i = 0 ; i < o_MultiplayerHandler.playerCount;i++) {
+	draw_set_color(c[i]);
+	draw_rectangle(view_xport[i] + 10, view_yport[i] + 10, view_xport[i] + view_wport[i] - 10, view_yport[i] + view_hport[i] - 10, true);
+}
+*/
 GUI_RESET;

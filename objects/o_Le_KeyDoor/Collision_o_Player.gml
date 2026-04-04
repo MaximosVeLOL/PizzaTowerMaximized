@@ -3,7 +3,8 @@ if(GetInput("up", 1)) {
 		if(PLAYER_GROUNDED && velocity.x == 0 && state != "door" && inventory.key) {
 			instance_create_depth(x, y, 0, o_P_DeadEnemy, {sprite_index : sprite_level_door_key_gib}); //I have a theory: What if door sprites changed their origin just to make key particle aligned properly?
 			//instance_create_depth(other.x,other.y,0, o_P_DeadEnemy, {sprite_index : sprite_level_door_key_gib});
-			inventory.key = false;
+			if(global.settings.multiplayerSettings.enabled) GetPlayer(0).inventory.key = false;
+			else inventory.key = false;
 			
 			setState("door");
 			tempVar[0] = 2; //M_OPTI - Wasting CPU cycles...

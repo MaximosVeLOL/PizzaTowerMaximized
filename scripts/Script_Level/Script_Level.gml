@@ -69,9 +69,25 @@ function ResetLevel(levelIndex) {
 	room_goto(originalRoom);
 	
 	This doesn't work, for some reason.
+	THIS HAPPENS BECAUSE ROOM_GOTO EXECUTES AT THE END OF A SCRIPT AKA END OF CODE
 	*/
 	instance_create_depth(x, y, 0, o_LevelEnd, {roomData : rooms})
 }
+function SaveLevelInfo() {
+	if(o_GameManager.level.demo || o_GameManager.level.index == LevelIndex.None) return;
+	var out = buffer_create(0, buffer_grow, 1);
+	buffer_write(out, buffer_u8, clamp(floor(global.misc.score / 500), 1, 6) - 1);
+	buffer_write(out, buffer_u8, o_GameManager.level.index);
+	buffer_write(out, buffer_u32, global.misc.score);
+	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.shroom);
+	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.cheese);
+	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.tomato);
+	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.sausage);
+	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.pineapple);
+	buffer_save(out, BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/lvl" + string(o_GameManager.level.index) + ".info");
+	buffer_delete(out);
+}
+
 function GetLevelInfo(levelIndex) {
 	var levelInfo = {
 		targetRoom : -1,
@@ -87,7 +103,7 @@ function GetLevelInfo(levelIndex) {
 			levelInfo.targetRoom = ETBRoom_Tutorial1;
 			levelInfo.newSong = music_pizza;
 			levelInfo.newPos = new Vector(723, 401);
-			levelInfo.loopData = [-1,-1];
+
 			levelInfo.levelName = "ETB'S ANCIENT";
 			levelInfo.newTime = 340;
 		break;

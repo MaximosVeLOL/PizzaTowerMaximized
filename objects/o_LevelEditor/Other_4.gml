@@ -26,15 +26,21 @@ if(mode == "export") {
 			dir += string(fileIndex);
 		}
 		*/
-		var dir = "test";
+		var dir = BASE_DIRECTORY + "/LevelEditor/" + level.name + ".PTMLVL"
 		buffer_save(outBuffer, dir);
 		buffer_delete(outBuffer);
-		Log("Finished export!");
+		Log("Finished export! (exported to " + dir + ")");
 		room_goto(rooms[0]);
 	}
 	else room_goto(rooms[rmIndex]);
 }
 else if(mode == "import") {
+	if(rmIndex >= roomCount) {
+		mode = "place";
+		if(playOnEnter)
+			SetupLevel();
+	}
+	
 	Log("Parsing room " + string(rmIndex) + "!");
 	
 	//room_width = buffer_read(outBuffer, buffer_u16);
@@ -51,7 +57,6 @@ else if(mode == "import") {
 
 	rmIndex++;
 	if(rmIndex >= roomCount) {
-		mode = "place";
 		rmIndex = 0;
 		/*
 		var dir = "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/LevelEditor/" + projectName + ".PTMLVL";
@@ -71,6 +76,18 @@ else if(mode == "import") {
 		var list = MaxGUI_FindElement("lE_L");
 		//256/5 = (32 [sprite height] * 8 [yscale]) / 5 [squish to fit]
 		list.Add("Room " + string(rmIndex + 1));
+		room_goto(rooms[rmIndex]);
+	}
+}
+else if(mode == "exit") {
+	with(o_LevelObject) instance_destroy();
+	room_restart();
+	rmIndex++;
+	if(rmIndex >= array_length(rooms)) {
+		Destroy();
+		room_goto(Room_LevelEditor_Menu);
+	}
+	else {
 		room_goto(rooms[rmIndex]);
 	}
 }

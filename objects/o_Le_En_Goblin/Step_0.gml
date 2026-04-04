@@ -11,6 +11,8 @@ if(state == "throw") {
 		}
 		thrown = true;
 	}
-	if(PLAYER_GROUNDED && round(image_index) == image_number) setState("idle");
-	
+	if(PLAYER_GROUNDED && round(image_index) == image_number) {
+		setState("idle");
+		thrown = false;
+	}
 }

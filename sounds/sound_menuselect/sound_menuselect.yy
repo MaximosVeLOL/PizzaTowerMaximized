@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sound_menuselect",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"UI",
+    "path":"folders/Sounds/UI.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
