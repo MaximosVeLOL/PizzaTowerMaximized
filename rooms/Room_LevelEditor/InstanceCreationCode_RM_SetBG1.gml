@@ -1,5 +1,5 @@
 onClick = function() {
-	CreatePrompt(680, 270, 14, 9, function(prompt) {
+	MaxGUI_CreatePrompt(680, 270, 14, 9, function(prompt) {
 		var asset = asset_get_index(prompt);
 		if(asset != -1 && asset_get_type(asset) == asset_sprite) {
 			var bg = layer_background_get_id(layer_get_id("Background"));

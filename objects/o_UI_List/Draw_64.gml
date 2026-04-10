@@ -1,13 +1,11 @@
 draw_set_font(settings.text.font);
-
-
-
 if(settings.background.render) {
 	draw_set_color(settings.background.color);
 	draw_rectangle(-1,-1,960,540, false);
 }
 draw_set_color(c_white);
 draw_set_halign(fa_center);
+//draw_text(20, 20, string(currentScreen));
 draw_text(settings.x, settings.y + 100, screens[currentScreen].title);
 var TEXT_X_MULT = 24;
 var TEXT_Y_MULT = 48;

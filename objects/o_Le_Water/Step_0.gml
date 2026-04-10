@@ -53,8 +53,7 @@ ForEachPlayer(function(i, plr) {
 	//If the player is within the bounding box of the water
 	if(plr.bbox_right <= bbox_left || plr.bbox_left >= bbox_right || plr.y > bbox_bottom) {
 		if(!someoneOnTop && child != noone) {
-			instance_destroy(child);
-			child = noone;
+			destroyIt = true;
 		}
 		return;
 	}
@@ -72,7 +71,7 @@ ForEachPlayer(function(i, plr) {
 		}
 		else if(pushDir != 0) {
 			plr.xscale = -pushDir;
-			if(plr.state == "barrel") instance_create(plr.x, plr.y, o_Le_BarrelFloat);
+			//if(plr.state == "barrel") instance_create(plr.x, plr.y, o_Le_BarrelFloat);
 			if(plr.state != "slip") plr.setState("slip");
 			plr.movespeed = 15 * pushDir; //The player moves backwards, so negate it so we move forward, and look backwards
 			
@@ -83,15 +82,21 @@ ForEachPlayer(function(i, plr) {
 			plr.isUnderwater = false;
 			plr.depth = -10;
 			if((plr.state == "mach3" || plr.state == "mach2" || plr.state == "machfreefall" || plr.state == "machslide" && plr.movespeed >= 10)) {
-				if(child == noone)
+				if(child == noone) {
 					child = instance_create(x, y, o_C_Wall, {image_xscale : self.image_xscale});
+					destroyIt = false;
+				}
 			}
 			else {
 				if(child != noone) {
-					instance_destroy(child);
-					child = noone;
+
+					destroyIt = true;
 				}
 			}
 		}
 	}
 });
+if(destroyIt) {
+	instance_destroy(child);
+	child = noone;
+}

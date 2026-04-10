@@ -13,6 +13,7 @@ Sprite Artist
 
 Jun (pin)
 
+Created Pizza Tower: Pre-Alpha Experience
 Concept Inspiration
 Sprite Artist
 

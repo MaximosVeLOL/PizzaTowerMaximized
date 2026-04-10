@@ -27,7 +27,9 @@ Toggle = function() {
 Add = function(element) {
 	array_push(elements, element);
 	element.alignedToGUI = alignedToGUI;
-	element.visible = alignedToGUI;
+	//element.visible = alignedToGUI;
+	element.depth += depth;
+	element.visible = visible;
 	//element.active = active;
 }
 Destroy = function() {

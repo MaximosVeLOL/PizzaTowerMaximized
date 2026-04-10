@@ -62,13 +62,13 @@ global.settings = {
 			}
 		},
 		p3 : {
-			up : ord("I"),
-			down : ord("K"),
-			left : ord("J"),
-			right : ord("L"),
-			jump : ord("O"),
-			dash : ord("P"),
-			shoot : ord("C"),
+			up : ord("5"),
+			down : ord("5"),
+			left : ord("5"),
+			right : ord("5"),
+			jump : ord("5"),
+			dash : ord("5"),
+			shoot : ord("5"),
 			gamepad : {
 				up : gp_padu,
 				down : gp_padd,
@@ -93,7 +93,7 @@ global.settings = {
 		vSync : false,
 	},
 	gameplaySettings : {
-		debugEnabled : true,
+		debugEnabled : false,
 		//Moved to multiplayerSettings
 		//multiplayer : true, //We're back!
 		goonerMode : false,
@@ -109,7 +109,7 @@ global.settings = {
 		enabled : false,
 		//playerCount : 4,
 		cameraType : 1,
-		hudType : 0,
+		hudType : 1,
 	},
 	saveFileIndex : -1,
 }
@@ -174,11 +174,11 @@ if(false) {
 	return;
 }
 */
-if(global.settings.gameplaySettings.debugEnabled) {
+if(global.settings.gameplaySettings.debugEnabled || true) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInStartingRoom : true,
-		startUpRoom : ETBRoom_Level2_9,
+		startInStartingRoom : false,
+		startUpRoom : ETBRoom_Level2_7,
 		startUpPos : [/*2167*/200, 100],
 	};
 	if(global.settings.multiplayerSettings.enabled) instance_create_depth(0, 0, 0, o_MultiplayerHandler);

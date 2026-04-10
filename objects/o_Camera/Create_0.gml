@@ -11,11 +11,14 @@ shake = {
 };
 setupRoom = function() {
 	view_enabled = true;
+	
+	//show_message("Player count: " + string(c));
 	if(global.settings.multiplayerSettings.enabled) {
 		var c = o_MultiplayerHandler.playerCount;
+		if(c > 1) {
 		// 0 - Vertical strips (implemented)
 		// 1 - Split screen (implemented)
-		// 2 - Whole screen (implemented)
+		// 2 - Whole screen (NOT implemented)
 		var h = (540/c);
 		//Boom
 		switch(global.settings.multiplayerSettings.cameraType) {
@@ -59,15 +62,18 @@ setupRoom = function() {
 							view_yport[i] = (i > 1 ? h : 0);
 						break;
 					}
-					if(scaleDown) camera_set_view_size(view_camera[i], w, (c != 2 ? h : 540));
-					else camera_set_view_size(view_camera[0], 960, 540);
+					if(scaleDown) view_camera[i] = camera_create_view(0, 0, w, (c != 2 ? h : 540));
+					else view_camera[i] = camera_create_view(0, 0, 960, 540);
+					//if(scaleDown) camera_set_view_size(view_camera[i], w, (c != 2 ? h : 540));
+					//else camera_set_view_size(view_camera[0], 960, 540);
 				}
-				return;
 			break;
 		
 			case 2:
 		
 			break;
+		}
+		return;
 		}
 	}
 	view_visible[0] = true;

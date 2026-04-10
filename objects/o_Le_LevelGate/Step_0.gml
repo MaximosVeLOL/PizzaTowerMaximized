@@ -1,15 +1,21 @@
-
-		if(o_Player.bbox_right >= bbox_left && o_Player.bbox_left <= bbox_right && o_Player.bbox_bottom >= bbox_top && o_Player.bbox_top <= bbox_bottom) {
+//var plrInFront = false;
+plrInFront = false;
+ForEachPlayer(function(i, plr) {
+		if(plr.bbox_right >= bbox_left && plr.bbox_left <= bbox_right && plr.bbox_bottom >= bbox_top && plr.bbox_top <= bbox_bottom) {
 			if(gotoLevel) {
+				plrInFront = true;
 				image_index = 1; //Open sesame
 				renderText = true;
 			}
 			else if(instance_exists(o_PizzaTimeManager)) image_index = 1;
 			
-			with(o_Player) { // Door opening code
-				if(PLAYER_GROUNDED && GetInput("up", 1) && string_count("mach", state) == 0 && state != "door") {
+			with(plr) { // Door opening code
+				if(PLAYER_GROUNDED && GetInput("up", 1, playerID) && string_count("mach", state) == 0 && state != "door") {
 					if(!other.gotoLevel && !instance_exists(o_PizzaTimeManager)) return; //One false can ruin it all
-					setState("door");
+					//With all players
+					o_Player.x = other.x;
+					o_Player.y = plr.y;
+					o_Player.setState("door");
 				}
 				if(round(image_index) == image_number && state == "door" && tempVar[0] == 0) { //On image complete
 					if(instance_exists(o_GameManager)) {
@@ -23,15 +29,16 @@
 					else {
 						var LevelData = GetLevelInfo(levelIndex);
 						room_goto(LevelData.targetRoom);
-						o_Player.tempVar[0] = 1;
-						o_Player.x = LevelData.newPos[0];
-						o_Player.y = LevelData.newPos[1];
+						plr.tempVar[0] = 1;
+						plr.x = LevelData.newPos[0];
+						plr.y = LevelData.newPos[1];
 						if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(LevelData.newSong, LevelData.loopData);
 					}
 				}
 			}
 		}
-		else {
+		else if(!plrInFront) {
 			image_index = 0; //Hey Tim, i'd like to see Mr. Bigweld!
 			renderText = false;
 		}
+});

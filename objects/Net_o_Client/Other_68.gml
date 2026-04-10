@@ -39,6 +39,7 @@ switch(type) {
 				players[clientID].sprite_index = buffer_read(buffer, buffer_u32);
 				players[clientID].image_index = buffer_read(buffer, buffer_u8);
 				players[clientID].image_xscale = buffer_read(buffer, buffer_s8);
+				players[clientID].roomIn = buffer_read(buffer, buffer_u32);
 			break;
 			
 			case DataFlag.Disconnect:

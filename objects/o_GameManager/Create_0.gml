@@ -4,7 +4,6 @@ transSettings = {
 	state : "",
 };
 level = {
-	startParameters : [],
 	pizzakin : {
 		shroom : false,
 		cheese : false,
@@ -50,27 +49,27 @@ startLevel = function(data) {
 		instance_create_depth(data.newPos.x, data.newPos.y, -10, o_Player);
 		
 	}
-	level.startParameters = data;
 	level.index = data.index;
 	mode = "game";
 }
 restartLevel = function() {
 	ResetLevel(level.index);
 	instance_destroy(o_Le_Pizzakin);
-	room_goto(level.startParameters[0]);
-	o_Player.x = level.startParameters[1][0];
-	o_Player.y = level.startParameters[1][1];
+	room_goto(data.targetRoom);
+	var data = GetLevelInfo(level.index);
+	o_Player.x = data.newPos.x;
+	o_Player.y = data.newPos.y;
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
 	level.pizzakin.tomato = false;
 	level.pizzakin.sausage = false;
 	level.pizzakin.pineapple = false;
-	level.time = level.startParameters[4];
+	level.time = data.newTime;
 	level.lap = 0;
 	global.misc.score = 0;
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
-		o_MusicManager.playNewSong(level.startParameters[2], level.startParameters[3]);
+		o_MusicManager.playNewSong(data.newSong, data.loopData);
 	}
 	o_Player.setState("door");
 	o_Player.tempVar[0] = 1;
@@ -82,7 +81,7 @@ goToHub = function() {
 		if(instance_exists(o_MusicManager)) 
 			o_MusicManager.playNewSong(music_mainmenu);
 		with(all) {
-			if(object_index != o_GameManager && object_index != o_MusicManager) {
+			if(persistent && object_index != o_GameManager && object_index != o_MusicManager && object_index != o_DEBUG_Console) {
 				instance_destroy();
 				Log("Destroyed " + object_get_name(object_index));
 			}
@@ -92,20 +91,24 @@ goToHub = function() {
 		mode = "none";
 		return;
 	}
-	
-	if(!instance_exists(o_Player)) instance_create_depth(256, 658, 0, o_Player);
-	else {
-		o_Player.x = 256;
-		o_Player.y = 658;
-		o_Player.setState("normal");
+	//Determine if we have -1 remembered count
+	if(global.settings.multiplayerSettings.enabled && o_MultiplayerHandler.rememberedCount == -1) {
+		o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
 	}
+	if(!global.settings.multiplayerSettings.enabled && !instance_exists(o_Player))
+		instance_create_depth(256, 658, 0, o_Player);
+	if(global.settings.multiplayerSettings.enabled && o_MultiplayerHandler.rememberedCount > 0) {
+		for(var i = 0 ; i < o_MultiplayerHandler.rememberedCount;i++) {
+			o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
+		}
+	}
+	//instance_create_depth(256, 658, 0, o_Player);
 	global.misc.score = 0; //global.misc.score is used in the rank screen, so reset it here.
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
 	level.pizzakin.tomato = false;
 	level.pizzakin.sausage = false;
 	level.pizzakin.pineapple = false;
-	level.startParameters = [];
 	level.time = -1;
 	level.lap = 0;
 	mode = "game";
@@ -116,7 +119,7 @@ goToHub = function() {
 		o_MusicManager.playNewSong(music_demoroom);
 	}
 	else instance_create_depth(0,0,0,o_MusicManager).playNewSong(music_demoroom);
-	if(!instance_exists(o_Camera)) instance_create_depth(0,0,0,o_Camera);
+	room_instance_add(Room_DemoRoom, 0,0,o_Camera);
 }
 
 endLevel = function(win = false, instantly = false) {
@@ -128,8 +131,10 @@ endLevel = function(win = false, instantly = false) {
 	}
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	SaveLevelInfo();
-	instance_destroy(o_Camera);
-	instance_destroy(o_Player);
+	//Both do the same thing, but the multiplayer handles the systems.
+	if(global.settings.multiplayerSettings.enabled) o_MultiplayerHandler.RemoveAllPlayers();
+	else instance_destroy(o_Player);
+	//instance_deactivate_object(o_Player);
 	instance_destroy(o_Le_Pizzakin);
 	mode = "none";
 	global.misc.score = 0;
@@ -138,6 +143,7 @@ endLevel = function(win = false, instantly = false) {
 		goToHub();
 	}
 	else {
+		instance_destroy(o_Camera);
 		room_instance_add(Room_Empty, 0, 0, ( win ? o_UI_Rank : o_UI_GameOver) );
 		room_goto(Room_Empty);
 	}

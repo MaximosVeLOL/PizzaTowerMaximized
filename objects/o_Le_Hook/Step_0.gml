@@ -4,7 +4,7 @@ plr.x = x + (sprite_width / 2);
 plr.y = y + 40;
 if(GetInput("jump", 1) || place_meeting(x, y, o_Le_HookEnd)) {
 	if(plrGoFast) {
-		plr.setState("mach3");
+		plr.setState((global.settings.playerSettings.moveSet == Moveset.PreETB ? "mach2" : "mach3"));
 		plr.tempVar[0] = 100;
 	}
 	else {

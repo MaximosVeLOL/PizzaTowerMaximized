@@ -38,15 +38,15 @@ function GetInput(reqKey, inputType = 0, reqPlayer = 0) {
 	//Log(string(reqPlayer));
 	switch(inputType) {
 		case 0:
-			return keyboard_check(variable_struct_get(s, reqKey)) || gamepad_button_check(reqPlayer - 1, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			return keyboard_check(variable_struct_get(s, reqKey)) || gamepad_button_check(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 		
 		case 1:
-			return keyboard_check_pressed(variable_struct_get(s, reqKey)) || gamepad_button_check_pressed(reqPlayer - 1, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			return keyboard_check_pressed(variable_struct_get(s, reqKey)) || gamepad_button_check_pressed(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 		
 		case 2:
-			return keyboard_check_released(variable_struct_get(s, reqKey)) || gamepad_button_check_released(reqPlayer - 1, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			return keyboard_check_released(variable_struct_get(s, reqKey)) || gamepad_button_check_released(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 	}
 	throw("Que?"); //We will never get to this point, unless the input type isn't set correctly

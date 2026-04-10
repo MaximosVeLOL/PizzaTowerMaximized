@@ -90,19 +90,32 @@ if(hudVisible) {
 				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
 				//draw_sprite(sprite_hud_inventory, -1, 240, 30);
 			});
-			if(global.settings.multiplayerSettings.enabled) {
+			if(global.settings.multiplayerSettings.enabled && global.settings.multiplayerSettings.cameraType != 2 && o_MultiplayerHandler.playerCount > 1) {
 				if(GetPlayer(0).inventory.key) draw_sprite(sprite_level_key, -1, 480, 30);
 				draw_sprite(sprite_hud_inventory, -1, 480, 30);
+				draw_set_halign(fa_middle);
 				draw_text(480, 270, string(global.misc.score));
+				if(o_GameManager.level.lap > 0) {
+					draw_set_font(ComicSans);
+					draw_set_color(c_lime);
+					draw_text(480, 100, "Return to the treasure room\nto get 200 extra points!");
+				}
 			}
 			else {
 				if (o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 180, 30);
 				draw_sprite(sprite_hud_inventory, -1, 180, 30);
 				draw_text(180, 80, string(global.misc.score));
+				if(o_GameManager.level.lap > 0) {
+					draw_set_font(ComicSans);
+					draw_set_color(c_lime);
+					draw_set_halign(fa_middle);
+					draw_text(480, 30, "Return to the treasure room\nto get 200 extra points!");
+				}
 			}
 		break;
 	}
 }
+//if(global.settings.multiplayerSettings.enabled && global.settings.multiplayerSettings.hudType == 2)
 /*
 var c = [c_blue, c_lime, c_red, c_aqua];
 

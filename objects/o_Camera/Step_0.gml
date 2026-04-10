@@ -5,8 +5,7 @@ if(!instance_exists(o_Player)) {
 
 if(global.settings.multiplayerSettings.enabled) {
 	var cur = noone;
-	var style = 0;
-	if(style != 2) {
+	//if(global.settings.multiplayerSettings.hudType != 2) {
 		ForEachPlayer(function(i, cur) {
 			pos.x = clamp(cur.x - (view_wport[i] / 2), 0, room_width - view_wport[i]);
 			pos.y = clamp(cur.y - (view_hport[i] / 2), 0, room_height - view_hport[i]);
@@ -19,10 +18,26 @@ if(global.settings.multiplayerSettings.enabled) {
 			camera_set_view_pos(view_camera[i], pos.x, pos.y);
 		
 		});
-	}
+	/*}
 	else {
-		return;
-	}
+		var SAFE_SPACE = 40;
+		var MIN = new Vector(10000, 10000);
+		var MAX = new Vector(-1000, -1000);
+		ForEachPlayer(function(i, plr) {
+			if(plr.x < MIN.x)
+				MIN.x = plr.x;
+			if(plr.x > MAX.x)
+				MAX.x = plr.x;
+			if(plr.y < MIN.y)
+				MIN.y = plr.y;
+			if(plr.y > MAX.y)
+				MAX.y = plr.y;
+		});
+		
+		var A = new Vector((MIN.x + MAX.x ) / 2, (MIN.y + MAX.y) / 2);
+		pos.x = clamp(A - 480, 0, room_width - 960);
+		
+	}*/
 }
 else {
 

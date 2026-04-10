@@ -9,7 +9,6 @@ if(keyboard_check_pressed(vk_anykey)) {
 	pressed = true;
 }
 if(y <= -930) {
-	o_MusicManager.stopMusic(true);
 	pressed = true;
 }
 else y -= 0.3;

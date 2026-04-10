@@ -1,19 +1,23 @@
 var buildText = "Beta Version " + string(GM_version);
-buildText = "Pre-Beta Version 2.0";
+//buildText = "Pre-Beta Version 2.0";
 
 
 
 text = buildText + @" of PT:M
 
-Welcome to another beta build!
-This fangame was so close to dying. First of all, there were many big things to implement:
-A Level Editor, Multiplayer, and Online. But then I realized I was wasting too much time,
-So I decided to remove most of the features, and focus on the important things. So that's
-why theres a lot of bug fixes. Anyways, heres some of the big features that are implemented:
+We are back!
+This fangame died. Luckily, I was inspired to retry again, after many bad decisions that
+killed the game. Here are some things are finally implemented, albeit not perfect, most 
+likely due to time constraints or technical limitations:
 
-Parralax Backgrounds
-The Pre-ETB moveset
-Ranking System (Its hard to control so many things at once)
+Level Select (Nobody wanted this)
+Level Editor (Unfinished, time constraints & technical limitations)
+Multiplayer (Not perfect, I don't know what to add to this)
+Online mode (Not perfect, implemented in a few minutes)
+
+I wanted to improve the big features, but I don't know what to add to them, and the
+features I wanted to add were gonna take super long to implement. So, hopefully, I
+will be able to add the features I want in the next upcoming months or weeks.
 
 
 Controls:

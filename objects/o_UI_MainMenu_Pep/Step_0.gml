@@ -6,9 +6,11 @@ if(timer == 0) {
 else if(timer < 35) {
     hspeed = hspeed < 8 ? hspeed + 0.5 : 8;
     sprite_index = spr_player_mach1;
+	image_speed = 0.35;
 }
 else if(timer < 100) {
     hspeed = 10;
+	image_speed = 1;
     sprite_index = spr_player_mach2;
 }
 else {

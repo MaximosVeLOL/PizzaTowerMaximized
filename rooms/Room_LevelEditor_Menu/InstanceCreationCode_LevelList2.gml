@@ -18,6 +18,6 @@ onSwitch = function(newIndex) {
 	e.ImportLevel(BASE_DIRECTORY + "/LevelEditor/" + name + ".PTMLVL");
 	e.level.name = self.list[newIndex];
 	if(playMode) {
-		e.SetupLevel();
+		e.playOnEnter = true;
 	}
 }

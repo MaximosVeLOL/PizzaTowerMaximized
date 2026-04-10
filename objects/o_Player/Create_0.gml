@@ -22,12 +22,14 @@ if(!global.settings.multiplayerSettings.enabled && instance_number(object_index)
 	return;
 }*/
 
-
-if(instance_number(o_Player) > 1 && !global.settings.multiplayerSettings.enabled) {
-	Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
-	instance_destroy();
+if(!global.settings.multiplayerSettings.enabled) {
+	if(instance_number(o_Player) > 1) {
+		Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
+		instance_destroy();
+	}
+	playerID = 0;
 }
-if(!global.settings.multiplayerSettings.enabled) playerID = 0;
+
 mask_index = spr_player_mask;
 inventory = {
 	key : false,
@@ -67,6 +69,7 @@ hurt = function() {
 		repeat(15) {
 			instance_create_depth(x+random_range(-15, 15),y+random_range(-15, 15), 0, o_P_Breakable, {sprite_index : spr_breakabledoor_broken});
 		}
+		PlaySound(sound_barrelhit);
 		instance_destroy(o_P_MachEffect);
 	}
 	setState("hurt");

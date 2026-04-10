@@ -28,7 +28,7 @@ renderStruct = function(struct, atX, atY) {
 			blend = c_gray;
 			targetValue = names[i];
 			if(mouse_check_button_pressed(mb_left)) {
-				MaxGUI_CreatePrompt(o_MaxGUI_Handler.offset[0] + 200, o_MaxGUI_Handler.offset[1] + 200, 14, 9, function(val) {
+				MaxGUI_CreatePrompt(200, 200, 14, 9, function(val) {
 					var realValue = 0;
 					var type = typeof(variable_struct_get(o_MaxGUI_E_PropertyEditor.targetObject, o_MaxGUI_E_PropertyEditor.targetValue));
 					try {

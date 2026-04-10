@@ -12,3 +12,4 @@ if(image_yscale != 1 && !someoneOnTop) {
 	someoneOnTop = true;
 	sprite_index = sprite_level_waterBtm;
 }
+destroyIt = false;

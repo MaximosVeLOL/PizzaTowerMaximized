@@ -2,6 +2,7 @@ textDelay++;
 if(textDelay == 4 && string_length(currentText) < string_length(text) ) {
 	currentText += string_copy(text, string_length(currentText) + 1, 1);
 	textDelay = 0;
+	if(string_char_at(text, string_length(currentText)) != "\n") PlaySound(choose(sound_type1, sound_type2, sound_type3), false, false, true);
 }
 if( (keyboard_check_pressed(vk_anykey) || GetInput("jump", 1) ) && keyboard_key != keys[keyI]) {
 	if(currentText == text) {

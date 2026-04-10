@@ -7,8 +7,10 @@ draw_text(renderPos.x, renderPos.y, textToRender );
 var c = c_white;
 if(gotData) {
 	for(var i = 0 ; i < 5; i++) {
-		if(pizzakins[i]) c = c_white;
-		else c = c_black;
+		if(pizzakins[i])
+			c = c_white;
+		else 
+			c = c_black;
 	
 		draw_sprite_ext(pizzakinSprite[i], 0, (renderPos.x - 80) + (i * 42), renderPos.y + 96, 1, 1, 0, c, 1);
 	}

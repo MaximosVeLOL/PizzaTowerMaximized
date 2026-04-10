@@ -1,6 +1,6 @@
 event_inherited();
 keys = ["up", "down", "left", "right", "jump", "dash", "shoot"];
-targetProfile = 1;
+targetProfile = 0;
 act = function() {
 	currentScreen = 1;
 	io_clear();

@@ -14,7 +14,7 @@ function ShakeCamera(mag, acc) {
 
 
 function CollideAndMove(mass, maxYVelocity = 20, interactWithWater = false, useSlopes = true) {
-	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater && global.settings.playerSettings.waterInteraction ? (velocity.y >= 0 ? mass/1.25 : mass*1.25) : mass);
+	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater && global.settings.playerSettings.waterInteraction ? (global.settings.playerSettings.moveSet == Moveset.ETB ? (velocity.y >= 0 ? mass/1.25 : mass*1.25) : mass / 1.5) : mass);
 	
 	repeat(abs(velocity.y)) {
 	    if !place_meeting(x, y + sign(velocity.y), o_C_Parent)
@@ -73,7 +73,6 @@ function CollideAndMove(mass, maxYVelocity = 20, interactWithWater = false, useS
 function ApplySettings() {
 	Log("Going to apply settings...")
 	if(os_browser != browser_not_a_browser) return;
-	
 	if(global.settings.audioSettings.muteAll) {
 		audio_stop_all();
 		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
@@ -85,7 +84,18 @@ function ApplySettings() {
 		if(!instance_exists(o_MultiplayerHandler)) {
 			instance_create_depth(0, 0, 0, o_MultiplayerHandler);
 		}
+		else {
+			for(var i = 0 ; i < instance_number(o_Player);i++) {
+				o_MultiplayerHandler.DefinePlayer(instance_find(o_Player, i), i);
+			}
+		}
+		//If the camera type changed, which doesn't matter when not changed.
+		if(instance_exists(o_Camera)) o_Camera.setupRoom();
+		//for (var i = 0 ; i < instance_number(o_Player);i++)
+		//	o_MultiplayerHandler.DefinePlayer(instance_find(o_Player, i), i);
 	}
+	else if(instance_exists(o_MultiplayerHandler))
+		instance_destroy(o_MultiplayerHandler);
 	if(global.settings.gameplaySettings.debugEnabled) {
 		if(!instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0,o_DEBUG_Console);
 	}
@@ -140,8 +150,10 @@ function LoadSettings() {
 		return false;
 	}
 	parsed = json_parse(parsed);
-	var names = variable_struct_get_names(global.settings);
-	for(var i = 0 ; i < array_length(names);i++) variable_struct_set(global.settings, names[i], variable_struct_get(parsed, names[i])); //This will let the future settings still exist, while updating the previous version.
+	var names = variable_struct_get_names(parsed); //BUG - This was the actual settings, not the parsed settings, so settings that didn't exist back then crashed the game.
+	for(var i = 0 ; i < array_length(names);i++) {
+		variable_struct_set(global.settings, names[i], variable_struct_get(parsed, names[i])); //This will let the future settings still exist, while updating the previous version.
+	}
 	buffer_delete(file);
 	gc_collect();
 	Log("Successfully loaded settings!");

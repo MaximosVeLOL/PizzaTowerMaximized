@@ -63,7 +63,7 @@ if(!isInteracting && !isTyping) {
 		if(!detected)
 		*/
 	if(mouse_check_button(mb_right)) {
-		var inst = GetObjectTouching(mouse_x, mouse_y, o_LevelObject)
+		var inst = GetObjectTouching(false);
 		if(inst != noone) {
 			
 			if(mode == "place") {
@@ -85,6 +85,7 @@ if(!isInteracting && !isTyping) {
 	}
 
 	if(mouse_check_button_pressed(mb_middle) && !instance_exists(o_MaxGUI_E_PropertyEditor)) {
+		return;
 		var inst = collision_point(mouse_x, mouse_y, all, false, true);
 		if(inst != noone && inst.object_index == o_LevelObject) {
 				instance_create_depth(mouse_x, mouse_y, -10, o_MaxGUI_E_PropertyEditor, {targetObject : inst.settings, alignedToGUI : false});
@@ -92,7 +93,7 @@ if(!isInteracting && !isTyping) {
 	}
 
 	
-	if(keyboard_check_pressed(ord("I"))) ImportLevel(get_open_filename("Pizza Tower Maximized Level|*.PTMLVL", ""));
+	//if(keyboard_check_pressed(ord("I"))) ImportLevel(get_open_filename("Pizza Tower Maximized Level|*.PTMLVL", ""));
 	if(keyboard_check_pressed(ord("O"))) ExportLevel();
 }
 previousMouse = new Vector(mouse_x, mouse_y);

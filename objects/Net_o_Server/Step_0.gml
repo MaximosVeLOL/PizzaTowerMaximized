@@ -9,6 +9,7 @@ if(array_length(clients) > 1) {
 		packet.Write(buffer_u32, players[source].sprite_index);
 		packet.Write(buffer_u8, players[source].image_index);
 		packet.Write(buffer_s8, players[source].image_xscale);
+		packet.Write(buffer_u32, players[source].roomIn);
 		
 		for(var output = 0; output < array_length(clients);output++) {
 			if(!clients[output].valid || output == source) continue;

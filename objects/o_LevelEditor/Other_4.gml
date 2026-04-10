@@ -84,10 +84,14 @@ else if(mode == "exit") {
 	room_restart();
 	rmIndex++;
 	if(rmIndex >= array_length(rooms)) {
+		with(all) persistent = false;
 		Destroy();
 		room_goto(Room_LevelEditor_Menu);
 	}
 	else {
 		room_goto(rooms[rmIndex]);
 	}
+}
+with(o_MaxGUI_E_ElementParent) {
+	persistent = true;
 }
