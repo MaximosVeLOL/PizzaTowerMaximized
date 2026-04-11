@@ -4,22 +4,19 @@ var type = async_load[? "type"];
 
 switch(type) {
 	case network_type_connect:
+		show_message_async("Client is trying to connect!");
 		print("Got connection!");
 		var socket = async_load[? "socket"];
 		array_push(clients, new Client(socket));
 		//Send id for confirmation
 		//packet.EasySend(clients[getLastClient()].socket, DataFlag.RecieveID, getLastClient());
-		packet.Reset(0x00);
-		packet.Write(buffer_u8, DataFlag.RecieveID);
-		packet.Write(buffer_u8, getLastClient());
-		packet.Write(buffer_u8, MAX_CLIENTS);
-		packet.Send(clients[getLastClient()].socket);
+		alarm[0] = 60; // One second
 		print("New client! (size: " + string(array_length(clients)) + ")");
 		array_push(players, instance_create_layer(1000, 200, "Instances", Net_o_Player));
 	break;
 	
 	case network_type_disconnect:
-	
+		show_message_async("Got disconnected!");
 	break;
 	
 	case network_type_data:
@@ -54,6 +51,7 @@ switch(type) {
 			break;
 			
 			case DataFlag.Disconnect:
+				show_message_async("Client " + string(clientID) + " is trying to quit!");
 				packet.Reset(0x00);
 				packet.Write(buffer_u8, DataFlag.Disconnect);
 				packet.Send(clients[clientID].socket);

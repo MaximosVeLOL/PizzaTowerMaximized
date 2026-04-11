@@ -174,7 +174,7 @@ if(false) {
 	return;
 }
 */
-if(global.settings.gameplaySettings.debugEnabled || true) {
+if(global.settings.gameplaySettings.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
 		startInStartingRoom : false,
@@ -183,7 +183,7 @@ if(global.settings.gameplaySettings.debugEnabled || true) {
 	};
 	if(global.settings.multiplayerSettings.enabled) instance_create_depth(0, 0, 0, o_MultiplayerHandler);
 	instance_create_depth(0,0,0,o_DEBUG_Console);
-	//show_debug_overlay(true, true);
+	show_debug_overlay(true, true);
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor_Menu);
 	}

@@ -3,12 +3,13 @@ packet = new Packet();
 hasConnection = true;
 waitingForDisconnect = false;
 ID = 230;
+waitingForConnect = false;
+connectTime = 0;
 
 tryConnect = function(ip) {
 	socket = network_create_socket(TYPE);
-	var connection = network_connect(socket, ip, PORT);
-	hasConnection = (connection >= 0);
-	return hasConnection;
+	waitingForConnect = true;
+	var connection = network_connect_async(socket, ip, PORT);
 }
 
 startDisconnect = function() {
@@ -24,6 +25,7 @@ doDisconnect = function() {
 	network_destroy(socket);
 	socket = NULL;
 	hasConnection = false;
+	o_GameManager.returnToMenu();
 }
 
 players = [];

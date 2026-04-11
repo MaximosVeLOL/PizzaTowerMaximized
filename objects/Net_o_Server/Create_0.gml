@@ -12,6 +12,7 @@ destroy = function() {
 	packet.Reset(0x00);
 	packet.Write(buffer_u8, DataFlag.Disconnect);
 	sendPacketsToAllClients();
+	o_GameManager.returnToMenu();
 }
 
 setupServer = function(maxClients) {

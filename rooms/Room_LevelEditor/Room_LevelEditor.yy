@@ -22,7 +22,6 @@
     {"name":"LvlAddRM","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
     {"name":"LvlSave","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
     {"name":"BtnTiles","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
-    {"name":"LvlSetSong","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
     {"name":"RmInput","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
     {"name":"RmHelpText","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
     {"name":"LvlEditor1","path":"rooms/Room_LevelEditor/Room_LevelEditor.yy",},
@@ -122,9 +121,6 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_MaxGUI_E_Text","path":"objects/o_MaxGUI_E_Text/o_MaxGUI_E_Text.yy",},"propertyId":{"name":"text","path":"objects/o_MaxGUI_E_Text/o_MaxGUI_E_Text.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"There's supposed to be\\nmore stuff here...",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_MaxGUI_E_ElementParent","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"propertyId":{"name":"name","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"lE_t",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":160.0,},
-        {"$GMRInstance":"v4","%Name":"LvlSetSong","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":true,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"LvlSetSong","objectId":{"name":"o_MaxGUI_E_Button","path":"objects/o_MaxGUI_E_Button/o_MaxGUI_E_Button.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_MaxGUI_E_ElementParent","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"propertyId":{"name":"name","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"lE_sS",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":5.0,"scaleY":2.0,"x":160.0,"y":96.0,},
         {"$GMRInstance":"v4","%Name":"inst_2EBCE970","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2EBCE970","objectId":{"name":"o_MaxGUI_E_Button","path":"objects/o_MaxGUI_E_Button/o_MaxGUI_E_Button.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_MaxGUI_E_ElementParent","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"propertyId":{"name":"name","path":"objects/o_MaxGUI_E_ElementParent/o_MaxGUI_E_ElementParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"lE_sS",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_MaxGUI_E_Button","path":"objects/o_MaxGUI_E_Button/o_MaxGUI_E_Button.yy",},"propertyId":{"name":"text","path":"objects/o_MaxGUI_E_Button/o_MaxGUI_E_Button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Set Level Song",},

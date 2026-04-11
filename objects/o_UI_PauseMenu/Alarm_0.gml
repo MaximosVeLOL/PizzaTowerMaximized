@@ -1,4 +1,8 @@
 //Every single time I run instance_activate_all(), it doesn't allow for the Game manager to destroy all instances...
 //So heres my hack!
-o_GameManager.level.demo = true;
-o_GameManager.goToHub();
+if(instance_exists(Net_o_Client))
+	Net_o_Client.startDisconnect();
+else if(instance_exists(Net_o_Server))
+	Net_o_Server.destroy();
+else
+	o_GameManager.returnToMenu();

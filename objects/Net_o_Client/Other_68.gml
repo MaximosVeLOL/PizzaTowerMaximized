@@ -8,7 +8,13 @@ switch(type) {
 		var buffer = async_load[? "buffer"];
 		buffer_seek(buffer, buffer_seek_start, 0); //Just incase
 		var dataType = buffer_read(buffer, buffer_u8);
-		
+		if(waitingForConnect) {
+			Log("Going to connect to server!");
+			hasConnection = true;
+			waitingForConnect = false;
+			o_GameManager.goToHub();
+			o_GameManager.mode = "game";
+		}
 		
 		switch(dataType) {
 			case DataFlag.RecieveID:
@@ -43,6 +49,7 @@ switch(type) {
 			break;
 			
 			case DataFlag.Disconnect:
+				if(!waitingForDisconnect) return;
 				doDisconnect();
 			break;
 			

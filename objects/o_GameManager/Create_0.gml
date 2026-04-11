@@ -73,9 +73,18 @@ restartLevel = function() {
 	}
 	o_Player.setState("door");
 	o_Player.tempVar[0] = 1;
+};
+returnToMenu = function() {
+	if(instance_exists(Net_o_Server))
+		instance_destroy(Net_o_Server)
+	else if(instance_exists(Net_o_Client))
+		instance_destroy(Net_o_Client)
+	o_GameManager.level.demo = true;
+	o_GameManager.goToHub();
+	mode = "none";
 }
 goToHub = function() {
-	if(level.demo && !instance_exists(Net_o_Player)) {
+	if(level.demo && !instance_exists(Net_o_Client) && !instance_exists(Net_o_Server)) {
 		//instance_destroy(o_Camera);
 		//instance_destroy(o_Player);
 		if(instance_exists(o_MusicManager)) 
