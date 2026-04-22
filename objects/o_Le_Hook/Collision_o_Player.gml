@@ -9,7 +9,7 @@ with(other) { //The player we are colliding with
 			sprite_index = spr_player_hook;
 		}
 	}
-	//Remove the mach 1 check, because when you jump in mach1, you get set to the jump state... smh McPig
+	//Remove the mach 1 check, because when you jump in mach1, you get set to the jump state.settings.. smh McPig
 	else if(isMach || (state == "jump" || state == "highjump") && velocity.x != 0) {
 		other.hooked = true; //us
 		

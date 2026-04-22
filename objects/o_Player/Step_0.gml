@@ -1,5 +1,5 @@
-//if(global.settings.multiplayerSettings.enabled && playerID == -1) throw("I have ID -1!");
-if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover) {
+//if(global.settings.multiplayer.enabled && playerID == -1) throw("I have ID -1!");
+if(global.settings.gameplay.fpsSave != FPSSaveMode.UselessRemover) {
 	var len = array_length(sounds);
 	for(var i = 0 ; i < len;i++) {
 		if(!audio_is_playing(sounds[i])) {
@@ -17,4 +17,4 @@ if(velocity.x != 0 || velocity.y != 0) {
 	//audio_listener_orientation(x, y, 0, 0, 0, 0);
 }
 
-HandlePlayer(global.settings.playerSettings.moveSet);
+HandlePlayer(global.settings.player.moveSet);

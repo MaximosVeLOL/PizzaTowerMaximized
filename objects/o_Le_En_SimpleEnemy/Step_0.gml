@@ -10,7 +10,7 @@ switch(state) {
 	break;
 	
 	case "stun":
-		var miniStun = tempVar[0]; //For better readability...
+		var miniStun = tempVar[0]; //For better readability.settings..
 		
 		image_speed = miniStun ? 0 : 1;
 	

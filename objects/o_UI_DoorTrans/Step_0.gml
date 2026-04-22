@@ -10,13 +10,13 @@ if(image_xscale <= 50 && o_Player.image_alpha < 1 && faded) {
 
 if(image_xscale >= 60 && !faded) {
 	faded = true;
-	room_goto(o_GameManager.transSettings.nextRoom);
-	o_Player.x = o_GameManager.transSettings.newPos.x; 
-	o_Player.y = o_GameManager.transSettings.newPos.y;
-	x = o_GameManager.transSettings.newPos.x; 
-	y = o_GameManager.transSettings.newPos.y;
+	room_goto(o_GameManager.trans.nextRoom);
+	o_Player.x = o_GameManager.trans.newPos.x; 
+	o_Player.y = o_GameManager.trans.newPos.y;
+	x = o_GameManager.trans.newPos.x; 
+	y = o_GameManager.trans.newPos.y;
 	o_Player.tempVar[0] = 1;
-	o_GameManager.transSettings.newPos = new Vector(-1, -1);
-	o_GameManager.transSettings.nextRoom = -1;
+	o_GameManager.trans.newPos = new Vector(-1, -1);
+	o_GameManager.trans.nextRoom = -1;
 }
 if(image_xscale == 0) instance_destroy();

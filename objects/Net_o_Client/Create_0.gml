@@ -21,7 +21,7 @@ startDisconnect = function() {
 
 doDisconnect = function() {
 	if(!waitingForDisconnect) return;
-	print("Disconnecting from server...");
+	print("Disconnecting from server.settings..");
 	network_destroy(socket);
 	socket = NULL;
 	hasConnection = false;

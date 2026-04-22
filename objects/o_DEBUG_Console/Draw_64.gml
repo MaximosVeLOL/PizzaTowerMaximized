@@ -23,7 +23,7 @@ if(active) {
 	}
 	
 	/*
-	//Hoo boy! We went from 3 for loops (2 for visuals), to just one for loop...
+	//Hoo boy! We went from 3 for loops (2 for visuals), to just one for loop.settings..
 	var yPos = 0;
 	for(i = 0 ; i < array_length(commands);i++) {
 		if(string_count(keyboard_string, commands[i].name) > 0) {

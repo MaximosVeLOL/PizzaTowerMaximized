@@ -14,7 +14,7 @@ function ShakeCamera(mag, acc) {
 
 
 function CollideAndMove(mass, maxYVelocity = 20, interactWithWater = false, useSlopes = true) {
-	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater && global.settings.playerSettings.waterInteraction ? (global.settings.playerSettings.moveSet == Moveset.ETB ? (velocity.y >= 0 ? mass/1.25 : mass*1.25) : mass / 1.5) : mass);
+	if(!PLAYER_GROUNDED) velocity.y += (place_meeting(x, y, o_Le_Water) && interactWithWater && global.settings.player.waterInteraction ? (global.settings.player.moveSet == Moveset.ETB ? (velocity.y >= 0 ? mass/1.25 : mass*1.25) : mass / 1.5) : mass);
 	
 	repeat(abs(velocity.y)) {
 	    if !place_meeting(x, y + sign(velocity.y), o_C_Parent)
@@ -71,16 +71,16 @@ function CollideAndMove(mass, maxYVelocity = 20, interactWithWater = false, useS
 	*/
 }
 function ApplySettings() {
-	Log("Going to apply settings...")
+	Log("Going to apply .settings..")
 	if(os_browser != browser_not_a_browser) return;
-	if(global.settings.audioSettings.muteAll) {
+	if(global.settings.audio.muteAll) {
 		audio_stop_all();
 		if(instance_exists(o_MusicManager)) instance_destroy(o_MusicManager);
 	}
 	else {
 		if(!instance_exists(o_MusicManager)) instance_create_depth(0,0,0,o_MusicManager);
 	}
-	if(global.settings.multiplayerSettings.enabled) {
+	if(global.settings.multiplayer.enabled) {
 		if(!instance_exists(o_MultiplayerHandler)) {
 			instance_create_depth(0, 0, 0, o_MultiplayerHandler);
 		}
@@ -96,14 +96,14 @@ function ApplySettings() {
 	}
 	else if(instance_exists(o_MultiplayerHandler))
 		instance_destroy(o_MultiplayerHandler);
-	if(global.settings.gameplaySettings.debugEnabled) {
+	if(global.settings.gameplay.debugEnabled) {
 		if(!instance_exists(o_DEBUG_Console)) instance_create_depth(0,0,0,o_DEBUG_Console);
 	}
 	else instance_destroy(o_DEBUG_Console);
 	//show_message(PlayerObjectToMovesetEnum(o_Player));
 	//var m = PlayerObjectToMovesetEnum(o_Player);
 	/*
-	if(global.settings.playerSettings.moveSet != m && m != Moveset.Invalid) {
+	if(global.settings.player.moveSet != m && m != Moveset.Invalid) {
 		if(room != Room_DemoRoom && room != Room_MainMenu) {
 			show_message("You can only change movesets when you are not in a level!");
 		}
@@ -113,16 +113,16 @@ function ApplySettings() {
 			CreatePlayer(PlayerPos[0], PlayerPos[1]);
 		}
 	}
-	The way movesets are handled now destroy this...
+	The way movesets are handled now destroy this.settings..
 	
 	*/
-	window_set_fullscreen(global.settings.videoSettings.fullscreen);
-	display_reset(display_aa, global.settings.videoSettings.vSync);
+	window_set_fullscreen(global.settings.video.fullscreen);
+	display_reset(display_aa, global.settings.video.vSync);
 	
 	Log("Successfully applied settings!"); //So many repeating letters
 }
 function SaveSettings() {
-	Log("Going to save settings...");
+	Log("Going to save .settings..");
 	if(global.settings.saveFileIndex == -1 || os_browser != browser_not_a_browser) return;
 	//if(!directory_exists("MaximizedGM2")) directory_create("MaximizedGM2");
 	//if(!directory_exists("MaximizedGM2/Save" + string(global.settings.saveFileIndex))) directory_create("MaximizedGM2/Save");
@@ -132,14 +132,14 @@ function SaveSettings() {
 	var buf = buffer_create(string_length(toString), buffer_grow, 1); //Make it like this for buffer_load to be happy!
 	buffer_write(buf, buffer_string, toString);
 	//buffer_compress(buf, 0, buffer_tell(buf));
-	buffer_save(buffer_compress(buf, 0, buffer_tell(buf)), BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
+	buffer_save(buffer_compress(buf, 0, buffer_tell(buf)), BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/.PTM");
 	buffer_delete(buf);
 	Log("Saved Settings!");
 }
 function LoadSettings() {
-	Log("Going to load settings...");
+	Log("Going to load .settings..");
 	if(global.settings.saveFileIndex == -1 || os_browser != browser_not_a_browser) return false;
-	var file = buffer_load(BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/settings.PTM");
+	var file = buffer_load(BASE_DIRECTORY + "/Save" + string(global.settings.saveFileIndex) + "/.PTM");
 	if(file == -1) {
 		Log("Cannot load settings! (File doesn't exist, or something else.)");
 		return false;
@@ -160,7 +160,7 @@ function LoadSettings() {
 	return true;
 }
 function CreateEffect(information) {
-	if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.VisualRemover || global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) return;
+	if(global.settings.gameplay.fpsSave == FPSSaveMode.VisualRemover || global.settings.gameplay.fpsSave == FPSSaveMode.OnlyTheNeccessary) return;
 	//if(!is_struct(information)) LogError("Invalid Effect!", true);
 	if(information.sprite_index == sprite_effect_bang) PlaySound(choose(sfx_punch1, sfx_punch2, sfx_punch3, sfx_punch4, sfx_punch5), true);
 	

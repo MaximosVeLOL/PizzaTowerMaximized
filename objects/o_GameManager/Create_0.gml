@@ -16,6 +16,23 @@ level = {
 	index : LevelIndex.None,
 	//If we are not in a save
 	demo : false,
+	timer : 0,
+	score : 0,
+	reset : function() {
+		self.pizzakin = {
+			shroom : false,
+			cheese : false,
+			tomato : false,
+			sausage : false,
+			pineapple : false,
+		};
+		self.lap = 0;
+		self.time = 0;
+		self.index = LevelIndex.None;
+		self.demo = false;
+		self.timer = 0;
+		self.score = 0;
+	},
 };
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
@@ -24,7 +41,7 @@ mode = "none";
 
 /*
 exception_unhandled_handler(function(ex) {
-	if(!global.settings.gameplaySettings.debugEnabled) {
+	if(!global.settings.gameplay.debugEnabled) {
 		Log(ex.longMessage);
 		
 		audio_stop_all();
@@ -59,14 +76,6 @@ restartLevel = function() {
 	var data = GetLevelInfo(level.index);
 	o_Player.x = data.newPos.x;
 	o_Player.y = data.newPos.y;
-	level.pizzakin.shroom = false;
-	level.pizzakin.cheese = false;
-	level.pizzakin.tomato = false;
-	level.pizzakin.sausage = false;
-	level.pizzakin.pineapple = false;
-	level.time = data.newTime;
-	level.lap = 0;
-	global.misc.score = 0;
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
 		o_MusicManager.playNewSong(data.newSong, data.loopData);
@@ -101,18 +110,18 @@ goToHub = function() {
 		return;
 	}
 	//Determine if we have -1 remembered count
-	if(global.settings.multiplayerSettings.enabled && o_MultiplayerHandler.rememberedCount == -1) {
+	if(global.settings.multiplayer.enabled && o_MultiplayerHandler.rememberedCount == -1) {
 		o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
 	}
-	if(!global.settings.multiplayerSettings.enabled && !instance_exists(o_Player))
+	if(!global.settings.multiplayer.enabled && !instance_exists(o_Player))
 		instance_create_depth(256, 658, 0, o_Player);
-	if(global.settings.multiplayerSettings.enabled && o_MultiplayerHandler.rememberedCount > 0) {
+	if(global.settings.multiplayer.enabled && o_MultiplayerHandler.rememberedCount > 0) {
 		for(var i = 0 ; i < o_MultiplayerHandler.rememberedCount;i++) {
 			o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
 		}
 	}
 	//instance_create_depth(256, 658, 0, o_Player);
-	global.misc.score = 0; //global.misc.score is used in the rank screen, so reset it here.
+	o_GameManager.level.score = 0; //o_GameManager.level.score is used in the rank screen, so reset it here.
 	level.pizzakin.shroom = false;
 	level.pizzakin.cheese = false;
 	level.pizzakin.tomato = false;
@@ -132,7 +141,7 @@ goToHub = function() {
 }
 
 endLevel = function(win = false, instantly = false) {
-	if(instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release...
+	if(instance_exists(o_ParralaxBackground)) instance_destroy(o_ParralaxBackground); //Hack for the release.settings..
 	if(instance_exists(o_PizzaTimeManager)) instance_destroy(o_PizzaTimeManager);
 	if(instance_exists(o_MusicManager)) {
 		o_MusicManager.stopMusic(true);
@@ -141,12 +150,12 @@ endLevel = function(win = false, instantly = false) {
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	SaveLevelInfo();
 	//Both do the same thing, but the multiplayer handles the systems.
-	if(global.settings.multiplayerSettings.enabled) o_MultiplayerHandler.RemoveAllPlayers();
+	if(global.settings.multiplayer.enabled) o_MultiplayerHandler.RemoveAllPlayers();
 	else instance_destroy(o_Player);
 	//instance_deactivate_object(o_Player);
 	instance_destroy(o_Le_Pizzakin);
 	mode = "none";
-	global.misc.score = 0;
+	o_GameManager.level.score = 0;
 	ResetLevel(level.index);
 	if(instantly) {
 		goToHub();
@@ -161,8 +170,8 @@ endLevel = function(win = false, instantly = false) {
 /// @param {Asset.GMRoom}  _nextRoom  The value to calculate the square of
 /// @description        Goes to another room, PT style
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
-	transSettings.nextRoom = _nextRoom;
-	transSettings.newPos = _newPos;
+	trans.nextRoom = _nextRoom;
+	trans.newPos = _newPos;
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!");
 		o_Player.x = o_Player.xstart;
@@ -172,7 +181,7 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	}
 	if(!isDoorTrans) {
 		instance_create_depth(x,y,-100,o_UI_FadeTrans);
-		transSettings.state = o_Player.state;
+		trans.state = o_Player.state;
 		//o_Player.state = "transition";
 	}
 	else instance_create_depth(o_Player.x,o_Player.y, -100, o_UI_DoorTrans);

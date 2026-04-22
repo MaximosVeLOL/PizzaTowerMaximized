@@ -28,7 +28,7 @@ ReturnToMenu = function() {
 }
 
 alarm[0] = (60 * 60) * 5; //Save every 5 minutes
-if(!global.settings.audioSettings.muteAll) o_MusicManager.playNewSong(music_editor);
+if(!global.settings.audio.muteAll) o_MusicManager.playNewSong(music_editor);
 
 function Grid(value) {
 	return round(value / gridSize) * gridSize;
@@ -74,7 +74,7 @@ createRoom = function(width = 960, height = 540, backgroundSprite = sprite_edito
 	room_set_camera(_room, 0, camera_create_view(0, 0, 960, 540));
 	room_set_view_enabled(_room, true);
 	room_set_viewport(_room, 0, true, 0, 0, 960, 540);
-	room_set_persistent(_room, true); //For editing purposes...
+	room_set_persistent(_room, true); //For editing purposes.settings..
 	room_set_width(_room, width);
 	room_set_height(_room, height);
 	layer_set_target_room(_room);

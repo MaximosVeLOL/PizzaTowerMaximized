@@ -80,32 +80,32 @@ global.settings = {
 			}
 		},
 	},
-	audioSettings : {
+	audio : {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
 		muteAll : false,
 		surroundSound : false,
 	},
-	videoSettings : {
+	video : {
 		fullscreen : false,
 		resolutionOpt : 1,
 		vSync : false,
 	},
-	gameplaySettings : {
-		debugEnabled : false,
+	gameplay : {
+		debugEnabled : true,
 		//Moved to multiplayerSettings
 		//multiplayer : true, //We're back!
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
 	},
-	playerSettings : {
+	player : {
 		moveSet : Moveset.ETB,
 		ETB_useOldMach3 : true,
 		PreETB_betterRunning : true,
 		waterInteraction : true,
 	},
-	multiplayerSettings : {
+	multiplayer : {
 		enabled : false,
 		//playerCount : 4,
 		cameraType : 1,
@@ -116,7 +116,6 @@ global.settings = {
 
 global.misc = { //Bye bye o_GameManager's font!
 	font : font_add_sprite_ext(sprite_font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!.1234567890:)(", false, -10),
-	score : 0,
 }
 //show_debug_overlay(true);
 audio_group_load(AG_Sound);
@@ -131,11 +130,11 @@ if(true) {
 	return;
 }*/
 /*
-if(global.settings.gameplaySettings.debugEnabled) {
+if(global.settings.gameplay.debugEnabled) {
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	//room_goto(Room_DemoRoom);instance_create_depth(0,0,0,o_Camera);instance_create_depth(200,200,0,o_Player_Noise);
 }
-if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
+if(global.settings.gameplay.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
 	instance_create_depth(0,0,0, o_MusicManager);
 	instance_create_depth(0,0,0, o_GameManager);
 }
@@ -174,14 +173,20 @@ if(false) {
 	return;
 }
 */
-if(global.settings.gameplaySettings.debugEnabled) {
+
+if(true) {
+	room_instance_add(Room_Empty, 0, 0, o_UI_NewSettings);
+	room_goto(Room_Empty);
+	return;
+}
+if(global.settings.gameplay.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInStartingRoom : false,
-		startUpRoom : ETBRoom_Level2_7,
+		startInStartingRoom : true,
+		startUpRoom : Room_FeatureTest,
 		startUpPos : [/*2167*/200, 100],
 	};
-	if(global.settings.multiplayerSettings.enabled) instance_create_depth(0, 0, 0, o_MultiplayerHandler);
+	if(global.settings.multiplayer.enabled) instance_create_depth(0, 0, 0, o_MultiplayerHandler);
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	show_debug_overlay(true, true);
 	if(DEBUG_STARTUP.startInLevelEditor) {
@@ -193,7 +198,7 @@ if(global.settings.gameplaySettings.debugEnabled) {
 		var instances = [o_GameManager, o_MusicManager, o_Camera];
 		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 		o_GameManager.mode = "game";
-		if(global.settings.multiplayerSettings.enabled) {
+		if(global.settings.multiplayer.enabled) {
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]));
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 10, DEBUG_STARTUP.startUpPos[1]));
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 20, DEBUG_STARTUP.startUpPos[1]));

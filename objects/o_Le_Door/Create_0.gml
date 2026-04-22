@@ -8,6 +8,6 @@ if(typeof(targetPos) == "string") {
 if(room != ETBRoom_T3) depth = 0;
 /*
 if(targetRoom == -1) {
-	LogError("We are useless! Destroying...");
+	LogError("We are useless! Destroying.settings..");
 	instance_destroy();
 }

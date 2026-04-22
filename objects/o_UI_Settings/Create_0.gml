@@ -11,19 +11,19 @@ event_inherited();
 
 
 setPlayerMoveset = function() {
-	global.settings.playerSettings.moveSet = currentOption;
+	global.settings.player.moveSet = currentOption;
     setScreen(4);
 };
 setScreenType = function() {
-	global.settings.videoSettings.resolutionOpt = currentOption;
+	global.settings.video.resolutionOpt = currentOption;
 	setScreen(2);
 };
 setCameraType = function() {
-	global.settings.multiplayerSettings.cameraType = currentOption;
+	global.settings.multiplayer.cameraType = currentOption;
 	setScreen(8);
 };
 setHUDType = function() {
-	global.settings.multiplayerSettings.hudType = currentOption;
+	global.settings.multiplayer.hudType = currentOption;
 	setScreen(8);
 };
 screens = [
@@ -40,3 +40,25 @@ screens = [
 	new CreateScreen("MULTIPLAYER", ["VERTICAL STRIPS", "SPLITSCREEN", "BACK"], [setScreenType, setScreenType, function(){setScreen(8);}], [3, 3, 0], ["cameraType"]),
 	new CreateScreen("MULTIPLAYER", ["ALL IN CORNER", "TOP LEFT OF EACH SCREEN", "BACK"], [setHUDType, setHUDType, function(){setScreen(8);}], [3, 3, 0], ["hudType"])
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

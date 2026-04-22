@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"o_AI_Goal",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_Player","path":"objects/o_Player/o_Player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"o_UI_GamemodePrompt",
+  "eventList":[],
   "managed":true,
-  "name":"o_AI_Goal",
+  "name":"o_UI_GamemodePrompt",
   "overriddenProperties":[],
   "parent":{
-    "name":"System",
-    "path":"folders/Objects/System.yy",
+    "name":"New",
+    "path":"folders/Objects/UI/New.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_UI_NewList",
+    "path":"objects/o_UI_NewList/o_UI_NewList.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -29,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sprite_editor_trigger",
-    "path":"sprites/sprite_editor_trigger/sprite_editor_trigger.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

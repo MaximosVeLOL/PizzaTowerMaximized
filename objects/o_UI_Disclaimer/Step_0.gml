@@ -18,7 +18,7 @@ if(keyboard_check_pressed(keys[keyI])) {
 	PlaySound(sound_menuchange, false, false, true);
 	if(keyI == array_length(keys)) {
 		PlaySound(sound_menuselect);
-		global.settings.gameplaySettings.goonerMode = true;
+		global.settings.gameplay.goonerMode = true;
 		//LogError("");
 		keyI = 0;
 	}

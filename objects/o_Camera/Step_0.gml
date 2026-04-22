@@ -3,9 +3,9 @@ if(!instance_exists(o_Player)) {
 	return;
 }
 
-if(global.settings.multiplayerSettings.enabled) {
+if(global.settings.multiplayer.enabled) {
 	var cur = noone;
-	//if(global.settings.multiplayerSettings.hudType != 2) {
+	//if(global.settings.multiplayer.hudType != 2) {
 		ForEachPlayer(function(i, cur) {
 			pos.x = clamp(cur.x - (view_wport[i] / 2), 0, room_width - view_wport[i]);
 			pos.y = clamp(cur.y - (view_hport[i] / 2), 0, room_height - view_hport[i]);

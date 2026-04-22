@@ -28,8 +28,8 @@ if(x > room_width + 300 && !instance_exists(o_UI_Fade)) {
 			//instance_create_depth(0,0,0,o_Player);
 			//LoadTextureGroup("TextureG_Level");
 			if(LoadSettings()) ApplySettings();
-			if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
-				//if(global.settings.gameplaySettings.fpsSave != FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
+			if(global.settings.gameplay.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
+				//if(global.settings.gameplay.fpsSave != FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
         		o_GameManager.mode = "game";
 				o_GameManager.goToHub();
 			}

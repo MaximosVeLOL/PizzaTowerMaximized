@@ -17,12 +17,12 @@ stunStuff = {
 velocity = new Vector();
 /*
 PD = 1;
-if(!global.settings.multiplayerSettings.enabled && instance_number(object_index) > 1) {
+if(!global.settings.multiplayer.enabled && instance_number(object_index) > 1) {
 	instance_destroy();
 	return;
 }*/
 
-if(!global.settings.multiplayerSettings.enabled) {
+if(!global.settings.multiplayer.enabled) {
 	if(instance_number(o_Player) > 1) {
 		Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 		instance_destroy();

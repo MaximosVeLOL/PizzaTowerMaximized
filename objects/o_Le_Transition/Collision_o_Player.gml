@@ -1,5 +1,5 @@
 if(instance_exists(o_GameManager)) {
-	if(global.settings.multiplayerSettings.enabled) {
+	if(global.settings.multiplayer.enabled) {
 		o_Player.x = other.x;
 		o_Player.y = other.y;
 	}

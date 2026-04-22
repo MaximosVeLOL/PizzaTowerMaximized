@@ -159,7 +159,7 @@ switch(state) {
 		}
 	break;
 }
-if(dropPoints && (tempVar[2] != 0 || global.settings.gameplaySettings.goonerMode)) {
+if(dropPoints && (tempVar[2] != 0 || global.settings.gameplay.goonerMode)) {
 	tempVar[2]--;
 	with(instance_create_depth(x,y,0,o_Le_Points)) {
 		canMove = true;

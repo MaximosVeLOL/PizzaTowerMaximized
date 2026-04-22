@@ -1,4 +1,4 @@
-if(global.settings.gameplaySettings.fpsSave == FPSSaveMode.VisualRemover || global.settings.gameplaySettings.fpsSave == FPSSaveMode.OnlyTheNeccessary) {
+if(global.settings.gameplay.fpsSave == FPSSaveMode.VisualRemover || global.settings.gameplay.fpsSave == FPSSaveMode.OnlyTheNeccessary) {
 	instance_destroy();
 	//return; We need createBackground()
 }

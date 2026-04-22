@@ -99,9 +99,9 @@ commands = [
 		Log(currentArguments[0]);
 	}, "log [message]"),
 	
-	new createCommand("set_global.misc.score", function() {
-		global.misc.score = currentArguments[0];
-	}, "set_global.misc.score [new global.misc.score]"),
+	new createCommand("set_o_GameManager.level.score", function() {
+		o_GameManager.level.score = currentArguments[0];
+	}, "set_o_GameManager.level.score [new o_GameManager.level.score]"),
 	
 	new createCommand("save", SaveSettings, "save"),
 	new createCommand("load", LoadSettings, "load"),

@@ -1,4 +1,4 @@
-if(keyboard_check_pressed(vk_control) && global.settings.gameplaySettings.debugEnabled) {
+if(keyboard_check_pressed(vk_control) && global.settings.gameplay.debugEnabled) {
 	active = !active;
 	if(instance_exists(o_Camera)) o_Camera.hudVisible = !active;
 	if(instance_exists(o_GameManager)) o_GameManager.mode = active ? "none" : "game";

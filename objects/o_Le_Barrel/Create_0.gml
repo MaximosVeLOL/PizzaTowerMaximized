@@ -1,4 +1,4 @@
-if(global.settings.playerSettings.moveSet != Moveset.PreETB && !usable) instance_destroy();
+if(global.settings.player.moveSet != Moveset.PreETB && !usable) instance_destroy();
 velocity = new Vector();
 
 Activate = function() {

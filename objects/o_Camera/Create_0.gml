@@ -13,7 +13,7 @@ setupRoom = function() {
 	view_enabled = true;
 	
 	//show_message("Player count: " + string(c));
-	if(global.settings.multiplayerSettings.enabled) {
+	if(global.settings.multiplayer.enabled) {
 		var c = o_MultiplayerHandler.playerCount;
 		if(c > 1) {
 		// 0 - Vertical strips (implemented)
@@ -21,7 +21,7 @@ setupRoom = function() {
 		// 2 - Whole screen (NOT implemented)
 		var h = (540/c);
 		//Boom
-		switch(global.settings.multiplayerSettings.cameraType) {
+		switch(global.settings.multiplayer.cameraType) {
 			case 0:
 
 				for(var i = 0 ; i < c;i++) {

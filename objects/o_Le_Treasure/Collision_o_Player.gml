@@ -1,12 +1,12 @@
 
 
 
-if(sprite_index == sprite_level_treasure_get || global.settings.playerSettings.moveSet == Moveset.PreETB) return;
+if(sprite_index == sprite_level_treasure_get || global.settings.player.moveSet == Moveset.PreETB) return;
 o_Player.setState("treasure");
 sprite_index = sprite_level_treasure_get;
 x = other.x;
 y = other.y - 35;
-if(global.settings.multiplayerSettings.enabled) {
+if(global.settings.multiplayer.enabled) {
 	o_Player.x = other.x;
 	o_Player.y = other.y;
 }

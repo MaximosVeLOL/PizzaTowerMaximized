@@ -76,9 +76,9 @@ function ResetLevel(levelIndex) {
 function SaveLevelInfo() {
 	if(o_GameManager.level.demo || o_GameManager.level.index == LevelIndex.None) return;
 	var out = buffer_create(0, buffer_grow, 1);
-	buffer_write(out, buffer_u8, clamp(floor(global.misc.score / 500), 1, 6) - 1);
+	buffer_write(out, buffer_u8, clamp(floor(o_GameManager.level.score / 500), 1, 6) - 1);
 	buffer_write(out, buffer_u8, o_GameManager.level.index);
-	buffer_write(out, buffer_u32, global.misc.score);
+	buffer_write(out, buffer_u32, o_GameManager.level.score);
 	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.shroom);
 	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.cheese);
 	buffer_write(out, buffer_u8, o_GameManager.level.pizzakin.tomato);

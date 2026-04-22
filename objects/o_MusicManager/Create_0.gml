@@ -11,8 +11,8 @@ playNewSong = function(newSong, loopData = [-1,-1]) {
 	}
 	audio_stop_sound(errorHandler);
 	
-	if(newSong == -1 || global.settings.audioSettings.musicVolume == 0 || (instance_exists(o_PizzaTimeManager) && newSong != music_pizzatime) || newSong == audio_sound_get_asset(currentSong) || (tempSong != -1 && !instance_exists(o_PizzaTimeManager) ) ) {
-		Log("Couldn't play the new song... (" + string(newSong) + ")");
+	if(newSong == -1 || global.settings.audio.musicVolume == 0 || (instance_exists(o_PizzaTimeManager) && newSong != music_pizzatime) || newSong == audio_sound_get_asset(currentSong) || (tempSong != -1 && !instance_exists(o_PizzaTimeManager) ) ) {
+		Log("Couldn't play the new song.settings.. (" + string(newSong) + ")");
 		return;
 	}
 	Log("Playing New Song!\nInformation: [name: " + string(newSong) + "]");
@@ -22,14 +22,14 @@ playNewSong = function(newSong, loopData = [-1,-1]) {
 		alarm[0] = 60; // 60 = 1 second
 		currentSong = PlaySound(newSong, true, true);
 		audio_sound_gain(currentSong, 0, 0);
-		audio_sound_gain(currentSong, (global.settings.audioSettings.musicVolume / 100), 1000);
+		audio_sound_gain(currentSong, (global.settings.audio.musicVolume / 100), 1000);
 	}
 	else {
 		currentSong = PlaySound(newSong, true, true); //Play song at max volume
-		audio_sound_gain(currentSong, (global.settings.audioSettings.musicVolume / 100), 0);
+		audio_sound_gain(currentSong, (global.settings.audio.musicVolume / 100), 0);
 	}
 	if(loopData[0] == -1 || loopData[1] == -1) {
-		Log("No loop data set for new song, defaulting...");
+		Log("No loop data set for new song, defaulting.settings..");
 		loopData[0] = 0;
 		loopData[1] = audio_sound_length(currentSong);
 	}
@@ -38,13 +38,13 @@ playNewSong = function(newSong, loopData = [-1,-1]) {
 	
 }
 tempPlaySong = function(newSong) {
-	if(newSong == -1 || global.settings.audioSettings.musicVolume == 0 || instance_exists(o_PizzaTimeManager) || newSong == asset_get_index(audio_get_name(currentSong)) ) return;
+	if(newSong == -1 || global.settings.audio.musicVolume == 0 || instance_exists(o_PizzaTimeManager) || newSong == asset_get_index(audio_get_name(currentSong)) ) return;
 	Log("New temporary song! (" + audio_get_name(newSong) + ")");
 	audio_pause_sound(currentSong);
 	tempSong = PlaySound(newSong, true, true);
 }
 stopTempSong = function() {
-	if(global.settings.audioSettings.musicVolume == 0 || tempSong == -1) return;
+	if(global.settings.audio.musicVolume == 0 || tempSong == -1) return;
 	Log("Stopping temporary song! (" + audio_get_name(tempSong) + ")");
 	audio_stop_sound(tempSong);
 	tempSong = -1; //Why wasn't this here? This caused a bug!
@@ -61,7 +61,7 @@ stopMusic = function(instantly = true) {
 	
 	currentSong = -1;
 }
-//Just incase...
+//Just incase.settings..
 pauseMusic = function() {
 	audio_pause_sound(currentSong);
 }

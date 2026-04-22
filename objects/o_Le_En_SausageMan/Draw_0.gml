@@ -16,7 +16,7 @@ draw_self();
 
 
 /*
-if(isCigarMan) { //The og method was useless, using advanced systems meant for different objects with different palettes, not this...
+if(isCigarMan) { //The og method was useless, using advanced systems meant for different objects with different palettes, not this.settings..
 	shader_set(Shader_PaletteSwap);
     var tex = sprite_get_texture(sprite_enemy_sausageman_palette, 0)
     var UVs = sprite_get_uvs(sprite_enemy_sausageman_palette, 0)

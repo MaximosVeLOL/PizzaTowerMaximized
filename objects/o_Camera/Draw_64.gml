@@ -14,7 +14,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 		"ShakeMag: " + string(shake.mag),
 		"ShakeAcc: " + string(shake.acc),
 		"Camera Pos: " + string(camera_get_view_x(view_camera[0])) + ", " + string(camera_get_view_y(view_camera[0])),
-		//"Selfglobal.misc.score: " + string(o_Player_Machine.selfglobal.misc.score),
+		//"Selfo_GameManager.level.score: " + string(o_Player_Machine.selfo_GameManager.level.score),
 		//"Time: " + string(o_Player_Machine.time),
 		//"BestInputs: " + string(global.bestInputs),
 		//"Inputs: " + string(o_Player_Machine.inputs),
@@ -27,10 +27,10 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 }
 draw_set_font(global.misc.font);
 if(hudVisible) {
-	if(global.settings.gameplaySettings.goonerMode) {
+	if(global.settings.gameplay.goonerMode) {
 		draw_sprite(sprite_hud_goonmarkgoon, 0, 0, 0);
 	}
-	switch(global.settings.playerSettings.moveSet) {
+	switch(global.settings.player.moveSet) {
 		case Moveset.PreETB:
 			//Key is global across all players, so we don't need to update for each player!
 			draw_sprite(sprite_hud_inventory, 0, 480, 40);
@@ -53,7 +53,7 @@ if(hudVisible) {
 		
 					case "mach3":
 						//Dont use asset_get_index to save time
-						sprite = (global.settings.playerSettings.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4);
+						sprite = (global.settings.player.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4);
 					break;
 		
 					case "mach4":
@@ -72,7 +72,7 @@ if(hudVisible) {
 						sprite = sprite_hud_pep_idle;
 					break;
 				}
-				var renderPos = (global.settings.multiplayerSettings.enabled ? (global.settings.multiplayerSettings.hudType == 0 ? new Vector(100 + (i * 160), 0) : new Vector(view_xport[i] + 100, view_yport[i] - 15)) : new Vector(120, 0));
+				var renderPos = (global.settings.multiplayer.enabled ? (global.settings.multiplayer.hudType == 0 ? new Vector(100 + (i * 160), 0) : new Vector(view_xport[i] + 100, view_yport[i] - 15)) : new Vector(120, 0));
 				draw_sprite(sprite, -1, renderPos.x, renderPos.y + 80);
 				if(string_count("mach", plr.state) > 0) {
 					var mach =  plr.tempVar[0];
@@ -90,11 +90,11 @@ if(hudVisible) {
 				//if(obj_player.inventory.gun) draw_sprite(sprite_test, -1, 240, 30);
 				//draw_sprite(sprite_hud_inventory, -1, 240, 30);
 			});
-			if(global.settings.multiplayerSettings.enabled && global.settings.multiplayerSettings.cameraType != 2 && o_MultiplayerHandler.playerCount > 1) {
+			if(global.settings.multiplayer.enabled && global.settings.multiplayer.cameraType != 2 && o_MultiplayerHandler.playerCount > 1) {
 				if(GetPlayer(0).inventory.key) draw_sprite(sprite_level_key, -1, 480, 30);
 				draw_sprite(sprite_hud_inventory, -1, 480, 30);
 				draw_set_halign(fa_middle);
-				draw_text(480, 270, string(global.misc.score));
+				draw_text(480, 270, string(o_GameManager.level.score));
 				if(o_GameManager.level.lap > 0) {
 					draw_set_font(ComicSans);
 					draw_set_color(c_lime);
@@ -104,7 +104,7 @@ if(hudVisible) {
 			else {
 				if (o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 180, 30);
 				draw_sprite(sprite_hud_inventory, -1, 180, 30);
-				draw_text(180, 80, string(global.misc.score));
+				draw_text(180, 80, string(o_GameManager.level.score));
 				if(o_GameManager.level.lap > 0) {
 					draw_set_font(ComicSans);
 					draw_set_color(c_lime);
@@ -115,7 +115,7 @@ if(hudVisible) {
 		break;
 	}
 }
-//if(global.settings.multiplayerSettings.enabled && global.settings.multiplayerSettings.hudType == 2)
+//if(global.settings.multiplayer.enabled && global.settings.multiplayer.hudType == 2)
 /*
 var c = [c_blue, c_lime, c_red, c_aqua];
 

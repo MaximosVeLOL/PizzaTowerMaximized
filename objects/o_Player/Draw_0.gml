@@ -1,4 +1,4 @@
-if(global.settings.playerSettings.moveSet == Moveset.ETB && state == "mach3" && tempVar[2] > 0) { //Terrible hack!!! But this is the only way how I know how to do it.
+if(global.settings.player.moveSet == Moveset.ETB && state == "mach3" && tempVar[2] > 0) { //Terrible hack!!! But this is the only way how I know how to do it.
 	shader_set(Shader_Fullbright);
 	draw_sprite_ext(sprite_index, image_index, x,y, xscale, 1, 0, c_white, image_alpha);
 	shader_reset();
@@ -10,7 +10,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderPlayerMask
 	draw_arrow(x,y, x + (50 * xscale), y, 25);	
 }
 
-if(global.settings.multiplayerSettings.enabled) draw_text(x - 20,bbox_top - 50, "P" + string(playerID + 1));
+if(global.settings.multiplayer.enabled) draw_text(x - 20,bbox_top - 50, "P" + string(playerID + 1));
 /* from camera draw event
 var data = audio_listener_get_data(0);
 draw_set_color(c_green);

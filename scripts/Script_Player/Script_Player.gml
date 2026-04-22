@@ -2,10 +2,7 @@ enum Moveset {
 	Invalid = -1,
 	PreETB,
 	ETB,
-	Demo1Tester,
-	Demo1,
-	Demo2Tester,
-	Demo2,
+	Boxer
 };
 
 
@@ -147,7 +144,7 @@ case Moveset.PreETB:
 						if(GetInput("jump", 1, playerID)) {
 							velocity.y = -9;
 						} 
-								if(global.settings.playerSettings.PreETB_betterRunning && (GetInput("dash", 2, playerID) || moveX != xscale && moveX != 0) ) setState("CUSTOMmachSlide");
+								if(global.settings.player.PreETB_betterRunning && (GetInput("dash", 2, playerID) || moveX != xscale && moveX != 0) ) setState("CUSTOMmachSlide");
 
 					}
 					else if(GetInput("jump", 2) && velocity.y < 0) velocity.y /= 2;
@@ -162,7 +159,7 @@ case Moveset.PreETB:
 					sprite_index = spr_player_run;
 				break;
 	
-				case "CUSTOMmachSlide": //This looks very similar to the slip state...
+				case "CUSTOMmachSlide": //This looks very similar to the slip state.settings..
 					velocity.x = movespeed * xscale;
 					sprite_index = animVar ? spr_player_machslide : spr_player_machslide_start;
 					if(IMAGE_COMPLETE && !animVar) animVar = true;
@@ -229,9 +226,9 @@ case Moveset.PreETB:
 						setState("normal");
 						stunStuff.invincibleFrames = 200;
 					}
-					if(tempVar[1] != 0 || global.settings.gameplaySettings.goonerMode) {
+					if(tempVar[1] != 0 || global.settings.gameplay.goonerMode) {
 						tempVar[1]--;
-						global.misc.score -= 10;
+						o_GameManager.level.score -= 10;
 						with(instance_create_depth(x,y,0,o_Le_Points)) {
 							canMove = true;
 							velocity.x = other.image_xscale * random_range(3, 5);
@@ -638,7 +635,7 @@ case Moveset.ETB: //ETB code lies here
 							}
 							tempVar[1]--;
 							if(tempVar[2] > 0) tempVar[2]--; //Flash shader
-							sprite_index = global.settings.playerSettings.ETB_useOldMach3 ? spr_player_mach3 : spr_player_mach4;
+							sprite_index = global.settings.player.ETB_useOldMach3 ? spr_player_mach3 : spr_player_mach4;
 							playSound(sfx_mach3);
 							playSound(sfx_mach2);
 							if(GetInput("up", 0, playerID)) {
@@ -1204,7 +1201,7 @@ case Moveset.ETB: //ETB code lies here
 							//TODO - Fact check
 							//Yea its true, but only if theres other conditions
 							if(GetInput("dash", 2, playerID) || !PLAYER_GROUNDED) { //Releasing grab
-								if(!PLAYER_GROUNDED) sprite_index = spr_player_grabbing_charge; //M_OPTI - Terrible hack...
+								if(!PLAYER_GROUNDED) sprite_index = spr_player_grabbing_charge; //M_OPTI - Terrible hack.settings..
 								switch(sprite_index) { //TODO - Find a better way?
 									case spr_player_grabbing_charge: //Throwing an enemy
 										if(tempVar[1] < 20) {
@@ -1316,7 +1313,7 @@ case Moveset.ETB: //ETB code lies here
 						break;
 					}
 					//If another player interferes
-					//if(global.settings.multiplayerSettings.enabled && tempVar[0] != 2 && tempVar[2].state != "grabbed") setState("normal");
+					//if(global.settings.multiplayer.enabled && tempVar[0] != 2 && tempVar[2].state != "grabbed") setState("normal");
 				break;
 	
 				case "key":
@@ -1424,9 +1421,9 @@ case Moveset.ETB: //ETB code lies here
 						setState("normal");
 						stunStuff.invincibleFrames = 200;
 					}
-					if(tempVar[1] != 0 || global.settings.gameplaySettings.goonerMode) {
+					if(tempVar[1] != 0 || global.settings.gameplay.goonerMode) {
 						tempVar[1]--;
-						global.misc.score -= 10;
+						o_GameManager.level.score -= 10;
 						with(instance_create_depth(x,y,0,o_Le_Points)) {
 							canMove = true;
 							velocity.x = other.image_xscale * random_range(3, 5);
@@ -1498,7 +1495,7 @@ case Moveset.ETB: //ETB code lies here
 								tempVar[0] = 1;
 								o_Le_NoiseSpawn.activate();
 								instance_destroy(o_Le_Treasure);
-								xscale = -o_Le_Noise.image_xscale; //Just incase...
+								xscale = -o_Le_Noise.image_xscale; //Just incase.settings..
 								sprite_index = spr_player_idle;
 								image_speed = 0;
 							}
@@ -1653,8 +1650,26 @@ case Moveset.ETB: //ETB code lies here
 					if(IMAGE_COMPLETE) setState("normal");
 				break;
 			}
-		break; //Moveset case
-	}
+		break; //End of ETB
+		
+		
+		//Boxing gamemode!
+		case Moveset.Boxer:
+			switch(state) {
+				case "normal":
+					//Normal state here
+				break;
+				
+				case "jump":
+					//Normal jump here
+					if(GetInput("jump", 1, playerID) && velocity.y > 0) {
+						setState("superslam");
+					}
+				break;
+				
+			}
+		break;
+	} //Moveset case
 	if(stunStuff.invincibleFrames > 0 && state != "hurt") {
 		stunStuff.flashing = !stunStuff.flashing;
 		stunStuff.invincibleFrames--;
@@ -1674,10 +1689,10 @@ function Transformation() constructor {
 }
 
 function GetPlayer(pIndex) {
-	return (global.settings.multiplayerSettings.enabled ? o_MultiplayerHandler.players[pIndex] : o_Player);
+	return (global.settings.multiplayer.enabled ? o_MultiplayerHandler.players[pIndex] : o_Player);
 }
 function ForEachPlayer(pFunction) {
-	if(global.settings.multiplayerSettings.enabled) {
+	if(global.settings.multiplayer.enabled) {
 		for(var i = 0 ; i < instance_number(o_Player);i++) {
 			var ret = pFunction(i, GetPlayer(i));
 			if(ret) break;

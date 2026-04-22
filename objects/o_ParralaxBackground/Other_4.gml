@@ -3,7 +3,7 @@ if(room == ETBRoom_TSecret1 || room == ETBRoom_TSecret2 || room == ETBRoom_T_Bac
 //var sprite = -1;
 var bgId = -1;
 //show_debug_message("XSCALE & ID");
-for(i = 0 ; i < array_length(backgrounds);i++) { //Scale the background once, not twice! Saves on CPU Cycles...
+for(i = 0 ; i < array_length(backgrounds);i++) { //Scale the background once, not twice! Saves on CPU Cycles.settings..
 	bgId = layer_get_id(backgrounds[i].layerName);
 	backgrounds[i].layerID = layer_background_get_id(bgId);
 	//show_debug_message("ID: " + string(backgrounds[i].layerID));

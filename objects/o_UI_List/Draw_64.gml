@@ -11,19 +11,19 @@ var TEXT_X_MULT = 24;
 var TEXT_Y_MULT = 48;
 
 
-draw_sprite(sprite_hud_optionsarrow, -1, settings.x - ((string_length(screens[currentScreen].optionText[currentOption]) * (TEXT_X_MULT/2)) + 55), ((settings.y + 200) + (currentOption * TEXT_Y_MULT)))
+draw_sprite(sprite_hud_optionsarrow, -1, settingssettings.x - ((string_length(screens[currentScreen].optionText[currentOption]) * (TEXT_X_MULT/2)) + 55), ((settingssettings.y + 200) + (currentOption * TEXT_Y_MULT)));
 for(var i = 0 ; i < array_length(screens[currentScreen].optionText);i++) {
 	if(i == currentOption) draw_set_alpha(1);
 	else draw_set_alpha(0.5);
 	
-	draw_text(settings.x, (settings.y + 200) + (i * TEXT_Y_MULT), string_upper(screens[currentScreen].optionText[i]));
+	draw_text(settingssettings.x, (settingssettings.y + 200) + (i * TEXT_Y_MULT), string_upper(screens[currentScreen].optionText[i]));
 	if(screens[currentScreen].optionTypes != undefined) {
 		switch(screens[currentScreen].optionTypes[i]) {
 			case 1:
 				var T = variable_struct_get(variable_struct_get(global.settings, string_lower(screens[currentScreen].title) + "Settings"), screens[currentScreen].targetVars[i]) ? "Y" : "N";
 				if(T == "Y") draw_set_color(c_green); //Bruh!
 				else draw_set_color(c_red);
-				draw_text(settings.x + (string_length(screens[currentScreen].optionText[i]) * (TEXT_X_MULT/2)) + 24, (settings.y + 200) + (i * TEXT_Y_MULT), T);
+				draw_text(settingssettings.x + (string_length(screens[currentScreen].optionText[i]) * (TEXT_X_MULT/2)) + 24, (settings.y + 200) + (i * TEXT_Y_MULT), T);
 				draw_set_color(c_white);
 			break;
 			

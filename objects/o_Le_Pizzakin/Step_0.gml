@@ -1,5 +1,5 @@
 if(!variable_struct_get(o_GameManager.level.pizzakin, type)) return;
-image_alpha = o_Player.image_alpha; //This is used when going into the door transition... What a waste of cycles...
+image_alpha = o_Player.image_alpha; //This is used when going into the door transition.settings.. What a waste of cycles.settings..
 if(o_Player.movespeed != 0) {
 	setSprite("run");
 }
