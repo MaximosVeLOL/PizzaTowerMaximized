@@ -3,7 +3,8 @@ switch(mode) {
 	break;
 	
 	case "game":
-		if((keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter)) && !instance_exists(o_UI_NewPause)) instance_create_depth(0,0,0,o_UI_NewPause);
+		if((keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter)) && !instance_exists(o_UI_Pause)) instance_create_depth(0,0,0,o_UI_Pause);
+		level.timer += TIME_BASE;
 	break;
 	
 	case "editor":

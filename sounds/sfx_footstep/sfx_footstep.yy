@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.505034,
+  "duration":0.5050625,
   "exportDir":"",
   "name":"sfx_footstep",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":32000,
   "soundFile":"sfx_footstep.wav",
   "volume":1.0,
 }

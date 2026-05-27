@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.5466667,
+  "duration":0.5437642,
   "exportDir":"",
   "name":"sfx_swordswing",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":22050,
   "soundFile":"sfx_swordswing.ogg",
   "volume":1.0,
 }

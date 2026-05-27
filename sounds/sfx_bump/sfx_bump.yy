@@ -5,12 +5,12 @@
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
-  "bitDepth":1,
+  "bitDepth":0,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.1509297,
+  "duration":0.1509375,
   "exportDir":"",
   "name":"sfx_bump",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":32000,
   "soundFile":"sfx_bump.ogg",
   "volume":1.0,
 }

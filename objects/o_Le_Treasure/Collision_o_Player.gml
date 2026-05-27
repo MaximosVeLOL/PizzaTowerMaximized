@@ -1,4 +1,6 @@
-
+with(o_Player) {
+	if(!PLAYER_GROUNDED) return;
+}
 
 
 if(sprite_index == sprite_level_treasure_get || global.settings.player.moveSet == Moveset.PreETB) return;

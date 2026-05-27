@@ -11,8 +11,8 @@
   "name":"o_UI_Rank",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Safe",
+    "path":"folders/Objects/UI/Safe.yy",
   },
   "parentObjectId":null,
   "persistent":true,

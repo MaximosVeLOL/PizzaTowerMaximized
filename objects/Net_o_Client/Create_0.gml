@@ -1,3 +1,4 @@
+
 socket = NULL;
 packet = new Packet();
 hasConnection = true;
@@ -6,10 +7,19 @@ ID = 230;
 waitingForConnect = false;
 connectTime = 0;
 
+typingMessage = false;
+
 tryConnect = function(ip) {
-	socket = network_create_socket(TYPE);
-	waitingForConnect = true;
-	var connection = network_connect_async(socket, ip, PORT);
+	//socket = network_create_socket(TYPE);
+	socket = network_create_socket_ext(TYPE, PORT);
+	if(socket < 0)
+		Log("Failed to create socket");
+	//waitingForConnect = true;
+	Log("Connecting to ip " + ip + "...");
+	var connection = network_connect_raw(socket, ip, PORT);
+	//var connection = network_connect_async(socket, ip, PORT);
+	//Log("Success!");
+	return (connection >= 0);
 }
 
 startDisconnect = function() {
@@ -21,7 +31,7 @@ startDisconnect = function() {
 
 doDisconnect = function() {
 	if(!waitingForDisconnect) return;
-	print("Disconnecting from server.settings..");
+	Log("Disconnecting from server.settings..");
 	network_destroy(socket);
 	socket = NULL;
 	hasConnection = false;

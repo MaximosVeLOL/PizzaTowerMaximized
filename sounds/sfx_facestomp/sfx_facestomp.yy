@@ -5,7 +5,7 @@
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
-  "bitDepth":1,
+  "bitDepth":0,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,

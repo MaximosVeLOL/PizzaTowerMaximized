@@ -34,7 +34,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"playOnEnter","filters":[],"listItems":[],"multiselect":false,"name":"playOnEnter","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"levelToPlay","filters":[],"listItems":[],"multiselect":false,"name":"levelToPlay","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"none\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

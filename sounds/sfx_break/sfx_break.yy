@@ -5,7 +5,7 @@
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
-  "bitDepth":1,
+  "bitDepth":0,
   "channelFormat":1,
   "compression":0,
   "compressionQuality":4,
@@ -15,7 +15,7 @@
     },
   },
   "conversionMode":0,
-  "duration":0.4469841,
+  "duration":0.447,
   "exportDir":"",
   "name":"sfx_break",
   "parent":{
@@ -25,7 +25,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":32000,
   "soundFile":"sfx_break.ogg",
   "volume":1.0,
 }

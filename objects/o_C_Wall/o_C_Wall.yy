@@ -35,5 +35,5 @@
     "path":"sprites/sprite_editor_32x/sprite_editor_32x.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

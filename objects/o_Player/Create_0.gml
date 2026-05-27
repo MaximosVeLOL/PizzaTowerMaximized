@@ -6,10 +6,17 @@ depth = -10;
 mass = 0.5;
 movespeed = 0;
 xscale = 1;
-state = "normal";
+state = PlayerState.Normal;
+stateFunctions = [];
+for(var i = 0 ; i < PlayerState.Last;i++) {
+	array_push(stateFunctions, PlayerStateFunctions(Moveset.ETB, i));
+}
+//These variables are used in every state, so why not put them here?
+moveX = 0;
+moveY = 0;
+//stateFunction = PlayerStateFunctions(Moveset.ETB, PlayerState.Normal);
 tempVar = [0, 0, 0];
 animVar = false;
-sounds = [];
 stunStuff = {
 	invincibleFrames : 0,
 	flashing : false,
@@ -22,7 +29,7 @@ if(!global.settings.multiplayer.enabled && instance_number(object_index) > 1) {
 	return;
 }*/
 
-if(!global.settings.multiplayer.enabled) {
+if(IS_DEBUGGING && !global.settings.multiplayer.enabled) {
 	if(instance_number(o_Player) > 1) {
 		Log("Extra player in room" + string(room) + " (" + room_get_name(room) + ")");
 		instance_destroy();
@@ -41,8 +48,8 @@ isUnderwater = false;
 #macro SPRITE_NO_REPEAT if(round(image_index) == image_number) image_speed = 0
 #macro GUI_RESET draw_set_color(c_white); draw_set_halign(fa_left); draw_set_valign(fa_top); draw_set_alpha(1); draw_set_font(-1)
 setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, overrideSound = true) {
-	if(state == "noclip") return; //Useful for debugging
-	
+	//if(IS_DEBUGGING && state == "noclip") return; //Useful for debugging
+	if(typeof(newState) == "string") throw("(setState) newState is a string! not enum! (" + newState + ")");
 	state = newState;
 	animVar = false;
 	tempVar = overrideTemp ? [0,0,0] : tempVar;
@@ -50,12 +57,6 @@ setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, ov
 	image_speed = 1;
 	image_index = 0;
 	mask_index = spr_player_mask;
-	if(overrideSound) {
-		for(var i = 0 ; i < array_length(sounds) ; i++) {
-				audio_stop_sound(sounds[i]);
-		}
-		sounds = [];
-	}
 	movespeed = overrideMoveSpeed ? 0 : movespeed; //I don't know why we didn't implement this, even though we had the option for it. We only figured this out when mach1 accelleration was being a bad boy.
 }
 hurt = function() {
@@ -82,10 +83,11 @@ playSound = function(snd, override = false) {
 	//M_OPTI - This looks like something very low languagey, but is this faster, or slower?
 	//array_resize(sounds, array_length(sounds) + 1);
 	//sounds[array_length(sounds) - 1] = PlaySound(snd, override);
-	array_push(sounds, PlaySound(snd, override));
+	PlaySound(snd, override);
+	//array_push(sounds, PlaySound(snd, override));
 }
 stopSound = function(snd) {
-	//audio_stop_sound(snd);return;
+	audio_stop_sound(snd);return;
 	for(var i = 0 ; i < array_length(sounds);i++) {
 		if(snd == asset_get_index(audio_get_name(sounds[i]))) {
 			audio_stop_sound(sounds[i]);
@@ -99,9 +101,11 @@ stopSound = function(snd) {
 	}
 }
 playingSound = function(snd) {
+	return audio_is_playing(snd);
 	for(var i = 0 ; i < array_length(sounds);i++) {
 		if(audio_sound_get_asset(sounds[i]) == snd)
 			return sounds[i];
 	}
 	return -1;
 }
+TEMPHighest = 0;

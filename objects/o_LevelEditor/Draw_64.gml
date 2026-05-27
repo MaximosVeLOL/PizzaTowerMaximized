@@ -3,7 +3,7 @@ draw_set_color(c_white);
 var toolTips = [
 	"Position: " + string(offset[0]) + ", " + string(offset[1]),
 	"Object Selected: " + (selectedObject != noone ? object_get_name(selectedObject) : "None"),
-	"Mode: " + mode,
+	"Mode: " + (mode == 0 ? "Object Placement" : (mode == 1 ? "Edit Mode" : "Tile Editor")),
 ];
 draw_set_halign(fa_right);
 for(var i = 0 ; i < array_length(toolTips);i++) {

@@ -15,7 +15,7 @@
     },
   },
   "conversionMode":0,
-  "duration":1.5412245,
+  "duration":1.5673469,
   "exportDir":"",
   "name":"sfx_bell",
   "parent":{
@@ -25,7 +25,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":22050,
   "soundFile":"sfx_bell.ogg",
   "volume":1.0,
 }

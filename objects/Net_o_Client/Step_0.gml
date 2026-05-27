@@ -1,14 +1,28 @@
 if(!hasConnection || ID == 230) return;
 
-packet.Reset(0x00);
-packet.Write(buffer_u8, DataFlag.GameData);
-packet.Write(buffer_u8, ID);
-packet.Write(buffer_u16, o_Player.x);
-packet.Write(buffer_u16, o_Player.y);
-packet.Write(buffer_u32, o_Player.sprite_index);
-packet.Write(buffer_u8, o_Player.image_index);
-packet.Write(buffer_s8, o_Player.image_xscale);
-packet.Write(buffer_u32, room);
+CreatePlayerPacket(packet);
 packet.Send(socket);
 
-printCheck();
+if(keyboard_check_pressed(ord("C"))) {
+	typingMessage = !typingMessage;
+	keyboard_string = "";
+	o_GameManager.mode = (typingMessage ? "none" : "game");
+
+}
+if(typingMessage) {
+	if(keyboard_check_pressed(vk_enter)) {
+		packet.Reset();
+		//packet.Write(buffer_string, keyboard_string);
+		packet.Write(buffer_u8, DataFlag.MessageData);
+		packet.Write(buffer_u8, ID);
+		//Safer?
+		for(var i = 0 ; i < string_length(keyboard_string);i++) {
+			packet.Write(buffer_s8, string_char_at(keyboard_string, i));
+		}
+		packet.Send(socket);		
+		
+		typingMessage = false;
+		o_GameManager.mode = "game";
+		keyboard_string = "";
+	}
+}

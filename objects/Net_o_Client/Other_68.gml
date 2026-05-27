@@ -34,18 +34,13 @@ switch(type) {
 				//packet.EasySend(socket, DataFlag.RecieveID, recID);
 			break;
 			
-			case DataFlag.GameData:
+			case DataFlag.PlayerData:
 				//0 = Server
 				
 				var clientID = buffer_read(buffer, buffer_u8);
-				print("Got client ID for " + string(clientID));
+				Log("Got client ID for " + string(clientID));
 				//show_message("Got client id! " + string(clientID));
-				players[clientID].x = buffer_read(buffer, buffer_u16);
-				players[clientID].y = buffer_read(buffer, buffer_u16);
-				players[clientID].sprite_index = buffer_read(buffer, buffer_u32);
-				players[clientID].image_index = buffer_read(buffer, buffer_u8);
-				players[clientID].image_xscale = buffer_read(buffer, buffer_s8);
-				players[clientID].roomIn = buffer_read(buffer, buffer_u32);
+				ReadPlayerPacket(players[clientID]);
 			break;
 			
 			case DataFlag.Disconnect:
@@ -55,7 +50,7 @@ switch(type) {
 			
 			case DataFlag.ClientChange:
 				var deadClient = buffer_read(buffer, buffer_u8);
-				print("Client change (ID " + string(ID) + "), for " + string(deadClient));
+				Log("Client change (ID " + string(ID) + "), for " + string(deadClient));
 				tests[deadClient] = new Vector();
 				ID = buffer_read(buffer, buffer_u8);
 			break;

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.24526078,
+  "duration":0.24528125,
   "exportDir":"",
   "name":"sfx_superdash",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":32000,
   "soundFile":"sfx_superdash.ogg",
   "volume":1.0,
 }

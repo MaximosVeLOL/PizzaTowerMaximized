@@ -13,3 +13,8 @@ if(waitingForConnect) {
 		instance_destroy();
 	}
 }
+if(typingMessage) {
+	draw_set_font(global.misc.font);
+	draw_text(o_Player.x, o_Player.bbox_top - 48, keyboard_string);
+	GUI_RESET;
+}

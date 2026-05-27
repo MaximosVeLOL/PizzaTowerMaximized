@@ -5,7 +5,7 @@
     "name":"AG_Sound",
     "path":"audiogroups/AG_Sound",
   },
-  "bitDepth":1,
+  "bitDepth":0,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
@@ -15,7 +15,7 @@
     },
   },
   "conversionMode":0,
-  "duration":0.44453514,
+  "duration":0.44163266,
   "exportDir":"",
   "name":"sfx_bigcollect",
   "parent":{
@@ -25,7 +25,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":22050,
   "soundFile":"sfx_bigcollect.ogg",
   "volume":1.0,
 }

@@ -9,6 +9,11 @@
   "channelFormat":0,
   "compression":3,
   "compressionQuality":4,
+  "ConfigValues":{
+    "Debug":{
+      "audioGroupId":"{ \"name\":\"AG_Music\", \"path\":\"audiogroups/AG_Music\" }",
+    },
+  },
   "conversionMode":0,
   "duration":9.762789,
   "exportDir":"",

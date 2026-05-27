@@ -1,4 +1,4 @@
-if(mode == "export") {
+if(mode == 4) {
 	Log("Exporting room " + string(rmIndex) + "!");
 	var objects = instance_number(o_LevelObject);
 	
@@ -15,7 +15,7 @@ if(mode == "export") {
 	}
 	rmIndex++;
 	if(rmIndex >= array_length(rooms)) {
-		mode = "place";
+		mode = 0;
 		rmIndex = 0;
 		/*
 		var dir = "MaximizedGM2/Save" + string(global.settings.saveFileIndex) + "/LevelEditor/" + projectName + ".PTMLVL";
@@ -34,10 +34,10 @@ if(mode == "export") {
 	}
 	else room_goto(rooms[rmIndex]);
 }
-else if(mode == "import") {
+else if(mode == 3) {
 	if(rmIndex >= roomCount) {
-		mode = "place";
-		if(playOnEnter)
+		mode = 0;
+		if(levelToPlay != "none")
 			SetupLevel();
 	}
 	
@@ -79,7 +79,7 @@ else if(mode == "import") {
 		room_goto(rooms[rmIndex]);
 	}
 }
-else if(mode == "exit") {
+else if(mode == 5) {
 	with(o_LevelObject) instance_destroy();
 	room_restart();
 	rmIndex++;

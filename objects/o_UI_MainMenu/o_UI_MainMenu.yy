@@ -8,12 +8,12 @@
   "name":"o_UI_MainMenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"New",
+    "path":"folders/Objects/UI/New.yy",
   },
   "parentObjectId":{
-    "name":"o_UI_List",
-    "path":"objects/o_UI_List/o_UI_List.yy",
+    "name":"o_UI_NewList",
+    "path":"objects/o_UI_NewList/o_UI_NewList.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

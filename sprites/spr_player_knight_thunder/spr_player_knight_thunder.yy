@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Peppino\", \"path\":\"texturegroups/TextureG_Peppino\" }",
+      "textureGroupId":"{ \"name\":\"TextureG_PeppinoSpecial\", \"path\":\"texturegroups/TextureG_PeppinoSpecial\" }",
     },
   },
   "DynamicTexturePage":false,

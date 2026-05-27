@@ -1,0 +1,31 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sound_menuback",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "ConfigValues":{
+    "Debug":{
+      "audioGroupId":"{ \"name\":\"AG_Sound\", \"path\":\"audiogroups/AG_Sound\" }",
+    },
+  },
+  "conversionMode":0,
+  "duration":0.6175737,
+  "exportDir":"",
+  "name":"sound_menuback",
+  "parent":{
+    "name":"UI",
+    "path":"folders/Sounds/UI.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_menuback.wav",
+  "volume":1.0,
+}

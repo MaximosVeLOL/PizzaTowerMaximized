@@ -7,12 +7,18 @@
 server = NULL;
 packet = new Packet();
 clients = [];
-
+displayMenu = false;
 destroy = function() {
 	packet.Reset(0x00);
 	packet.Write(buffer_u8, DataFlag.Disconnect);
 	sendPacketsToAllClients();
 	o_GameManager.returnToMenu();
+}
+serverLog = "";
+menuY = 0;
+log = function(pMessage) {
+	Log(pMessage);
+	serverLog += "\n" + pMessage;
 }
 
 setupServer = function(maxClients) {

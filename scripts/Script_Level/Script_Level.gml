@@ -5,6 +5,13 @@ enum LevelIndex {
 	PreETB_Level2,
 	Last,
 };
+function Level_LoadCommonAssets() {
+	texturegroup_load("TextureG_LevelCommon", true);
+}
+function Level_UnloadCommonAssets() {
+	
+}
+
 function ResetLevel(levelIndex) {
 	//var originalRoom = room;
 	var rooms = [];

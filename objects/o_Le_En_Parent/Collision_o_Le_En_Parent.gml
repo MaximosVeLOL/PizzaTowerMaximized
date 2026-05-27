@@ -2,6 +2,8 @@ if(state != "hit" && state != "fly" || other.state == "grabbed") return;
 CreateEffect({sprite_index : sprite_effect_bang});
 
 if(state == "fly") {
+	if(other.object_index == o_Le_En_Cheeseslime)
+		other.die(spr_enemy_cheeseslime_dead, true);
 	other.setState("hit");
 	other.velocity.x = 5 * image_xscale;
 	other.velocity.y = -10;
@@ -9,7 +11,7 @@ if(state == "fly") {
 }
 
 //if(bbox_bottom > other.y) return;
-setState("idle");
+//setState("idle");
 movespeed = -7; //When thrown, we are always 7.
 setSprite("fall");
 velocity.y = -14;

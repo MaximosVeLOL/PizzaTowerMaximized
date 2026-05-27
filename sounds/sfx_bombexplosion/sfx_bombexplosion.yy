@@ -15,7 +15,7 @@
     },
   },
   "conversionMode":0,
-  "duration":2.1842856,
+  "duration":2.1843083,
   "exportDir":"",
   "name":"sfx_bombexplosion",
   "parent":{
@@ -25,7 +25,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":22050,
   "soundFile":"sfx_bombexplosion.ogg",
   "volume":1.0,
 }

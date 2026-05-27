@@ -5,13 +5,13 @@ var type = async_load[? "type"];
 switch(type) {
 	case network_type_connect:
 		show_message_async("Client is trying to connect!");
-		print("Got connection!");
+		Log("Got connection!");
 		var socket = async_load[? "socket"];
 		array_push(clients, new Client(socket));
 		//Send id for confirmation
 		//packet.EasySend(clients[getLastClient()].socket, DataFlag.RecieveID, getLastClient());
 		alarm[0] = 60; // One second
-		print("New client! (size: " + string(array_length(clients)) + ")");
+		Log("New client! (size: " + string(array_length(clients)) + ")");
 		array_push(players, instance_create_layer(1000, 200, "Instances", Net_o_Player));
 	break;
 	
@@ -21,11 +21,12 @@ switch(type) {
 	
 	case network_type_data:
 		var buffer = async_load[? "buffer"];
+		if(buffer_get_size(buffer) > 32) return;
 		buffer_seek(buffer, buffer_seek_start, 0); //Just incase
 		var dataType = buffer_read(buffer, buffer_u8);
 		var clientID = buffer_read(buffer, buffer_u8);
 		
-		//print("Client ID: " + string(clientID));
+		//Log("Client ID: " + string(clientID));
 		if(clientID > getLastClient()) return;
 		switch(dataType) {
 			
@@ -36,18 +37,13 @@ switch(type) {
 					throw("Client " + string(clientID) + " is already vaild!");	
 				}
 				clients[clientID].valid = true;
-				print("Client " + string(clientID) + " is valid!");
+				Log("Client " + string(clientID) + " is valid!");
 			
 			break;
 			
-			case DataFlag.GameData:
+			case DataFlag.PlayerData:
 				//showBuffer(buffer);
-				players[clientID].x = buffer_read(buffer, buffer_u16);
-				players[clientID].y = buffer_read(buffer, buffer_u16);
-				players[clientID].sprite_index = buffer_read(buffer, buffer_u32);
-				players[clientID].image_index = buffer_read(buffer, buffer_u8);
-				players[clientID].image_xscale = buffer_read(buffer, buffer_s8);
-				players[clientID].roomIn = buffer_read(buffer, buffer_u32);
+				ReadPlayerPacket(players[clientID]);
 			break;
 			
 			case DataFlag.Disconnect:
@@ -64,7 +60,7 @@ switch(type) {
 					packet.Send(clients[i].socket);
 				}
 				array_resize(clients, array_length(clients) - 1);
-				print("Array length changed! (" + string(array_length(clients)) + ")");
+				Log("Array length changed! (" + string(array_length(clients)) + ")");
 				instance_destroy(players[clientID]);
 			break;
 		}

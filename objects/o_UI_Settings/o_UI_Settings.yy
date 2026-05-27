@@ -3,17 +3,19 @@
   "%Name":"o_UI_Settings",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_UI_Settings",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"New",
+    "path":"folders/Objects/UI/New.yy",
   },
   "parentObjectId":{
-    "name":"o_UI_List",
-    "path":"objects/o_UI_List/o_UI_List.yy",
+    "name":"o_UI_NewList",
+    "path":"objects/o_UI_NewList/o_UI_NewList.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

@@ -1,4 +1,3 @@
-var plr = noone;
 ForEachPlayer(function(p, plr) {
 	if(distance_to_object(plr) > 48) return false;
 

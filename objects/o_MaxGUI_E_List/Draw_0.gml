@@ -15,7 +15,7 @@ for(var i = 0 ; i < array_length(list);i++) {
 		image_index = 1;
 		if(mouse_check_button_pressed(mb_left)) {
 			currentListIndex = i;
-			onSwitch(i);
+			onSwitch(i, list);
 			
 		}
 	}

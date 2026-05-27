@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.4555101,
+  "duration":2.4555314,
   "exportDir":"",
   "name":"sfx_supermove",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":44100,
+  "sampleRate":32000,
   "soundFile":"sfx_supermove.ogg",
   "volume":1.0,
 }

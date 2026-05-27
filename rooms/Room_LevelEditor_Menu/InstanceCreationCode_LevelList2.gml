@@ -13,11 +13,11 @@ file_find_close();
 onSwitch = function(newIndex) {
 	var playMode = instance_exists(o_C_Parent);
 	o_MaxGUI_Handler.Destroy();
-	var e = instance_create(x, y, o_LevelEditor, {playOnEnter : playMode});
+	var e = instance_create(x, y, o_LevelEditor);
 	room_goto(Room_LevelEditor);
-	e.ImportLevel(BASE_DIRECTORY + "/LevelEditor/" + name + ".PTMLVL");
+	//e.ImportLevel(BASE_DIRECTORY + "/LevelEditor/" + name + ".PTMLVL");
 	e.level.name = self.list[newIndex];
 	if(playMode) {
-		e.playOnEnter = true;
+		e.levelToPlay = BASE_DIRECTORY + "/LevelEditor/" + name + ".PTMLVL";
 	}
 }

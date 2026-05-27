@@ -1,64 +1,61 @@
-if(os_browser != browser_not_a_browser) {
-	instance_destroy();
-	if(room != Room_MainMenu) instance_activate_object(o_UI_PauseMenu);else instance_activate_object(o_UI_MainMenu);
-	return;
-}
-
-
 event_inherited();
 
+usingBack = false;
+bgPos = 540;
+depth = -9999;
+var basicAnim = function(pX = 0, pY = 0){return new Screen_Animation(true, new Vector(480 + pX, 0 + pY), IntroType.FromRight);};
+var normalOffset = new Vector(64, 270);
+//This causes a fatal error?
+//function Screen_SettingOption(pName, pType, pEvent, pExplanation) : Option(pName, pType, pEvent) constructor {
+//	explanation = pExplanation;
+//}
 
-
-
-setPlayerMoveset = function() {
-	global.settings.player.moveSet = currentOption;
-    setScreen(4);
-};
-setScreenType = function() {
-	global.settings.video.resolutionOpt = currentOption;
-	setScreen(2);
-};
-setCameraType = function() {
-	global.settings.multiplayer.cameraType = currentOption;
-	setScreen(8);
-};
-setHUDType = function() {
-	global.settings.multiplayer.hudType = currentOption;
-	setScreen(8);
-};
 screens = [
-	new CreateScreen("SETTINGS", ["AUDIO", "VIDEO", "GAMEPLAY", "BACK"], [function(){setScreen(1)}, function(){setScreen(2)}, function(){setScreen(4)}, function(){if(room != Room_MainMenu) instance_activate_object(o_UI_PauseMenu);else instance_activate_object(o_UI_MainMenu); instance_destroy(); if(os_browser == browser_not_a_browser) {SaveSettings(); } }]),
-	new CreateScreen("AUDIO", ["MUSIC VOLUME", "SFX VOLUME", "MASTER VOLUME", "MUTE ALL", "USE SURROUND SOUND", "BACK"], [0,0,0,0,0,function(){setScreen(0);}], [2,2,2,1,1,0], ["musicVolume", "sfxVolume", "masterVolume", "muteAll", "surroundSound"] ),
-	new CreateScreen("VIDEO", ["FULLSCREEN", "USE VSYNC", "BACK"], [0, 0, function(){setScreen(0);}], [1,1,0], ["fullscreen", "vsync"] ),
-	new CreateScreen("VIDEO", ["SMALL (480x270)", "NORMAL (960x540)", "BIG (1920x1080)", "BACK"], [setScreenType, setScreenType, setScreenType, function(){setScreen(2)}]),
-	new CreateScreen("GAMEPLAY", ["DEBUG ENABLED", "GOONER MODE ", "PLAYER SETTINGS", "MULTIPLAYER", "KEY BINDS", "BACK"], [0,0, function(){setScreen(5)}, function(){setScreen(8);}, function(){instance_create_depth(0,0,0,o_UI_KeyBinds);instance_deactivate_object(self);}, function(){setScreen(0)}], [1,1,0,0, 0,0], ["debugEnabled", "goonerMode"]),
-	new CreateScreen("PLAYER", ["SET MOVESET", "MOVESET SETTINGS", "WATER INTERACTION", "BACK"], [function(){setScreen(6)}, function(){setScreen(7)}, 0, function(){setScreen(0)}], [0, 0, 1, 0, 0], [0, 0, 0, "waterInteraction", 0]),
-	new CreateScreen("PLAYER", ["PRE ETB", "ETB (DEFAULT)", "BACK"], [setPlayerMoveset, setPlayerMoveset, function(){setScreen(4);}], [3,3,0], ["moveSet"]),
-	new CreateScreen("PLAYER", ["(ETB) USE OLD MACH3", "(PRE ETB) BETTER RUNNING", "BACK"], [0,0, function(){setScreen(4)}], [1,1,0], ["ETB_useOldMach3", "PreETB_betterRunning"]),
-	new CreateScreen("MULTIPLAYER", ["ENABLED", "SET CAMERA TYPE", "SET HUD TYPE", "BACK"], [0, function(){setScreen(9);}, function(){setScreen(10);}, function(){setScreen(4);}], [1, 0, 0, 0], ["enabled", 0, 0, 0]),
-	//new CreateScreen("MULTIPLAYER", ["VERTICAL STRIPS", "SPLITSCREEN", "ONE SCREEN", "BACK"], [setScreenType, setScreenType, setScreenType, function(){setScreen(8);}]),
-	new CreateScreen("MULTIPLAYER", ["VERTICAL STRIPS", "SPLITSCREEN", "BACK"], [setScreenType, setScreenType, function(){setScreen(8);}], [3, 3, 0], ["cameraType"]),
-	new CreateScreen("MULTIPLAYER", ["ALL IN CORNER", "TOP LEFT OF EACH SCREEN", "BACK"], [setHUDType, setHUDType, function(){setScreen(8);}], [3, 3, 0], ["hudType"])
+	new Screen("main", [
+		new Option("Audio", OptionType.Button, "audio"),
+		new Option("Video", OptionType.Button, "video"),
+		new Option("Gameplay", OptionType.Button, "game"),
+		//new Option("hi", OptionType.Button, 0),
+	], "Settings", new Screen_Background(sprite_hud_bg_main, undefined, 1, 1), 1, new Screen_Animation(true, new Vector(680, 0), IntroType.FromRight), new Vector(960, 0), normalOffset),
+	/*		sfxVolume : 100,
+		musicVolume : 100,
+		masterVolume : 100,
+		muteAll : false,
+		surroundSound : false,
+	*/
+	new Screen("audio", [
+		new Option("SFX Volume", OptionType.Slider, "sfxVolume"),
+		new Option("Music Volume", OptionType.Slider, "musicVolume"),
+		new Option("Master Volume", OptionType.Slider, "masterVolume"),
+		new Option("Mute all", OptionType.Toggle, "muteAll"),
+		new Option("Use surround sound", OptionType.Toggle, "surroundSound"),
+	], "Audio", new Screen_Background(sprite_hud_bg_audio, undefined, 1, 1), 1, basicAnim(-32), new Vector(960, 0), normalOffset, global.settings.audio),
+	
+	new Screen("video", [
+		new Option("Fullscreen", OptionType.Toggle, "fullscreen"),
+		new Option("Video type", OptionType.List, new Screen_List("resolutionOpt", ["SMALL (480x270)", "NORMAL (960x540)", "BIG (1920x1080)", "BACK"])),
+		new Option("Use VSync", OptionType.Toggle, "vSync"),
+	
+	], "Video", new Screen_Background(sprite_hud_bg_video, undefined, 1, 1), 1, basicAnim(), new Vector(960, 0), normalOffset, global.settings.video),
+	
+	new Screen("game", [
+		new Option("Debug enabled", OptionType.Toggle, "debugEnabled"),
+		new Option("Gooner mode enabled", OptionType.Toggle, "goonerMode"),
+		new Option("Player settings", OptionType.Button, "player"),
+		new Option("Multiplayer settings", OptionType.Button, "multi"),
+	], "Gameplay", new Screen_Background(sprite_hud_bg_game, undefined, 1, 1), 1, basicAnim(-64), new Vector(960, 0), normalOffset, global.settings.gameplay),
+	
+	new Screen("player", [
+		new Option("Moveset", OptionType.List, new Screen_List("moveSet", ["Pre ETB", "ETB"], true)),
+		new Option("(ETB) Use Old Mach 3", OptionType.Toggle, "ETB_useOldMach3"),
+		new Option("(Pre ETB) Better running", OptionType.Toggle, "PreETB_betterRunning"),
+		new Option("Interact with water", OptionType.Toggle, "waterInteraction"),
+	], "Player", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1), 1, basicAnim(-128), new Vector(960, 0), normalOffset, global.settings.player),
+	
+	new Screen("multi", [
+		new Option("Enabled (Use Multiplayer)", OptionType.Toggle, "enabled"),
+		new Option("Screen Type", OptionType.List, new Screen_List("", [""])),
+		new Option("HUD Type", OptionType.List, new Screen_List("", [""])),
+	], "Multiplayer", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1, ComicSans), 1, basicAnim(), new Vector(960, 0), normalOffset, global.settings.multiplayer)
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+setAllToUpper();

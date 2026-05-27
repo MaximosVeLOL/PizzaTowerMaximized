@@ -1,5 +1,5 @@
 event_inherited();
-if(!thrown && (other.state == "walk" || other.state == "idle" || other.state == "turn")) {
+if(!thrown && (state == "walk" || state == "idle" || state == "turn")) {
 	setState("throw");
 	image_xscale = other.xscale;
 }

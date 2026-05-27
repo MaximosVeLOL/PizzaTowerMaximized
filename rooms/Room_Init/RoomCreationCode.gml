@@ -173,16 +173,20 @@ if(false) {
 	return;
 }
 */
-
-if(true) {
-	room_instance_add(Room_Empty, 0, 0, o_UI_NewSettings);
+if(false) {
+	room_instance_add(Room_Empty, 0, 0, o_UI_NewList);
 	room_goto(Room_Empty);
 	return;
 }
-if(global.settings.gameplay.debugEnabled) {
+if(true) {
+	//gc_enable(false);
+	room_goto(Room_Beginning);
+	return;
+}
+if(global.settings.gameplay.debugEnabled && false) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
-		startInStartingRoom : true,
+		startInStartingRoom : false,
 		startUpRoom : Room_FeatureTest,
 		startUpPos : [/*2167*/200, 100],
 	};
@@ -191,12 +195,13 @@ if(global.settings.gameplay.debugEnabled) {
 	show_debug_overlay(true, true);
 	if(DEBUG_STARTUP.startInLevelEditor) {
 		room_goto(Room_LevelEditor_Menu);
+		//room_goto(Test);
 	}
 	else if(DEBUG_STARTUP.startInStartingRoom) {
 		room_goto(DEBUG_STARTUP.startUpRoom);
 		//var instances = [o_GameManager, o_MultiplayerHandler, o_MusicManager, o_Camera];
-		var instances = [o_GameManager, o_MusicManager, o_Camera];
-		for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
+		//var instances = [o_GameManager, o_MusicManager, o_Camera];
+		//for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
 		o_GameManager.mode = "game";
 		if(global.settings.multiplayer.enabled) {
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]));
@@ -207,8 +212,12 @@ if(global.settings.gameplay.debugEnabled) {
 		else instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
 	}
 	else room_goto(Room_Disclaimer);
-	
-
+	//instance_create_depth(200, 200, 0, o_ReplaySystem);
+	if(true) {
+		gc_enable(false);
+	}
+	return;
 }
-else room_goto(Room_Disclaimer);
-draw_text(480,270, "INITIALIZATION");
+room_goto(Net_Room_NetGame);
+//room_goto(Room_Disclaimer);
+//draw_text(480,270, "INITIALIZATION");

@@ -10,7 +10,7 @@ while(posY < room_height) {
 }
 
 
-if(mode == "place" && selectedObject != noone) {
+if(mode == 0 && selectedObject != noone) {
 	var sp = object_get_sprite(selectedObject);
 	if(sp == -1) sp = sprite_editor_unknown;
 	draw_sprite_general(sp, 0, 0, 0, sprite_get_width(sp), sprite_get_height(sp), Grid(mouse_x), Grid(mouse_y), 1, 1, 0, c_white, c_white, c_white, c_white, 1);

@@ -1,9 +1,20 @@
 event_inherited();
-objectListElement = o_MaxGUI_E_ObjectList;
+//objectListElement = o_MaxGUI_E_ObjectList;
 selectedObject = noone;
 depth = 99;
-gridSize = 32;
-mode = "place";
+//gridSize = 32;
+//When placing tiles
+useFG = false;
+mode = 0;
+/*
+	 0 - Object Placement
+	 1 - Object Editor
+	 2 - Tile editor
+	 3 - Import
+	 4 - Export
+	 5 - Exit
+*/
+
 //Room index for exporting/importing
 rmIndex = 0;
 //The buffer for importing/exporting
@@ -14,6 +25,37 @@ roomCount = 0;
 rooms = [Room_LevelEditor];
 notification = [false, 0];
 
+enum VariableType {
+	Real = 0,
+	String,
+	Array,
+	Boolean,
+	AssetSprite,
+	AssetRoom,
+	AssetAudio,
+	ObjectVector,
+	EnumLevelIndex,
+};
+function Property(pName, pType, pDefaultValue) constructor {
+	name = pName;
+	type = pType;
+	value = pDefaultValue;
+	renderValue = "";
+}
+function ObjectDefinition(pObjName, pProperties) constructor {
+	objectName = pObjName;
+	properties = pProperties;
+}
+
+objectDefinitions = [
+	new ObjectDefinition("o_Le_Transition", [
+		new Property("targetRoom", VariableType.AssetRoom, -1),
+		new Property("targetPos", VariableType.ObjectVector, new Vector()),
+		new Property("newSong", VariableType.AssetAudio, -1),
+		new Property("loopData", VariableType.Array, [-1, -1]),
+	]),
+];
+
 level = {
 	name : "UnsetName",
 	song : music_water,
@@ -21,7 +63,7 @@ level = {
 };
 
 ReturnToMenu = function() {
-	mode = "exit";
+	mode = 5;
 	rmIndex = 0;
 	o_MusicManager.stopMusic(true);
 	room_goto(rooms[0]);
@@ -29,10 +71,6 @@ ReturnToMenu = function() {
 
 alarm[0] = (60 * 60) * 5; //Save every 5 minutes
 if(!global.settings.audio.muteAll) o_MusicManager.playNewSong(music_editor);
-
-function Grid(value) {
-	return round(value / gridSize) * gridSize;
-}
 function GetObjectTouching(usePosition = true) {
 	/*
 	for(var i = 0 ; i < instance_number(object);i++) {
@@ -80,11 +118,13 @@ createRoom = function(width = 960, height = 540, backgroundSprite = sprite_edito
 	layer_set_target_room(_room);
 	//Create all the layers
 	layer_create(0, "FG");
-	layer_create(100, "FG");
+	layer_create(100, "BG");
 	layer_create(200, "Instances");
 	var bg = layer_background_create(layer_create(100, "Background"), backgroundSprite);
 	layer_background_htiled(bg, true);
 	layer_background_vtiled(bg, true);
+	layer_tilemap_create("FG", 0, 0, tileset_tower, 11, 10);
+	layer_tilemap_create("BG", 0, 0, tileset_tower, 11, 10);
 
 	
 }
@@ -134,7 +174,7 @@ DestroyLevel = function() {
 }
 
 ExportLevel = function() {
-	mode = "export";
+	mode = 4;
 	outBuffer = buffer_create(0, buffer_grow, 1);
 	buffer_write(outBuffer, buffer_u8, 0x00); //Version 0.00
 	//Make sure to write the projectName
@@ -147,7 +187,7 @@ ImportLevel = function(fileName) {
 	outBuffer = buffer_load(fileName);
 	if(outBuffer == -1) return;
 	Log("Version " + string(buffer_read(outBuffer, buffer_u8)) + "!");
-	mode = "import";
+	mode = 3;
 	roomCount = buffer_read(outBuffer, buffer_u8);
 	room_goto(rooms[0]);
 	/*
@@ -191,3 +231,14 @@ ImportLevel = function(fileName) {
 	buffer_delete(inBuffer);
 }
 editObject = noone;
+if(room == Test) {
+	var inst = instance_create_depth(20, 20, 0, o_LevelObject, {ID : o_Le_Transition});
+	instance_create_depth(200, 200, 0, o_MaxGUI_E_PropertyEditor, {targetObject : inst, alignedToGUI : false});
+	createRoom(960, 540, background_BGT);
+	createRoom(960, 540, background_BGT);
+	createRoom(960, 540, background_BGT);
+	createRoom(960, 540, background_BGT);
+	createRoom(960, 540, background_BGT);
+}
+if(levelToPlay != "none")
+	ImportLevel(levelToPlay);

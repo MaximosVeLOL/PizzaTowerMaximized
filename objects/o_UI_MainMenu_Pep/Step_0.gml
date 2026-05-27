@@ -34,6 +34,7 @@ if(x > room_width + 300 && !instance_exists(o_UI_Fade)) {
 				o_GameManager.goToHub();
 			}
 			else {
+				Level_LoadCommonAssets();
 				room_goto(Room_DemoRoom);
 				instance_create_depth(200, 200, 0, o_Player);
 			}

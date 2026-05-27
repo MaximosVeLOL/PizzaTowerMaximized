@@ -170,3 +170,4 @@ function CreateEffect(information) {
 	}
 	instance_create_depth(x,y,-1,o_P_Effect, information);
 }
+#macro IS_NETWORKING (instance_exists(Net_o_Client) || instance_exists(Net_o_Server))

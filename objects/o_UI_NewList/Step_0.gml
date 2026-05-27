@@ -1,5 +1,6 @@
 var current = screens[currentScreen];
-
+useMouse = (mouse_y != prevMouse);
+clicked = mouse_check_button_pressed(mb_left);
 if(current.animation != undefined && current.animation.update) {
 	if(current.animation.introType <= IntroType.FromBottom) {
 		current.position.y = BetterLerp(current.position.y, current.animation.targetPosition.y, 0.2);
@@ -43,6 +44,11 @@ if(!interactingWithOption) {
 		if(currentOption < 0) currentOption = array_length(current.options) - 1;
 		else if(currentOption >= array_length(current.options)) currentOption = 0;
 	}
+	else if(GetInput("dash", 1)) {
+		setScreen(array_last(history));
+		repeat(2)
+			array_pop(history);
+	}
 }
 else {
 	if(curOpt.type == OptionType.Slider) {
@@ -52,6 +58,7 @@ else {
 	else {
 		if(GetInput("left", 1) || GetInput("dash", 1)) {
 			interactingWithOption = false;
+			io_clear(); //Back button gets enabled without this
 		}
 		else {
 		
@@ -61,34 +68,6 @@ else {
 	}
 }
 if(GetInput("jump", 1)) {
-	
-	switch(curOpt.type) {
-		case OptionType.Button:
-			if(variable_struct_exists(curOpt, "OnEvent"))
-				curOpt.OnEvent();
-			else {
-				setScreen(curOpt.event);
-			}
-		return;
-		
-		case OptionType.Toggle:
-			variable_struct_set(current.targetStruct, curOpt.event, !variable_struct_get(current.targetStruct, curOpt.event));
-		return;
-		
-		case OptionType.Slider:
-			
-
-		break;
-		
-		case OptionType.List:
-			
-			if(interactingWithOption) {
-				variable_struct_set(current.targetStruct, curOpt.event.targetVar, listOption);
-				listOption = 0;
-			}
-			else curOpt.event.selected = variable_struct_get(current.targetStruct, curOpt.event.targetVar);
-			//Show list
-		break;
-	}
-	interactingWithOption = !interactingWithOption;
+	use();
 }
+prevMouse = mouse_y;

@@ -3,6 +3,10 @@ transSettings = {
 	newPos : new Vector(),
 	state : "",
 };
+enum Gamemode {
+	None = 0,
+	
+}
 level = {
 	pizzakin : {
 		shroom : false,
@@ -18,6 +22,7 @@ level = {
 	demo : false,
 	timer : 0,
 	score : 0,
+	gameMode : Gamemode.None,
 	reset : function() {
 		self.pizzakin = {
 			shroom : false,
@@ -72,8 +77,8 @@ startLevel = function(data) {
 restartLevel = function() {
 	ResetLevel(level.index);
 	instance_destroy(o_Le_Pizzakin);
-	room_goto(data.targetRoom);
 	var data = GetLevelInfo(level.index);
+	room_goto(data.targetRoom);
 	o_Player.x = data.newPos.x;
 	o_Player.y = data.newPos.y;
 	if(instance_exists(o_MusicManager)) {
@@ -93,7 +98,7 @@ returnToMenu = function() {
 	mode = "none";
 }
 goToHub = function() {
-	if(level.demo && !instance_exists(Net_o_Client) && !instance_exists(Net_o_Server)) {
+	if(level.demo && !IS_NETWORKING) {
 		//instance_destroy(o_Camera);
 		//instance_destroy(o_Player);
 		if(instance_exists(o_MusicManager)) 
@@ -170,8 +175,8 @@ endLevel = function(win = false, instantly = false) {
 /// @param {Asset.GMRoom}  _nextRoom  The value to calculate the square of
 /// @description        Goes to another room, PT style
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
-	trans.nextRoom = _nextRoom;
-	trans.newPos = _newPos;
+	transSettings.nextRoom = _nextRoom;
+	transSettings.newPos = _newPos;
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!");
 		o_Player.x = o_Player.xstart;
@@ -181,8 +186,8 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 	}
 	if(!isDoorTrans) {
 		instance_create_depth(x,y,-100,o_UI_FadeTrans);
-		trans.state = o_Player.state;
-		//o_Player.state = "transition";
+		transSettings.state = o_Player.state;
+		//o_Player.state = "transSettingsition";
 	}
 	else instance_create_depth(o_Player.x,o_Player.y, -100, o_UI_DoorTrans);
 

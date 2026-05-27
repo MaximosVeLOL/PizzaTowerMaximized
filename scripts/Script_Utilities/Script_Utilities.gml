@@ -3,6 +3,9 @@ function Vector(_x = 0, _y = 0) constructor {
 	y = _y;
 }
 
+#macro IS_DEBUGGING (os_get_config() == "Debug")
+
+
 //#macro BASE_DIRECTORY "%localappdata%/Pizza_Tower/MaximizedGM2"
 #macro BASE_DIRECTORY working_directory + "MaximizedGM2"
 function instance_create(x, y, object, var_struct = {}) {
@@ -127,4 +130,9 @@ function BetterLerp(a, b, c) {
 	if(ret <= b - LERP_RANGE && ret >= b + LERP_RANGE)
 		return b;
 	return ret;
+}
+
+function Grid(value, grid = 32) {
+	//return round(value / gridSize) * gridSize;
+	return round(value / grid) * grid;
 }
