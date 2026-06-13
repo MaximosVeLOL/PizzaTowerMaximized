@@ -9,7 +9,7 @@ packet = new Packet();
 clients = [];
 displayMenu = false;
 destroy = function() {
-	packet.Reset(0x00);
+	packet.Reset();
 	packet.Write(buffer_u8, DataFlag.Disconnect);
 	sendPacketsToAllClients();
 	o_GameManager.returnToMenu();

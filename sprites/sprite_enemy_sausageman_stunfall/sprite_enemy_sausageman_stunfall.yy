@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Enemies\", \"path\":\"texturegroups/TextureG_Enemies\" }",
+      "textureGroupId":"{ \"name\":\"tgLevel0\", \"path\":\"texturegroups/tgLevel0\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -77,9 +77,15 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"408a1c64-c130-4442-9c51-038f6b3387b3","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"575780f0-f48a-4738-89e7-635e1dc1f943","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d3790aad-f1ff-4623-a163-b682f5cb5734","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"660c9cf6-875d-4ac4-bbcd-98c31691bf63","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"7ddadc53-4bad-48c4-bdeb-5b1e7c7466f6","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"47a7c4b9-f2d8-433d-99fd-fd05cf14163a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"408a1c64-c130-4442-9c51-038f6b3387b3","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"575780f0-f48a-4738-89e7-635e1dc1f943","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d3790aad-f1ff-4623-a163-b682f5cb5734","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"660c9cf6-875d-4ac4-bbcd-98c31691bf63","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7ddadc53-4bad-48c4-bdeb-5b1e7c7466f6","path":"sprites/sprite_enemy_sausageman_stunfall/sprite_enemy_sausageman_stunfall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"47a7c4b9-f2d8-433d-99fd-fd05cf14163a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

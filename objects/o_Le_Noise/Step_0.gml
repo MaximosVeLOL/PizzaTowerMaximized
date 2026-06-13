@@ -11,7 +11,7 @@ else {
 		o_Player.sprite_index = spr_player_treasure_scream;
 		o_Player.image_speed = 1;
 	}
-	if(round(image_index) == image_number) {
+	if(IMAGE_COMPLETE) {
 		x += image_xscale; //Shift by a little bit to disturb our fellow x check
 		image_xscale = -image_xscale; // *= -1 or -image_xscale, comment which one?
 	}

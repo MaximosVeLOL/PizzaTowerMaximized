@@ -10,7 +10,7 @@
   "collisionTolerance":129,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Enemies\", \"path\":\"texturegroups/TextureG_Enemies\" }",
+      "textureGroupId":"{ \"name\":\"tgLevel1\", \"path\":\"texturegroups/tgLevel1\" }",
     },
   },
   "DynamicTexturePage":false,

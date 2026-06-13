@@ -3,13 +3,19 @@ enum LevelIndex {
 	ETB_Ancient,
 	PreETB_Level1,
 	PreETB_Level2,
+	PreETB_Level3,
+	PreETB_Level4,
+	
 	Last,
 };
+function Level_LoadDemoRoom() {
+
+}
 function Level_LoadCommonAssets() {
-	texturegroup_load("TextureG_LevelCommon", true);
+	texturegroup_load("tgLevelCommon", true);
 }
 function Level_UnloadCommonAssets() {
-	
+	texturegroup_load("tgLevelCommon", true);
 }
 
 function ResetLevel(levelIndex) {
@@ -78,7 +84,7 @@ function ResetLevel(levelIndex) {
 	This doesn't work, for some reason.
 	THIS HAPPENS BECAUSE ROOM_GOTO EXECUTES AT THE END OF A SCRIPT AKA END OF CODE
 	*/
-	instance_create_depth(x, y, 0, o_LevelEnd, {roomData : rooms})
+	instance_create_depth(x, y, 0, o_LevelEnd, {roomData : rooms});
 }
 function SaveLevelInfo() {
 	if(o_GameManager.level.demo || o_GameManager.level.index == LevelIndex.None) return;
@@ -95,6 +101,11 @@ function SaveLevelInfo() {
 	buffer_delete(out);
 }
 
+function LevelPrecacheTextures(pLevelIndex) {
+	texturegroup_load("tgLevel" + string(pLevelIndex));
+	//while(texturegroup_get_status() != texturegroup_status_loaded);
+}
+
 function GetLevelInfo(levelIndex) {
 	var levelInfo = {
 		targetRoom : -1,
@@ -103,7 +114,7 @@ function GetLevelInfo(levelIndex) {
 		levelName : "INVALID LEVEL",
 		newTime : -1,
 		newPos : new Vector(),
-		index : -1,
+		index : levelIndex,
 	}
 	switch(levelIndex) {
 		case LevelIndex.ETB_Ancient:
@@ -130,7 +141,14 @@ function GetLevelInfo(levelIndex) {
 			levelInfo.levelName = "PRE-ETB'S LEVEL 2";
 			levelInfo.newTime = 130;
 		break;
+	
+		case LevelIndex.PreETB_Level3:
+			levelInfo.targetRoom = ETBRoom_Level3_1;
+			levelInfo.newSong = -1;
+			levelInfo.newPos = new Vector();
+			levelInfo.levelName = "TUNG TUNG TUNG SAHUR";
+			
+		break;
 	}
-	levelInfo.index = levelIndex;
 	return levelInfo;
 }

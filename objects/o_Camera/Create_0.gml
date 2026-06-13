@@ -9,6 +9,14 @@ shake = {
 	mag : 0,
 	acc : 0,
 };
+trans = {
+	active : false,
+	fade : 0,
+};
+setupLevelTransition = function() {
+	trans.active = true;
+};
+
 setupRoom = function() {
 	view_enabled = true;
 	

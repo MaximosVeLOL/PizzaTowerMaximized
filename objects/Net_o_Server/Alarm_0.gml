@@ -1,4 +1,4 @@
-packet.Reset(0x00);
+packet.Reset();
 packet.Write(buffer_u8, DataFlag.RecieveID);
 packet.Write(buffer_u8, getLastClient());
 packet.Write(buffer_u8, MAX_CLIENTS);

@@ -4,7 +4,7 @@
   "autoTileSets":[],
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Level\", \"path\":\"texturegroups/TextureG_Level\" }",
+      "textureGroupId":"{ \"name\":\"tgLevel2\", \"path\":\"texturegroups/tgLevel2\" }",
     },
   },
   "macroPageTiles":{

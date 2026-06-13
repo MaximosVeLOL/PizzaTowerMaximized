@@ -27,17 +27,19 @@ if(x > room_width + 300 && !instance_exists(o_UI_Fade)) {
         onFade = function() {
 			//instance_create_depth(0,0,0,o_Player);
 			//LoadTextureGroup("TextureG_Level");
-			if(LoadSettings()) ApplySettings();
-			if(global.settings.gameplay.fpsSave != FPSSaveMode.OnlyTheNeccessary) {
-				//if(global.settings.gameplay.fpsSave != FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
-        		o_GameManager.mode = "game";
-				o_GameManager.goToHub();
-			}
-			else {
-				Level_LoadCommonAssets();
-				room_goto(Room_DemoRoom);
-				instance_create_depth(200, 200, 0, o_Player);
-			}
+			if(LoadSettings())
+				ApplySettings();
+			//if(global.settings.gameplay.fpsSave != FPSSaveMode.UselessRemover) instance_create_depth(0,0,0,o_MultiplayerSystem);
+        	texturegroup_unload("tgMainMenu");
+			//Unload developer group here because the settings are applied here
+			if(!global.settings.gameplay.debugEnabled)
+				texturegroup_unload("tgDeveloper");
+			audio_stop_sound(music_mainmenu);
+			//o_GameManager.mode = "game";
+			o_GameManager.goToHub(false);
+			
+			//while(texturegroup_get_status("tgLevelCommon") != texturegroup_status_loaded){}
+			//Log(string(texturegroup_get_status("tgLevelCommon")));
 			//instance_destroy(o_UI_Fade);
         }
     }

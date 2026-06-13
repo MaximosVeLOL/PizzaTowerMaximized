@@ -10,7 +10,8 @@ createCommand = function(_name, _does, _usage) constructor {
 	does = _does;
 	usage = _usage;
 }
-
+binds = [
+];
 commands = [
 	
 	new createCommand("instance_create", function() {
@@ -124,7 +125,52 @@ commands = [
 		}
 		else instance_create_depth(currentArguments[0], currentArguments[1], 0, o_Le_Key);
 	}, "give_key [x] [y]"),
+	new createCommand("util_get_id", function() {
+		show_message(string(asset_get_index(currentArguments[0])));
+	}, "util_get_id [object name]"),
+	new createCommand("bind", function() {
+		array_push(binds, {key : ord(currentArguments[0]), com : currentArguments[1]});
+	}, "bind [key] [command]")
 ];
+execute = function(pString) {
+		//if(os_browser != browser_not_a_browser) pString = string_lower(pString);
+		var reqCommand = "";
+		//Get the arguments
+		var _temp = "";
+		for(var i = 1; i <= string_length(pString);i++) {
+			_temp += string_copy(pString, i, 1);
+			if(string_count(" ", _temp) > 0 || i == string_length(pString)) {
+				var actual = i == string_length(pString) ? _temp : string_copy(_temp, 0, string_length(_temp) - 1); //Because it includes a space
+				
+				if(reqCommand == "") reqCommand = actual;
+				else {
+					array_resize(currentArguments, array_length(currentArguments) + 1);
+					currentArguments[array_length(currentArguments) - 1] = actual;
+				}
+				_temp = "";
+			}
+		}
+		array_resize(prevCommands, array_length(prevCommands) + 1);
+		prevCommands[array_length(prevCommands) - 1] = pString;
+		prevCommandIndex = array_length(prevCommands) - 1;
+		pString = "";
+		//Find the command
+		for(var i = 0 ; i < array_length(commands);i++) {
+			if(commands[i].name == reqCommand) {
+				try {
+					commands[i].does();
+				}
+				catch(e) {
+					var m = "Error!\n" + e.longMessage;
+					Log(m);
+					show_message(m);
+				}
+			}
+		}
+		currentArguments = [];
+	
+}
+
 settings = {
 	renderDebugText : true,
 	renderPlayerMask : false,

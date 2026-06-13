@@ -8,13 +8,14 @@ draw_rectangle(0, bgPos, 960, 540, false);
 //draw_set_color(c_aqua);
 //draw_text(20, 40, "Using back: " + string(usingBack));
 event_inherited();
-if(usingBack) {
-	draw_set_color(c_white);
-	//draw_rectangle(0, 480, 164, 540, false);
-	draw_set_font(global.misc.font);
-	draw_text(20, bgPos + 500, "BACK");
+if(disableSelection) {
+    draw_set_color(c_white);
+    draw_set_font(global.misc.font);
+    draw_text(32, 540 - 48, "BACK");
+    return;
 }
 else {
-	draw_set_color(c_gray);
-	draw_text(20, bgPos + 520, "BACK");
+    draw_set_color(c_gray);
+    draw_set_font(-1);
+    draw_text(10, 540 - 20, "BACK");
 }

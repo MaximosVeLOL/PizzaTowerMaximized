@@ -3,8 +3,8 @@ if(sprite_index == sprite_level_slippery) {
 	instance_destroy();
 	instance_create_depth(x, y, 0, o_P_DeadEnemy, {sprite_index : sprite_index});
 }
-if(other.state != "barrel") {
-	other.setState("slip");
+if(other.state != PlayerState.Barrel) {
+	other.setState(PlayerState.Slip);
 	other.movespeed = 8;
 	CreateEffect({x : other.x, y : other.y, sprite_index : sprite_effect_dashcloud });
 }

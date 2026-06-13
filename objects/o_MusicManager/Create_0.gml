@@ -29,9 +29,11 @@ playNewSong = function(newSong, loopData = [-1,-1]) {
 		audio_sound_gain(currentSong, (global.settings.audio.musicVolume / 100), 0);
 	}
 	if(loopData[0] == -1 || loopData[1] == -1) {
-		Log("No loop data set for new song, defaulting.settings..");
-		loopData[0] = 0;
-		loopData[1] = audio_sound_length(currentSong);
+		Log("No loop data set for new song, using default settings..");
+		audio_sound_loop_start(currentSong, 0);
+		// 0 - End of sound
+		audio_sound_loop_end(currentSong, 0);
+		return;
 	}
 	audio_sound_loop_start(currentSong, loopData[0]);
 	audio_sound_loop_end(currentSong, loopData[1]);

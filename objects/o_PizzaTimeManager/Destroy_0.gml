@@ -1,1 +1,1 @@
-if(instance_exists(o_MusicManager)) o_MusicManager.stopMusic(true);
+with(o_MusicManager) stopMusic(true);

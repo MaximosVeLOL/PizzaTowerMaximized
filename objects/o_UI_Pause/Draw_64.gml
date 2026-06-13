@@ -1,3 +1,5 @@
+//if(!exist) return;
+	
 if(intro != 1) {
 		if(intro == 0) {
 			draw_surface(tempSurf, 0, 0);

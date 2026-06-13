@@ -7,10 +7,6 @@ mass = 0.5;
 movespeed = 0;
 xscale = 1;
 state = PlayerState.Normal;
-stateFunctions = [];
-for(var i = 0 ; i < PlayerState.Last;i++) {
-	array_push(stateFunctions, PlayerStateFunctions(Moveset.ETB, i));
-}
 //These variables are used in every state, so why not put them here?
 moveX = 0;
 moveY = 0;
@@ -36,6 +32,12 @@ if(IS_DEBUGGING && !global.settings.multiplayer.enabled) {
 	}
 	playerID = 0;
 }
+//TODO- Test this
+if(global.settings.multiplayer.enabled && playerID == -1) {
+	instance_destroy();
+	o_MultiplayerHandler.AddPlayer(new Vector(x, y));
+	return;
+}
 
 mask_index = spr_player_mask;
 inventory = {
@@ -45,10 +47,10 @@ inventory = {
 isUnderwater = false;
 #macro PLAYER_GROUNDED place_meeting(x, y + 1, o_C_Parent)
 #macro PLAYER_TOUCHING place_meeting(x + xscale, y, o_C_Wall)
-#macro SPRITE_NO_REPEAT if(round(image_index) == image_number) image_speed = 0
+#macro SPRITE_NO_REPEAT if(IMAGE_COMPLETE) image_speed = 0
 #macro GUI_RESET draw_set_color(c_white); draw_set_halign(fa_left); draw_set_valign(fa_top); draw_set_alpha(1); draw_set_font(-1)
 setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, overrideSound = true) {
-	//if(IS_DEBUGGING && state == "noclip") return; //Useful for debugging
+	if(IS_DEBUGGING && state == PlayerState.Noclip) return; //Useful for debugging
 	if(typeof(newState) == "string") throw("(setState) newState is a string! not enum! (" + newState + ")");
 	state = newState;
 	animVar = false;
@@ -60,20 +62,20 @@ setState = function(newState, overrideTemp = true, overrideMoveSpeed = false, ov
 	movespeed = overrideMoveSpeed ? 0 : movespeed; //I don't know why we didn't implement this, even though we had the option for it. We only figured this out when mach1 accelleration was being a bad boy.
 }
 hurt = function() {
-	if(stunStuff.invincibleFrames > 0 || state == "noclip") return;
+	if(stunStuff.invincibleFrames > 0 || state == PlayerState.Noclip) return;
 	if(instance_exists(o_MusicManager) && o_MusicManager.tempSong != -1) o_MusicManager.stopTempSong();
-	if(state == "knight") {
+	if(state == PlayerState.Knight) {
 		instance_destroy(o_H_Sword);
 		for(var i = 0 ; i <= 5 ; i++) { instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : sprite_player_knightdebris,  image_index : i})}
 	}
-	else if(state == "barrel") {
+	else if(state == PlayerState.Barrel) {
 		repeat(15) {
 			instance_create_depth(x+random_range(-15, 15),y+random_range(-15, 15), 0, o_P_Breakable, {sprite_index : spr_breakabledoor_broken});
 		}
 		PlaySound(sound_barrelhit);
 		instance_destroy(o_P_MachEffect);
 	}
-	setState("hurt");
+	setState(PlayerState.Hurt);
 	tempVar[1] = 20;
 	stunStuff.invincibleFrames = 200;
 	PlaySound(choose(va_hurt1, va_hurt2, va_hurt3));
@@ -108,4 +110,3 @@ playingSound = function(snd) {
 	}
 	return -1;
 }
-TEMPHighest = 0;

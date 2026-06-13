@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Hud\", \"path\":\"texturegroups/TextureG_Hud\" }",
+      "textureGroupId":"{ \"name\":\"tgMaxGUI\", \"path\":\"texturegroups/tgMaxGUI\" }",
     },
   },
   "DynamicTexturePage":false,

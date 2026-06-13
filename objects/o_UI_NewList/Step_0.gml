@@ -20,7 +20,7 @@ if(current.background.sprite != noone) {
 	current.background.position.y += current.background.ySpeed;
 }
 //Detect inputs for each mode
-
+if(disableSelection) return;
 var input = 0;
 var curOpt = current.options[currentOption];
 if(!interactingWithOption) {

@@ -1,8 +1,8 @@
 onClick = function() {
 	try {
 		if(instance_create_depth(0, 0, 0, Net_o_Server).setupServer(real(MaxGUI_FindElement("hM").text))) {
-			o_GameManager.goToHub();
-			o_GameManager.mode = "game";
+			o_GameManager.goToHub(false);
+			//o_GameManager.mode = "game";
 			return true;
 		}
 		return false;

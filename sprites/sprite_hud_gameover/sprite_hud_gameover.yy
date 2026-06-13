@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Hud\", \"path\":\"texturegroups/TextureG_Hud\" }",
+      "textureGroupId":"{ \"name\":\"tgHud\", \"path\":\"texturegroups/tgHud\" }",
     },
   },
   "DynamicTexturePage":false,

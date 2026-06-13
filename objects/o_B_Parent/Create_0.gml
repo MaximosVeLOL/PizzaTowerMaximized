@@ -1,7 +1,7 @@
 reqStatesX = [];
 reqStatesTop = [];
 reqStatesBottom = [];
-onTopBreak = function(){};
-onXBreak = function(){};
-onBottomBreak = function(){};
+onTopBreak = function(plr){};
+onXBreak = function(plr){};
+onBottomBreak = function(plr){};
 visible = true;

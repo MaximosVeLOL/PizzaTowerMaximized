@@ -8,6 +8,11 @@
   "bbox_top":13,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"tgEffects\", \"path\":\"texturegroups/tgEffects\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

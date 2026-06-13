@@ -1,4 +1,5 @@
-switch(state) { //ETB cheeseslimes are very basic in their code, and it is not like the other enemies at ALL.
+/*
+	switch(state) { //ETB cheeseslimes are very basic in their code, and it is not like the other enemies at ALL.
 	case "walk":
 		sprite_index = spr_enemy_cheeseslime_walk;
 		velocity.x = 1.5 * image_xscale;
@@ -8,10 +9,12 @@ switch(state) { //ETB cheeseslimes are very basic in their code, and it is not l
 	case "stunned":
 		velocity.x = 0;
 		sprite_index = spr_enemy_cheeseslime_bumped;
-		if(round(image_index) == image_number) setState("walk");
+		if(IMAGE_COMPLETE) setState("walk");
 	break;
 }
-if((place_meeting(x+1, y, o_Player) || place_meeting(x-1,y,o_Player)) && (o_Player.state == "mach2" || o_Player.state == "mach3" || o_Player.state == "freefall")) {
-	die(spr_enemy_cheeseslime_dead, true);
+*/
+event_inherited();
+if((place_meeting(x+1, y, o_Player) || place_meeting(x-1,y,o_Player)) && (o_Player.state == PlayerState.Mach2 || o_Player.state == PlayerState.Mach3 || o_Player.state == PlayerState.Freefall)) {
+	die(false);
 }
 CollideAndMove(0.5, 10);

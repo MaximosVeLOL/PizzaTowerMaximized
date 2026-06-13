@@ -13,8 +13,13 @@ while(posY < room_height) {
 if(mode == 0 && selectedObject != noone) {
 	var sp = object_get_sprite(selectedObject);
 	if(sp == -1) sp = sprite_editor_unknown;
-	draw_sprite_general(sp, 0, 0, 0, sprite_get_width(sp), sprite_get_height(sp), Grid(mouse_x), Grid(mouse_y), 1, 1, 0, c_white, c_white, c_white, c_white, 1);
+	draw_sprite_general(sp, 0, 0, 0, sprite_get_width(sp), sprite_get_height(sp), Grid(mouse_x, 1), Grid(mouse_y, 1), 1, 1, 0, c_white, c_white, c_white, c_white, 1);
 	//draw_sprite(sp, 0, Grid(mouse_x), Grid(mouse_y));
+}
+if(mode == 2) {
+	var tX = o_MaxGUI_TileEditor.tileX;
+	var tY = o_MaxGUI_TileEditor.tileY;
+	draw_sprite_part(tileset_sprite_tower, 0, tX * 32, tY * 32, 32, 32, Grid(mouse_x, 1), Grid(mouse_y, 1));
 }
 if(editObject != noone) {
 	draw_set_color(c_aqua);

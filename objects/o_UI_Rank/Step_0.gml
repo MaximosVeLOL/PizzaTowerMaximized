@@ -7,8 +7,9 @@ if(sprite_index == sprite_hud_rank_trans) {
 }
 else {
 	if(!audio_is_playing(rankMusic) && keyboard_check(vk_anykey)) {
-		instance_destroy();
+        texturegroup_unload("tgRank");
 		o_GameManager.goToHub();
+        instance_destroy();
 	}
 }
 SPRITE_NO_REPEAT;

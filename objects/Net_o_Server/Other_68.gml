@@ -48,12 +48,12 @@ switch(type) {
 			
 			case DataFlag.Disconnect:
 				show_message_async("Client " + string(clientID) + " is trying to quit!");
-				packet.Reset(0x00);
+				packet.Reset();
 				packet.Write(buffer_u8, DataFlag.Disconnect);
 				packet.Send(clients[clientID].socket);
 				for(var i = clientID ; i < array_length(clients) - 1;i++) {
 					clients[i] = clients[i + 1];
-					packet.Reset(0x00);
+					packet.Reset();
 					packet.Write(buffer_u8, DataFlag.ClientChange);
 					packet.Write(buffer_u8, clientID); //The dead client
 					packet.Write(buffer_u8, i); //New ID

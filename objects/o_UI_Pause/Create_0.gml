@@ -12,8 +12,10 @@ image_speed = 0.35; //Can't change GUI speed!
 
 instance_deactivate_all(true);
 instance_activate_object(o_GameManager);
+o_GameManager.level.update = false;
+//Save time to hold the stuff
 stats = {
 	time : GetAsTime(o_GameManager.level.time),
 	name : GetLevelInfo(o_GameManager.level.index).levelName,
 };
-exiting = false;
+//exist = true;

@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Particles",
-    "path":"folders/Objects/Particles.yy",
+    "path":"folders/Objects/Level/Particles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

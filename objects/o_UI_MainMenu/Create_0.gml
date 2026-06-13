@@ -1,4 +1,7 @@
 event_inherited();
+//Level editor and MaxGUI stuff for online mode and the level editor just incase
+texturegroup_load("tgDeveloper");
+texturegroup_load("tgMaxGUI");
 var files = 5;
 var bg = new Screen_Background(noone - 1, noone, 0, 0, c_white, c_gray, global.misc.font, fa_center, fa_top);
 screens = [
@@ -11,8 +14,11 @@ screens = [
 	new Screen("p", [
 		new Option("Regular", OptionType.Button, 2),
 		new Option("Level Select", OptionType.Button, function(){instance_deactivate_object(self);instance_create(0, 0, o_UI_LevelSelect);}),
-		new Option("Level Editor", OptionType.Button, function(){room_goto(Room_LevelEditor_Menu);}),
-		new Option("Online", OptionType.Button, function(){room_goto(Net_Room_NetGame);}),
+		new Option("Level Editor", OptionType.Button, function(){
+			instance_create_depth(0, 0, 0, o_MusicManager);
+			room_goto(Room_LevelEditor_Menu); 
+		}),
+		//new Option("Online", OptionType.Button, function(){room_goto(Net_Room_NetGame);}),
 		new Option("Back", OptionType.Button, 0),
 	], "", bg),
 	new Screen("r", array_create_ext(files + 1, function(index){if(index < 5) {return new Option("File " + string(index + 1), 5, undefined)} else {return new Option("Back", OptionType.Button, 1)}}), "", bg),
@@ -22,9 +28,11 @@ onPressed = function(option) {
 	global.settings.saveFileIndex = currentOption;
 	if(instance_exists(o_GameManager)) o_GameManager.sessions.save++;
     o_UI_MainMenu_Pep.active = true;
+	//Unload it cuz we don't need it
+	texturegroup_unload("tgMaxGUI");
     PlaySound(sound_menuselect, false, false, true);
 	if(os_browser != browser_not_a_browser) show_message("Save file support is not on browser. You cannot save settings, and progress.");
 	instance_destroy();
 }
-
-o_MusicManager.playNewSong(music_mainmenu);
+audio_play_sound(music_mainmenu, 999, true);
+//o_MusicManager.playNewSong(music_mainmenu);

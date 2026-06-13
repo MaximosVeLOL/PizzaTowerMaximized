@@ -11,7 +11,7 @@
   "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
-      "audioGroupId":"{ \"name\":\"AG_Music\", \"path\":\"audiogroups/AG_Music\" }",
+      "audioGroupId":"{ \"name\":\"audiogroup_default\", \"path\":\"audiogroups/audiogroup_default\" }",
     },
   },
   "conversionMode":0,

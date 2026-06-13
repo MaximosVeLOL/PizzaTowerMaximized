@@ -1,10 +1,28 @@
+//if(IS_DEBUGGING && !instance_exists(o_Player)) {
+//	LogError("There is no player to capture!");
+//	return;
+//}
+if(trans.active) {
+	var zoom = 4;
+	camera_set_view_size(view_camera[0], camera_get_view_width(view_camera[0]) - zoom, camera_get_view_height(view_camera[0]) - zoom);
+	//zoom = 1/10;
+	camera_set_view_pos(view_camera[0], camera_get_view_x(view_camera[0]) - (camera_get_view_width(view_camera[0]) / 20), camera_get_view_y(view_camera[0]) - (camera_get_view_height(view_camera[0]) / 20));
+	if(camera_get_view_width(view_camera[0]) < 5) {
+		camera_set_view_size(view_camera[0], 960, 540);
+		camera_set_view_pos(view_camera[0], 0, 0);
+	}
+	return;
+}
+
 if(!instance_exists(o_Player)) {
-	LogError("There is no player to capture!");
+	var moveX = (GetInput("right") - GetInput("left"));
+	var moveY = (GetInput("down") - GetInput("up"));
+	camera_set_view_pos(view_camera[0], camera_get_view_x(view_camera[0]) + (moveX * 10), camera_get_view_y(view_camera[0]) + (moveY * 10));
+	
 	return;
 }
 
 if(global.settings.multiplayer.enabled) {
-	var cur = noone;
 	//if(global.settings.multiplayer.hudType != 2) {
 		ForEachPlayer(function(i, cur) {
 			pos.x = clamp(cur.x - (view_wport[i] / 2), 0, room_width - view_wport[i]);

@@ -1,13 +1,13 @@
 event_inherited();
-reqStatesX = ["mach2", "mach3", "machroll", "machfreefall"];
-reqStatesBottom = ["jump", "mach2", "mach3", "machfreefall", "superJump", "highJump", "knight"];
-reqStatesTop = ["freefall", "superslam", "knight"];
+reqStatesX = [PlayerState.Mach2, PlayerState.Mach3, PlayerState.MachRoll, PlayerState.MachFreefall];
+reqStatesBottom = [PlayerState.Jump, PlayerState.Mach2, PlayerState.Mach3, PlayerState.MachFreefall, PlayerState.SuperJump, PlayerState.HighJump, PlayerState.Knight];
+reqStatesTop = [PlayerState.Freefall, PlayerState.SuperSlam, PlayerState.Knight];
 brokenSprite = spr_breakable_broken; //So many children, so we do this.
 if(sprite_index == spr_glassblock) brokenSprite = spr_breakable_broken;
 
 onTopBreak = function(plr) {
 	with(plr) {
-		if(state == "freefall" && tempVar[0] == 0) {
+		if(state == PlayerState.Freefall && tempVar[0] == 0) {
 			animVar = true;
 			image_index = 0;
 			image_speed = 1;
@@ -19,17 +19,17 @@ onTopBreak = function(plr) {
 }
 onXBreak = function(plr) {
 	with(plr) {
-		if(state == "barrel" && tempVar[0] == 2) {
+		if(state == PlayerState.Barrel && tempVar[0] == 2) {
 			instance_destroy(other);
 		}
-		else if(state == "slip" && movespeed > 6) {
+		else if(state == PlayerState.Slip && movespeed > 6) {
 			instance_destroy(other);
 		}
 	}
 }
 onBottomBreak = function(plr) {
 	with(plr) {
-		if(state == "jump" && velocity.y < 0) velocity.y = 1;
+		if(state == PlayerState.Jump && velocity.y < 0) velocity.y = 1;
 	}
 }
 if(image_xscale == 2) {

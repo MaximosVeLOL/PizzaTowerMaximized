@@ -10,12 +10,12 @@
   "name":"o_Le_En_Cheeseslime",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemy",
-    "path":"folders/Objects/Enemy.yy",
+    "name":"PreETB",
+    "path":"folders/Objects/Enemy/PreETB.yy",
   },
   "parentObjectId":{
-    "name":"o_Le_En_Parent",
-    "path":"objects/o_Le_En_Parent/o_Le_En_Parent.yy",
+    "name":"o_Le_En_SimpleEnemy",
+    "path":"objects/o_Le_En_SimpleEnemy/o_Le_En_SimpleEnemy.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

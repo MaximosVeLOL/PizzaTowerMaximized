@@ -9,8 +9,8 @@
   "name":"o_MaxGUI_E_ObjectList",
   "overriddenProperties":[],
   "parent":{
-    "name":"GUI Elements",
-    "path":"folders/MaxGUI/Objects/GUI Elements.yy",
+    "name":"LevelEditor",
+    "path":"folders/LevelEditor.yy",
   },
   "parentObjectId":{
     "name":"o_MaxGUI_E_ElementParent",

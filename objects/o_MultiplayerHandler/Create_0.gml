@@ -36,8 +36,8 @@ RemovePlayer = function(index) {
 RemoveAllPlayers = function() {
 	rememberedCount = playerCount;
 	for(var i = 0 ; i < playerCount;i++) {
-		instance_destroy(players[i]);
-		player[i] = noone;
+		instance_deactivate_object(players[i]);
+		//player[i] = noone;
 	}
 	playerCount = 0;
 }

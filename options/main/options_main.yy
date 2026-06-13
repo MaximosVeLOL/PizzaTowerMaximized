@@ -4,6 +4,8 @@
   "ConfigValues":{
     "Debug":{
       "option_window_colour":"4294902015",
+      "option_legacy_primitive_drawing":"false",
+      "option_allow_instance_change":"true",
     },
   },
   "name":"Main",

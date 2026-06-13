@@ -13,6 +13,7 @@ enum IntroType {
 useMouse = false;
 clicked = false;
 prevMouse = 0;
+disableSelection = false;
 function Option(pName, pType, pEvent) constructor {
 	name = pName;
 	type = pType;
@@ -96,10 +97,10 @@ listOption = 0;
 history = []; //Holds indexes
 setScreen = function(indexOrName) {
 	array_push(history, currentScreen);
-	if(screens[currentScreen].animation != undefined) {
+	if(typeof(screens[currentScreen].animation) != "undefined") {
 		screens[currentScreen].position = screens[currentScreen].startingPosition;
 		screens[currentScreen].animation.update = screens[currentScreen].animation.onStart;
-	}
+    }
 	currentOption = 0;
 	interactingWithOption = false;
 	io_clear();
@@ -166,7 +167,8 @@ use = function() {
 		
 		default:
 			//throw("Undefined option for screen (" + string(currentScreen) + "), option (" + string(currentOption) + ")");
-			onPressed(currentOption);
+			var ret = onPressed(currentOption);
+            if(ret) return;
 		break;
 	}
 	interactingWithOption = !interactingWithOption;

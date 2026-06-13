@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Script_PlayerTungStates",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Script_PlayerTungStates",
+  "parent":{
+    "name":"State",
+    "path":"folders/Scripts/Game/Player/State.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

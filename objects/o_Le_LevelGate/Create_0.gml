@@ -8,8 +8,8 @@ pizzakinSprite = [spr_pizzakin_shroom_idle, spr_pizzakin_cheese_idle, spr_pizzak
 if(gotoLevel && targetLevel != LevelIndex.None && global.settings.saveFileIndex != -1) {
 	var b = buffer_load(BASE_DIRECTORY +  "/Save" + string(global.settings.saveFileIndex) + "/lvl" + string(targetLevel) + ".info");
 	if(b != -1) {
-		var rankStr = ["F", "D", "C", "B", "A"];
-		textToRender += "\n" + rankStr[buffer_read(b, buffer_u8)];
+		textToRender += "\n" + ["F", "D", "C", "B", "A"][buffer_read(b, buffer_u8)];
+		//This is useless though, but I'm keeping it for now.
 		if(buffer_read(b, buffer_u8) != targetLevel) {
 			LogError("Our level that we are reading is not equal to file's level index!");
 			return;
@@ -18,10 +18,9 @@ if(gotoLevel && targetLevel != LevelIndex.None && global.settings.saveFileIndex 
 		for(var i = 0 ; i < 5;i++) {
 			pizzakins[i] = buffer_read(b, buffer_u8);
 		}
-		gotData = true;
-	}
+		gotData = true; 
+        buffer_delete(b);
+    }
+    
 }
-
-//Credits: https://gist.github.com/septN/4ed457c04c6723ab8759b8eb19fd6c4b
-
 depth = 150;

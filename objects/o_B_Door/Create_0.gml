@@ -1,4 +1,4 @@
 event_inherited();
-reqStatesX = ["mach2", "mach3", "machroll", "barrel"];
-reqStatesTop = "freefall";
+reqStatesX = [PlayerState.Mach2, PlayerState.Mach3, PlayerState.MachRoll, PlayerState.Barrel];
+reqStatesTop = PlayerState.Freefall;
 reqStatesBottom = "";

@@ -11,7 +11,7 @@
   "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
-      "audioGroupId":"{ \"name\":\"audiogroup1\", \"path\":\"audiogroups/audiogroup1\" }",
+      "audioGroupId":"{ \"name\":\"audiogroup_default\", \"path\":\"audiogroups/audiogroup_default\" }",
     },
   },
   "conversionMode":0,

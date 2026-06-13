@@ -1,9 +1,10 @@
+//TODO - Either remove the pause feature and use o_GameManager.level.update or do something else
 paused = false;
 
-if(instance_exists(o_MusicManager)) {
-	o_MusicManager.stopMusic(true);
-	o_MusicManager.stopTempSong();
-	o_MusicManager.playNewSong(music_pizzatime);
+with(o_MusicManager) {
+	stopMusic(true);
+	stopTempSong();
+	playNewSong(music_pizzatime);
 }
 
 instance_destroy(o_Le_RedGuy);

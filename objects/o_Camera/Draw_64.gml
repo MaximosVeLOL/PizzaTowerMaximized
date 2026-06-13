@@ -1,11 +1,7 @@
-if(!instance_exists(o_Player)) {
-	Log("The Player is dead!");
-	return;
-}
 if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText) {
 	draw_set_font(-1);
 	var toDraw = [
-		"State: " + o_Player.state,
+		"State: (ind)" + string(o_Player.state) + ", (name) " + PlayerStateToString(o_Player.state),
 		"TempVar: " + string(o_Player.tempVar[0]) + ", " + string(o_Player.tempVar[1]) + ", " + string(o_Player.tempVar[2]),
 		"Velocity: " + string(o_Player.velocity.x) + ", " + string(o_Player.velocity.y),
 		"MoveSpeed: " + string(o_Player.movespeed),
@@ -14,6 +10,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 		"ShakeMag: " + string(shake.mag),
 		"ShakeAcc: " + string(shake.acc),
 		"Camera Pos: " + string(camera_get_view_x(view_camera[0])) + ", " + string(camera_get_view_y(view_camera[0])),
+		"Gamemode: " + string(o_GameManager.level.gameMode),
 		//"Selfo_GameManager.level.score: " + string(o_Player_Machine.selfo_GameManager.level.score),
 		//"Time: " + string(o_Player_Machine.time),
 		//"BestInputs: " + string(global.bestInputs),
@@ -25,6 +22,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 	}
 	
 }
+if(!instance_exists(o_Player)) return;
 draw_set_font(global.misc.font);
 if(hudVisible) {
 	if(global.settings.gameplay.goonerMode) {
@@ -42,31 +40,65 @@ if(hudVisible) {
 			ForEachPlayer(function(i, plr) {
 				switch(plr.state) {
 		
-					case "mach1":
+					case PlayerState.Mach1:
 						sprite = sprite_hud_pep_mach1;
 					break;
 		
-					case "machfreefall":
-					case "mach2":
+					case PlayerState.MachSlide:
+					case PlayerState.MachFreefall:
+					case PlayerState.Mach2:
 						sprite = sprite_hud_pep_mach2;
 					break;
 		
-					case "mach3":
+					case PlayerState.Mach3:
 						//Dont use asset_get_index to save time
 						sprite = (global.settings.player.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4);
 					break;
-		
-					case "mach4":
-						sprite = sprite_hud_pep_mach4;
+				
+					case PlayerState.MachRoll:
+						sprite = sprite_hud_pep_roll;
 					break;
 					
-					case "freefall":
+					//Unused, mach4 is gone!
+					//case "mach4":
+					//	sprite = sprite_hud_pep_mach4;
+					//break;
+					
+					case PlayerState.Freefall:
 						if(plr.tempVar[0] != 2)
 							break;
-					case "hurt":
+					case PlayerState.Hurt:
 						sprite = sprite_hud_pep_hurt;
 					break;
-		
+					
+					case PlayerState.Bomb:
+						switch(plr.tempVar[0]) {
+							case 0:
+								sprite = sprite_hud_pep_panic;
+							break;
+						
+							case 1:
+								sprite = sprite_hud_pep_mach1;
+							break;
+						
+							case 2:
+								sprite = (floor(plr.image_index) < 24 ? sprite_hud_pep_bomb : sprite_hud_pep_hurt);
+							break;
+						}
+					break;
+				
+					case PlayerState.Treasure:
+						switch(plr.tempVar[0]) {
+							case 0:
+								//sprite = (plr.tempVar[0] == 0 ? (plr.tempVar[1] < 5))
+								sprite = (plr.tempVar[1] < 5 ? sprite_hud_pep_happy : sprite_hud_pep_panic);
+							break;
+						
+							case 1:
+								sprite = sprite_hud_pep_scream;
+							break;
+						}
+					break;
 		
 					default:
 						sprite = sprite_hud_pep_idle;
@@ -74,7 +106,7 @@ if(hudVisible) {
 				}
 				var renderPos = (global.settings.multiplayer.enabled ? (global.settings.multiplayer.hudType == 0 ? new Vector(100 + (i * 160), 0) : new Vector(view_xport[i] + 100, view_yport[i] - 15)) : new Vector(120, 0));
 				draw_sprite(sprite, -1, renderPos.x, renderPos.y + 80);
-				if(string_count("mach", plr.state) > 0) {
+				if(PlayerIsMachState(plr.state)) {
 					var mach =  plr.tempVar[0];
 					if(mach >= 7) sprite = 1;
 					if(mach >= 35) sprite = 2;
@@ -95,7 +127,7 @@ if(hudVisible) {
 				draw_sprite(sprite_hud_inventory, -1, 480, 30);
 				draw_set_halign(fa_middle);
 				draw_text(480, 270, string(o_GameManager.level.score));
-				if(o_GameManager.level.lap > 0) {
+				if(o_GameManager.level.lap == 1) {
 					draw_set_font(ComicSans);
 					draw_set_color(c_lime);
 					draw_text(480, 100, "Return to the treasure room\nto get 200 extra points!");
@@ -105,7 +137,7 @@ if(hudVisible) {
 				if (o_Player.inventory.key) draw_sprite(sprite_level_key, -1, 180, 30);
 				draw_sprite(sprite_hud_inventory, -1, 180, 30);
 				draw_text(180, 80, string(o_GameManager.level.score));
-				if(o_GameManager.level.lap > 0) {
+				if(o_GameManager.level.lap == 1) {
 					draw_set_font(ComicSans);
 					draw_set_color(c_lime);
 					draw_set_halign(fa_middle);

@@ -16,4 +16,12 @@ if(notification[0]) {
 	if(notification[1] <= 0.5) 
 		alarm[0] = (60 * 60) * 5;
 }
+if(mode == 2) {
+	var display = [
+		"Layer: 0",
+		"Tile Position: (0, 0)",
+		"Tile Index: 0",
+	];
+}
+
 GUI_RESET;

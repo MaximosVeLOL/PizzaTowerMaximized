@@ -28,9 +28,6 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"name","filters":[],"listItems":[],"multiselect":false,"name":"name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"UnsetName","varType":2,},
-    {"$GMObjectProperty":"v2","%Name":"customSprite","filters":[
-        "GMSprite",
-      ],"listItems":[],"multiselect":false,"name":"customSprite","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
     {"$GMObjectProperty":"v2","%Name":"visible","filters":[],"listItems":[],"multiselect":false,"name":"visible","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"True","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"alignedToGUI","filters":[],"listItems":[],"multiselect":false,"name":"alignedToGUI","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
   ],

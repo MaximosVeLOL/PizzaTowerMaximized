@@ -1,4 +1,5 @@
 //image_speed = 0.5; //Draw sprite just uses 60 fps no matter what.
+TextureGroupEnsureLoaded("tgRank");
 image_speed = 0;
 //ranks = ["F", "D", "C", "B", "A", "S"];
 rankSprites = [sprite_hud_rank_f, sprite_hud_rank_d, sprite_hud_rank_c, sprite_hud_rank_b, sprite_hud_rank_a, sprite_hud_rank_s];

@@ -4,27 +4,27 @@
   "bboxMode":0,
   "bbox_bottom":95,
   "bbox_left":41,
-  "bbox_right":67,
+  "bbox_right":66,
   "bbox_top":64,
   "collisionKind":1,
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Peppino\", \"path\":\"texturegroups/TextureG_Peppino\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"c3d3802a-3fdb-4214-911c-776d197d7bd1","name":"c3d3802a-3fdb-4214-911c-776d197d7bd1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b07bd36e-49cb-4ead-a54b-10057ed24149","name":"b07bd36e-49cb-4ead-a54b-10057ed24149","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":100,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"cea8a295-db65-429a-8ac5-82ef1e738d71","blendMode":0,"displayName":"default","isLocked":false,"name":"cea8a295-db65-429a-8ac5-82ef1e738d71","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"aaaa0320-83fa-4ab7-b560-ee42d8a7c01e","blendMode":0,"displayName":"default","isLocked":false,"name":"aaaa0320-83fa-4ab7-b560-ee42d8a7c01e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_player_mask_crouch",
   "nineSlice":null,
@@ -74,8 +74,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c3d3802a-3fdb-4214-911c-776d197d7bd1","path":"sprites/spr_player_mask_crouch/spr_player_mask_crouch.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"30861285-daf2-488d-8db3-3578f1bc7c62","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b07bd36e-49cb-4ead-a54b-10057ed24149","path":"sprites/spr_player_mask_crouch/spr_player_mask_crouch.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ca6cae57-6ac5-483b-91ab-fc53da4624e6","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

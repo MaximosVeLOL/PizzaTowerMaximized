@@ -1,11 +1,13 @@
 transSettings = {
 	nextRoom : -1,
 	newPos : new Vector(),
-	state : "",
+	//REGION=PlayerTrans
+	//state : "",
 };
 enum Gamemode {
 	None = 0,
-	
+	TimeAttack,
+	Sandbox
 }
 level = {
 	pizzakin : {
@@ -17,6 +19,7 @@ level = {
 	},
 	lap : 0,
 	time : 340, //5:40
+	//Always set to none if we aren't in a level!
 	index : LevelIndex.None,
 	//If we are not in a save
 	demo : false,
@@ -32,17 +35,31 @@ level = {
 			pineapple : false,
 		};
 		self.lap = 0;
-		self.time = 0;
+		self.time = -1;
 		self.index = LevelIndex.None;
 		self.demo = false;
 		self.timer = 0;
 		self.score = 0;
 	},
+	//If we have started the level so we can update the timer for gamemodes and misc
+	update : false,
+	toggleTimer : function() {
+		self.update = !self.update;
+		//Automatically skips the exists check, so do this
+		with(o_PizzaTimeManager) paused = !paused;
+	},
 };
 #macro TIME_BASE (1/game_get_speed(gamespeed_fps))
 #macro PLAYER_TOUCHING_IMAGE place_meeting(x + image_xscale, y, o_C_Wall)
 #macro IMAGE_COMPLETE (round(image_index) == image_number)
-mode = "none";
+//Global state of the game
+enum GameState {
+	//When doing nothing important (why do we exist then?)
+	None = 0,
+	//When doing game actions (so we can pause)
+	Game = 1,
+}
+mode = GameState.None;
 
 /*
 exception_unhandled_handler(function(ex) {
@@ -61,18 +78,31 @@ exception_unhandled_handler(function(ex) {
 });*/
 
 
-startLevel = function(data) {
-	data = GetLevelInfo(data);
-	level.time = data.newTime;
-	if(instance_exists(o_Player) ) o_GameManager.gotoRoom(data.targetRoom, data.newPos, true, data.newSong, data.loopData);
+startLevel = function(pIndex, pDoPrompt = true) {
+	LevelPrecacheTextures(pIndex);
+    //data = GetLevelInfo(data);
+	//level.time = data.newTime;
+	level.index = pIndex;
+	//o_Camera.setupLevelTransition();
+	if(pDoPrompt) {
+		instance_deactivate_all(true);
+		instance_create_depth(0, 0, 0, o_UI_GamemodePrompt);
+		return;
+	}
+	
+	
+	//if(instance_exists(o_Player) ) gotoRoom(data.targetRoom, data.newPos, true, data.newSong, data.loopData);
+	/*
 	else { //Leftover from when we went from the disclaimer to the level directly.
 		room_goto(data.targetRoom);
 		if(instance_exists(o_MusicManager)) o_MusicManager.playNewSong(data.newSong, data.loopData);
 		instance_create_depth(data.newPos.x, data.newPos.y, -10, o_Player);
 		
 	}
-	level.index = data.index;
-	mode = "game";
+	*/
+	//level.index = data.index;
+	//Not needed since we already have it set
+	//mode = GameState.Game;
 }
 restartLevel = function() {
 	ResetLevel(level.index);
@@ -85,7 +115,7 @@ restartLevel = function() {
 		o_MusicManager.stopMusic(true);
 		o_MusicManager.playNewSong(data.newSong, data.loopData);
 	}
-	o_Player.setState("door");
+	o_Player.setState(PlayerState.Door);
 	o_Player.tempVar[0] = 1;
 };
 returnToMenu = function() {
@@ -95,54 +125,42 @@ returnToMenu = function() {
 		instance_destroy(Net_o_Client)
 	o_GameManager.level.demo = true;
 	o_GameManager.goToHub();
-	mode = "none";
+	mode = GameState.None;
 }
-goToHub = function() {
-	if(level.demo && !IS_NETWORKING) {
-		//instance_destroy(o_Camera);
-		//instance_destroy(o_Player);
-		if(instance_exists(o_MusicManager)) 
-			o_MusicManager.playNewSong(music_mainmenu);
-		with(all) {
-			if(persistent && object_index != o_GameManager && object_index != o_MusicManager && object_index != o_DEBUG_Console) {
-				instance_destroy();
-				Log("Destroyed " + object_get_name(object_index));
+//gameHasStarted - Have we already started the game up? (true - yes)
+goToHub = function(gameHasStarted = true) {
+	if(gameHasStarted) {
+		level.reset();
+		
+		if(level.demo && !IS_NETWORKING) {
+			//instance_destroy(o_Camera);
+			//instance_destroy(o_Player);
+			if(instance_exists(o_MusicManager)) 
+				o_MusicManager.playNewSong(music_mainmenu);
+			with(all) {
+				if(persistent && object_index != o_GameManager && object_index != o_MusicManager && object_index != o_DEBUG_Console) {
+					instance_destroy();
+					Log("Destroyed " + object_get_name(object_index));
+				}
 			}
+			room_goto(Room_MainMenu);
+			level.demo = false;
+			mode = GameState.None;
+			return;
 		}
-		room_goto(Room_MainMenu);
-		level.demo = false;
-		mode = "none";
-		return;
+		
+		instance_activate_object(o_Player);
+		instance_activate_object(o_Camera);
 	}
-	//Determine if we have -1 remembered count
-	if(global.settings.multiplayer.enabled && o_MultiplayerHandler.rememberedCount == -1) {
-		o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
+	else {
+		mode = GameState.Game;
 	}
-	if(!global.settings.multiplayer.enabled && !instance_exists(o_Player))
-		instance_create_depth(256, 658, 0, o_Player);
-	if(global.settings.multiplayer.enabled && o_MultiplayerHandler.rememberedCount > 0) {
-		for(var i = 0 ; i < o_MultiplayerHandler.rememberedCount;i++) {
-			o_MultiplayerHandler.AddPlayer(new Vector(256, 658));
-		}
+	//This was when we used the music manager to play the main menu music, but we don't do it anymore, what should we do?
+	with(o_MusicManager) {
+		stopMusic(true);
+		playNewSong(music_demoroom);
 	}
-	//instance_create_depth(256, 658, 0, o_Player);
-	o_GameManager.level.score = 0; //o_GameManager.level.score is used in the rank screen, so reset it here.
-	level.pizzakin.shroom = false;
-	level.pizzakin.cheese = false;
-	level.pizzakin.tomato = false;
-	level.pizzakin.sausage = false;
-	level.pizzakin.pineapple = false;
-	level.time = -1;
-	level.lap = 0;
-	mode = "game";
 	room_goto(Room_DemoRoom);
-	
-	if(instance_exists(o_MusicManager)) {
-		o_MusicManager.stopMusic(true);
-		o_MusicManager.playNewSong(music_demoroom);
-	}
-	else instance_create_depth(0,0,0,o_MusicManager).playNewSong(music_demoroom);
-	room_instance_add(Room_DemoRoom, 0,0,o_Camera);
 }
 
 endLevel = function(win = false, instantly = false) {
@@ -155,18 +173,19 @@ endLevel = function(win = false, instantly = false) {
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
 	SaveLevelInfo();
 	//Both do the same thing, but the multiplayer handles the systems.
-	if(global.settings.multiplayer.enabled) o_MultiplayerHandler.RemoveAllPlayers();
-	else instance_destroy(o_Player);
+	//if(global.settings.multiplayer.enabled) o_MultiplayerHandler.RemoveAllPlayers();
+	
 	//instance_deactivate_object(o_Player);
 	instance_destroy(o_Le_Pizzakin);
-	mode = "none";
-	o_GameManager.level.score = 0;
+	mode = GameState.None;
+	//o_GameManager.level.score = 0;
 	ResetLevel(level.index);
 	if(instantly) {
 		goToHub();
 	}
 	else {
-		instance_destroy(o_Camera);
+		instance_deactivate_object(o_Camera);
+		instance_deactivate_object(o_Player);
 		room_instance_add(Room_Empty, 0, 0, ( win ? o_UI_Rank : o_UI_GameOver) );
 		room_goto(Room_Empty);
 	}
@@ -181,7 +200,7 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 		LogError("Invalid Room!");
 		o_Player.x = o_Player.xstart;
 		o_Player.y = o_Player.ystart;
-		o_Player.setState("normal");
+		o_Player.setState(PlayerState.Normal);
 		return;
 	}
 	if(!isDoorTrans) {

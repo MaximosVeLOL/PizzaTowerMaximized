@@ -1,5 +1,5 @@
 event_inherited();
-if(!thrown && (state == "walk" || state == "idle" || state == "turn")) {
-	setState("throw");
+if(!thrown && other.state != PlayerState.Bomb && (state == EnemyState.Walk || state == EnemyState.Idle || state == EnemyState.Turn)) {
+	setState(EnemyState.Custom);
 	image_xscale = other.xscale;
 }

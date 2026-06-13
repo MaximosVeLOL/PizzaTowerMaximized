@@ -1,4 +1,4 @@
-GetAsTime(o_GameManager.level.time);
+var text = GetAsTime(o_GameManager.level.time);
 
 
 

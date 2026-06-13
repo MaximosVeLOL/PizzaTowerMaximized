@@ -19,7 +19,7 @@ enum DataFlag {
 }
 
 function CreatePlayerPacket(pPacketIn, pID = ID, pX = o_Player.x, pY = o_Player.y, pSpriteIndex = o_Player.sprite_index, pImageIndex = o_Player.image_index, pDirection = o_Player.image_xscale, pRoomIndex = room) {
-	pPacketIn.Reset(0x00);
+	pPacketIn.Reset();
 	pPacketIn.Write(buffer_u8, DataFlag.PlayerData);
 	pPacketIn.Write(buffer_u8, pID);
 	pPacketIn.Write(buffer_u16, pY);
@@ -105,7 +105,7 @@ function Packet() constructor {
 	Send = function(targetSocket) {
 		//buffer_seek(data, buffer_seek_start, 0);
 		network_send_packet(targetSocket, data, PACKET_LENGTH);
-		Reset(0);
+		Reset();
 	}
 }
 

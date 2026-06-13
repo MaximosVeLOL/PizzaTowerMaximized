@@ -3,8 +3,6 @@ event_inherited();
 selectedObject = noone;
 depth = 99;
 //gridSize = 32;
-//When placing tiles
-useFG = false;
 mode = 0;
 /*
 	 0 - Object Placement
@@ -14,6 +12,10 @@ mode = 0;
 	 4 - Export
 	 5 - Exit
 */
+tileMode = {
+	layer : 0,
+	index : 0,
+};
 
 //Room index for exporting/importing
 rmIndex = 0;
@@ -79,15 +81,16 @@ function GetObjectTouching(usePosition = true) {
 			return 
 	}
 	*/
-	var _x = Grid(mouse_x);
-	var _y = Grid(mouse_y);
+
 	with(o_LevelObject) {
 		if(usePosition) {
-			if(x == o_LevelEditor.Grid(mouse_x) && y == o_LevelEditor.Grid(mouse_y)) {
+			if(x == Grid(mouse_x) && y == Grid(mouse_y)) {
 				return id;
 			}
 		}
 		else {
+			var _x = mouse_x;
+			var _y = mouse_y;
 			if(_x >= bbox_left && _x <= bbox_right && _y >= bbox_top && _y <= bbox_bottom) {
 				return id;
 			}
@@ -118,9 +121,10 @@ createRoom = function(width = 960, height = 540, backgroundSprite = sprite_edito
 	layer_set_target_room(_room);
 	//Create all the layers
 	layer_create(0, "FG");
-	layer_create(100, "BG");
-	layer_create(200, "Instances");
-	var bg = layer_background_create(layer_create(100, "Background"), backgroundSprite);
+	layer_create(100, "MG");
+	layer_create(200, "BG");
+	layer_create(300, "Instances");
+	var bg = layer_background_create(layer_create(400, "Background"), backgroundSprite);
 	layer_background_htiled(bg, true);
 	layer_background_vtiled(bg, true);
 	layer_tilemap_create("FG", 0, 0, tileset_tower, 11, 10);
@@ -138,6 +142,9 @@ ShowError = function(type, _message) {
 	//var o = instance_create_depth()
 	
 	MaxGUI_CreateAlert(offset[0] + 320, offset[1] + 240, 14, 9, "An error has occured!\n" + _message);
+};
+ShowPrompt = function(_message, promptCode) {
+
 }
 
 SetupLevel = function() {
@@ -199,7 +206,6 @@ ImportLevel = function(fileName) {
 	
 	Log("Project name: " + projectName);
 	*/
-	return;
 	var roomList = MaxGUI_FindElement("lE_L");
 	//256/5 = (32 [sprite height] * 8 [yscale]) / 5 [squish to fit]
 	var roomAmount = buffer_read(inBuffer, buffer_u8);
@@ -231,6 +237,7 @@ ImportLevel = function(fileName) {
 	buffer_delete(inBuffer);
 }
 editObject = noone;
+/*
 if(room == Test) {
 	var inst = instance_create_depth(20, 20, 0, o_LevelObject, {ID : o_Le_Transition});
 	instance_create_depth(200, 200, 0, o_MaxGUI_E_PropertyEditor, {targetObject : inst, alignedToGUI : false});
@@ -240,5 +247,6 @@ if(room == Test) {
 	createRoom(960, 540, background_BGT);
 	createRoom(960, 540, background_BGT);
 }
+*/
 if(levelToPlay != "none")
 	ImportLevel(levelToPlay);

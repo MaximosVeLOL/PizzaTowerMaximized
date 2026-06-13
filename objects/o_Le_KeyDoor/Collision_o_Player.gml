@@ -1,6 +1,6 @@
 //Refactored with key stuff too!
 with(other) {
-	if(state == "door") {
+	if(state == PlayerState.Door) {
 		if(IMAGE_COMPLETE && !instance_exists(o_UI_DoorTrans) && !instance_exists(o_UI_DoorWin)) {
 			show_message("PreETB: " + string(other.isPreETBDoor));
 			if(global.settings.player.moveSet == Moveset.PreETB && other.isPreETBDoor) {
@@ -20,7 +20,7 @@ with(other) {
 		if(GetInput("up", 1, playerID)) {
 			if(PLAYER_GROUNDED && velocity.x == 0 && (global.settings.multiplayer.enabled ? GetPlayer(0).inventory.key : o_Player.inventory.key)) {
 				//With all players
-				o_Player.setState("door");
+				o_Player.setState(PlayerState.Door);
 				o_Player.tempVar[0] = 2; //M_OPTI - Wasting CPU cycles.settings..
 				o_Player.x = other.x;
 				//Whatevers

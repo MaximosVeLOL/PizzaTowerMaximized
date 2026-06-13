@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"TextureG_Level\", \"path\":\"texturegroups/TextureG_Level\" }",
+      "textureGroupId":"{ \"name\":\"tgUnused\", \"path\":\"texturegroups/tgUnused\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -96,8 +96,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Level",
-    "path":"texturegroups/TextureG_Level",
+    "name":"tgLevel",
+    "path":"texturegroups/tgLevel",
   },
   "type":0,
   "VTile":false,

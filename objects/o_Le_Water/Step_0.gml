@@ -2,18 +2,18 @@
 for(var i = 0 ; i < instance_number(o_Player);i++) {
 	var plr = GetPlayer(i);
 	//BUG - This causes the child to not get destroyed, and the player gets stuck in the child. (Ayo?)
-	//if(plr.state == "barrel") {
+	//if(plr.state == PlayerState.Barrel) {
 	//	continue;
 	//}
 	if(plr.bbox_right < bbox_left || plr.bbox_left > bbox_right) {
-		if(pushDir != 0 && plr.state == "slip") plr.setState("normal");
+		if(pushDir != 0 && plr.state == PlayerState.Slip) plr.setState(PlayerState.Normal);
 		continue;
 	}
 	if(!someoneOnTop) {
 		if(plr.bbox_bottom <= bbox_top) {
 			plr.isUnderwater = false;
 			plr.depth = -10;
-			if( plr.state == "mach2" || plr.state == "mach3" || plr.state == "machfreefall") {
+			if( plr.state == PlayerState.Mach2 || plr.state == PlayerState.Mach3 || plr.state == PlayerState.MachFreefall) {
 				if(child == noone)
 					child = instance_create_depth(x, y, 0, o_C_Wall, {image_xscale : self.image_xscale, image_yscale : self.image_yscale});
 			}
@@ -30,7 +30,7 @@ for(var i = 0 ; i < instance_number(o_Player);i++) {
 				child = noone;
 			}
 			if(plr.velocity.y >= 0 && !plr.isUnderwater) {
-				if(plr.state != "freefall" && plr.state != "barrel") plr.velocity.y = 0;
+				if(plr.state != PlayerState.Freefall && plr.state != PlayerState.Barrel) plr.velocity.y = 0;
 				plr.isUnderwater = true;
 				plr.depth = -1;
 			}
@@ -39,8 +39,8 @@ for(var i = 0 ; i < instance_number(o_Player);i++) {
 	}
 	else {
 		if(plr.bbox_top >= bbox_top && plr.bbox_bottom < bbox_bottom) {
-			if(pushDir != 0 && plr.state != "slip") {
-				plr.setState("slip");
+			if(pushDir != 0 && plr.state != PlayerState.Slip) {
+				plr.setState(PlayerState.Slip);
 				plr.xscale = -pushDir;
 				plr.movespeed = pushDir * 15;
 			}
@@ -59,8 +59,8 @@ ForEachPlayer(function(i, plr) {
 	}
 	if(plr.bbox_bottom > bbox_top) {
 		if(!someoneOnTop) {//We are the top piece
-			if(!plr.isUnderwater && plr.state != "barrel") {
-				if(plr.state != "freefall" && plr.velocity.y > 0.5) {
+			if(!plr.isUnderwater && plr.state != PlayerState.Barrel) {
+				if(plr.state != PlayerState.Freefall && plr.velocity.y > 0.5) {
 					plr.velocity.y = 0;
 					CreateEffect({x : plr.x, y : plr.y, sprite_index : sprite_effect_landcloud});
 					PlaySound(sound_splash, true);
@@ -71,8 +71,8 @@ ForEachPlayer(function(i, plr) {
 		}
 		else if(pushDir != 0) {
 			plr.xscale = -pushDir;
-			//if(plr.state == "barrel") instance_create(plr.x, plr.y, o_Le_BarrelFloat);
-			if(plr.state != "slip") plr.setState("slip");
+			//if(plr.state == PlayerState.Barrel) instance_create(plr.x, plr.y, o_Le_BarrelFloat);
+			if(plr.state != PlayerState.Slip) plr.setState(PlayerState.Slip);
 			plr.movespeed = 15 * pushDir; //The player moves backwards, so negate it so we move forward, and look backwards
 			
 		}
@@ -81,7 +81,8 @@ ForEachPlayer(function(i, plr) {
 		if(!someoneOnTop) {
 			plr.isUnderwater = false;
 			plr.depth = -10;
-			if((plr.state == "mach3" || plr.state == "mach2" || plr.state == "machfreefall" || plr.state == "machslide" && plr.movespeed >= 10)) {
+			//if((plr.state == PlayerState.Mach1 || plr.state == PlayerState.Mach2 || plr.state == PlayerState.Mach3 || plr.state == PlayerState.MachFreefall || plr.state == PlayerState.MachSlide && plr.movespeed >= 10)) {
+			if(PlayerIsMachState(plr.state, plr.movespeed)) {
 				if(child == noone) {
 					child = instance_create(x, y, o_C_Wall, {image_xscale : self.image_xscale});
 					destroyIt = false;

@@ -7,10 +7,10 @@ if(PLAYER_GROUNDED) {
 		
 		plr = instance_place(x - 5, y, o_Player);
 		if(plr == noone) plr = instance_place(x + 5, y, o_Player);
-		if(plr.state != "mach1" && plr.state != "mach2" && plr.state != "mach3") return;
+		if(plr.state != PlayerState.Mach1 && plr.state != PlayerState.Mach2 && plr.state != PlayerState.Mach3) return;
 		PlaySound(sfx_bump);
 		//CreateEffect({sprite_index : sprite_effect_bump}); This is Pre-ETB! There are no effects yet.
-		plr.setState("hump");
+		plr.setState(PlayerState.Hump);
 		PlaySound(sfx_bump);
 		//plr.velocity.y = -6;
 		velocity.x = 3 * o_Player.xscale;
@@ -27,7 +27,7 @@ else if(place_meeting(x,y - (sprite_height / 2), o_Le_Water)) {
 
 if(place_meeting(x, bbox_top - 2, o_Player) && usable) {
 	plr = instance_place(x, bbox_top - 2, o_Player);
-	plr.setState("barrel");
+	plr.setState(PlayerState.Barrel);
 	Deactivate();
 }
 

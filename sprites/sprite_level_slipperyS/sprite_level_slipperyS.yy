@@ -8,6 +8,11 @@
   "bbox_top":12,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"tgLevel2\", \"path\":\"texturegroups/tgLevel2\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

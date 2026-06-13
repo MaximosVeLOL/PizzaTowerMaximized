@@ -1,6 +1,18 @@
 {
   "$GMHtml5Options":"",
   "%Name":"HTML5",
+  "ConfigValues":{
+    "Debug":{
+      "option_html5_loadingbar":"use_default",
+      "option_html5_index":"use_default",
+      "option_html5_outputname":"ptm.html",
+      "option_html5_foldername":"ptm",
+      "option_html5_browser_title":"Pizza Tower: Maximized",
+      "option_html5_webgl":"0",
+      "option_html5_interpolate_pixels":"false",
+      "option_html5_usebuiltinparticles":"false",
+    },
+  },
   "name":"HTML5",
   "option_html5_allow_fullscreen":true,
   "option_html5_browser_title":"Created with GameMaker",

@@ -1,6 +1,11 @@
-if(other.state != "hurt" && other.state != "tackle") { //Hump hump hump!
-	if(state != "stun") {
-		if(other.state == "jump" && other.velocity.y > 0) {
+if(other.state != PlayerState.Hurt && other.state != PlayerState.Hump) { //Hump hump hump!
+	if(isStunned) {
+		if(other.state == PlayerState.Mach3 || other.state == PlayerState.Mach2) {
+			die();
+		}
+	}
+	else {
+		if(other.state == PlayerState.Jump && other.velocity.y > 0) {
 			other.velocity.y = -7;
 			other.tempVar[1] = true;
 			PlaySound(sfx_boing);
@@ -16,12 +21,8 @@ if(other.state != "hurt" && other.state != "tackle") { //Hump hump hump!
 		other.velocity.x = newV;
 		other.velocity.y = -3;
 		state = "stun";
-		tempVar[0] = (other.state != "mach3" && other.state != "mach2");
+		tempVar[0] = (other.state != PlayerState.Mach3 && other.state != PlayerState.Mach2);
 		other.setState("bump");
 		PlaySound(sfx_bump);
-		
-	}
-	else if(other.state == "mach3" || other.state == "mach2") {
-		die();
 	}
 }

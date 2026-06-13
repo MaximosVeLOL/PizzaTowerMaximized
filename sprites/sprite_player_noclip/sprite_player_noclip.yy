@@ -88,8 +88,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"TextureG_Peppino",
-    "path":"texturegroups/TextureG_Peppino",
+    "name":"tgPeppino",
+    "path":"texturegroups/tgPeppino",
   },
   "type":0,
   "VTile":false,

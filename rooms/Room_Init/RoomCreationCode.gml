@@ -1,10 +1,67 @@
 randomize();
 enum FPSSaveMode {
-	None = -1,
+	None = 0,
 	UselessRemover,
 	VisualRemover,
 	OnlyTheNeccessary,
 }
+global.game = {
+    states : {
+        plr : [
+			//Pre-ETB states 
+			[],
+			//ETB states
+			[
+				Player_State_ETB_Normal,
+				Player_State_ETB_Jump,
+				//Mach related states
+				Player_State_ETB_Mach1,
+				Player_State_ETB_Mach2,
+				Player_State_ETB_Mach3,
+				Player_State_ETB_MachSlide,
+				Player_State_ETB_CrouchSlide,
+				Player_State_ETB_MachRoll,
+				Player_State_ETB_MachFreefall,
+				Player_State_ETB_Bump,
+				//end
+				Player_State_Any_Noclip,
+				Player_State_ETB_SuperJump,
+				Player_State_ETB_HighJump,
+				Player_State_ETB_Crouch,
+				Player_State_ETB_Freefall,
+				
+				Player_State_ETB_SuperSlam,
+				Player_State_ETB_Ladder,
+				Player_State_ETB_Transition,
+				Player_State_ETB_Door,
+				Player_State_ETB_Enemy,
+				Player_State_ETB_Key,
+				Player_State_ETB_Knight,
+				Player_State_ETB_Hurt,
+				Player_State_ETB_Bomb,
+				Player_State_ETB_Treasure,
+				
+			    Player_State_ETB_Slip,
+			    Player_State_ETB_Barrel,
+			    Player_State_ETB_Hump,
+			]
+		],
+        enem : [
+			Script_Enemy_ETB_Idle,
+			Script_Enemy_ETB_Turn,
+		    Script_Enemy_ETB_HitSpecial,
+		    Script_Enemy_ETB_Rolling,
+		    Script_Enemy_ETB_Walk,
+		    Script_Enemy_ETB_Land,
+		    Script_Enemy_ETB_Hit,
+		    Script_Enemy_ETB_Stunned,
+		    Script_Enemy_ETB_Grabbed,
+		    Script_Enemy_ETB_Fly,
+		],
+    },
+    //states : array_create(Moveset.Last, [])   
+};
+
 global.settings = {
 	keyBinds : {
 		p0 : {
@@ -23,7 +80,7 @@ global.settings = {
 				jump : gp_face1,
 				dash : gp_face3,
 				shoot : gp_shoulderlb,
-			}
+			},
 		},
 		p1: {
 			up : ord("W"),
@@ -98,6 +155,7 @@ global.settings = {
 		//multiplayer : true, //We're back!
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
+		//multipleLaps : false,
 	},
 	player : {
 		moveSet : Moveset.ETB,
@@ -151,42 +209,45 @@ if(false) {
 		instance_create_depth(0, 0, 0,  Net_o_Server);
 		window_set_position(0, 240);
 		//instance_create_depth(0, 0, 0,  o_Client);
-		execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -nigga -nigga")
+		execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -hi -hi")
 	}
 	else if(parameter_count() == 7) {
 		window_set_caption("P2");
 		window_set_position(400, 240);
-		execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -nigga -nigga -nigga")
+		execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -hi -hi -hi")
 		instance_create_depth(0, 0, 0,  Net_o_Client);
 	}
 	else if(parameter_count() == 8) {
 		window_set_caption("P3");
 		window_set_position(900, 240);
-		//execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -nigga -nigga -nigga -nigga -nigga")
+		//execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -hi -hi -hi -hi -hi")
 		instance_create_depth(0, 0, 0,  Net_o_Client);
 	}
 	else {
 		window_set_caption("P4");
-		//execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -nigga -nigga -nigga -nigga -nigga")
+		//execute_shell_simple(parameter_string(0), "-game " + parameter_string(2) + " " + "-secondary -tertiary -hi -hi -hi -hi -hi")
 		instance_create_depth(0, 0, 0,  Net_o_Client);
 	}
 	return;
 }
 */
 if(false) {
-	room_instance_add(Room_Empty, 0, 0, o_UI_NewList);
+	room_instance_add(Room_Empty, 0, 0, o_UI_Settings);
 	room_goto(Room_Empty);
 	return;
 }
-if(true) {
+if(false) {
 	//gc_enable(false);
 	room_goto(Room_Beginning);
+	show_debug_overlay(true);
+	//show_debug_overlay(true, false);
 	return;
 }
-if(global.settings.gameplay.debugEnabled && false) {
+if(global.settings.gameplay.debugEnabled) {
 	var DEBUG_STARTUP = {
 		startInLevelEditor : false,
 		startInStartingRoom : false,
+		instantStartUp : true,
 		startUpRoom : Room_FeatureTest,
 		startUpPos : [/*2167*/200, 100],
 	};
@@ -194,15 +255,16 @@ if(global.settings.gameplay.debugEnabled && false) {
 	instance_create_depth(0,0,0,o_DEBUG_Console);
 	show_debug_overlay(true, true);
 	if(DEBUG_STARTUP.startInLevelEditor) {
-		room_goto(Room_LevelEditor_Menu);
+		//room_goto(Room_LevelEditor_Menu);
+		room_goto(Room_LevelEditor);
 		//room_goto(Test);
 	}
-	else if(DEBUG_STARTUP.startInStartingRoom) {
+	if(DEBUG_STARTUP.startInStartingRoom) {
 		room_goto(DEBUG_STARTUP.startUpRoom);
 		//var instances = [o_GameManager, o_MultiplayerHandler, o_MusicManager, o_Camera];
 		//var instances = [o_GameManager, o_MusicManager, o_Camera];
 		//for(var i = 0 ; i < array_length(instances);i++) if(!instance_exists(instances[i])) instance_create_depth(0,0,0,instances[i]);
-		o_GameManager.mode = "game";
+		o_GameManager.mode = GameState.Game;
 		if(global.settings.multiplayer.enabled) {
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1]));
 			o_MultiplayerHandler.AddPlayer(new Vector(DEBUG_STARTUP.startUpPos[0] + 10, DEBUG_STARTUP.startUpPos[1]));
@@ -211,13 +273,16 @@ if(global.settings.gameplay.debugEnabled && false) {
 		}
 		else instance_create_depth(DEBUG_STARTUP.startUpPos[0], DEBUG_STARTUP.startUpPos[1], 0, o_Player);
 	}
-	else room_goto(Room_Disclaimer);
-	//instance_create_depth(200, 200, 0, o_ReplaySystem);
-	if(true) {
-		gc_enable(false);
+	if(DEBUG_STARTUP.instantStartUp) {
+		global.settings.saveFileIndex = 0;
+		with(instance_create_depth(960 + 300, 0, 0, o_UI_MainMenu_Pep)) {
+			active = true;
+		}
+		instance_destroy(o_UI_Disclaimer);
+		
 	}
-	return;
+	//else room_goto(Room_Disclaimer);
+	//instance_create_depth(200, 200, 0, o_ReplaySystem);
 }
-room_goto(Net_Room_NetGame);
-//room_goto(Room_Disclaimer);
+//room_goto(Net_Room_NetGame);
 //draw_text(480,270, "INITIALIZATION");

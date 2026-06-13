@@ -2,7 +2,7 @@
 case Moveset.PreETB:
 			switch(state) {
 	
-				case "normal":
+				case PlayerState.Normal:
 					velocity.x = moveX * movespeed;
 					switch(tempVar[0]) {
 						case 0: //walking
@@ -22,7 +22,7 @@ case Moveset.PreETB:
 								sprite_index = spr_player_idle;
 							}
 								if(GetInput("dash", 0, playerID) && !PLAYER_TOUCHING) {
-									setState("mach1", true, true);
+									setState(PlayerState.Mach1, true, true);
 								}
 							if(GetInput("jump", 1, playerID)) {
 								setState("jump");
@@ -71,17 +71,17 @@ case Moveset.PreETB:
 					movespeed = movespeed < 6 ? movespeed + 0.5 : 6;
 					velocity.x = moveX * movespeed;
 					if(!GetInput("jump", 0, playerID) && velocity.y < 0) velocity.y /= 2;
-					if((round(image_index) == image_number || velocity.y > 0) && tempVar[2] == 0) sprite_index = spr[1];
+					if((IMAGE_COMPLETE || velocity.y > 0) && tempVar[2] == 0) sprite_index = spr[1];
 					if(GetInput("down", 0, playerID)) {
-						setState("freefall");
+						setState(PlayerState.Freefall);
 						tempVar[0] = 3;
 						if(velocity.y < 0) velocity.y = 0;
 					}
 					if(PLAYER_GROUNDED) {
 						if(GetInput("dash", 0, playerID))
-							setState("mach1", false);
+							setState(PlayerState.Mach1, false);
 						else {
-							setState("normal");
+							setState(PlayerState.Normal);
 							tempVar[1] = true;
 						}
 					}
@@ -96,7 +96,7 @@ case Moveset.PreETB:
 					}
 				break;
 	
-				case "mach1":
+				case PlayerState.Mach1:
 					CreateEffect({sprite_index : sprite_effect_dashcloud, image_xscale : self.xscale});
 					velocity.x = movespeed * xscale;
 					movespeed += 0.2;
@@ -105,14 +105,14 @@ case Moveset.PreETB:
 					playSound(sfx_mach1);
 					if(GetInput("dash", 2, playerID) || moveX != xscale && moveX != 0 || PLAYER_TOUCHING) {
 						if(moveX != 0 ) xscale = moveX;
-						setState("normal");
+						setState(PlayerState.Normal);
 					}
 					if(tempVar[0] >= 35) {
-						setState("mach2");
+						setState(PlayerState.Mach2);
 					}
 				break;
 	
-				case "mach2":
+				case PlayerState.Mach2:
 					image_speed = 2;
 		
 		
@@ -157,9 +157,9 @@ case Moveset.PreETB:
 					if(movespeed <= 0) {
 						if(moveX != xscale && moveX != 0 && GetInput("dash", playerID)) {
 							xscale = moveX;
-							setState("mach1");
+							setState(PlayerState.Mach1);
 						}
-						else setState("normal");
+						else setState(PlayerState.Normal);
 					}
 		
 				break;
@@ -170,14 +170,14 @@ case Moveset.PreETB:
 					sprite_index = spr_player_bump;
 					tempVar[0] += TIME_BASE;
 					if (tempVar[0] >= 1/3) { //M_OPTI - Is the math correct?
-						setState("normal");
+						setState(PlayerState.Normal);
 						if(moveX != 0) xscale = moveX;
 						if(place_meeting(x,y - 1, o_C_Parent) || place_meeting(x,y,o_C_Parent)) setState("crouch");
 					}
 					movespeed = PLAYER_GROUNDED ? 0 : -2.5;
 				break;
 	
-				case "door": //Directly copied and pasted!
+				case PlayerState.Door: //Directly copied and pasted!
 					switch(tempVar[0]) {
 						case 0:
 							velocity.x = 0;
@@ -189,7 +189,7 @@ case Moveset.PreETB:
 							image_speed = 1;
 							sprite_index = spr_player_door_out;
 							SPRITE_NO_REPEAT;
-							if(round(image_index) == image_number) setState("normal");
+							if(IMAGE_COMPLETE) setState(PlayerState.Normal);
 						break;
 			
 						case 2:
@@ -207,8 +207,8 @@ case Moveset.PreETB:
 						tempVar[0]++;
 					}
 					velocity.x = tempVar[0] < 2 ? 3 * xscale : 0;
-					if(round(image_index) == image_number) {
-						setState("normal");
+					if(IMAGE_COMPLETE) {
+						setState(PlayerState.Normal);
 						stunStuff.invincibleFrames = 200;
 					}
 					if(tempVar[1] != 0 || global.settings.gameplay.goonerMode) {
@@ -223,11 +223,11 @@ case Moveset.PreETB:
 					if(PLAYER_TOUCHING) xscale *= -1;
 				break;
 	
-				case "ladder":
+				case PlayerState.Ladder:
 					mass = 0;
 					velocity.x = 0;
 					tempVar[1]++;
-					if((!place_meeting(x,y, o_Le_Ladder) || PLAYER_GROUNDED) && tempVar[1] > 10) setState("normal");
+					if((!place_meeting(x,y, o_Le_Ladder) || PLAYER_GROUNDED) && tempVar[1] > 10) setState(PlayerState.Normal);
 					switch(moveY) {
 						case -1: //Up
 							velocity.y = -2;
@@ -266,7 +266,7 @@ case Moveset.PreETB:
 						case 0:
 							if(!animVar) {
 								sprite_index = spr_player_crouch;
-								if(round(image_index) == image_number) animVar = true;
+								if(IMAGE_COMPLETE) animVar = true;
 							}
 							else sprite_index = spr_player_crouching;
 							if(moveX != 0) {
@@ -275,7 +275,7 @@ case Moveset.PreETB:
 							}
 							if(!place_meeting(x,y - 1, o_C_Wall)) {
 								if(!GetInput("down", 0, playerID)) {
-									setState("normal");
+									setState(PlayerState.Normal);
 									mask_index = spr_player_mask;
 								}
 								if(GetInput("jump", 1, playerID)) {
@@ -294,7 +294,7 @@ case Moveset.PreETB:
 							mask_index = spr_player_mask_crouch;
 							if(!animVar) {
 								sprite_index = spr_player_crouch_jumping;
-								if(round(image_index) == image_number || velocity.y > 0) animVar = true;
+								if(IMAGE_COMPLETE || velocity.y > 0) animVar = true;
 							}
 							else sprite_index = spr_player_crouch_falling;
 				
@@ -308,7 +308,7 @@ case Moveset.PreETB:
 					}
 				break;
 	
-				case "freefall":
+				case PlayerState.Freefall:
 					velocity.x = 0;
 					switch(tempVar[0]) {
 						case 0:
@@ -324,7 +324,7 @@ case Moveset.PreETB:
 						case 2:
 							sprite_index = spr_player_freefall_impact;
 							if(IMAGE_COMPLETE) {
-								setState("normal");
+								setState(PlayerState.Normal);
 								if(moveX != xscale && moveX != 0) xscale = moveX;
 							}
 						break;
@@ -358,14 +358,14 @@ case Moveset.PreETB:
 				break;
 	
 	
-				case "slip":
+				case PlayerState.Slip:
 					image_speed = 1;
 					if(sprite_index != spr_player_slip) 
 						sprite_index = spr_player_slip;
 					playSound(sfx_slide);
 					velocity.x = movespeed * xscale;
 					movespeed -= 0.2;
-					if(movespeed <= 0) setState("normal");
+					if(movespeed <= 0) setState(PlayerState.Normal);
 					if(PLAYER_TOUCHING) {
 						setState("bump");
 					}
@@ -373,11 +373,11 @@ case Moveset.PreETB:
 	
 				default:
 					show_message("State not implemented! State: " + state);
-					setState("normal");
+					setState(PlayerState.Normal);
 				break;
 				
 				
-				case "barrel":
+				case PlayerState.Barrel:
 					var touchingWater = place_meeting(x, y - 23, o_Le_Water);
 					switch(tempVar[0]) {
 						case 0: //Normal
@@ -497,7 +497,7 @@ case Moveset.PreETB:
 				case "hump": //Such a simple state.
 					sprite_index = spr_player_hump;
 					SPRITE_NO_REPEAT;
-					if(IMAGE_COMPLETE) setState("normal");
+					if(IMAGE_COMPLETE) setState(PlayerState.Normal);
 				break;
 			}
 		break;

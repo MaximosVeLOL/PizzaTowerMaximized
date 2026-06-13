@@ -3,7 +3,7 @@ function Vector(_x = 0, _y = 0) constructor {
 	y = _y;
 }
 
-#macro IS_DEBUGGING (os_get_config() == "Debug")
+
 
 
 //#macro BASE_DIRECTORY "%localappdata%/Pizza_Tower/MaximizedGM2"
@@ -12,12 +12,13 @@ function instance_create(x, y, object, var_struct = {}) {
 	return instance_create_layer(x, y, (layer == -1 ? layer_get_id("Instances") : layer), object, var_struct);
 }
 
-function GetAsTime(val) {
+function GetAsTime(val, showMili = false) {
 	var text = "";
 	var minutes = floor(val / 60);
 	var seconds = round(val % 60);
 	//Avoid doing calculations again? I don't know if thats how computers work.
-	if(seconds == 60) seconds = 0;
+	if(seconds == 60)
+        seconds = 0;
 	text += minutes < 1 ? "0" : string(minutes);
 	text += seconds < 10 ? ":0" + string(seconds) : ":" + string(seconds);
 	return text;
@@ -45,54 +46,54 @@ function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false
 	if(!loop) audio_sound_gain(aud, global.settings.audio.sfxVolume / 100, 0);
 	return aud;
 }
-function GetInput(reqKey, inputType = 0, reqPlayer = 0) {
+#macro I_WENTDOWN 1
+#macro I_DOWN 0
+#macro I_WENTUP 2
+
+//Web builds have no good features
+#macro IS_WEB_BUILD (os_type == os_operagx || os_browser != browser_not_a_browser)
+//GML natively supports windows, so we have to do this in order to maintain compatability between others
+#macro IS_WINDOWS (os_type == os_windows)
+
+function GetInput(pInputCode, pInputState = I_DOWN, pProfileIndex = 0) {
+	//The name of the key
+	//Woah
+	return [keyboard_check, keyboard_check_pressed, keyboard_check_released][pInputState](variable_struct_get(variable_struct_get(global.settings.keyBinds, "p" + string(pProfileIndex)), pInputCode));
+}
+
+
+
+/*function GetInput(reqKey, inputType = 0, reqPlayer = 0) {
 	var s = variable_struct_get(global.settings.keyBinds, "p" + string(reqPlayer));
 	//show_message(s);
 	//Log(string(s));
 	//Log(string(reqPlayer));
+	
+	var ret = false;
+	
 	switch(inputType) {
 		case 0:
-			return keyboard_check(variable_struct_get(s, reqKey)) || gamepad_button_check(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			ret = keyboard_check(variable_struct_get(s, reqKey)) || 
+				gamepad_button_check(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 		
 		case 1:
-			return keyboard_check_pressed(variable_struct_get(s, reqKey)) || gamepad_button_check_pressed(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			ret = keyboard_check_pressed(variable_struct_get(s, reqKey)) || gamepad_button_check_pressed(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 		
 		case 2:
-			return keyboard_check_released(variable_struct_get(s, reqKey)) || gamepad_button_check_released(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
+			ret = keyboard_check_released(variable_struct_get(s, reqKey)) || gamepad_button_check_released(reqPlayer, variable_struct_get(variable_struct_get(s, "gamepad"), reqKey));
 		break;
 	}
+	return
 	throw("Que?"); //We will never get to this point, unless the input type isn't set correctly
-}
-function LogError(_message, crash = false) {
-	//if(!global.settings.gameplay.debugEnabled) return;
-	Log("LogError Message: " + _message);
-	show_message("From object id " + string(id) + " (" + object_get_name(object_index) + ")\n" + _message);
-	if(crash) throw("LogError Automatic Crash!");
-}
+}*/
 function StrCat() {
 	var s = "";
 	for(var i = 0 ; i < argument_count;i++) {
 		s += string(argument[i]) + ", ";
 	}
 	return s;
-}
-function Log(_message) { // 0 1 2 3 (size = 4)
-	if(!instance_exists(o_DEBUG_Console)) return;
-	
-	
-	
-	var log = "(" + string(get_timer() / 1_000_000) ;
-	if(false) log += ", " + StrCat(room, _GMFILE_, _GMFUNCTION_, _GMLINE_ );
-	log += ") : " + _message;
-		if(array_length(o_DEBUG_Console.logs) > 1 && log == o_DEBUG_Console.logs[array_length(o_DEBUG_Console.logs) - 1]) return; //This would always fail, because we add extra information to it.
-
-	show_debug_message(log);
-	with(o_DEBUG_Console) {
-		array_resize(logs, array_length(logs) + 1);
-		logs[array_length(logs) - 1] = log;
-	}
 }
 
 //https://gmlscripts.com/script/draw_sprite_tiled_area
@@ -132,7 +133,22 @@ function BetterLerp(a, b, c) {
 	return ret;
 }
 
-function Grid(value, grid = 32) {
+function Grid(value, pMethod = 0, grid = 32) {
 	//return round(value / gridSize) * gridSize;
-	return round(value / grid) * grid;
+	return [round, floor, ceil][pMethod](value / grid) * grid;
+}
+
+function TextureGroupEnsureLoaded(pName) {
+    if(texturegroup_get_status(pName) < texturegroup_status_loaded) {
+        throw("(TextureGroupEnsureLoaded) Not loaded! (" + pName + ")");
+    }
+}
+
+function GamepadDetectAny(pPadIndex = 0) {
+	
+	
+	return gamepad_is_connected(pPadIndex) && (gamepad_button_check(pPad, gp_face1) || gamepad_button_check(pPad, gp_face2) || gamepad_button_check(pPad, gp_face3) || gamepad_button_check(pPad, gp_face4) 
+		|| gamepad_button_check(pPad, gp_shoulderl) || gamepad_button_check(pPad, gp_shoulderlb) || gamepad_button_check(pPad, gp_shoulderr) || gamepad_button_check(pPad, gp_shoulderrb)
+		|| gamepad_button_check(pPad, gp_padu) || gamepad_button_check(pPad, gp_padd) || gamepad_button_check(pPad, gp_padl) || gamepad_button_check(pPad, gp_padr)
+	);
 }

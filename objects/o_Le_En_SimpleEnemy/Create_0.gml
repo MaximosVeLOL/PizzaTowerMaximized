@@ -1,12 +1,16 @@
 velocity = new Vector();
 movespeed = 1.5;
 mass = 0.5;
-state = "walk";
+isStunned = false;
 spriteBaseName = "";
 tempVar = [0,0];
-die = function() {
+die = function(canMove = true) {
 	instance_destroy();
-	instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : asset_get_index("sprite_enemy_" + baseSpriteName + "_dead") });
+	if(canMove) instance_create_depth(x,y,0,o_P_DeadEnemy, {sprite_index : spriteDead });
+	else instance_create_depth(x,y,0,o_P_Effect, {sprite_index : spriteDead });
 	PlaySound(sfx_enemykill);
 }
+spriteWalk = -1;
+spriteStun = -1;
+spriteDead = -1;
 depth = 0;

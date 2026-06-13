@@ -1,6 +1,5 @@
 event_inherited();
 
-usingBack = false;
 bgPos = 540;
 depth = -9999;
 var basicAnim = function(pX = 0, pY = 0){return new Screen_Animation(true, new Vector(480 + pX, 0 + pY), IntroType.FromRight);};
@@ -9,7 +8,7 @@ var normalOffset = new Vector(64, 270);
 //function Screen_SettingOption(pName, pType, pEvent, pExplanation) : Option(pName, pType, pEvent) constructor {
 //	explanation = pExplanation;
 //}
-
+backMode = false;
 screens = [
 	new Screen("main", [
 		new Option("Audio", OptionType.Button, "audio"),
@@ -41,8 +40,10 @@ screens = [
 	new Screen("game", [
 		new Option("Debug enabled", OptionType.Toggle, "debugEnabled"),
 		new Option("Gooner mode enabled", OptionType.Toggle, "goonerMode"),
+		//new Option("Allow multiple laps", OptionType.Toggle, "multipleLaps"),
 		new Option("Player settings", OptionType.Button, "player"),
 		new Option("Multiplayer settings", OptionType.Button, "multi"),
+		new Option("Keybind settings", OptionType.Button, function(){instance_deactivate_object(self);instance_create_depth(0, 0, 0, o_UI_KeyEditor);}),
 	], "Gameplay", new Screen_Background(sprite_hud_bg_game, undefined, 1, 1), 1, basicAnim(-64), new Vector(960, 0), normalOffset, global.settings.gameplay),
 	
 	new Screen("player", [
@@ -56,6 +57,7 @@ screens = [
 		new Option("Enabled (Use Multiplayer)", OptionType.Toggle, "enabled"),
 		new Option("Screen Type", OptionType.List, new Screen_List("", [""])),
 		new Option("HUD Type", OptionType.List, new Screen_List("", [""])),
+		new Option("Setup Multiplayer", OptionType.Button, function(){instance_deactivate_object(self);instance_create_depth(0, 0, 0, o_UI_MPSetup)}) 
 	], "Multiplayer", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1, ComicSans), 1, basicAnim(), new Vector(960, 0), normalOffset, global.settings.multiplayer)
 ];
 setAllToUpper();

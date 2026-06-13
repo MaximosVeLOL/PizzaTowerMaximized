@@ -11,11 +11,11 @@
   "compressionQuality":4,
   "ConfigValues":{
     "Debug":{
-      "audioGroupId":"{ \"name\":\"AG_Music\", \"path\":\"audiogroups/AG_Music\" }",
+      "audioGroupId":"{ \"name\":\"audiogroup_default\", \"path\":\"audiogroups/audiogroup_default\" }",
     },
   },
   "conversionMode":0,
-  "duration":168.77426,
+  "duration":0.0,
   "exportDir":"",
   "name":"music_water",
   "parent":{

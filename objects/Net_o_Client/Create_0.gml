@@ -24,7 +24,7 @@ tryConnect = function(ip) {
 
 startDisconnect = function() {
 	waitingForDisconnect = true;
-	packet.Reset(0x00);
+	packet.Reset();
 	packet.Write(buffer_u8, DataFlag.Disconnect);
 	packet.Send(socket);
 }

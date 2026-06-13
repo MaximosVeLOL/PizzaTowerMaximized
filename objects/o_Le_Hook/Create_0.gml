@@ -4,11 +4,11 @@ plrGoFast = false;
 
 destroy = function() {
 	if(plrGoFast) {
-		plr.setState((global.settings.player.moveSet == Moveset.PreETB ? "mach2" : "mach3"));
+		plr.setState((global.settings.player.moveSet == Moveset.PreETB ? PlayerState.Mach2 : PlayerState.Mach3));
 		plr.tempVar[0] = 100;
 	}
 	else {
-		plr.setState("jump");
+		plr.setState(PlayerState.Jump);
 		plr.movespeed = 10;
 	}
 	hooked = false;
