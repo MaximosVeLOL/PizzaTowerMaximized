@@ -67,7 +67,6 @@ function MaxGUI_ShowAssetPicker(pOptions, pOnPick) {
 	groupMaster.Add(instance_create_depth(origin.x + (384 - 352), origin.y + (96 - 64), -25, o_MaxGUI_E_Text, {text : "Pick an asset."}));
 	groupMaster.Add(instance_create_depth(origin.x, origin.y + (192 - 64), -25, o_MaxGUI_E_List, {image_xscale : 8, image_yscale : 9, list : pOptions, onSwitch : pOnPick/*function(i){MaxGUI_FindElement("AssetPickerGroup").Destroy();pOnPick(i);}*/}));
 	groupMaster.Add(instance_create_depth(origin.x + (576 - 352), origin.y, -25, o_MaxGUI_E_Button, {text : "X", onClick : function(){MaxGUI_FindElement("AssetPickerGroup").Destroy();}}));
-	
 }
 function RoundToGrid(val, grid) {
 	return round(val / grid) * grid;

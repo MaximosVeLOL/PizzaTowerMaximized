@@ -33,6 +33,7 @@
         "LevelIndex.ETB_Ancient",
         "LevelIndex.PreETB_Level1",
         "LevelIndex.PreETB_Level2",
+        "LevelIndex.PreETB_Level3",
       ],"multiselect":false,"name":"targetLevel","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"LevelIndex.ETB_Ancient","varType":6,},
   ],
   "resourceType":"GMObject",

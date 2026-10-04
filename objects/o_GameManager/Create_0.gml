@@ -1,3 +1,4 @@
+detectedControllers = array_create(MAX_PLAYERS, 0);
 transSettings = {
 	nextRoom : -1,
 	newPos : new Vector(),
@@ -79,9 +80,93 @@ exception_unhandled_handler(function(ex) {
 
 
 startLevel = function(pIndex, pDoPrompt = true) {
-	LevelPrecacheTextures(pIndex);
-    //data = GetLevelInfo(data);
-	//level.time = data.newTime;
+	Level_PrecacheTextures(pIndex);
+	o_Camera.hudVisible = true;
+	//instance_create_layer(0, 0, "Instances", o_LevelManager, {roomData : GetLevelRoomList(pIndex), mode : 0});
+	var screens = [new Rect(0, 0, S_WIDTH, S_HEIGHT)];
+	
+
+	if(global.settings.multiplayer.enabled && o_MultiplayerHandler.playerCount > 1) {
+		//var c = o_MultiplayerHandler.playerCount;
+		// 0 - Vertical strips (implemented)
+		// 1 - Split screen (implemented)
+		// 2 - Whole screen (NOT implemented)
+		//var h = (S_HEIGHT/c);
+		//TODO - We could move all of this to one (? :) operator, but that wouldn't be good, right?
+		var h = 0;
+		switch(global.settings.multiplayer.cameraType) {
+			case 0:
+				//if(view_wport[0] == 960) return;
+
+				var c = o_MultiplayerHandler.playerCount;
+				screens = array_create(c, new Rect(-1, -1, -1, -1));
+				h = (S_HEIGHT / c);
+				for(var i = 0 ; i < c;i++) {
+					//view_visible[i] = true;
+					screens[i] = new Rect(0, i * h, S_WIDTH, h);
+					//view_wport[i] = 960;
+					//view_hport[i] = h;
+					//view_yport[i] = i * h;
+					//camera_set_view_size(view_camera[i], 960, h);
+					
+				}
+			break;
+		
+			case 1:
+				//if(view_wport[0] == w) return;
+				switch(c) {
+					case 2:
+
+						//Remove for loop and use manual settings
+						screens =  [
+							new Rect(0, 0, S_HWIDTH, S_HEIGHT),
+							new Rect(S_HWIDTH, 0, S_HWIDTH, S_HEIGHT),
+						];
+
+					break;
+				
+					case 3:
+						
+						screens = [
+							new Rect(0, 0, S_HWIDTH, S_HHEIGHT),
+							new Rect(S_HWIDTH, 0, S_HWIDTH, S_HHEIGHT),
+							new Rect(S_WIDTH / 4, S_HHEIGHT, S_HWIDTH, S_HHEIGHT),
+						];
+					break;
+				
+					case 4:
+						
+						screens = [
+							new Rect(0, 0, S_HWIDTH, S_HHEIGHT),
+							new Rect(S_HWIDTH, 0, S_HWIDTH, S_HHEIGHT),
+							new Rect(0, S_HHEIGHT, S_HWIDTH, S_HHEIGHT),
+							new Rect(S_HWIDTH, S_HHEIGHT, S_HWIDTH, S_HHEIGHT),
+							
+						];
+					break;
+				}
+			break;
+		
+			case 2: //Whole screen
+		
+			break;
+		}
+	}
+	
+	var list = Level_GetRoomList(pIndex);
+	var cLength = array_length(screens);
+	var c = noone;
+	for(var i = 0 ; i < array_length(list);i++) {
+		room_set_persistent(list[i], true);
+		room_set_view_enabled(list[i], true);
+		for(var j = 0; j < cLength;j++) {
+			c = screens[j];
+			room_set_viewport(list[i], j, true, c.x, c.y, c.w, c.h);
+			room_set_camera(list[i], j, camera_create_view(0, 0, c.w, c.h));
+		}
+	}
+	o_Player.xscale = (o_Player.x > room_width / 2 ? 1 : -1); 
+    //data = Level_GetInfo(data);
 	level.index = pIndex;
 	//o_Camera.setupLevelTransition();
 	if(pDoPrompt) {
@@ -105,9 +190,9 @@ startLevel = function(pIndex, pDoPrompt = true) {
 	//mode = GameState.Game;
 }
 restartLevel = function() {
-	ResetLevel(level.index);
+	Level_Reset(level.index);
 	instance_destroy(o_Le_Pizzakin);
-	var data = GetLevelInfo(level.index);
+	var data = Level_GetInfo(level.index);
 	room_goto(data.targetRoom);
 	o_Player.x = data.newPos.x;
 	o_Player.y = data.newPos.y;
@@ -171,7 +256,7 @@ endLevel = function(win = false, instantly = false) {
 		//instance_destroy(o_MusicManager);
 	}
 	//instance_create_depth(0,0,0,o_RoomRamOpener);
-	SaveLevelInfo();
+	Level_SaveInfo();
 	//Both do the same thing, but the multiplayer handles the systems.
 	//if(global.settings.multiplayer.enabled) o_MultiplayerHandler.RemoveAllPlayers();
 	
@@ -179,7 +264,7 @@ endLevel = function(win = false, instantly = false) {
 	instance_destroy(o_Le_Pizzakin);
 	mode = GameState.None;
 	//o_GameManager.level.score = 0;
-	ResetLevel(level.index);
+	Level_Reset(level.index);
 	if(instantly) {
 		goToHub();
 	}
@@ -191,15 +276,19 @@ endLevel = function(win = false, instantly = false) {
 	}
 }
 /// @function           gotoRoom(Room_Empty, [0,0], true);
-/// @param {Asset.GMRoom}  _nextRoom  The value to calculate the square of
+/// @param {Asset.GMRoom}  _nextRoom  The index of the room
+/// @param {Asset.GMRoom}  _newPos  The position of the room to goto
+/// @param {Asset.GMRoom}  isDoorTrans  The type of UI transition to use, true = door, false = regular fade
+/// @param {Asset.GMRoom}  _newSong The song to play when going into the next room, -1 for none
+/// @param {Asset.GMRoom}  _loopData The loop data (an array of [start, end]), [-1, -1] to use the length of the song
 /// @description        Goes to another room, PT style
 gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = [-1,-1]) {
 	transSettings.nextRoom = _nextRoom;
 	transSettings.newPos = _newPos;
 	if(_nextRoom == -1) {
 		LogError("Invalid Room!");
-		o_Player.x = o_Player.xstart;
-		o_Player.y = o_Player.ystart;
+		//o_Player.x = o_Player.xstart;
+		//o_Player.y = o_Player.ystart;
 		o_Player.setState(PlayerState.Normal);
 		return;
 	}
@@ -215,4 +304,7 @@ gotoRoom = function(_nextRoom, _newPos, isDoorTrans, _newSong = -1, _loopData = 
 sessions = {
 	total : 0,
 	save : 0,
+};
+pauseGame = function() {
+	instance_create_depth(0,0,0,o_UI_Pause);
 }

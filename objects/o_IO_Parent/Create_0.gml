@@ -1,11 +1,3 @@
-Input = function(reason) {
-
-}
-
-Output = function(target, reason) {
-	target.Input(reason);
-}
-
 GetTarget = function() {
 	with(o_IO_Parent) {
 		if(name == other.target)
@@ -13,4 +5,8 @@ GetTarget = function() {
 	}
 	Log("(IO) Failed to find target " + target + "!");
 	return noone;
+}
+//For scripting usage?
+GetVariable = function(pName) {
+	return variable_instance_get(id, pName);
 }

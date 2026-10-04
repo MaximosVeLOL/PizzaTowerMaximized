@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"Shader_PaletteSwap",
-  "name":"Shader_PaletteSwap",
+  "%Name":"Shader_SausageMan",
+  "name":"Shader_SausageMan",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",

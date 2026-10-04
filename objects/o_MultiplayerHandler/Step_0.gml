@@ -1,4 +1,6 @@
+/*
 if(o_GameManager.mode != GameState.Game) return;
+
 for(var i = 0 ; i < MAX_PLAYERS;i++) {
 	var names = variable_struct_get_names(global.settings.keyBinds.p0); //All keybind names are the same for each player, 
 	if(i <= playerCount - 1) {
@@ -13,3 +15,4 @@ for(var i = 0 ; i < MAX_PLAYERS;i++) {
 	}
 
 }
+*/

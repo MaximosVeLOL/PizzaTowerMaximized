@@ -13,7 +13,8 @@ moveY = GetInput("down", 0, playerID) - GetInput("up", 0, playerID);
 with(id) {
 	//var ret = script_execute(global.player.states[global.settings.player.moveSet][state]);
     //show_message(global.player.states[state]);
-	var ret = script_execute(global.game.states.plr[global.settings.player.moveSet][state]);
+	//var ret = script_execute(global.game.states.plr[global.settings.player.moveSet][state]);
+	var ret = global.game.states.plr[global.settings.player.moveSet][state]();
 	if(ret != undefined) continue;
 	if(stunStuff.invincibleFrames > 0 && state != PlayerState.Hurt) {
 		stunStuff.flashing = !stunStuff.flashing;

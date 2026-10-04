@@ -10,7 +10,15 @@ switch(mode) {
 			}
 			else instance_activate_object(o_Player);
 		}
-		if((keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter)) && !instance_exists(o_UI_Pause)) instance_create_depth(0,0,0,o_UI_Pause);
+		if(keyboard_check_pressed(ord("V"))) {
+			if(instance_exists(o_Camera)) {
+				instance_deactivate_object(o_Camera);
+			}
+			else instance_activate_object(o_Camera);
+		}
+		if((keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_enter)) && !instance_exists(o_UI_Pause)) 
+			pauseGame();
+			
 		if(level.update) {
 			level.timer += TIME_BASE;
 		}

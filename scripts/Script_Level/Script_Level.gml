@@ -18,7 +18,7 @@ function Level_UnloadCommonAssets() {
 	texturegroup_load("tgLevelCommon", true);
 }
 
-function ResetLevel(levelIndex) {
+function Level_GetRoomList(levelIndex) {
 	//var originalRoom = room;
 	var rooms = [];
 	switch(levelIndex) {
@@ -73,6 +73,7 @@ function ResetLevel(levelIndex) {
 			];
 		break;
 	}
+	return rooms;
 	/*
 	for(var i = 0 ; i < array_length(rooms);i++) {
 		room_goto(rooms[i]);
@@ -84,9 +85,12 @@ function ResetLevel(levelIndex) {
 	This doesn't work, for some reason.
 	THIS HAPPENS BECAUSE ROOM_GOTO EXECUTES AT THE END OF A SCRIPT AKA END OF CODE
 	*/
-	instance_create_depth(x, y, 0, o_LevelEnd, {roomData : rooms});
+	
 }
-function SaveLevelInfo() {
+function Level_Reset(pIndex) {
+	instance_create_depth(x, y, 0, o_LevelManager, {mode : 1, roomData : Level_GetRoomList(pIndex)});
+}
+function Level_SaveInfo() {
 	if(o_GameManager.level.demo || o_GameManager.level.index == LevelIndex.None) return;
 	var out = buffer_create(0, buffer_grow, 1);
 	buffer_write(out, buffer_u8, clamp(floor(o_GameManager.level.score / 500), 1, 6) - 1);
@@ -101,12 +105,12 @@ function SaveLevelInfo() {
 	buffer_delete(out);
 }
 
-function LevelPrecacheTextures(pLevelIndex) {
+function Level_PrecacheTextures(pLevelIndex) {
 	texturegroup_load("tgLevel" + string(pLevelIndex));
 	//while(texturegroup_get_status() != texturegroup_status_loaded);
 }
 
-function GetLevelInfo(levelIndex) {
+function Level_GetInfo(levelIndex) {
 	var levelInfo = {
 		targetRoom : -1,
 		newSong : -1,

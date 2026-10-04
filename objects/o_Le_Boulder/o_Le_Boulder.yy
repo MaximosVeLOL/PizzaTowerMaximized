@@ -1,21 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"o_UI_KeyBinds",
+  "%Name":"o_Le_Boulder",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_UI_KeyBinds",
+  "name":"o_Le_Boulder",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Level3",
+    "path":"folders/Objects/Level/One Time Deals/Level3.yy",
   },
   "parentObjectId":{
-    "name":"o_UI_List",
-    "path":"objects/o_UI_List/o_UI_List.yy",
+    "name":"o_C_Wall",
+    "path":"objects/o_C_Wall/o_C_Wall.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -34,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprite_level_boulder",
+    "path":"sprites/sprite_level_boulder/sprite_level_boulder.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

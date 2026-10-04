@@ -1,5 +1,6 @@
 draw_self();
-if(!gotoLevel || !renderText) return;
+if(!gotoLevel || !renderText)
+	return;
 //var renderPos = new Vector(((x - camera_get_view_x(view_camera[0])) / camera_get_view_width(view_camera[0])) * display_get_gui_width(), ((bbox_top - camera_get_view_y(view_camera[0])) / camera_get_view_height(view_camera[0])) * display_get_gui_height());
 
 draw_set_font(global.misc.font);

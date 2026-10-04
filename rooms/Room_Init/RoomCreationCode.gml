@@ -5,6 +5,8 @@ enum FPSSaveMode {
 	VisualRemover,
 	OnlyTheNeccessary,
 }
+//Do this for gamepad async event in https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm
+gamepad_button_check(0, gp_home);
 global.game = {
     states : {
         plr : [
@@ -141,13 +143,14 @@ global.settings = {
 		sfxVolume : 100,
 		musicVolume : 100,
 		masterVolume : 100,
-		muteAll : false,
+		muteAll : true,
 		surroundSound : false,
 	},
 	video : {
 		fullscreen : false,
 		resolutionOpt : 1,
 		vSync : false,
+		mobileMode : false,
 	},
 	gameplay : {
 		debugEnabled : true,
@@ -155,6 +158,8 @@ global.settings = {
 		//multiplayer : true, //We're back!
 		goonerMode : false,
 		fpsSave : FPSSaveMode.None,
+		useAddons : false,
+		achievementsEnabled : false,
 		//multipleLaps : false,
 	},
 	player : {

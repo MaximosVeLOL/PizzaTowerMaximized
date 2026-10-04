@@ -1,2 +1,3 @@
-if(!instance_exists(o_PizzaTimeManager) && !global.settings.audio.muteAll)
-	o_MusicManager.pauseMusic();
+if(!instance_exists(o_PizzaTimeManager)) {
+	with(o_MusicManager) o_MusicManager.pauseMusic();
+}

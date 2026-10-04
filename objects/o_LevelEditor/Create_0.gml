@@ -70,9 +70,8 @@ ReturnToMenu = function() {
 	o_MusicManager.stopMusic(true);
 	room_goto(rooms[0]);
 }
-
 alarm[0] = (60 * 60) * 5; //Save every 5 minutes
-if(!global.settings.audio.muteAll) o_MusicManager.playNewSong(music_editor);
+with(o_MusicManager) playNewSong(music_editor);
 function GetObjectTouching(usePosition = true) {
 	/*
 	for(var i = 0 ; i < instance_number(object);i++) {

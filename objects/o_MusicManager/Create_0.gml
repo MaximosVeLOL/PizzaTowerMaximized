@@ -4,15 +4,15 @@ loopPointStart = -1;
 loopPointEnd = -1;
 tempSong = -1;
 playNewSong = function(newSong, loopData = [-1,-1]) {
-	var errorHandler = PlaySound(sfx_footstep);
-	if(errorHandler == -1) {
-		Log("Error occured whilist trying to play a new song (most likely mute all), ignoring request.");
-		return;
-	}
-	audio_stop_sound(errorHandler);
+	//var errorHandler = PlaySound(sfx_footstep);
+	//if(errorHandler == -1) {
+	//	Log("Error occured whilist trying to play a new song (most likely mute all), ignoring request.");
+	//	return;
+	//}
+	//audio_stop_sound(errorHandler);
 	
-	if(newSong == -1 || global.settings.audio.musicVolume == 0 || (instance_exists(o_PizzaTimeManager) && newSong != music_pizzatime) || newSong == audio_sound_get_asset(currentSong) || (tempSong != -1 && !instance_exists(o_PizzaTimeManager) ) ) {
-		Log("Couldn't play the new song.settings.. (" + string(newSong) + ")");
+	if(global.settings.audio.muteAll || newSong == -1 || global.settings.audio.musicVolume == 0 || instance_exists(o_PizzaTimeManager) && newSong != music_pizzatime || newSong == audio_sound_get_asset(currentSong) || (tempSong != -1 && !instance_exists(o_PizzaTimeManager) ) ) {
+		Log("Couldn't play the new song due to misc things (" + string(newSong) + ")");
 		return;
 	}
 	Log("Playing New Song!\nInformation: [name: " + string(newSong) + "]");
@@ -63,7 +63,7 @@ stopMusic = function(instantly = true) {
 	
 	currentSong = -1;
 }
-//Just incase.settings..
+//Just incase...
 pauseMusic = function() {
 	audio_pause_sound(currentSong);
 }

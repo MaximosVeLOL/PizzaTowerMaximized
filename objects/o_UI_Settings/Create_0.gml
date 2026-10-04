@@ -34,7 +34,7 @@ screens = [
 		new Option("Fullscreen", OptionType.Toggle, "fullscreen"),
 		new Option("Video type", OptionType.List, new Screen_List("resolutionOpt", ["SMALL (480x270)", "NORMAL (960x540)", "BIG (1920x1080)", "BACK"])),
 		new Option("Use VSync", OptionType.Toggle, "vSync"),
-	
+		new Option("Mobile Controls", OptionType.Toggle, "mobileMode"),
 	], "Video", new Screen_Background(sprite_hud_bg_video, undefined, 1, 1), 1, basicAnim(), new Vector(960, 0), normalOffset, global.settings.video),
 	
 	new Screen("game", [
@@ -51,13 +51,13 @@ screens = [
 		new Option("(ETB) Use Old Mach 3", OptionType.Toggle, "ETB_useOldMach3"),
 		new Option("(Pre ETB) Better running", OptionType.Toggle, "PreETB_betterRunning"),
 		new Option("Interact with water", OptionType.Toggle, "waterInteraction"),
-	], "Player", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1), 1, basicAnim(-128), new Vector(960, 0), normalOffset, global.settings.player),
+	], "Player", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1), 1, basicAnim(-152), new Vector(960, 0), normalOffset, global.settings.player),
 	
 	new Screen("multi", [
-		new Option("Enabled (Use Multiplayer)", OptionType.Toggle, "enabled"),
-		new Option("Screen Type", OptionType.List, new Screen_List("", [""])),
-		new Option("HUD Type", OptionType.List, new Screen_List("", [""])),
+		new Option("Enabled", OptionType.Toggle, "enabled"),
+		new Option("Screen Type", OptionType.List, new Screen_List("cameraType", ["Strips", "Splitscreen"], false)),
+		new Option("HUD Type", OptionType.List, new Screen_List("hudType", ["Top Left", "Each Screen"], true)),
 		new Option("Setup Multiplayer", OptionType.Button, function(){instance_deactivate_object(self);instance_create_depth(0, 0, 0, o_UI_MPSetup)}) 
-	], "Multiplayer", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1, ComicSans), 1, basicAnim(), new Vector(960, 0), normalOffset, global.settings.multiplayer)
+	], "Multiplayer", new Screen_Background(sprite_hud_bg_player, undefined, 1, 1, ComicSans), 1, basicAnim(-140), new Vector(960, 0), normalOffset, global.settings.multiplayer)
 ];
 setAllToUpper();

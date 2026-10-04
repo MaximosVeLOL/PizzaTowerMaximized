@@ -1,4 +1,4 @@
-info = GetLevelInfo(targetRoom);
+info = Level_GetInfo(targetRoom);
 var moveX = GetInput("right", 1) - GetInput("left", 1);
 if(moveX == 0) moveX = GetInput("down", 1) - GetInput("up", 1);
 targetRoom += moveX;

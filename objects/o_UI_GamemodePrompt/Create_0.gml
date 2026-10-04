@@ -5,7 +5,7 @@ onPressed = function(option) {
 	instance_activate_object(all);
 	Log("Setting gamemode to " + string(currentOption));
 	o_GameManager.level.gameMode = currentOption;
-	var data = GetLevelInfo(o_GameManager.level.index);
+	var data = Level_GetInfo(o_GameManager.level.index);
 	o_GameManager.gotoRoom(data.targetRoom, data.newPos, false, data.newSong, data.loopData);
 	o_GameManager.level.update = true;
 	o_Player.tempVar[0] = 1;

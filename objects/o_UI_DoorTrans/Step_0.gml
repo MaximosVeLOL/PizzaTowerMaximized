@@ -18,5 +18,27 @@ if(image_xscale >= 60 && !faded) {
 	o_Player.tempVar[0] = 1;
 	o_GameManager.transSettings.newPos = new Vector(-1, -1);
 	o_GameManager.transSettings.nextRoom = -1;
+	
+	if(string_count("Secret", room_get_name(o_GameManager.transSettings.nextRoom)) > 0) {
+		with(o_MusicManager) tempPlaySong(music_secret);
+		layer_script_begin("Background", function() {
+			if(event_type == ev_draw && event_number == ev_draw_normal) {
+				shader_set(Shader_Distort);
+				var s = shader_get_uniform(Shader_Distort, "time");
+				shader_set_uniform_f(s, get_timer() / 1000000);
+	
+			} 
+		});
+		layer_script_end("Background", function() {
+			if(event_type == ev_draw && event_number == ev_draw_normal) {
+				shader_reset();
+			}
+		});
+	}
+
+	with(o_MusicManager) {
+		if(string_count("Secret", room_get_name(room)) > 0)
+			stopTempSong();
+	}
 }
 if(image_xscale == 0) instance_destroy();

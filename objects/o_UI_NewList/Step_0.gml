@@ -1,6 +1,11 @@
 var current = screens[currentScreen];
-useMouse = (mouse_y != prevMouse);
+useMouse = (window_mouse_get_y() != prevMouse);
 clicked = mouse_check_button_pressed(mb_left);
+if(IS_MOBILE) {
+	for(var i = 0 ; i < TOUCH_COUNT;i++) {
+		clicked = device_mouse_check_button(i, mb_left);
+	}
+}
 if(current.animation != undefined && current.animation.update) {
 	if(current.animation.introType <= IntroType.FromBottom) {
 		current.position.y = BetterLerp(current.position.y, current.animation.targetPosition.y, 0.2);
@@ -70,4 +75,4 @@ else {
 if(GetInput("jump", 1)) {
 	use();
 }
-prevMouse = mouse_y;
+prevMouse = window_mouse_get_y();

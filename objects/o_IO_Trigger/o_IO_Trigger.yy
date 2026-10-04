@@ -9,8 +9,8 @@
   "name":"o_IO_Trigger",
   "overriddenProperties":[],
   "parent":{
-    "name":"LevelEditor",
-    "path":"folders/LevelEditor.yy",
+    "name":"IO",
+    "path":"folders/LevelEditor/IO.yy",
   },
   "parentObjectId":{
     "name":"o_IO_Parent",
@@ -35,7 +35,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprite_editor_IO_trigger",
+    "path":"sprites/sprite_editor_IO_trigger/sprite_editor_IO_trigger.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

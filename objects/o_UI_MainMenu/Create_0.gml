@@ -14,7 +14,11 @@ screens = [
 	new Screen("p", [
 		new Option("Regular", OptionType.Button, 2),
 		new Option("Level Select", OptionType.Button, function(){instance_deactivate_object(self);instance_create(0, 0, o_UI_LevelSelect);}),
-		new Option("Level Editor", OptionType.Button, function(){
+		new Option("Level Editor", OptionType.Button, function() {
+			if(IS_MOBILE) {
+				PlaySound(MaxGUI_error, true);
+				return;
+			}
 			instance_create_depth(0, 0, 0, o_MusicManager);
 			room_goto(Room_LevelEditor_Menu); 
 		}),

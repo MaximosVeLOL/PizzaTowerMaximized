@@ -1,5 +1,5 @@
 targetRoom = 0;
-info = GetLevelInfo(LevelIndex.ETB_Ancient); //Just in-case
+info = Level_GetInfo(LevelIndex.ETB_Ancient); //Just in-case
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(global.misc.font);

@@ -8,8 +8,8 @@
   "name":"o_IO_Parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"LevelEditor",
-    "path":"folders/LevelEditor.yy",
+    "name":"IO",
+    "path":"folders/LevelEditor/IO.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,6 +28,8 @@
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"name","filters":[],"listItems":[],"multiselect":false,"name":"name","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
     {"$GMObjectProperty":"v2","%Name":"target","filters":[],"listItems":[],"multiselect":false,"name":"target","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"Input","filters":[],"listItems":[],"multiselect":false,"name":"Input","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"function(reason){}","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"Output","filters":[],"listItems":[],"multiselect":false,"name":"Output","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"function(target, reason){}","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

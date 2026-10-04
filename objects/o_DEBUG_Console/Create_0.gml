@@ -1,4 +1,4 @@
-o_reusedFromBoxingBeast = true;
+//o_reusedFromBoxingBeast = true;
 //Reused from another game called Boxing Beast
 active = false;
 currentArguments = [];
@@ -130,7 +130,20 @@ commands = [
 	}, "util_get_id [object name]"),
 	new createCommand("bind", function() {
 		array_push(binds, {key : ord(currentArguments[0]), com : currentArguments[1]});
-	}, "bind [key] [command]")
+	}, "bind [key] [command]"),
+	new createCommand("get_room_info", function() {
+		for(var i = 0 ; i < 4;i++) {
+			show_message("(" + string(i) + ")\n View X: " + string(view_xport[i]) + 
+				"\nView Y: " + string(view_yport[i]) + 
+				"\nView Width: " + string(view_wport[i]) +
+				"\nView Height: " + string(view_hport[i]) +
+				"\nCamera X: " + string(camera_get_view_x(view_camera[i])) +
+				"\nCamera Y: " + string(camera_get_view_y(view_camera[i])) +
+				"\nCamera Width: " + string(camera_get_view_width(view_camera[i])) +
+				"\nCamera Height: " + string(camera_get_view_height(view_camera[i])) 
+			);
+		}
+	}, "get_room_info"),
 ];
 execute = function(pString) {
 		//if(os_browser != browser_not_a_browser) pString = string_lower(pString);

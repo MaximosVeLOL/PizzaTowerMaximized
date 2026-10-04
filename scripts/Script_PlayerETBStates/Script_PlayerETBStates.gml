@@ -201,6 +201,9 @@ function Player_State_ETB_MachSlide() {
     }
 }
 function Player_State_ETB_CrouchSlide() {
+	if(!PLAYER_GROUNDED) {
+		setState(PlayerState.Jump, true, false);
+	}
     PlaySound(sfx_slide); //We want to keep playing the sound, even when going into another state
     mask_index = spr_player_mask_crouch;
     sprite_index = spr_player_crouchslide;
@@ -253,10 +256,10 @@ function Player_State_ETB_MachFreefall() {
     sprite_index = spr_player_mach2jump;
     playSound(sfx_spin);
     velocity.x = xscale * 10;
-    if(PLAYER_GROUNDED) {
+    if(PLAYER_GROUNDED) { //TODO - Add the freefall feature when falling down a long distance
         if(!GetInput("dash", 0, playerID)) { //If we aren't holding the mach 2 button 
             setState(PlayerState.Freefall);
-            tempVar[0] = 3;
+            tempVar[0] = 2;
         }
         else {
             setState(PlayerState.Mach2, false);
@@ -333,7 +336,7 @@ function Player_State_Any_Noclip() {
     velocity.x = 0;
     velocity.y = 0;
     movespeed = (GetInput("dash", 0, playerID) ? 20 : 10);
-	movespeed = (GetInput("jump", I_DOWN, playerID) ? 40 : 10);
+	if(movespeed != 20) movespeed = (GetInput("jump", I_DOWN, playerID) ? 40 : 10);
     x += moveX * movespeed;
     y += moveY * movespeed;
     return false;
@@ -547,16 +550,15 @@ function Player_State_ETB_Freefall() {
     }
 }
 function Player_State_ETB_SuperSlam() {
-    						sprite_index = spr_player_freefalling;
-						if(PLAYER_GROUNDED) {
-							playSound(sfx_superimpact);
-							setState(PlayerState.Freefall);
-							tempVar[0] = 2;
-							tempVar[1] = 31;
-							ShakeCamera(20, 2/3);
-
-							CreateEffect({y : y + 12, sprite_index : sprite_effect_meteor, image_angle : 270});
-						}
+	sprite_index = spr_player_freefalling;
+	if(PLAYER_GROUNDED) {
+		playSound(sfx_superimpact);
+		setState(PlayerState.Freefall);
+		tempVar[0] = 2;
+		tempVar[1] = 31;
+		ShakeCamera(20, 2/3);
+		CreateEffect({y : y + 12, sprite_index : sprite_effect_meteor, image_angle : 270});
+	}
 }
 function Player_State_ETB_Ladder() {
     mass = 0;
@@ -932,7 +934,7 @@ function Player_State_ETB_Bomb() {
             sprite_index = spr_player_bomb_start;
             if(IMAGE_COMPLETE) {
                 tempVar[0] = 1;
-                if(instance_exists(o_MusicManager)) o_MusicManager.tempPlaySong(music_bomb);
+                with(o_MusicManager) o_MusicManager.tempPlaySong(music_bomb);
             }
         break;
 
@@ -943,7 +945,7 @@ function Player_State_ETB_Bomb() {
             if(PLAYER_TOUCHING) {
                 if(tempVar[1] == 1) tempVar[2] = true;
                 else if(tempVar[1] == 2) {
-                    if(!global.settings.audio.muteAll) o_MusicManager.stopTempSong();
+                    with(o_MusicManager) stopTempSong();
 		            //if(!instance_exists(o_Le_BombExplosion)) 
 					instance_create_depth(x,y,0,o_Le_BombExplosion);
 		            instance_create_depth(x,y,0,o_Le_BombExplosion);

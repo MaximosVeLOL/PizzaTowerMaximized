@@ -82,7 +82,7 @@ for(var i = 0 ; i < array_length(current.options);i++) {
 		break;
 		
 		case OptionType.List:
-			var WIDTH = 200;
+			var WIDTH = 220;
 			var HEIGHT = string_height("(") + 12;
 			if(i == currentOption && interactingWithOption) {
 				if(option.event.alignToTop)

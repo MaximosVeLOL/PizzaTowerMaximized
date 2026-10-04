@@ -6,8 +6,8 @@
   "name":"o_IO_ObjectSpawner",
   "overriddenProperties":[],
   "parent":{
-    "name":"LevelEditor",
-    "path":"folders/LevelEditor.yy",
+    "name":"IO",
+    "path":"folders/LevelEditor/IO.yy",
   },
   "parentObjectId":null,
   "persistent":false,

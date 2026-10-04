@@ -13,7 +13,10 @@ if(trans.active) {
 	}
 	return;
 }
-
+if(fps_real < seenLowest && fps_real > 0 || maxLowestFrames++ >= 600) {
+	maxLowestFrames = 0;
+	seenLowest = fps_real;
+}
 if(!instance_exists(o_Player)) {
 	var moveX = (GetInput("right") - GetInput("left"));
 	var moveY = (GetInput("down") - GetInput("up"));

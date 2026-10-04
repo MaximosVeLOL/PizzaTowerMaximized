@@ -3,11 +3,31 @@ function Vector(_x = 0, _y = 0) constructor {
 	y = _y;
 }
 
+//Screen utilities to prepare for the screen size update
+#macro S_WIDTH 960
+#macro S_HEIGHT 540
+#macro S_HWIDTH (S_WIDTH / 2)
+#macro S_HHEIGHT (S_HEIGHT / 2)
+
+#macro MAX_PLAYERS 4
 
 
 
 //#macro BASE_DIRECTORY "%localappdata%/Pizza_Tower/MaximizedGM2"
 #macro BASE_DIRECTORY working_directory + "MaximizedGM2"
+
+#macro I_WENTDOWN 1
+#macro I_DOWN 0
+#macro I_WENTUP 2
+
+//Web builds have no good features
+#macro IS_WEB_BUILD (os_type == os_operagx || os_browser != browser_not_a_browser)
+//GML natively supports windows, so we have to do this in order to maintain compatability between others
+#macro IS_WINDOWS (os_type == os_windows)
+
+#macro IS_MOBILE (os_type = os_android || os_type == os_ios || os_type == os_gdk)
+
+
 function instance_create(x, y, object, var_struct = {}) {
 	return instance_create_layer(x, y, (layer == -1 ? layer_get_id("Instances") : layer), object, var_struct);
 }
@@ -46,14 +66,6 @@ function PlaySoundSpacial(snd, override = false, loop = false, canRepeat = false
 	if(!loop) audio_sound_gain(aud, global.settings.audio.sfxVolume / 100, 0);
 	return aud;
 }
-#macro I_WENTDOWN 1
-#macro I_DOWN 0
-#macro I_WENTUP 2
-
-//Web builds have no good features
-#macro IS_WEB_BUILD (os_type == os_operagx || os_browser != browser_not_a_browser)
-//GML natively supports windows, so we have to do this in order to maintain compatability between others
-#macro IS_WINDOWS (os_type == os_windows)
 
 function GetInput(pInputCode, pInputState = I_DOWN, pProfileIndex = 0) {
 	//The name of the key
@@ -128,7 +140,7 @@ function draw_sprite_tiled_area(sprite, subimg, x, y, x1, y1, x2, y2)
 function BetterLerp(a, b, c) {
 	var LERP_RANGE = 0.2;
 	var ret = lerp(a, b, c);
-	if(ret <= b - LERP_RANGE && ret >= b + LERP_RANGE)
+	if(ret >= b - LERP_RANGE && ret <= b + LERP_RANGE)
 		return b;
 	return ret;
 }
@@ -144,6 +156,29 @@ function TextureGroupEnsureLoaded(pName) {
     }
 }
 
+function IsInRange(p_X, p_Y, p_OtherX, p_OtherY, p_OtherWidth, p_OtherHeight) {
+	return (p_X >= p_OtherX && p_X <= p_OtherX + p_OtherWidth && p_Y >= p_OtherY && p_Y <= p_OtherY + p_OtherHeight);
+}
+function CanBeSeen() {
+	if(global.settings.multiplayer.enabled) {
+		for(var i = 0; i < o_MultiplayerHandler.playerCount;i++) {
+			var vX = camera_get_view_x(view_camera[i]);
+			var vY = camera_get_view_y(view_camera[i]);
+			var vW = camera_get_view_width(view_camera[i]);
+			var vH = camera_get_view_height(view_camera[i]);
+			var inBounds = (x >= vX && x <= vX + vH && y >= vY && y <= vY + vH);
+			if(!inBounds)
+				return false;
+		}
+		return true;
+	}
+	var vX = camera_get_view_x(view_camera[0]);
+	var vY = camera_get_view_y(view_camera[0]);
+	var vW = camera_get_view_width(view_camera[0]);
+	var vH = camera_get_view_height(view_camera[0]);
+	return (x >= vX && x <= vX + vH && y >= vY && y <= vY + vH);
+}
+
 function GamepadDetectAny(pPadIndex = 0) {
 	
 	
@@ -151,4 +186,13 @@ function GamepadDetectAny(pPadIndex = 0) {
 		|| gamepad_button_check(pPad, gp_shoulderl) || gamepad_button_check(pPad, gp_shoulderlb) || gamepad_button_check(pPad, gp_shoulderr) || gamepad_button_check(pPad, gp_shoulderrb)
 		|| gamepad_button_check(pPad, gp_padu) || gamepad_button_check(pPad, gp_padd) || gamepad_button_check(pPad, gp_padl) || gamepad_button_check(pPad, gp_padr)
 	);
+}
+
+
+function GetCVar(pName, pIsStr, pCloseFile = true) {
+	ini_open(BASE_DIRECTORY + "/cvar.ini");
+	//return [ini_read_real, ini_read_string][pIsStr]();
+	var ret = (pIsStr ? ini_read_string("cvar", pName, "") : ini_read_real("cvar", pName, NULL));
+	if(pCloseFile) ini_close();
+	return ret;
 }

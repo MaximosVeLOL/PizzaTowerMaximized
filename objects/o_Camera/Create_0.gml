@@ -4,11 +4,13 @@ if(instance_number(o_Camera) > 1) {
 	return;
 }
 image_speed = 0.35;
-hudVisible = true;
+hudVisible = false;
 shake = {
 	mag : 0,
 	acc : 0,
 };
+seenLowest = 10000;
+maxLowestFrames = 0;
 trans = {
 	active : false,
 	fade : 0,
@@ -22,6 +24,7 @@ setupRoom = function() {
 	
 	//show_message("Player count: " + string(c));
 	if(global.settings.multiplayer.enabled) {
+		
 		var c = o_MultiplayerHandler.playerCount;
 		if(c > 1) {
 		// 0 - Vertical strips (implemented)
@@ -31,7 +34,7 @@ setupRoom = function() {
 		//Boom
 		switch(global.settings.multiplayer.cameraType) {
 			case 0:
-
+				if(view_wport[0] == 960) return;
 				for(var i = 0 ; i < c;i++) {
 					view_visible[i] = true;
 					view_wport[i] = 960;
@@ -46,6 +49,7 @@ setupRoom = function() {
 				h = 540/2;
 				var w = (960/2);
 				var scaleDown = true;
+				if(view_wport[0] == w) return;
 				for(var i = 0 ; i < c;i++) {
 					view_visible[i] = true;
 					view_wport[i] = w;
@@ -84,6 +88,7 @@ setupRoom = function() {
 		return;
 		}
 	}
+	if(view_visible[0]) return;
 	view_visible[0] = true;
 	view_wport[0] = 960;
 	view_hport[0] = 540;

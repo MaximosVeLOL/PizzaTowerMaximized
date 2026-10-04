@@ -13,10 +13,6 @@ with(other) {
 	else {
 		if(GetInput("up", 1, playerID)) {
 			if(PLAYER_GROUNDED && velocity.x == 0) {
-				if(!global.settings.audio.muteAll) {
-					if(string_count("Secret", room_get_name(other.targetRoom)) > 0) o_MusicManager.tempPlaySong(music_secret);
-					if(string_count("Secret", room_get_name(room)) > 0) o_MusicManager.stopTempSong();
-				}
 				//With all players
 				o_Player.setState(PlayerState.Door);
 				o_Player.x = other.x;

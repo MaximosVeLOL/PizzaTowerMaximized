@@ -13,8 +13,6 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderPlayerMask
 	draw_sprite_ext(mask_index, 0, x,y, xscale, 1, 0, c_white, 0.5);
 	draw_arrow(x,y, x + (50 * xscale), y, 25);	
 }
-
-if(global.settings.multiplayer.enabled) draw_text(x - 20,bbox_top - 50, "P" + string(playerID + 1));
 /* from camera draw event
 var data = audio_listener_get_data(0);
 draw_set_color(c_green);

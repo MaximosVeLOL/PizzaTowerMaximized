@@ -1,4 +1,4 @@
-#macro MAX_PLAYERS 4
+
 
 playerCount = 0;
 rememberedCount = -1;

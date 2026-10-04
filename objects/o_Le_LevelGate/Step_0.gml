@@ -1,9 +1,9 @@
 //var plrInFront = false;
-plrInFront = false;
+//plrInFront = false;
 ForEachPlayer(function(i, plr) {
 		if(plr.bbox_right >= bbox_left && plr.bbox_left <= bbox_right && plr.bbox_bottom >= bbox_top && plr.bbox_top <= bbox_bottom) {
 			if(gotoLevel) {
-				plrInFront = true;
+				//plrInFront = true;
 				image_index = 1; //Open sesame
 				renderText = true;
 			}
@@ -32,7 +32,7 @@ ForEachPlayer(function(i, plr) {
 				}
 			}
 		}
-		else if(!plrInFront) {
+		else {//if(!gotoLevel) {
 			image_index = 0; //Hey Tim, i'd like to see Mr. Bigweld!
 			renderText = false;
 		}

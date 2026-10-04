@@ -9,6 +9,7 @@ if(intro != 1) {
 		else {
 			y = lerp(y, (intro == 0 ? 0 : 550), 0.25);
 			if(y >= 547) {
+				surface_free(tempSurf);
 				instance_destroy();
 			}
 		}
@@ -20,7 +21,7 @@ draw_rectangle(-1, y, 961, 541, false);
 draw_sprite_tiled_area(sprite_level_points_big, 0, x, y + tileY, 0, y, 960, 540);
 var Y_POS = 420;
 var Y_OFF = 36;
-if(y <= Y_POS) {
+if(o_GameManager.level.index > LevelIndex.None && y <= Y_POS) {
 	
 	
 	//Level stats
@@ -45,7 +46,7 @@ if(y <= Y_POS) {
 	//Level info
 	draw_set_halign(fa_right);
 	draw_text(952, y + Y_POS + Y_OFF, stats.name);
-	draw_text(952, y + Y_POS + Y_OFF + Y_OFF, "0:00:00");
+	draw_text(952, y + Y_POS + Y_OFF + Y_OFF, string(o_GameManager.level.timer));
 	GUI_RESET;
 }
 draw_set_font(-1);

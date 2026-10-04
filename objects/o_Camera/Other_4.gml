@@ -1,5 +1,5 @@
 //room_set_viewport, and camera_create_view do not work with the current room, so I have to do this.
-setupRoom();
+//setupRoom();
 //camera_set_view_size(view_camera[0], 960, 540);
 
 

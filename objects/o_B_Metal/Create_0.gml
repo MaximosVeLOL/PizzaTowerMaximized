@@ -13,3 +13,6 @@ if(global.settings.player.moveSet == Moveset.PreETB) {
 	image_xscale = 2;
 	image_yscale = 2;
 }
+if(image_xscale == 0.5) {
+	sprite_index = sprite_breakable_minimetal;
+}

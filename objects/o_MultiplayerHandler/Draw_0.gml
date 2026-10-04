@@ -1,0 +1,1 @@
+with(o_Player) draw_text(x - 20,bbox_top - 50, "P" + string(playerID + 1));

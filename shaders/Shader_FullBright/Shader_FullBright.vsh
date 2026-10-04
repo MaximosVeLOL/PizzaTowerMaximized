@@ -1,5 +1,3 @@
-//This uses stolen code from a decompile, thanks thecore0!
-
 attribute vec3 in_Position;
 attribute vec2 in_TextureCoord;
 

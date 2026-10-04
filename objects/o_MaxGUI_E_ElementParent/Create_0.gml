@@ -2,6 +2,7 @@ disabled = false;
 doHighlight = true;
 inBounds = false;
 sound = -1;
+if(string_last_pos("_editor_", sprite_get_name(sprite_index)) > 0) sprite_index = x16;
 //persistent = true;
 /*
 if(customSprite != noone) {

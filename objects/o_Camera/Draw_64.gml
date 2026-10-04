@@ -1,3 +1,4 @@
+if(!instance_exists(o_Player)) return;
 if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText) {
 	draw_set_font(-1);
 	var toDraw = [
@@ -11,6 +12,7 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 		"ShakeAcc: " + string(shake.acc),
 		"Camera Pos: " + string(camera_get_view_x(view_camera[0])) + ", " + string(camera_get_view_y(view_camera[0])),
 		"Gamemode: " + string(o_GameManager.level.gameMode),
+		"Lowest FPS: " + string(seenLowest),
 		//"Selfo_GameManager.level.score: " + string(o_Player_Machine.selfo_GameManager.level.score),
 		//"Time: " + string(o_Player_Machine.time),
 		//"BestInputs: " + string(global.bestInputs),
@@ -22,7 +24,6 @@ if(instance_exists(o_DEBUG_Console) && o_DEBUG_Console.settings.renderDebugText)
 	}
 	
 }
-if(!instance_exists(o_Player)) return;
 draw_set_font(global.misc.font);
 if(hudVisible) {
 	if(global.settings.gameplay.goonerMode) {
@@ -40,16 +41,23 @@ if(hudVisible) {
 			ForEachPlayer(function(i, plr) {
 				switch(plr.state) {
 		
+					case PlayerState.Enemy:
+						if(plr.tempVar[0] != 1) {
+							sprite = sprite_hud_pep_idle;
+							break;
+						}
+					case PlayerState.MachSlide:
+					case PlayerState.SuperJump:
 					case PlayerState.Mach1:
 						sprite = sprite_hud_pep_mach1;
 					break;
 		
-					case PlayerState.MachSlide:
+					
 					case PlayerState.MachFreefall:
 					case PlayerState.Mach2:
 						sprite = sprite_hud_pep_mach2;
 					break;
-		
+				
 					case PlayerState.Mach3:
 						//Dont use asset_get_index to save time
 						sprite = (global.settings.player.ETB_useOldMach3 ? sprite_hud_pep_mach3 : sprite_hud_pep_mach4);
@@ -65,8 +73,23 @@ if(hudVisible) {
 					//break;
 					
 					case PlayerState.Freefall:
-						if(plr.tempVar[0] != 2)
+						switch(plr.tempVar[0]) {
+							case 0:
+								sprite = sprite_hud_pep_mach1;	
 							break;
+						
+							case 1:
+								sprite = sprite_hud_pep_mach2;	
+							break;
+						
+							case 2:
+								sprite = sprite_hud_pep_hurt;
+							break;
+								
+						}
+						
+					break;
+				
 					case PlayerState.Hurt:
 						sprite = sprite_hud_pep_hurt;
 					break;
